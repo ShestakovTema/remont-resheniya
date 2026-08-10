@@ -851,9 +851,9 @@ function ServiceRow({
 function Testimonials() {
   const t = useT();
   const QUOTES = [
-    { q: t("test.1.q"), a: "Selin K.", r: t("test.1.r") },
-    { q: t("test.2.q"), a: "Marco V.", r: t("test.2.r") },
-    { q: t("test.3.q"), a: "Alessandra R.", r: t("test.3.r") },
+    { q: t("test.1.q"), a: "Алексей И.", r: "Элитный ремонт в Хамовниках" },
+    { q: t("test.2.q"), a: "Марина С.", r: "Ремонт в новостройке ЖК 'Зиларт'" },
+    { q: t("test.3.q"), a: "Сергей П.", r: "Капитальный ремонт вторички" },
   ];
   const [i, setI] = useState(0);
   useEffect(() => {
