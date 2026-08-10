@@ -66,7 +66,7 @@ export function Nav() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <div className="flex items-center rounded-full border border-white/15 p-[2px] text-xs">
-              {(["en", "tr", "zh", "ar"] as const).map((l) => (
+              {(["ru", "en"] as const).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
@@ -75,7 +75,7 @@ export function Nav() {
                     lang === l ? "bg-white text-black" : "text-white/70 hover:text-white"
                   }`}
                 >
-                  {l === "zh" ? "中文" : l === "tr" ? "Türk" : l === "ar" ? "عربي" : l}
+                  {l === "ru" ? "RU" : "EN"}
                 </button>
               ))}
             </div>
