@@ -4,25 +4,21 @@ import { Globe } from "lucide-react";
 import { Magnetic } from "./magnetic";
 import { useLang } from "@/lib/i18n";
 
-const LANGS = ["en", "tr", "zh", "ar"] as const;
+const LANGS = ["ru", "en"] as const;
 const LANG_SHORT: Record<(typeof LANGS)[number], string> = {
+  ru: "RU",
   en: "EN",
-  tr: "Türk",
-  zh: "中文",
-  ar: "عربي",
 };
 const LANG_FULL: Record<(typeof LANGS)[number], string> = {
+  ru: "Русский",
   en: "English",
-  tr: "Türkçe",
-  zh: "中文",
-  ar: "العربية",
 };
 
 const LINKS = [
   { key: "nav.work", href: "#work" },
-  { key: "nav.studio", href: "#studio" },
+  { key: "nav.about", href: "#about" },
   { key: "nav.services", href: "#services" },
-  { key: "nav.process", href: "#process" },
+  { key: "nav.blog", href: "#blog" },
   { key: "nav.contact", href: "#contact" },
 ];
 
