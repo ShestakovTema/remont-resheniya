@@ -97,9 +97,9 @@ const ru: Dict = {
   "contact.h.b": "вашей мечты",
   "contact.h.c": "уже сегодня.",
   "contact.desc":
-    "Мы принимаем заявки на расчет сметы. Оставьте ваши контакты, и мы перезвоним в течение 30 минут.",
+    "Позвоните, и мы уточним все нюансы ремонта и сразу рассчитаем смету.",
   "contact.email.label": "Почта · пишите нам",
-  "contact.whatsapp.label": "WhatsApp · задать вопрос",
+  "contact.whatsapp.label": "Позвоните или Напишите в WhatsApp",
   "contact.copied": "Скопировано!",
   "contact.opened": "Открыто!",
 
