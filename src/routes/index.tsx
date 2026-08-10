@@ -739,11 +739,30 @@ function Stat({ value }: { value: string }) {
 /* ------------------------------ SERVICES ------------------------------ */
 function Services() {
   const t = useT();
-  const SERVICES = [1, 2, 3, 4, 5, 6].map((i) => ({
-    n: String(i).padStart(2, "0"),
-    t: t(`services.${i}.t`),
-    d: t(`services.${i}.d`),
-  }));
+  const services = [
+    {
+      id: "elite",
+      n: "01",
+      t: t("services.elite.title"),
+      d: t("services.elite.desc"),
+      href: "/elite",
+    },
+    {
+      id: "new",
+      n: "02",
+      t: t("services.new.title"),
+      d: t("services.new.desc"),
+      href: "/newbuilding",
+    },
+    {
+      id: "secondary",
+      n: "03",
+      t: t("services.secondary.title"),
+      d: t("services.secondary.desc"),
+      href: "/secondary",
+    },
+  ];
+
   return (
     <section id="services" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
@@ -751,15 +770,22 @@ function Services() {
           <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">
             {t("services.section")}
           </Reveal>
-          <h2 className="font-display col-span-12 max-w-[18ch] text-4xl sm:text-5xl md:col-span-9 md:text-7xl">
-            <TextReveal key={`sa-${t("services.h.a")}`} text={t("services.h.a")} />
-            <br />
-            <TextReveal key={`sb-${t("services.h.b")}`} text={t("services.h.b")} delay={0.15} className="italic" />
-          </h2>
+          <div className="col-span-12 md:col-span-9">
+            <h2 className="font-display max-w-[18ch] text-4xl sm:text-5xl md:text-7xl">
+              <TextReveal key={`sa-${t("services.h.a")}`} text={t("services.h.a")} />
+              <br />
+              <TextReveal
+                key={`sb-${t("services.h.b")}`}
+                text={t("services.h.b")}
+                delay={0.15}
+                className="italic"
+              />
+            </h2>
+          </div>
         </div>
         <ul className="border-t border-white/10">
-          {SERVICES.map((s, i) => (
-            <ServiceRow key={s.n} {...s} last={i === SERVICES.length - 1} />
+          {services.map((s, i) => (
+            <ServiceRow key={s.id} {...s} last={i === services.length - 1} />
           ))}
         </ul>
       </div>
@@ -767,7 +793,19 @@ function Services() {
   );
 }
 
-function ServiceRow({ n, t, d, last }: { n: string; t: string; d: string; last: boolean }) {
+function ServiceRow({
+  n,
+  t,
+  d,
+  href,
+  last,
+}: {
+  n: string;
+  t: string;
+  d: string;
+  href: string;
+  last: boolean;
+}) {
   const [hover, setHover] = useState(false);
   return (
     <li
@@ -776,28 +814,34 @@ function ServiceRow({ n, t, d, last }: { n: string; t: string; d: string; last: 
       className={`group relative overflow-hidden border-white/10 ${last ? "border-b" : "border-b"}`}
       data-cursor="link"
     >
-      <motion.div
-        initial={false}
-        animate={{ y: hover ? 0 : "100%" }}
-        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-        className="absolute inset-0 bg-white"
-      />
-      <div className="relative z-10 grid grid-cols-12 items-center gap-x-4 gap-y-2 py-6 sm:gap-6 sm:py-8 md:px-8 md:py-12 lg:px-12">
-        <div className={`col-span-2 font-mono text-[10px] tracking-widest transition-colors sm:text-xs md:col-span-1 ${hover ? "text-black" : "text-white/50"}`}>{n}</div>
-        <motion.h3
-          animate={{ x: hover ? 16 : 0, color: hover ? "#070707" : "#ffffff" }}
-          transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
-          className="font-display col-span-10 text-2xl sm:text-3xl md:col-span-6 md:text-5xl lg:text-6xl"
-        >
-          {t}
-        </motion.h3>
-        <motion.p
-          animate={{ color: hover ? "rgba(7,7,7,0.75)" : "#8F8F8F" }}
-          className="col-span-12 text-xs sm:text-sm md:col-span-5 md:justify-self-end md:text-right md:text-base"
-        >
-          {d}
-        </motion.p>
-      </div>
+      <a href={href} className="block">
+        <motion.div
+          initial={false}
+          animate={{ y: hover ? 0 : "100%" }}
+          transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+          className="absolute inset-0 bg-white"
+        />
+        <div className="relative z-10 grid grid-cols-12 items-center gap-x-4 gap-y-2 py-6 sm:gap-6 sm:py-8 md:px-8 md:py-12 lg:px-12">
+          <div
+            className={`col-span-2 font-mono text-[10px] tracking-widest transition-colors sm:text-xs md:col-span-1 ${hover ? "text-black" : "text-white/50"}`}
+          >
+            {n}
+          </div>
+          <motion.h3
+            animate={{ x: hover ? 16 : 0, color: hover ? "#070707" : "#ffffff" }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+            className="font-display col-span-10 text-2xl sm:text-3xl md:col-span-6 md:text-5xl lg:text-6xl"
+          >
+            {t}
+          </motion.h3>
+          <motion.p
+            animate={{ color: hover ? "rgba(7,7,7,0.75)" : "#8F8F8F" }}
+            className="col-span-12 text-xs sm:text-sm md:col-span-5 md:justify-self-end md:text-right md:text-base"
+          >
+            {d}
+          </motion.p>
+        </div>
+      </a>
     </li>
   );
 }
