@@ -77,21 +77,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Two Frame Studio — Luxury Digital Experiences" },
+      {
+        name: "description",
+        content:
+          "Two Frame Studio designs and builds cinematic, high‑performance websites for hotels, resorts, restaurants and luxury brands.",
+      },
+      { name: "author", content: "Two Frame Studio" },
+      { name: "theme-color", content: "#070707" },
+      { property: "og:title", content: "Two Frame Studio — Luxury Digital Experiences" },
+      {
+        property: "og:description",
+        content:
+          "Two Frame Studio designs and builds cinematic, high‑performance websites for hotels, resorts, restaurants and luxury brands.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Two Frame Studio — Luxury Digital Experiences" },
+      { name: "twitter:description", content: "Two Frame Studio designs and builds cinematic, high‑performance websites for hotels, resorts, restaurants and luxury brands." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/66ca2352-f608-47e0-bd01-d942c6de9715" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/66ca2352-f608-47e0-bd01-d942c6de9715" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
