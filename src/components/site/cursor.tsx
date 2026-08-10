@@ -53,8 +53,8 @@ export function Cursor() {
       const el = e.target as HTMLElement | null;
       const interactive = el?.closest<HTMLElement>("[data-cursor]");
       if (interactive) {
-        const k = (interactive.dataset.cursor || "link") as "link" | "view";
-        const lbl = interactive.dataset.cursorLabel || "";
+        const k = (interactive.dataset["cursor"] || "link") as "link" | "view";
+        const lbl = interactive.dataset["cursorLabel"] || "";
         setKind(k);
         setLabel(lbl);
         if (k !== "view") setSize(40);
