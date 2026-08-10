@@ -89,17 +89,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Экспертный ремонт квартир любой сложности. Фиксированная смета, гарантия 3 года, технический надзор.",
+          "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Ремонт Решения — Профессиональный ремонт и отделка под ключ" },
-      { name: "twitter:description", content: "Экспертный ремонт квартир любой сложности. Фиксированная смета, гарантия 3 года, технический надзор." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/66ca2352-f608-47e0-bd01-d942c6de9715" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/66ca2352-f608-47e0-bd01-d942c6de9715" },
+      { name: "twitter:description", content: "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области." },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
     ],
     links: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       {
         rel: "stylesheet",
