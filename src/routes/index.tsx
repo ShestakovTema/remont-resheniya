@@ -96,16 +96,16 @@ type Project = {
 };
 
 const PROJECTS: Project[] = [
-  { name: "Six Senses Kaplankaya", category: "Resort · Turkey", year: "2025", image: kaplankaya, url: "https://www.sixsenses.com/en/hotels-resorts/europe/turkey/kaplankaya/" },
-  { name: "D Maris Bay", category: "Resort · Marmaris", year: "2025", image: dmaris, url: "https://www.dmarisbay.com/" },
-  { name: "Rixos", category: "Hospitality Group", year: "2024", image: rixos, url: "https://www.rixos.com/" },
-  { name: "Mandarin Oriental Bodrum", category: "Resort · Bodrum", year: "2024", image: mandarin, url: "https://www.mandarinoriental.com/ru/bodrum/paradise-bay" },
-  { name: "Gold Coast Hotel", category: "Hotel · Hong Kong", year: "2024", image: goldcoast, url: "https://web.sino-hotels.com/en/hk/gold-coast-hotel" },
-  { name: "Auberge Discovery Bay", category: "Boutique Hotel", year: "2023", image: auberge, url: "https://www.aubergediscoverybay.com/en-us" },
-  { name: "Zuma", category: "Restaurant · Global", year: "2025", image: zuma, url: "https://www.zumarestaurant.com/en" },
-  { name: "Nusr-Et", category: "Steakhouse · Global", year: "2024", image: nusret, url: "https://www.nusr-et.com.tr/en" },
-  { name: "Maçakızı", category: "Beach Hotel · Bodrum", year: "2024", image: macakizi, url: "https://www.macakizi.com/" },
-  { name: "Aman", category: "Luxury Resorts", year: "2025", image: aman, url: "https://www.aman.com/" },
+  { name: "Элитная квартира на Тверской", category: "Элитный ремонт", year: "2025", image: kaplankaya, url: "/elite/" },
+  { name: "ЖК 'Премиум Парк'", category: "Новостройка", year: "2025", image: dmaris, url: "/newbuilding/" },
+  { name: "Лофт в старом центре", category: "Ремонт вторички", year: "2024", image: rixos, url: "/secondary/" },
+  { name: "Пентхаус с видом на Сити", category: "Элитный ремонт", year: "2024", image: mandarin, url: "/elite/" },
+  { name: "Семейная квартира в Хамовниках", category: "Новостройка", year: "2024", image: goldcoast, url: "/newbuilding/" },
+  { name: "Апартаменты в Москва-Сити", category: "Элитный ремонт", year: "2023", image: auberge, url: "/elite/" },
+  { name: "Дизайнерский ремонт на Арбате", category: "Вторичное жилье", year: "2025", image: zuma, url: "/secondary/" },
+  { name: "Квартира-студия в ЖК 'Зиларт'", category: "Новостройка", year: "2024", image: nusret, url: "/newbuilding/" },
+  { name: "Реновация квартиры 1985г.", category: "Ремонт вторички", year: "2024", image: macakizi, url: "/secondary/" },
+  { name: "Вилла в Подмосковье", category: "Загородный дом", year: "2025", image: aman, url: "/elite/" },
 ];
 
 function Index() {
