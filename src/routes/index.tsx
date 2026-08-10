@@ -67,11 +67,11 @@ import { LangProvider, useT } from "@/lib/i18n";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { property: "og:image", content: kaplankaya },
-      { name: "twitter:image", content: kaplankaya },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
     ],
     links: [
-      { rel: "preload", as: "image", href: kaplankaya, fetchPriority: "high" } as never,
+      { rel: "preload", as: "image", href: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", fetchPriority: "high" } as never,
     ],
   }),
   component: Index,
