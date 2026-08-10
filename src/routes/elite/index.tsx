@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Reveal, TextReveal } from "@/components/site/reveal";
+import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
 import { Footer } from "@/routes/index";
 
@@ -11,7 +11,7 @@ function ElitePage() {
   return (
     <div className="bg-[#070707] text-white min-h-screen">
       <Nav />
-      <main className="pt-32 px-10 max-w-[1600px] mx-auto">
+      <main className="pt-32 px-10 max-w-[1600px] mx-auto pb-20">
         <Reveal>
           <h1 className="text-7xl font-display mb-10 italic">Элитный ремонт</h1>
         </Reveal>
@@ -38,6 +38,8 @@ function ElitePage() {
           </Reveal>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
+

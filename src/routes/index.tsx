@@ -1157,7 +1157,7 @@ function Contact() {
 }
 
 /* ------------------------------ FOOTER (P1 echelon style) ------------------------------ */
-export export function Footer() {
+export function Footer() {
   const t = useT();
   const year = new Date().getFullYear();
   const handle = "РЕМОНТ-ПРО";
