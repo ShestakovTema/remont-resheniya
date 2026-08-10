@@ -31,7 +31,8 @@ export function Nav() {
       : cta === "out"
       ? "animate-[tf-slide-out-x_0.35s_ease-out_forwards]"
       : "-translate-x-full";
-  const { lang, setLang, t } = useLang();
+  const { lang, setLang } = useLang();
+  const t = useT();
   const { scrollY } = useScroll();
   const bg = useTransform(scrollY, [0, 120], ["rgba(7,7,7,0)", "rgba(7,7,7,0.55)"]);
   const border = useTransform(scrollY, [0, 120], ["rgba(255,255,255,0)", "rgba(255,255,255,0.08)"]);
