@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as EliteIndexRouteImport } from './routes/elite/index'
 import { Route as NewbuildingIndexRouteImport } from './routes/newbuilding/index'
 import { Route as SecondaryIndexRouteImport } from './routes/secondary/index'
@@ -17,6 +18,11 @@ import { Route as SecondaryIndexRouteImport } from './routes/secondary/index'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EliteIndexRoute = EliteIndexRouteImport.update({
@@ -37,12 +43,14 @@ const SecondaryIndexRoute = SecondaryIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/elite/': typeof EliteIndexRoute
   '/newbuilding/': typeof NewbuildingIndexRoute
   '/secondary/': typeof SecondaryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog': typeof BlogIndexRoute
   '/elite': typeof EliteIndexRoute
   '/newbuilding': typeof NewbuildingIndexRoute
   '/secondary': typeof SecondaryIndexRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/elite/': typeof EliteIndexRoute
   '/newbuilding/': typeof NewbuildingIndexRoute
   '/secondary/': typeof SecondaryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/elite/' | '/newbuilding/' | '/secondary/'
+  fullPaths: '/' | '/blog/' | '/elite/' | '/newbuilding/' | '/secondary/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/elite' | '/newbuilding' | '/secondary'
-  id: '__root__' | '/' | '/elite/' | '/newbuilding/' | '/secondary/'
+  to: '/' | '/blog' | '/elite' | '/newbuilding' | '/secondary'
+  id: '__root__' | '/' | '/blog/' | '/elite/' | '/newbuilding/' | '/secondary/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   EliteIndexRoute: typeof EliteIndexRoute
   NewbuildingIndexRoute: typeof NewbuildingIndexRoute
   SecondaryIndexRoute: typeof SecondaryIndexRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/elite/': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogIndexRoute: BlogIndexRoute,
   EliteIndexRoute: EliteIndexRoute,
   NewbuildingIndexRoute: NewbuildingIndexRoute,
   SecondaryIndexRoute: SecondaryIndexRoute,
