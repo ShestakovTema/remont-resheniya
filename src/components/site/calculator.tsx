@@ -33,7 +33,7 @@ export function CostCalculator() {
         </div>
         <div>
           <label className="text-sm text-gray-400 mb-2 block">Площадь: {meters} м²</label>
-          <Slider value={[meters]} onValueChange={(v) => setMeters(v[0])} min={20} max={200} />
+          <Slider value={[meters]} onValueChange={(v) => v[0] !== undefined && setMeters(v[0])} min={20} max={200} />
         </div>
         <div className="text-center pt-4">
           <p className="text-gray-400">Ориентировочная стоимость:</p>
