@@ -2,27 +2,23 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { useEffect, useRef, useState } from "react";
 import { Globe } from "lucide-react";
 import { Magnetic } from "./magnetic";
-import { useLang } from "@/lib/i18n";
+import { useLang, useT } from "@/lib/i18n";
 
-const LANGS = ["en", "tr", "zh", "ar"] as const;
+const LANGS = ["ru", "en"] as const;
 const LANG_SHORT: Record<(typeof LANGS)[number], string> = {
+  ru: "RU",
   en: "EN",
-  tr: "Türk",
-  zh: "中文",
-  ar: "عربي",
 };
 const LANG_FULL: Record<(typeof LANGS)[number], string> = {
+  ru: "Русский",
   en: "English",
-  tr: "Türkçe",
-  zh: "中文",
-  ar: "العربية",
 };
 
 const LINKS = [
   { key: "nav.work", href: "#work" },
-  { key: "nav.studio", href: "#studio" },
+  { key: "nav.about", href: "#about" },
   { key: "nav.services", href: "#services" },
-  { key: "nav.process", href: "#process" },
+  { key: "nav.blog", href: "#blog" },
   { key: "nav.contact", href: "#contact" },
 ];
 
@@ -35,7 +31,8 @@ export function Nav() {
       : cta === "out"
       ? "animate-[tf-slide-out-x_0.35s_ease-out_forwards]"
       : "-translate-x-full";
-  const { lang, setLang, t } = useLang();
+  const { lang, setLang } = useLang();
+  const t = useT();
   const { scrollY } = useScroll();
   const bg = useTransform(scrollY, [0, 120], ["rgba(7,7,7,0)", "rgba(7,7,7,0.55)"]);
   const border = useTransform(scrollY, [0, 120], ["rgba(255,255,255,0)", "rgba(255,255,255,0.08)"]);
@@ -70,7 +67,7 @@ export function Nav() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <div className="flex items-center rounded-full border border-white/15 p-[2px] text-xs">
-              {(["en", "tr", "zh", "ar"] as const).map((l) => (
+              {(["ru", "en"] as const).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
@@ -79,7 +76,7 @@ export function Nav() {
                     lang === l ? "bg-white text-black" : "text-white/70 hover:text-white"
                   }`}
                 >
-                  {l === "zh" ? "中文" : l === "tr" ? "Türk" : l === "ar" ? "عربي" : l}
+                  {l === "ru" ? "RU" : "EN"}
                 </button>
               ))}
             </div>
@@ -139,7 +136,7 @@ export function Nav() {
                 </li>
               ))}
               <li className="mt-4 flex flex-wrap items-center gap-2 border-t border-white/10 pt-6">
-                {(["en", "tr", "zh", "ar"] as const).map((l) => (
+                {(["ru", "en"] as const).map((l) => (
                   <button
                     key={l}
                     onClick={() => setLang(l)}
@@ -147,7 +144,7 @@ export function Nav() {
                       lang === l ? "bg-white text-black" : "text-white/70"
                     }`}
                   >
-                    {l === "zh" ? "中文" : l === "tr" ? "Türk" : l === "ar" ? "عربي" : l}
+                    {l === "ru" ? "Русский" : "English"}
                   </button>
                 ))}
               </li>

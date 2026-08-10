@@ -96,16 +96,16 @@ type Project = {
 };
 
 const PROJECTS: Project[] = [
-  { name: "Six Senses Kaplankaya", category: "Resort · Turkey", year: "2025", image: kaplankaya, url: "https://www.sixsenses.com/en/hotels-resorts/europe/turkey/kaplankaya/" },
-  { name: "D Maris Bay", category: "Resort · Marmaris", year: "2025", image: dmaris, url: "https://www.dmarisbay.com/" },
-  { name: "Rixos", category: "Hospitality Group", year: "2024", image: rixos, url: "https://www.rixos.com/" },
-  { name: "Mandarin Oriental Bodrum", category: "Resort · Bodrum", year: "2024", image: mandarin, url: "https://www.mandarinoriental.com/ru/bodrum/paradise-bay" },
-  { name: "Gold Coast Hotel", category: "Hotel · Hong Kong", year: "2024", image: goldcoast, url: "https://web.sino-hotels.com/en/hk/gold-coast-hotel" },
-  { name: "Auberge Discovery Bay", category: "Boutique Hotel", year: "2023", image: auberge, url: "https://www.aubergediscoverybay.com/en-us" },
-  { name: "Zuma", category: "Restaurant · Global", year: "2025", image: zuma, url: "https://www.zumarestaurant.com/en" },
-  { name: "Nusr-Et", category: "Steakhouse · Global", year: "2024", image: nusret, url: "https://www.nusr-et.com.tr/en" },
-  { name: "Maçakızı", category: "Beach Hotel · Bodrum", year: "2024", image: macakizi, url: "https://www.macakizi.com/" },
-  { name: "Aman", category: "Luxury Resorts", year: "2025", image: aman, url: "https://www.aman.com/" },
+  { name: "Элитная квартира на Тверской", category: "Элитный ремонт", year: "2025", image: kaplankaya, url: "/elite/" },
+  { name: "ЖК 'Премиум Парк'", category: "Новостройка", year: "2025", image: dmaris, url: "/newbuilding/" },
+  { name: "Лофт в старом центре", category: "Ремонт вторички", year: "2024", image: rixos, url: "/secondary/" },
+  { name: "Пентхаус с видом на Сити", category: "Элитный ремонт", year: "2024", image: mandarin, url: "/elite/" },
+  { name: "Семейная квартира в Хамовниках", category: "Новостройка", year: "2024", image: goldcoast, url: "/newbuilding/" },
+  { name: "Апартаменты в Москва-Сити", category: "Элитный ремонт", year: "2023", image: auberge, url: "/elite/" },
+  { name: "Дизайнерский ремонт на Арбате", category: "Вторичное жилье", year: "2025", image: zuma, url: "/secondary/" },
+  { name: "Квартира-студия в ЖК 'Зиларт'", category: "Новостройка", year: "2024", image: nusret, url: "/newbuilding/" },
+  { name: "Реновация квартиры 1985г.", category: "Ремонт вторички", year: "2024", image: macakizi, url: "/secondary/" },
+  { name: "Вилла в Подмосковье", category: "Загородный дом", year: "2025", image: aman, url: "/elite/" },
 ];
 
 function Index() {
@@ -160,7 +160,6 @@ function Index() {
           <FeaturedWork />
           <About />
           <Services />
-          <Process />
           <Testimonials />
           <Contact />
         </div>
@@ -295,7 +294,7 @@ function HeroShowcase() {
           style={{ fontSize: "9px", letterSpacing: "0.32em", textTransform: "uppercase" }}
         >
           <textPath href="#tf-hero-ring">
-            Two Frame Studio · Est. 2018 · Luxury Digital Experiences · Worldwide ·
+            Ремонт и отделка · 15 лет опыта · Качество под ключ · Москва и МО ·
           </textPath>
         </text>
       </motion.svg>
@@ -630,13 +629,13 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
 function About() {
   const t = useT();
   const stats = [
-    { k: "8+", v: t("about.stat.1") },
-    { k: "100+", v: t("about.stat.2") },
-    { k: "16+", v: t("about.stat.3") },
-    { k: "9+", v: t("about.stat.4") },
+    { k: "15+", v: t("about.stat.1") },
+    { k: "250+", v: t("about.stat.2") },
+    { k: "500+", v: t("about.stat.3") },
+    { k: "3", v: t("about.stat.4") },
   ];
   return (
-    <section id="studio" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
+    <section id="about" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="grid grid-cols-12 gap-8">
           <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">
@@ -740,11 +739,30 @@ function Stat({ value }: { value: string }) {
 /* ------------------------------ SERVICES ------------------------------ */
 function Services() {
   const t = useT();
-  const SERVICES = [1, 2, 3, 4, 5, 6].map((i) => ({
-    n: String(i).padStart(2, "0"),
-    t: t(`services.${i}.t`),
-    d: t(`services.${i}.d`),
-  }));
+  const services = [
+    {
+      id: "elite",
+      n: "01",
+      t: t("services.elite.title"),
+      d: t("services.elite.desc"),
+      href: "/elite",
+    },
+    {
+      id: "new",
+      n: "02",
+      t: t("services.new.title"),
+      d: t("services.new.desc"),
+      href: "/newbuilding",
+    },
+    {
+      id: "secondary",
+      n: "03",
+      t: t("services.secondary.title"),
+      d: t("services.secondary.desc"),
+      href: "/secondary",
+    },
+  ];
+
   return (
     <section id="services" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
@@ -752,15 +770,22 @@ function Services() {
           <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">
             {t("services.section")}
           </Reveal>
-          <h2 className="font-display col-span-12 max-w-[18ch] text-4xl sm:text-5xl md:col-span-9 md:text-7xl">
-            <TextReveal key={`sa-${t("services.h.a")}`} text={t("services.h.a")} />
-            <br />
-            <TextReveal key={`sb-${t("services.h.b")}`} text={t("services.h.b")} delay={0.15} className="italic" />
-          </h2>
+          <div className="col-span-12 md:col-span-9">
+            <h2 className="font-display max-w-[18ch] text-4xl sm:text-5xl md:text-7xl">
+              <TextReveal key={`sa-${t("services.h.a")}`} text={t("services.h.a")} />
+              <br />
+              <TextReveal
+                key={`sb-${t("services.h.b")}`}
+                text={t("services.h.b")}
+                delay={0.15}
+                className="italic"
+              />
+            </h2>
+          </div>
         </div>
         <ul className="border-t border-white/10">
-          {SERVICES.map((s, i) => (
-            <ServiceRow key={s.n} {...s} last={i === SERVICES.length - 1} />
+          {services.map((s, i) => (
+            <ServiceRow key={s.id} {...s} last={i === services.length - 1} />
           ))}
         </ul>
       </div>
@@ -768,7 +793,19 @@ function Services() {
   );
 }
 
-function ServiceRow({ n, t, d, last }: { n: string; t: string; d: string; last: boolean }) {
+function ServiceRow({
+  n,
+  t,
+  d,
+  href,
+  last,
+}: {
+  n: string;
+  t: string;
+  d: string;
+  href: string;
+  last: boolean;
+}) {
   const [hover, setHover] = useState(false);
   return (
     <li
@@ -777,92 +814,53 @@ function ServiceRow({ n, t, d, last }: { n: string; t: string; d: string; last: 
       className={`group relative overflow-hidden border-white/10 ${last ? "border-b" : "border-b"}`}
       data-cursor="link"
     >
-      <motion.div
-        initial={false}
-        animate={{ y: hover ? 0 : "100%" }}
-        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-        className="absolute inset-0 bg-white"
-      />
-      <div className="relative z-10 grid grid-cols-12 items-center gap-x-4 gap-y-2 py-6 sm:gap-6 sm:py-8 md:px-8 md:py-12 lg:px-12">
-        <div className={`col-span-2 font-mono text-[10px] tracking-widest transition-colors sm:text-xs md:col-span-1 ${hover ? "text-black" : "text-white/50"}`}>{n}</div>
-        <motion.h3
-          animate={{ x: hover ? 16 : 0, color: hover ? "#070707" : "#ffffff" }}
-          transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
-          className="font-display col-span-10 text-2xl sm:text-3xl md:col-span-6 md:text-5xl lg:text-6xl"
-        >
-          {t}
-        </motion.h3>
-        <motion.p
-          animate={{ color: hover ? "rgba(7,7,7,0.75)" : "#8F8F8F" }}
-          className="col-span-12 text-xs sm:text-sm md:col-span-5 md:justify-self-end md:text-right md:text-base"
-        >
-          {d}
-        </motion.p>
-      </div>
+      <a href={href} className="block">
+        <motion.div
+          initial={false}
+          animate={{ y: hover ? 0 : "100%" }}
+          transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+          className="absolute inset-0 bg-white"
+        />
+        <div className="relative z-10 grid grid-cols-12 items-center gap-x-4 gap-y-2 py-6 sm:gap-6 sm:py-8 md:px-8 md:py-12 lg:px-12">
+          <div
+            className={`col-span-2 font-mono text-[10px] tracking-widest transition-colors sm:text-xs md:col-span-1 ${hover ? "text-black" : "text-white/50"}`}
+          >
+            {n}
+          </div>
+          <motion.h3
+            animate={{ x: hover ? 16 : 0, color: hover ? "#070707" : "#ffffff" }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+            className="font-display col-span-10 text-2xl sm:text-3xl md:col-span-6 md:text-5xl lg:text-6xl"
+          >
+            {t}
+          </motion.h3>
+          <motion.p
+            animate={{ color: hover ? "rgba(7,7,7,0.75)" : "#8F8F8F" }}
+            className="col-span-12 text-xs sm:text-sm md:col-span-5 md:justify-self-end md:text-right md:text-base"
+          >
+            {d}
+          </motion.p>
+        </div>
+      </a>
     </li>
   );
 }
 
-/* ------------------------------ PROCESS ------------------------------ */
-function Process() {
-  const t = useT();
-  const STEPS = [1, 2, 3, 4, 5].map((i) => ({
-    n: String(i).padStart(2, "0"),
-    t: t(`process.${i}.t`),
-    d: t(`process.${i}.d`),
-  }));
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const line = useTransform(scrollYProgress, [0.05, 0.95], ["0%", "100%"]);
-  return (
-    <section id="process" ref={ref} className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
-        <div className="mb-16 grid grid-cols-12 gap-8">
-          <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">
-            {t("process.section")}
-          </Reveal>
-          <h2 className="font-display col-span-12 max-w-[18ch] text-4xl sm:text-5xl md:col-span-9 md:text-7xl">
-            <TextReveal key={`ph-${t("process.h")}`} text={t("process.h")} />
-          </h2>
-        </div>
-
-        <div className="relative grid grid-cols-1 gap-16 md:grid-cols-5 md:gap-6">
-          <div className="absolute left-[10%] right-[10%] top-[31px] hidden h-px bg-white/10 md:block">
-            <motion.div
-              style={{ width: line }}
-              className="h-px bg-white"
-            />
-          </div>
-          {STEPS.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.08} className="relative">
-              <div className="mb-4 flex items-center gap-3 md:block">
-                <span className="inline-block h-3 w-3 -translate-y-1 rounded-full bg-white md:absolute md:left-1/2 md:top-[26px] md:h-3 md:w-3 md:-translate-x-1/2 md:translate-y-0" />
-                <span className="font-mono text-xs tracking-widest text-white/60 md:mt-8 md:block">{s.n}</span>
-              </div>
-              <h3 className="font-display text-2xl sm:text-3xl md:text-4xl">{s.t}</h3>
-              <p className="mt-3 max-w-xs text-sm text-[#8F8F8F]">{s.d}</p>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ------------------------------ TESTIMONIALS ------------------------------ */
 function Testimonials() {
   const t = useT();
   const QUOTES = [
-    { q: t("test.1.q"), a: "Selin K.", r: t("test.1.r") },
-    { q: t("test.2.q"), a: "Marco V.", r: t("test.2.r") },
-    { q: t("test.3.q"), a: "Alessandra R.", r: t("test.3.r") },
+    { q: t("test.1.q"), a: "Алексей И.", r: "Элитный ремонт в Хамовниках" },
+    { q: t("test.2.q"), a: "Марина С.", r: "Ремонт в новостройке ЖК 'Зиларт'" },
+    { q: t("test.3.q"), a: "Сергей П.", r: "Капитальный ремонт вторички" },
   ];
   const [i, setI] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setI((v) => (v + 1) % QUOTES.length), 6000);
     return () => clearInterval(id);
   }, [QUOTES.length]);
-  const cur = QUOTES[i];
+  const cur = QUOTES[i] || QUOTES[0];
   return (
     <section className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-10">
@@ -1120,7 +1118,7 @@ function Contact() {
         <div className="mt-14 flex flex-col items-center gap-12 text-center">
           <Reveal delay={0.5} className="w-full">
             <div className="mx-auto flex w-full max-w-[min(640px,100%)] flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10">
-              <EmailAction email="twoframestudio@outlook.com" href={mailHref} />
+              <EmailAction email="remont-pro@example.com" href={mailHref} />
               <div className="flex w-full items-center gap-4">
                 <span className="h-px flex-1 bg-white/15" />
                 <span className="text-xs uppercase tracking-[0.3em] text-white/50">or</span>
@@ -1159,10 +1157,10 @@ function Contact() {
 }
 
 /* ------------------------------ FOOTER (P1 echelon style) ------------------------------ */
-function Footer() {
+export function Footer() {
   const t = useT();
   const year = new Date().getFullYear();
-  const handle = "@twoframestudio";
+  const handle = "РЕМОНТ-ПРО";
   return (
     <footer className="bg-[#141414] text-white">
       {/* Main footer grid */}
@@ -1176,14 +1174,14 @@ function Footer() {
               <a href="#work" className="block text-white transition-colors hover:text-white/60">
                 {t("nav.work")}
               </a>
-              <a href="#studio" className="block text-white transition-colors hover:text-white/60">
-                {t("nav.studio")}
+              <a href="#about" className="block text-white transition-colors hover:text-white/60">
+                {t("nav.about")}
               </a>
               <a href="#services" className="block text-white transition-colors hover:text-white/60">
                 {t("nav.services")}
               </a>
-              <a href="#process" className="block text-white transition-colors hover:text-white/60">
-                {t("nav.process")}
+              <a href="#blog" className="block text-white transition-colors hover:text-white/60">
+                {t("nav.blog")}
               </a>
               <a href="#contact" className="block text-white transition-colors hover:text-white/60">
                 {t("nav.contact")}
@@ -1201,7 +1199,7 @@ function Footer() {
                 href={mailHref}
                 className="block whitespace-nowrap transition-colors hover:text-white/60"
               >
-                twoframestudio@outlook.com
+                remont-pro@example.com
               </a>
 
               <a
@@ -1229,7 +1227,7 @@ function Footer() {
               {t("footer.legal")}
             </p>
             <div className="space-y-1 text-sm text-white/60">
-              <p>© {year} Two Frame Studio — {t("footer.rights")}</p>
+              <p>© {year} Ремонт-Про — {t("footer.rights")}</p>
             </div>
           </div>
         </div>
