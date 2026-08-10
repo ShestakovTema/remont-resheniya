@@ -1159,7 +1159,7 @@ function Contact() {
 }
 
 /* ------------------------------ FOOTER (P1 echelon style) ------------------------------ */
-function Footer() {
+export function Footer() {
   const t = useT();
   const year = new Date().getFullYear();
   const handle = "@twoframestudio";
