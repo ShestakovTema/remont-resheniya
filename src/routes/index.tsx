@@ -87,15 +87,15 @@ type Project = {
 
 const PROJECTS: Project[] = [
   { name: "Элитная квартира на Тверской", category: "Элитный ремонт", year: "2025", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
-  { name: "ЖК 'Премиум Парк'", category: "Новостройка", year: "2025", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
+  { name: "ЖК 'Премиум Парк'", category: "Новостройка", year: "2025", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { name: "Лофт в старом центре", category: "Ремонт вторички", year: "2024", image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
   { name: "Пентхаус с видом на Сити", category: "Элитный ремонт", year: "2024", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
   { name: "Семейная квартира в Хамовниках", category: "Новостройка", year: "2024", image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
-  { name: "Апартаменты в Москва-Сити", category: "Элитный ремонт", year: "2023", image: "https://images.unsplash.com/photo-1536376073347-ac088f170701?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Апартаменты в Москва-Сити", category: "Элитный ремонт", year: "2023", image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
   { name: "Дизайнерский ремонт на Арбате", category: "Вторичное жилье", year: "2025", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
   { name: "Квартира-студия в ЖК 'Зиларт'", category: "Новостройка", year: "2024", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { name: "Реновация квартиры 1985г.", category: "Ремонт вторички", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
-  { name: "Вилла в Подмосковье", category: "Загородный дом", year: "2025", image: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Вилла в Подмосковье", category: "Загородный дом", year: "2025", image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
 ];
 
 function Index() {
@@ -1083,9 +1083,7 @@ function Contact() {
                 </span>
                 <Reveal delay={0.1}>
                   <a
-                    href={whatsappHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
                     className="group inline-flex items-center gap-4 text-3xl font-medium text-white transition-colors hover:text-white/70 sm:text-4xl md:text-5xl lg:text-6xl"
                   >
                     <span data-cursor="link">{PHONE_NUMBER}</span>
@@ -1144,6 +1142,12 @@ export function Footer() {
               {t("footer.contact")}
             </p>
             <div className="min-w-0 space-y-1 text-sm text-white">
+              <a
+                href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
+                className="block transition-colors hover:text-white/60"
+              >
+                Тел: {PHONE_NUMBER}
+              </a>
               <a
                 href={whatsappHref}
                 target="_blank"
