@@ -31,6 +31,9 @@ function ElitePage() {
                 <li>Фиксированная смета без доплат</li>
                 <li>Гарантия 3 года</li>
               </ul>
+              <a href="/#contact" className="mt-8 inline-block px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform text-center">
+                Получить индивидуальную смету
+              </a>
             </div>
           </Reveal>
         </div>

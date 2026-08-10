@@ -31,6 +31,9 @@ function SecondaryPage() {
                 <li>Согласование перепланировки под ключ</li>
                 <li>Бережная работа в жилых домах</li>
               </ul>
+              <a href="/#contact" className="mt-8 inline-block px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform text-center">
+                Заказать выезд замерщика
+              </a>
             </div>
           </Reveal>
         </div>
