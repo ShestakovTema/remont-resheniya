@@ -992,7 +992,9 @@ const WHATSAPP_MESSAGE = [
   "",
   "Looking forward to hearing from you. Thank you!",
 ].join("\n");
-const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+const PHONE_NUMBER = "+79167991216";
+const WHATSAPP_MESSAGE = "Здравствуйте, хотели бы узнать по поводу ремонта";
+const whatsappHref = `https://wa.me/${PHONE_NUMBER.replace(/\+/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 function HoverUnderlineAction({
   label,
