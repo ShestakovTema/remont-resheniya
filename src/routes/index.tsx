@@ -846,51 +846,6 @@ function ServiceRow({
   );
 }
 
-/* ------------------------------ PROCESS ------------------------------ */
-function Process() {
-  const t = useT();
-  const STEPS = [1, 2, 3, 4, 5].map((i) => ({
-    n: String(i).padStart(2, "0"),
-    t: t(`process.${i}.t`),
-    d: t(`process.${i}.d`),
-  }));
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const line = useTransform(scrollYProgress, [0.05, 0.95], ["0%", "100%"]);
-  return (
-    <section id="process" ref={ref} className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
-        <div className="mb-16 grid grid-cols-12 gap-8">
-          <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">
-            {t("process.section")}
-          </Reveal>
-          <h2 className="font-display col-span-12 max-w-[18ch] text-4xl sm:text-5xl md:col-span-9 md:text-7xl">
-            <TextReveal key={`ph-${t("process.h")}`} text={t("process.h")} />
-          </h2>
-        </div>
-
-        <div className="relative grid grid-cols-1 gap-16 md:grid-cols-5 md:gap-6">
-          <div className="absolute left-[10%] right-[10%] top-[31px] hidden h-px bg-white/10 md:block">
-            <motion.div
-              style={{ width: line }}
-              className="h-px bg-white"
-            />
-          </div>
-          {STEPS.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.08} className="relative">
-              <div className="mb-4 flex items-center gap-3 md:block">
-                <span className="inline-block h-3 w-3 -translate-y-1 rounded-full bg-white md:absolute md:left-1/2 md:top-[26px] md:h-3 md:w-3 md:-translate-x-1/2 md:translate-y-0" />
-                <span className="font-mono text-xs tracking-widest text-white/60 md:mt-8 md:block">{s.n}</span>
-              </div>
-              <h3 className="font-display text-2xl sm:text-3xl md:text-4xl">{s.t}</h3>
-              <p className="mt-3 max-w-xs text-sm text-[#8F8F8F]">{s.d}</p>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ------------------------------ TESTIMONIALS ------------------------------ */
 function Testimonials() {
