@@ -63,25 +63,15 @@ function SiteAurora() {
 }
 import { LangProvider, useT } from "@/lib/i18n";
 
-import kaplankaya from "@/assets/project-kaplankaya.jpg";
-import dmaris from "@/assets/project-dmaris.jpg";
-import zuma from "@/assets/project-zuma.jpg";
-import aman from "@/assets/project-aman.jpg";
-import macakizi from "@/assets/project-macakizi.jpg";
-import nusret from "@/assets/project-nusret.jpg";
-import rixos from "@/assets/project-rixos.jpg";
-import mandarin from "@/assets/project-mandarin.jpg";
-import goldcoast from "@/assets/project-goldcoast.jpg";
-import auberge from "@/assets/project-auberge.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { property: "og:image", content: kaplankaya },
-      { name: "twitter:image", content: kaplankaya },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
     ],
     links: [
-      { rel: "preload", as: "image", href: kaplankaya, fetchPriority: "high" } as never,
+      { rel: "preload", as: "image", href: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", fetchPriority: "high" } as never,
     ],
   }),
   component: Index,
@@ -96,16 +86,16 @@ type Project = {
 };
 
 const PROJECTS: Project[] = [
-  { name: "Элитная квартира на Тверской", category: "Элитный ремонт", year: "2025", image: kaplankaya, url: "/elite/" },
-  { name: "ЖК 'Премиум Парк'", category: "Новостройка", year: "2025", image: dmaris, url: "/newbuilding/" },
-  { name: "Лофт в старом центре", category: "Ремонт вторички", year: "2024", image: rixos, url: "/secondary/" },
-  { name: "Пентхаус с видом на Сити", category: "Элитный ремонт", year: "2024", image: mandarin, url: "/elite/" },
-  { name: "Семейная квартира в Хамовниках", category: "Новостройка", year: "2024", image: goldcoast, url: "/newbuilding/" },
-  { name: "Апартаменты в Москва-Сити", category: "Элитный ремонт", year: "2023", image: auberge, url: "/elite/" },
-  { name: "Дизайнерский ремонт на Арбате", category: "Вторичное жилье", year: "2025", image: zuma, url: "/secondary/" },
-  { name: "Квартира-студия в ЖК 'Зиларт'", category: "Новостройка", year: "2024", image: nusret, url: "/newbuilding/" },
-  { name: "Реновация квартиры 1985г.", category: "Ремонт вторички", year: "2024", image: macakizi, url: "/secondary/" },
-  { name: "Вилла в Подмосковье", category: "Загородный дом", year: "2025", image: aman, url: "/elite/" },
+  { name: "Элитная квартира на Тверской", category: "Элитный ремонт", year: "2025", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "ЖК 'Премиум Парк'", category: "Новостройка", year: "2025", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
+  { name: "Лофт в старом центре", category: "Ремонт вторички", year: "2024", image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
+  { name: "Пентхаус с видом на Сити", category: "Элитный ремонт", year: "2024", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Семейная квартира в Хамовниках", category: "Новостройка", year: "2024", image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
+  { name: "Апартаменты в Москва-Сити", category: "Элитный ремонт", year: "2023", image: "https://images.unsplash.com/photo-1536376073347-ac088f170701?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Дизайнерский ремонт на Арбате", category: "Вторичное жилье", year: "2025", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
+  { name: "Квартира-студия в ЖК 'Зиларт'", category: "Новостройка", year: "2024", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
+  { name: "Реновация квартиры 1985г.", category: "Ремонт вторички", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
+  { name: "Вилла в Подмосковье", category: "Загородный дом", year: "2025", image: "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
 ];
 
 function Index() {
@@ -265,7 +255,12 @@ function Hero() {
 
 /* Floating showcase in the empty right side of the hero */
 function HeroShowcase() {
-  const items = [kaplankaya, dmaris, aman, mandarin];
+  const items = [
+    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=600",
+    "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=600",
+    "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=600",
+    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=600"
+  ];
   const [i, setI] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setI((v) => (v + 1) % items.length), 3800);
@@ -932,7 +927,7 @@ function Testimonials() {
 
 /* ------------------------------ CONTACT ------------------------------ */
 const MAIL_BODY = [
-    "Hello, Two Frame Studio",
+    "Здравствуйте, Ремонт Решения",
     "",
     "I'm interested in working with you on a new project.",
     "",
@@ -959,45 +954,9 @@ const MAIL_BODY = [
 ].join("\r\n");
 
 
-const EMAIL_ADDRESS = "twoframestudio@outlook.com";
-const MAIL_SUBJECT = "New Project Inquiry — Two Frame Studio";
-const mailHref = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(
-  MAIL_SUBJECT,
-)}&body=${encodeURIComponent(MAIL_BODY)}`;
-const gmailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-  EMAIL_ADDRESS,
-)}&su=${encodeURIComponent(MAIL_SUBJECT)}&body=${encodeURIComponent(MAIL_BODY)}`;
-const outlookHref = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(
-  EMAIL_ADDRESS,
-)}&subject=${encodeURIComponent(MAIL_SUBJECT)}&body=${encodeURIComponent(MAIL_BODY)}`;
-
-const WHATSAPP_NUMBER = "971555709324";
-const WHATSAPP_MESSAGE = [
-  "Hello Two Frame Studio 👋",
-  "",
-  "I'm interested in working with you on a new project.",
-  "",
-  "Here are the project details:",
-  "",
-  "• Company / Brand:",
-  "• Industry:",
-  "• Project Type:",
-  "• Project Overview:",
-  "• Project Goals:",
-  "• Website Inspiration:",
-  "• Estimated Timeline:",
-  "• Estimated Budget:",
-  "• Additional Information:",
-  "",
-  "My contact details:",
-  "",
-  "• Name:",
-  "• Email:",
-  "• Country:",
-  "",
-  "Looking forward to hearing from you. Thank you!",
-].join("\n");
-const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+const PHONE_NUMBER = "+79167991216";
+const WHATSAPP_MESSAGE = "Здравствуйте, хотели бы узнать по поводу ремонта";
+const whatsappHref = `https://wa.me/${PHONE_NUMBER.replace(/\+/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 function HoverUnderlineAction({
   label,
@@ -1118,32 +1077,23 @@ function Contact() {
         <div className="mt-14 flex flex-col items-center gap-12 text-center">
           <Reveal delay={0.5} className="w-full">
             <div className="mx-auto flex w-full max-w-[min(640px,100%)] flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10">
-              <EmailAction email="remont-pro@example.com" href={mailHref} />
-              <div className="flex w-full items-center gap-4">
-                <span className="h-px flex-1 bg-white/15" />
-                <span className="text-xs uppercase tracking-[0.3em] text-white/50">or</span>
-                <span className="h-px flex-1 bg-white/15" />
-              </div>
               <div className="relative flex flex-col items-center gap-2 rounded-2xl px-4 py-4">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
                   {t("contact.whatsapp.label")}
                 </span>
-                <HoverUnderlineAction
-                  label="WhatsApp"
-                  activeLabel={t("contact.opened")}
-                  icon={
-                    <svg
-                      viewBox="0 0 24 24"
-                      aria-hidden
-                      className="h-[1em] w-[1em] fill-current"
-                    >
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.15-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24.02 12.045.02 5.463.02.104 5.379.101 11.959c0 2.096.55 4.14 1.595 5.945L0 24l6.335-1.652a11.9 11.9 0 0 0 5.71 1.447h.005c6.582 0 11.943-5.359 11.945-11.945a11.87 11.87 0 0 0-3.495-8.4" />
-                    </svg>
-                  }
-                  onActivate={() => {
-                    window.open(whatsappHref, "_blank", "noopener,noreferrer");
-                  }}
-                />
+                <Reveal delay={0.1}>
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-4 text-3xl font-medium text-white transition-colors hover:text-white/70 sm:text-4xl md:text-5xl lg:text-6xl"
+                  >
+                    <span data-cursor="link">{PHONE_NUMBER}</span>
+                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">
+                      →
+                    </span>
+                  </a>
+                </Reveal>
               </div>
             </div>
           </Reveal>
@@ -1160,7 +1110,7 @@ function Contact() {
 export function Footer() {
   const t = useT();
   const year = new Date().getFullYear();
-  const handle = "РЕМОНТ-ПРО";
+  const handle = "РЕМОНТ РЕШЕНИЯ";
   return (
     <footer className="bg-[#141414] text-white">
       {/* Main footer grid */}
@@ -1187,7 +1137,6 @@ export function Footer() {
                 {t("nav.contact")}
               </a>
             </div>
-
           </div>
 
           <div className="min-w-0 space-y-3">
@@ -1196,19 +1145,12 @@ export function Footer() {
             </p>
             <div className="min-w-0 space-y-1 text-sm text-white">
               <a
-                href={mailHref}
-                className="block whitespace-nowrap transition-colors hover:text-white/60"
-              >
-                remont-pro@example.com
-              </a>
-
-              <a
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
                 className="block transition-colors hover:text-white/60"
               >
-                WhatsApp
+                WhatsApp: {PHONE_NUMBER}
               </a>
             </div>
           </div>
@@ -1218,7 +1160,7 @@ export function Footer() {
               {t("footer.studioLead")}
             </p>
             <div className="space-y-1 text-sm text-white">
-              <p>{t("footer.leadName")}</p>
+              <p>ИП Ларионов Михаил Валентинович</p>
             </div>
           </div>
 
@@ -1227,14 +1169,11 @@ export function Footer() {
               {t("footer.legal")}
             </p>
             <div className="space-y-1 text-sm text-white/60">
-              <p>© {year} Ремонт-Про — {t("footer.rights")}</p>
+              <p>© {year} Ремонт Решения — {t("footer.rights")}</p>
             </div>
           </div>
         </div>
       </div>
-
-
-
 
       {/* Large scrolling handle */}
       <div className="overflow-hidden py-6 md:py-8">

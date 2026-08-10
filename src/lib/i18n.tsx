@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-export type Lang = "ru" | "en";
+export type Lang = "ru";
 
 type Dict = Record<string, string>;
 
@@ -89,7 +89,7 @@ const ru: Dict = {
     "Бригада справилась с очень сложным демонтажем в старом фонде. Новая электрика и сантехника работают идеально.",
   "test.2.r": "Марина, ремонт вторичного жилья",
   "test.3.q":
-    "Элитный ремонт требует внимания к мелочам. Команда TwoFrame (зачеркнуто) превзошла наши ожидания по качеству отделки.",
+    "Элитный ремонт требует внимания к мелочам. Команда Ремонт Решения превзошла наши ожидания по качеству отделки.",
   "test.3.r": "Игорь, загородный дом",
 
   "contact.section": "(06) Контакты",
@@ -108,13 +108,11 @@ const ru: Dict = {
   "footer.gallery": "Разделы",
   "footer.contact": "Контакты",
   "footer.legal": "Правовая информация",
-  "footer.studioLead": "Руководитель",
-  "footer.leadName": "Александр Иванов",
+  "footer.studioLead": "ИП Ларионов Михаил Валентинович",
+  "footer.leadName": "",
 };
 
-const en: Dict = { ...ru }; // Simplified for now, can be translated if needed
-
-const dictionaries: Record<Lang, Dict> = { ru, en };
+const dictionaries: Record<Lang, Dict> = { ru };
 
 const LangContext = createContext<{
   lang: Lang;
