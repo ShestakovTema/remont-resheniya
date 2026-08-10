@@ -2,18 +2,21 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
 import { Footer } from "@/routes/index";
+import { LeadForm } from "@/components/site/lead-form";
 
 export const Route = createFileRoute("/newbuilding/")({
   component: NewBuildingPage,
 });
 
+const PHONE_NUMBER = "+7 916 799-12-16";
+
 function NewBuildingPage() {
   return (
     <div className="bg-[#070707] text-white min-h-screen">
       <Nav />
-      <main className="pt-32 px-10 max-w-[1600px] mx-auto pb-20">
+      <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
         <Reveal>
-          <h1 className="text-7xl font-display mb-10 italic">Ремонт новостроек</h1>
+          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Ремонт новостроек</h1>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
@@ -31,9 +34,37 @@ function NewBuildingPage() {
                 <li>Работаем с любыми застройщиками</li>
                 <li>Помощь в выборе черновых материалов</li>
               </ul>
-              <a href="/#contact" className="mt-8 inline-block px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform text-center">
-                Заказать консультацию
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Action Buttons Section */}
+        <div className="flex flex-col items-center gap-8 mb-32 max-w-4xl mx-auto">
+          <Reveal delay={0.5} className="w-full">
+            <div className="mx-auto flex w-full flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10 text-center">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                Позвоните нам
+              </span>
+              <a
+                href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
+                className="group inline-flex items-center justify-center gap-4 text-3xl font-medium text-white transition-colors hover:text-white/70 sm:text-4xl md:text-5xl lg:text-6xl"
+              >
+                <span data-cursor="link">{PHONE_NUMBER}</span>
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">
+                  →
+                </span>
               </a>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.55} className="text-sm font-medium uppercase tracking-[0.2em] text-white/30">
+            ИЛИ
+          </Reveal>
+
+          <Reveal delay={0.6} className="w-full">
+            <div className="mx-auto flex w-full flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10 text-left">
+              <h3 className="text-xl font-bold mb-4 text-center">Оставить заявку</h3>
+              <LeadForm />
             </div>
           </Reveal>
         </div>
@@ -44,12 +75,29 @@ function NewBuildingPage() {
         
         <div className="grid md:grid-cols-2 gap-12">
             {[1, 2].map((i) => (
-                <div key={i} className="group border border-white/10 p-6 rounded-xl hover:border-white/30 transition-all">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800" className="rounded-lg mb-6 w-full h-64 object-cover" alt="До" />
-                    <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=800" className="rounded-lg mb-6 w-full h-64 object-cover" alt="После" />
-                    <h3 className="text-2xl font-bold mb-4">Объект №{i}</h3>
-                    <p className="text-gray-400 mb-4">Задача: Создание комфортного пространства для семьи.</p>
-                    <p className="text-gray-400">Срок выполнения: 3 месяца.</p>
+                <div key={i} className="group border border-white/10 p-6 rounded-xl hover:border-white/30 transition-all overflow-hidden bg-white/[0.02]">
+                    <div className="space-y-4 mb-8">
+                        <div className="relative group/img">
+                            <span className="absolute top-4 left-4 z-10 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs uppercase tracking-widest font-bold">До</span>
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800" className="rounded-lg w-full h-80 object-cover transition-transform duration-700 group-hover/img:scale-105" alt="До" />
+                        </div>
+                        <div className="relative group/img">
+                            <span className="absolute top-4 left-4 z-10 bg-white text-black px-3 py-1 rounded text-xs uppercase tracking-widest font-bold">После</span>
+                            <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=800" className="rounded-lg w-full h-80 object-cover transition-transform duration-700 group-hover/img:scale-105" alt="После" />
+                        </div>
+                    </div>
+                    <div className="space-y-4">
+                        <h3 className="text-2xl font-bold text-white/90">Квартира в ЖК "Зиларт" №{i}</h3>
+                        <div className="space-y-2">
+                            <p className="text-white/40 text-xs uppercase tracking-widest">Задача (ТЗ):</p>
+                            <p className="text-gray-400">Черновая и чистовая отделка с нуля. Возведение перегородок, разводка инженерии, укладка инженерной доски и покраска стен по дизайн-проекту.</p>
+                        </div>
+                        <div className="flex items-center gap-4 pt-2">
+                            <div className="bg-white/5 px-4 py-2 rounded-full text-sm text-gray-300">
+                                Срок: <span className="text-white font-bold">3 месяца</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>
