@@ -954,44 +954,6 @@ const MAIL_BODY = [
 ].join("\r\n");
 
 
-const EMAIL_ADDRESS = "twoframestudio@outlook.com";
-const MAIL_SUBJECT = "New Project Inquiry — Two Frame Studio";
-const mailHref = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(
-  MAIL_SUBJECT,
-)}&body=${encodeURIComponent(MAIL_BODY)}`;
-const gmailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-  EMAIL_ADDRESS,
-)}&su=${encodeURIComponent(MAIL_SUBJECT)}&body=${encodeURIComponent(MAIL_BODY)}`;
-const outlookHref = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(
-  EMAIL_ADDRESS,
-)}&subject=${encodeURIComponent(MAIL_SUBJECT)}&body=${encodeURIComponent(MAIL_BODY)}`;
-
-const WHATSAPP_NUMBER = "971555709324";
-const WHATSAPP_MESSAGE = [
-  "Hello Two Frame Studio 👋",
-  "",
-  "I'm interested in working with you on a new project.",
-  "",
-  "Here are the project details:",
-  "",
-  "• Company / Brand:",
-  "• Industry:",
-  "• Project Type:",
-  "• Project Overview:",
-  "• Project Goals:",
-  "• Website Inspiration:",
-  "• Estimated Timeline:",
-  "• Estimated Budget:",
-  "• Additional Information:",
-  "",
-  "My contact details:",
-  "",
-  "• Name:",
-  "• Email:",
-  "• Country:",
-  "",
-  "Looking forward to hearing from you. Thank you!",
-].join("\n");
 const PHONE_NUMBER = "+79167991216";
 const WHATSAPP_MESSAGE = "Здравствуйте, хотели бы узнать по поводу ремонта";
 const whatsappHref = `https://wa.me/${PHONE_NUMBER.replace(/\+/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
