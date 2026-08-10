@@ -201,7 +201,7 @@ function Hero() {
       {/* Floating showcase — visible on md+ where the hero has empty space to the right */}
       <HeroShowcase />
 
-      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto flex max-w-[1600px] flex-col gap-10 px-5 sm:gap-14 sm:px-6 md:px-10">
+      <motion.div style={{ y, opacity } as any} className="relative z-10 mx-auto flex max-w-[1600px] flex-col gap-10 px-5 sm:gap-14 sm:px-6 md:px-10">
 
         <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/60">
           <Reveal>
@@ -432,13 +432,13 @@ function MobileProjectsCarousel() {
   const onTouchStart = (e: React.TouchEvent) => {
     dragging.current = true;
     axisLocked.current = null;
-    startX.current = e.touches[0].clientX;
-    startY.current = e.touches[0].clientY;
+    startX.current = e.touches[0]?.clientX ?? 0;
+    startY.current = e.touches[0]?.clientY ?? 0;
   };
   const onTouchMove = (e: React.TouchEvent) => {
     if (!dragging.current) return;
-    const dx = e.touches[0].clientX - startX.current;
-    const dy = e.touches[0].clientY - startY.current;
+    const dx = (e.touches[0]?.clientX ?? 0) - startX.current;
+    const dy = (e.touches[0]?.clientY ?? 0) - startY.current;
     if (!axisLocked.current) {
       if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
         axisLocked.current = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
@@ -676,8 +676,8 @@ function About() {
 
 function Stat({ value }: { value: string }) {
   const match = value.match(/^(\d+)(.*)$/);
-  const target = match ? parseInt(match[1], 10) : 0;
-  const suffix = match ? match[2] : value;
+  const target = match ? parseInt(match[1] ?? "0", 10) : 0;
+  const suffix = match ? (match[2] ?? "") : value;
   const ref = useRef<HTMLSpanElement | null>(null);
   const numRef = useRef<HTMLSpanElement | null>(null);
 
@@ -912,7 +912,7 @@ function Testimonials() {
               transition={{ duration: 0.9, ease: [0.19, 1, 0.22, 1] }}
               className="font-display max-w-[24ch] text-3xl leading-tight sm:text-4xl md:text-7xl"
             >
-              “{cur.q}”
+              “{cur?.q}”
             </motion.blockquote>
             <motion.footer
               key={`f-${i}`}
@@ -921,9 +921,9 @@ function Testimonials() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-10 flex items-center gap-4 text-sm text-white/70"
             >
-              <span className="text-white">{cur.a}</span>
+              <span className="text-white">{cur?.a}</span>
               <span className="h-px w-8 bg-white/30" />
-              <span>{cur.r}</span>
+              <span>{cur?.r}</span>
             </motion.footer>
           </div>
         </div>
