@@ -201,7 +201,7 @@ function Hero() {
       {/* Floating showcase — visible on md+ where the hero has empty space to the right */}
       <HeroShowcase />
 
-      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto flex max-w-[1600px] flex-col gap-10 px-5 sm:gap-14 sm:px-6 md:px-10">
+      <motion.div style={{ y, opacity } as any} className="relative z-10 mx-auto flex max-w-[1600px] flex-col gap-10 px-5 sm:gap-14 sm:px-6 md:px-10">
 
         <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/60">
           <Reveal>

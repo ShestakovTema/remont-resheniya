@@ -28,7 +28,7 @@ export function Reveal({
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y }}
       transition={{ duration: 0.9, ease: [0.19, 1, 0.22, 1], delay }}
       className={className}
-      style={style}
+      style={style as any}
     >
       {children}
     </Tag>
