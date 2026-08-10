@@ -43,7 +43,6 @@ export function Nav() {
       >
         <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-6 lg:h-20 lg:px-10">
           <Magnetic as="a" href="#top" className="inline-flex items-center gap-2" strength={16}>
-            <span className="grid h-7 w-7 place-items-center rounded-sm border border-white/30 text-[10px] font-medium tracking-widest text-white">
             <span className="grid h-7 w-7 place-items-center rounded-sm border border-white/30 text-[8px] font-medium tracking-tighter text-white">
               РР
             </span>
