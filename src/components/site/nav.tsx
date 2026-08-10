@@ -135,7 +135,7 @@ export function Nav() {
                 </li>
               ))}
               <li className="mt-4 flex flex-wrap items-center gap-2 border-t border-white/10 pt-6">
-                {(["en", "tr", "zh", "ar"] as const).map((l) => (
+                {(["ru", "en"] as const).map((l) => (
                   <button
                     key={l}
                     onClick={() => setLang(l)}
@@ -143,7 +143,7 @@ export function Nav() {
                       lang === l ? "bg-white text-black" : "text-white/70"
                     }`}
                   >
-                    {l === "zh" ? "中文" : l === "tr" ? "Türk" : l === "ar" ? "عربي" : l}
+                    {l === "ru" ? "Русский" : "English"}
                   </button>
                 ))}
               </li>
