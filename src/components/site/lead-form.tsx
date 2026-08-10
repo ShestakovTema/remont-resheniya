@@ -18,7 +18,7 @@ export function LeadForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-sm">
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-sm mx-auto">
       <Input
         placeholder="Ваше имя"
         value={formData.name}

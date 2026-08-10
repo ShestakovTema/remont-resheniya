@@ -105,7 +105,7 @@ const ru: Dict = {
 
   "footer.desc": "Профессиональный ремонт и отделка жилых помещений. 15 лет на рынке.",
   "footer.rights": "Все права защищены",
-  "footer.gallery": "Разделы",
+  "footer.gallery": "Галерея",
   "footer.contact": "Контакты",
   "footer.legal": "Правовая информация",
   "footer.studioLead": "ИП Ларионов Михаил Валентинович",
