@@ -2,9 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
 import { Footer } from "@/routes/index";
+import { LangProvider } from "@/lib/i18n";
 
 export const Route = createFileRoute("/blog/")({
-  component: BlogPage,
+  component: () => (
+    <LangProvider>
+      <BlogPage />
+    </LangProvider>
+  ),
 });
 
 const ARTICLES = [
