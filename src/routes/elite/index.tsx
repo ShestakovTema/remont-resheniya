@@ -3,9 +3,14 @@ import { Reveal, TextReveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
 import { Footer } from "@/routes/index";
 import { LeadForm } from "@/components/site/lead-form";
+import { LangProvider } from "@/lib/i18n";
 
 export const Route = createFileRoute("/elite/")({
-  component: ElitePage,
+  component: () => (
+    <LangProvider>
+      <ElitePage />
+    </LangProvider>
+  ),
 });
 
 const PHONE_NUMBER = "+7 916 799-12-16";
