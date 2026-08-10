@@ -175,7 +175,7 @@ export function IntroLoader() {
               transition={{ duration: isMobile ? 0.5 : 1, ease: [0.19, 1, 0.22, 1] }}
               className="inline-block"
             >
-              Two Frame Studio
+              Ремонт Решения
             </motion.span>
           </div>
           </div>

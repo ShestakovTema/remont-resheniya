@@ -4,14 +4,12 @@ import { Globe } from "lucide-react";
 import { Magnetic } from "./magnetic";
 import { useLang, useT } from "@/lib/i18n";
 
-const LANGS = ["ru", "en"] as const;
+const LANGS = ["ru"] as const;
 const LANG_SHORT: Record<(typeof LANGS)[number], string> = {
   ru: "RU",
-  en: "EN",
 };
 const LANG_FULL: Record<(typeof LANGS)[number], string> = {
   ru: "Русский",
-  en: "English",
 };
 
 const LINKS = [
@@ -46,9 +44,10 @@ export function Nav() {
         <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-6 lg:h-20 lg:px-10">
           <Magnetic as="a" href="#top" className="inline-flex items-center gap-2" strength={16}>
             <span className="grid h-7 w-7 place-items-center rounded-sm border border-white/30 text-[10px] font-medium tracking-widest text-white">
-              STF
+            <span className="grid h-7 w-7 place-items-center rounded-sm border border-white/30 text-[8px] font-medium tracking-tighter text-white">
+              РР
             </span>
-            <span className="text-sm font-medium tracking-wide text-white">Two Frame Studio</span>
+            <span className="text-sm font-medium tracking-wide text-white">Ремонт Решения</span>
           </Magnetic>
 
           <nav className="hidden items-center gap-1 lg:flex">
@@ -66,20 +65,7 @@ export function Nav() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <div className="flex items-center rounded-full border border-white/15 p-[2px] text-xs">
-              {(["ru", "en"] as const).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  data-cursor="link"
-                  className={`rounded-full px-2.5 py-1 uppercase tracking-widest transition-colors ${
-                    lang === l ? "bg-white text-black" : "text-white/70 hover:text-white"
-                  }`}
-                >
-                  {l === "ru" ? "RU" : "EN"}
-                </button>
-              ))}
-            </div>
+            {/* Language switcher removed per requirements */}
             <Magnetic
               as="a"
               href="#contact"
@@ -97,7 +83,7 @@ export function Nav() {
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
-            <MobileLangSwitcher />
+            {/* Mobile language switcher removed */}
             <button
               aria-label="Toggle menu"
               onClick={() => setOpen((v) => !v)}
@@ -135,19 +121,7 @@ export function Nav() {
                   </a>
                 </li>
               ))}
-              <li className="mt-4 flex flex-wrap items-center gap-2 border-t border-white/10 pt-6">
-                {(["ru", "en"] as const).map((l) => (
-                  <button
-                    key={l}
-                    onClick={() => setLang(l)}
-                    className={`rounded-full border border-white/15 px-4 py-2 text-xs uppercase tracking-widest ${
-                      lang === l ? "bg-white text-black" : "text-white/70"
-                    }`}
-                  >
-                    {l === "ru" ? "Русский" : "English"}
-                  </button>
-                ))}
-              </li>
+              {/* Language switcher removed */}
             </ul>
           </motion.div>
         ) : null}
