@@ -160,7 +160,6 @@ function Index() {
           <FeaturedWork />
           <About />
           <Services />
-          <Process />
           <Testimonials />
           <Contact />
         </div>
@@ -295,7 +294,7 @@ function HeroShowcase() {
           style={{ fontSize: "9px", letterSpacing: "0.32em", textTransform: "uppercase" }}
         >
           <textPath href="#tf-hero-ring">
-            Two Frame Studio · Est. 2018 · Luxury Digital Experiences · Worldwide ·
+            Ремонт и отделка · 15 лет опыта · Качество под ключ · Москва и МО ·
           </textPath>
         </text>
       </motion.svg>
@@ -630,13 +629,13 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
 function About() {
   const t = useT();
   const stats = [
-    { k: "8+", v: t("about.stat.1") },
-    { k: "100+", v: t("about.stat.2") },
-    { k: "16+", v: t("about.stat.3") },
-    { k: "9+", v: t("about.stat.4") },
+    { k: "15+", v: t("about.stat.1") },
+    { k: "250+", v: t("about.stat.2") },
+    { k: "500+", v: t("about.stat.3") },
+    { k: "3", v: t("about.stat.4") },
   ];
   return (
-    <section id="studio" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
+    <section id="about" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="grid grid-cols-12 gap-8">
           <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">
@@ -862,7 +861,7 @@ function Testimonials() {
     const id = setInterval(() => setI((v) => (v + 1) % QUOTES.length), 6000);
     return () => clearInterval(id);
   }, [QUOTES.length]);
-  const cur = QUOTES[i];
+  const cur = QUOTES[i] || QUOTES[0];
   return (
     <section className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-10">
@@ -1120,7 +1119,7 @@ function Contact() {
         <div className="mt-14 flex flex-col items-center gap-12 text-center">
           <Reveal delay={0.5} className="w-full">
             <div className="mx-auto flex w-full max-w-[min(640px,100%)] flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10">
-              <EmailAction email="twoframestudio@outlook.com" href={mailHref} />
+              <EmailAction email="remont-pro@example.com" href={mailHref} />
               <div className="flex w-full items-center gap-4">
                 <span className="h-px flex-1 bg-white/15" />
                 <span className="text-xs uppercase tracking-[0.3em] text-white/50">or</span>
@@ -1162,7 +1161,7 @@ function Contact() {
 export function Footer() {
   const t = useT();
   const year = new Date().getFullYear();
-  const handle = "@twoframestudio";
+  const handle = "РЕМОНТ-ПРО";
   return (
     <footer className="bg-[#141414] text-white">
       {/* Main footer grid */}
@@ -1201,7 +1200,7 @@ export function Footer() {
                 href={mailHref}
                 className="block whitespace-nowrap transition-colors hover:text-white/60"
               >
-                twoframestudio@outlook.com
+                remont-pro@example.com
               </a>
 
               <a
@@ -1229,7 +1228,7 @@ export function Footer() {
               {t("footer.legal")}
             </p>
             <div className="space-y-1 text-sm text-white/60">
-              <p>© {year} Two Frame Studio — {t("footer.rights")}</p>
+              <p>© {year} Ремонт-Про — {t("footer.rights")}</p>
             </div>
           </div>
         </div>
