@@ -63,16 +63,6 @@ function SiteAurora() {
 }
 import { LangProvider, useT } from "@/lib/i18n";
 
-import kaplankaya from "@/assets/project-kaplankaya.jpg";
-import dmaris from "@/assets/project-dmaris.jpg";
-import zuma from "@/assets/project-zuma.jpg";
-import aman from "@/assets/project-aman.jpg";
-import macakizi from "@/assets/project-macakizi.jpg";
-import nusret from "@/assets/project-nusret.jpg";
-import rixos from "@/assets/project-rixos.jpg";
-import mandarin from "@/assets/project-mandarin.jpg";
-import goldcoast from "@/assets/project-goldcoast.jpg";
-import auberge from "@/assets/project-auberge.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
