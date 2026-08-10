@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EliteIndexRouteImport } from './routes/elite/index'
+import { Route as NewbuildingIndexRouteImport } from './routes/newbuilding/index'
+import { Route as SecondaryIndexRouteImport } from './routes/secondary/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EliteIndexRoute = EliteIndexRouteImport.update({
+  id: '/elite/',
+  path: '/elite/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewbuildingIndexRoute = NewbuildingIndexRouteImport.update({
+  id: '/newbuilding/',
+  path: '/newbuilding/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecondaryIndexRoute = SecondaryIndexRouteImport.update({
+  id: '/secondary/',
+  path: '/secondary/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/elite/': typeof EliteIndexRoute
+  '/newbuilding/': typeof NewbuildingIndexRoute
+  '/secondary/': typeof SecondaryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/elite': typeof EliteIndexRoute
+  '/newbuilding': typeof NewbuildingIndexRoute
+  '/secondary': typeof SecondaryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/elite/': typeof EliteIndexRoute
+  '/newbuilding/': typeof NewbuildingIndexRoute
+  '/secondary/': typeof SecondaryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/elite/' | '/newbuilding/' | '/secondary/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/elite' | '/newbuilding' | '/secondary'
+  id: '__root__' | '/' | '/elite/' | '/newbuilding/' | '/secondary/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EliteIndexRoute: typeof EliteIndexRoute
+  NewbuildingIndexRoute: typeof NewbuildingIndexRoute
+  SecondaryIndexRoute: typeof SecondaryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +78,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/elite/': {
+      id: '/elite/'
+      path: '/elite'
+      fullPath: '/elite/'
+      preLoaderRoute: typeof EliteIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/newbuilding/': {
+      id: '/newbuilding/'
+      path: '/newbuilding'
+      fullPath: '/newbuilding/'
+      preLoaderRoute: typeof NewbuildingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/secondary/': {
+      id: '/secondary/'
+      path: '/secondary'
+      fullPath: '/secondary/'
+      preLoaderRoute: typeof SecondaryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EliteIndexRoute: EliteIndexRoute,
+  NewbuildingIndexRoute: NewbuildingIndexRoute,
+  SecondaryIndexRoute: SecondaryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
