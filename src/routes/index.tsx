@@ -927,7 +927,7 @@ function Testimonials() {
 
 /* ------------------------------ CONTACT ------------------------------ */
 const MAIL_BODY = [
-    "Hello, Two Frame Studio",
+    "Здравствуйте, Ремонт Решения",
     "",
     "I'm interested in working with you on a new project.",
     "",

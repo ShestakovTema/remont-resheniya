@@ -63,7 +63,7 @@
 
 :root {
   --radius: 0.5rem;
-  /* Two Frame Studio palette — pure premium dark */
+  /* Ремонт Решения palette — pure premium dark */
   --background: oklch(0.06 0 0);           /* #070707 */
   --foreground: oklch(0.985 0 0);          /* near white */
   --card: oklch(0.09 0 0);                 /* #101010 */
