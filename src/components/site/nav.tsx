@@ -2,7 +2,7 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { useEffect, useRef, useState } from "react";
 import { Globe } from "lucide-react";
 import { Magnetic } from "./magnetic";
-import { useLang } from "@/lib/i18n";
+import { useLang, useT } from "@/lib/i18n";
 
 const LANGS = ["ru", "en"] as const;
 const LANG_SHORT: Record<(typeof LANGS)[number], string> = {
