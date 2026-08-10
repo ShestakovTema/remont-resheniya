@@ -15,7 +15,7 @@ function ElitePage() {
         <Reveal>
           <h1 className="text-7xl font-display mb-10 italic">Элитный ремонт</h1>
         </Reveal>
-        <div className="grid md:grid-cols-2 gap-20">
+        <div className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
               Премиальные материалы, авторский надзор и безупречное исполнение. Мы создаем интерьеры, которые подчеркивают ваш статус.
@@ -31,15 +31,30 @@ function ElitePage() {
                 <li>Фиксированная смета без доплат</li>
                 <li>Гарантия 3 года</li>
               </ul>
-              <button className="mt-8 px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform">
+              <a href="/#contact" className="mt-8 inline-block px-8 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform text-center">
                 Получить индивидуальную смету
-              </button>
+              </a>
             </div>
           </Reveal>
+        </div>
+
+        <Reveal>
+            <h2 className="text-5xl font-display mb-12">Портфолио работ</h2>
+        </Reveal>
+        
+        <div className="grid md:grid-cols-2 gap-12">
+            {[1, 2].map((i) => (
+                <div key={i} className="group border border-white/10 p-6 rounded-xl hover:border-white/30 transition-all">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800" className="rounded-lg mb-6 w-full h-64 object-cover" alt="До" />
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800" className="rounded-lg mb-6 w-full h-64 object-cover" alt="После" />
+                    <h3 className="text-2xl font-bold mb-4">Объект №{i}</h3>
+                    <p className="text-gray-400 mb-4">Задача: Создание интерьера в классическом стиле с элементами современности.</p>
+                    <p className="text-gray-400">Срок выполнения: 4 месяца.</p>
+                </div>
+            ))}
         </div>
       </main>
       <Footer />
     </div>
   );
 }
-

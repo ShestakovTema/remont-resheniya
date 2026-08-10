@@ -861,7 +861,7 @@ function ServiceRow({
             transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
             className="font-display col-span-10 text-2xl sm:text-3xl md:col-span-6 md:text-5xl lg:text-6xl"
           >
-            {t}
+            {t} <span className="text-sm align-middle inline-block ml-2 opacity-50 group-hover:opacity-100 transition-opacity">→</span>
           </motion.h3>
           <motion.p
             animate={{ color: hover ? "rgba(7,7,7,0.75)" : "#8F8F8F" }}
