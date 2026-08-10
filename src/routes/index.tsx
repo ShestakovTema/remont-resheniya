@@ -10,6 +10,8 @@ import { IntroLoader } from "@/components/site/loader";
 import { ScrollProgress } from "@/components/site/scroll-progress";
 import { Reveal, TextReveal } from "@/components/site/reveal";
 import { Magnetic } from "@/components/site/magnetic";
+import { LeadForm } from "@/components/site/lead-form";
+import { CostCalculator } from "@/components/site/calculator";
 
 /* ------------------------------ SITE-WIDE AURORA ------------------------------ */
 function SiteAurora() {
@@ -83,16 +85,38 @@ type Project = {
   year: string;
   image: string;
   url: string;
+  beforeImage?: string;
 };
 
 const PROJECTS: Project[] = [
-  { name: "Элитная квартира на Тверской", category: "Элитный ремонт", year: "2025", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { 
+    name: "Элитная квартира на Тверской", 
+    category: "Элитный ремонт", 
+    year: "2025", 
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", 
+    beforeImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200",
+    url: "/elite/" 
+  },
   { name: "ЖК 'Премиум Парк'", category: "Новостройка", year: "2025", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
-  { name: "Лофт в старом центре", category: "Ремонт вторички", year: "2024", image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
+  { 
+    name: "Лофт в старом центре", 
+    category: "Ремонт вторички", 
+    year: "2024", 
+    image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200", 
+    beforeImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200",
+    url: "/secondary/" 
+  },
   { name: "Пентхаус с видом на Сити", category: "Элитный ремонт", year: "2024", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
   { name: "Семейная квартира в Хамовниках", category: "Новостройка", year: "2024", image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { name: "Апартаменты в Москва-Сити", category: "Элитный ремонт", year: "2023", image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
-  { name: "Дизайнерский ремонт на Арбате", category: "Вторичное жилье", year: "2025", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
+  { 
+    name: "Дизайнерский ремонт на Арбате", 
+    category: "Вторичное жилье", 
+    year: "2025", 
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200", 
+    beforeImage: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200",
+    url: "/secondary/" 
+  },
   { name: "Квартира-студия в ЖК 'Зиларт'", category: "Новостройка", year: "2024", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { name: "Реновация квартиры 1985г.", category: "Ремонт вторички", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
   { name: "Вилла в Подмосковье", category: "Загородный дом", year: "2025", image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
@@ -150,6 +174,9 @@ function Index() {
           <FeaturedWork />
           <About />
           <Services />
+          <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-20">
+            <CostCalculator />
+          </div>
           <Testimonials />
           <Contact />
         </div>
@@ -559,10 +586,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
         transition={{ duration: 0.9, ease: [0.19, 1, 0.22, 1] }}
       >
         <Magnetic strength={12} className="group relative block overflow-hidden rounded-lg">
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noreferrer"
+          <div
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             data-cursor="view"
@@ -579,6 +603,16 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
                 style={{ scale }}
                 className="h-[115%] w-full object-cover"
               />
+              {project.beforeImage && hover && (
+                <motion.img
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  src={project.beforeImage}
+                  alt={`До: ${project.name}`}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              )}
             </motion.div>
             <motion.div
               initial={false}
@@ -602,7 +636,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
                 {project.year}
               </div>
             </motion.div>
-          </a>
+          </div>
         </Magnetic>
       </motion.div>
 
@@ -1075,26 +1109,36 @@ function Contact() {
           <TextReveal key={`cc-${t("contact.h.c")}`} text={t("contact.h.c")} delay={0.3} className="italic" />
         </h2>
         <div className="mt-14 flex flex-col items-center gap-12 text-center">
-          <Reveal delay={0.5} className="w-full">
-            <div className="mx-auto flex w-full max-w-[min(640px,100%)] flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10">
-              <div className="relative flex flex-col items-center gap-2 rounded-2xl px-4 py-4">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-                  {t("contact.whatsapp.label")}
-                </span>
-                <Reveal delay={0.1}>
-                  <a
-                    href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
-                    className="group inline-flex items-center gap-4 text-3xl font-medium text-white transition-colors hover:text-white/70 sm:text-4xl md:text-5xl lg:text-6xl"
-                  >
-                    <span data-cursor="link">{PHONE_NUMBER}</span>
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">
-                      →
-                    </span>
-                  </a>
-                </Reveal>
+          <div className="grid md:grid-cols-2 gap-12 w-full items-start">
+            <Reveal delay={0.5} className="w-full">
+              <div className="mx-auto flex w-full flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10">
+                <div className="relative flex flex-col items-center gap-2 rounded-2xl px-4 py-4">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                    {t("contact.whatsapp.label")}
+                  </span>
+                  <Reveal delay={0.1}>
+                    <a
+                      href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
+                      className="group inline-flex items-center gap-4 text-3xl font-medium text-white transition-colors hover:text-white/70 sm:text-4xl md:text-5xl lg:text-6xl"
+                    >
+                      <span data-cursor="link">{PHONE_NUMBER}</span>
+                      <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">
+                        →
+                      </span>
+                    </a>
+                  </Reveal>
+                </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+
+            <Reveal delay={0.6} className="w-full">
+              <div className="mx-auto flex w-full flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10">
+                <h3 className="text-xl font-bold mb-4">Оставить заявку</h3>
+                <LeadForm />
+              </div>
+            </Reveal>
+          </div>
+
           <Reveal delay={0.4} className="max-w-md text-base text-[#8F8F8F] sm:text-lg">
             {t("contact.desc")}
           </Reveal>
