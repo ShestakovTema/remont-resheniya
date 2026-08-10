@@ -614,7 +614,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
                 {project.year}
               </div>
             </motion.div>
-          </a>
+          </div>
         </Magnetic>
       </motion.div>
 
