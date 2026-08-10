@@ -1176,14 +1176,14 @@ function Footer() {
               <a href="#work" className="block text-white transition-colors hover:text-white/60">
                 {t("nav.work")}
               </a>
-              <a href="#studio" className="block text-white transition-colors hover:text-white/60">
-                {t("nav.studio")}
+              <a href="#about" className="block text-white transition-colors hover:text-white/60">
+                {t("nav.about")}
               </a>
               <a href="#services" className="block text-white transition-colors hover:text-white/60">
                 {t("nav.services")}
               </a>
-              <a href="#process" className="block text-white transition-colors hover:text-white/60">
-                {t("nav.process")}
+              <a href="#blog" className="block text-white transition-colors hover:text-white/60">
+                {t("nav.blog")}
               </a>
               <a href="#contact" className="block text-white transition-colors hover:text-white/60">
                 {t("nav.contact")}
