@@ -450,7 +450,7 @@ function DesktopProjectsList() {
 function WorkInProgress() {
   const t = useT();
   return (
-    <section id="work-in-progress" className="relative py-20 sm:py-28 md:py-40 border-t border-white/10">
+    <section id="work-in-progress" className="relative py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="mb-10 flex flex-col gap-8 sm:mb-16 md:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -468,50 +468,66 @@ function WorkInProgress() {
           </Reveal>
         </div>
 
-        <div className="hidden md:flex md:flex-col md:gap-36">
+        <div className="space-y-24">
           {UPCOMING_PROJECTS.map((p, i) => (
-            <ProjectRow key={p.name} project={p} index={i} totalCount={UPCOMING_PROJECTS.length} />
-          ))}
-        </div>
-
-        <div className="md:hidden">
-          <div className="relative overflow-hidden">
-            <div className="flex">
-              {UPCOMING_PROJECTS.map((p, i) => (
-                <div
-                  key={p.name}
-                  className="group relative block shrink-0 overflow-hidden rounded-lg"
-                  style={{ width: `85%`, marginRight: i < UPCOMING_PROJECTS.length - 1 ? 16 : 0 }}
-                >
-                  <div className="relative aspect-[4/5] w-full overflow-hidden">
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
-                      <div className="min-w-0">
-                        <div className="text-[10px] uppercase tracking-[0.3em] text-white/70">
-                          {p.category}
-                        </div>
-                        <div className="font-display mt-1 truncate text-xl">{p.name}</div>
-                      </div>
-                      <div className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-white/70">
-                        {p.year}
-                      </div>
-                    </div>
-                  </div>
+            <div key={p.name} className="space-y-8">
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-medium uppercase tracking-[0.2em] text-white/40">
+                  {p.category}
                 </div>
-              ))}
+                <div className="text-xs uppercase tracking-[0.2em] text-white/30">
+                  {p.year}
+                </div>
+              </div>
+              
+              <RegisseurCarousel />
+              
+              <div className="max-w-3xl">
+                <h3 className="font-display text-3xl md:text-5xl mb-4">{p.name}</h3>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
+function RegisseurCarousel() {
+  return (
+    <div className="relative w-full">
+      <div 
+        className="flex gap-4 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory px-[2vw] md:px-0"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {regisseurAssets.map((src, i) => (
+          <motion.div
+            key={src}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: i * 0.05 }}
+            className="relative aspect-[16/10] w-[85vw] md:w-[60vw] shrink-0 overflow-hidden rounded-xl snap-center"
+          >
+            <img
+              src={src}
+              alt={`Объект Режиссёр фото ${i + 1}`}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </motion.div>
+        ))}
+      </div>
+      
+      <div className="flex items-center justify-center gap-2 mt-4 md:hidden">
+        <div className="text-[10px] uppercase tracking-[0.3em] text-white/30">
+          Листайте вправо →
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 function MobileProjectsCarousel() {
   const [active, setActive] = useState(0);
@@ -845,28 +861,21 @@ function Stat({ value }: { value: string }) {
 function Services() {
   const t = useT();
   const services = [
-    {
-      id: "elite",
-      n: "01",
-      t: t("services.elite.title"),
-      d: t("services.elite.desc"),
-      href: "/elite",
-    },
-    {
-      id: "new",
-      n: "02",
-      t: t("services.new.title"),
-      d: t("services.new.desc"),
-      href: "/newbuilding",
-    },
-    {
-      id: "secondary",
-      n: "03",
-      t: t("services.secondary.title"),
-      d: t("services.secondary.desc"),
-      href: "/secondary",
-    },
+    { id: "elite", n: "01", t: t("services.elite.title"), d: t("services.elite.desc"), href: "/elite" },
+    { id: "new", n: "02", t: t("services.new.title"), d: t("services.new.desc"), href: "/newbuilding" },
+    { id: "secondary", n: "03", t: t("services.secondary.title"), d: t("services.secondary.desc"), href: "/secondary" },
+    { id: "design", n: "04", t: t("services.design.title"), d: t("services.design.desc"), href: "#contact" },
+    { id: "electro", n: "05", t: t("services.electro.title"), d: t("services.electro.desc"), href: "#contact" },
+    { id: "heating", n: "06", t: t("services.heating.title"), d: t("services.heating.desc"), href: "#contact" },
+    { id: "water", n: "07", t: t("services.water.title"), d: t("services.water.desc"), href: "#contact" },
+    { id: "low", n: "08", t: t("services.low.title"), d: t("services.low.desc"), href: "#contact" },
+    { id: "smart", n: "09", t: t("services.smart.title"), d: t("services.smart.desc"), href: "#contact" },
+    { id: "demolition", n: "10", t: t("services.demolition.title"), d: t("services.demolition.desc"), href: "#contact" },
+    { id: "procurement", n: "11", t: t("services.procurement.title"), d: t("services.procurement.desc"), href: "#contact" },
+    { id: "commissioning", n: "12", t: t("services.commissioning.title"), d: t("services.commissioning.desc"), href: "#contact" },
+    { id: "cleaning", n: "13", t: t("services.cleaning.title"), d: t("services.cleaning.desc"), href: "#contact" },
   ];
+
 
   return (
     <section id="services" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
