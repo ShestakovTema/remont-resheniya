@@ -4,6 +4,7 @@ import { Nav } from "@/components/site/nav";
 import { Footer } from "@/routes/index";
 import { LeadForm } from "@/components/site/lead-form";
 import { LangProvider } from "@/lib/i18n";
+import { regisseurAssets } from "@/lib/regisseur-assets";
 
 export const Route = createFileRoute("/elite/")({
   component: () => (
@@ -79,6 +80,68 @@ function ElitePage() {
         <Reveal>
             <h2 className="text-5xl font-display mb-12">Портфолио работ</h2>
         </Reveal>
+
+        {/* Кейс: ЖК «Режиссёр» */}
+        <section className="mb-24 rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-10">
+          <Reveal>
+            <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40">Элитный ремонт</span>
+              <span className="h-px w-8 bg-white/20" />
+              <span className="text-xs uppercase tracking-[0.3em] text-white/30">В работе · 2026</span>
+            </div>
+            <h3 className="font-display mb-6 text-3xl sm:text-5xl">Элитная квартира в ЖК «Режиссёр»</h3>
+          </Reveal>
+
+          <div className="mb-10 grid gap-10 md:grid-cols-2">
+            <Reveal delay={0.1}>
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-3">Задача (ТЗ)</p>
+              <p className="text-gray-400">
+                Квартира 142 м² в состоянии «от застройщика». Требовалось выполнить полный комплекс
+                инженерии и подготовки под чистовую отделку: спроектировать и смонтировать электрику
+                на 118 линий с двумя щитами, развести сантехнику с коллекторными узлами, смонтировать
+                водяной тёплый пол в трёх зонах, возвести перегородки, выполнить стяжку с шумоизоляцией
+                и штукатурку стен под покраску по маякам с геометрией в 1 мм.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-3">Что сделали</p>
+              <ul className="list-disc list-inside space-y-2 text-gray-400">
+                <li>Штробление, прокладка кабеля, сборка и подключение двух щитов</li>
+                <li>Разводка ХВС/ГВС и канализации, коллекторы, установка приборов</li>
+                <li>Водяной тёплый пол, опрессовка и балансировка контуров</li>
+                <li>Перегородки, стяжка с шумоизоляцией, гидроизоляция мокрых зон</li>
+                <li>Штукатурка и шпаклёвка стен и потолков под покраску</li>
+                <li>Координация мебельщиков и потолочников через партнёров</li>
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                  Площадь: <span className="font-bold text-white">142 м²</span>
+                </div>
+                <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                  Срок: <span className="font-bold text-white">3,5 месяца</span>
+                </div>
+                <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                  Стоимость работ: <span className="font-bold text-white">2 450 000 ₽</span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {regisseurAssets.map((src, i) => (
+              <Reveal key={src} delay={0.05 * i}>
+                <div className="group relative aspect-[16/10] overflow-hidden rounded-xl">
+                  <img
+                    src={src}
+                    alt={`ЖК Режиссёр — ход работ, фото ${i + 1}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
         
         <div className="grid md:grid-cols-2 gap-12">
             {[1, 2].map((i) => (
