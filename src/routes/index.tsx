@@ -1144,11 +1144,18 @@ function Services() {
                 </button>
               </Magnetic>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl border-white/10 bg-[#070707] text-white sm:rounded-3xl">
+            <DialogContent 
+              className="max-w-4xl border-white/10 bg-[#070707] text-white sm:rounded-3xl"
+              onPointerDownOutside={(e) => e.preventDefault()}
+              onInteractOutside={(e) => e.preventDefault()}
+            >
               <DialogHeader>
                 <DialogTitle className="font-display text-3xl md:text-5xl">{t("services.modal.title")}</DialogTitle>
               </DialogHeader>
-              <div className="mt-8 grid gap-6 max-h-[70vh] overflow-y-auto pr-4 scrollbar-hide sm:grid-cols-2">
+              <div 
+                className="mt-8 grid gap-6 max-h-[70vh] overflow-y-auto pr-4 sm:grid-cols-2"
+                style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.1) transparent' }}
+              >
                 {services.map((s) => (
                   <div key={s.id} className="group rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-colors hover:border-white/20">
                     <div className="flex items-start justify-between">
@@ -1157,6 +1164,22 @@ function Services() {
                     </div>
                     <h4 className="font-display mt-4 text-xl">{s.t.replace(' →', '')}</h4>
                     <p className="mt-2 text-sm text-[#8F8F8F] leading-relaxed">{s.d}</p>
+                    
+                    {/* Detailed sub-services list if available */}
+                    {s.id === "electro" && t("services.electro.list") !== "services.electro.list" && (
+                      <div className="mt-4 border-t border-white/5 pt-4">
+                        <div className="whitespace-pre-line text-[11px] leading-relaxed text-[#8F8F8F]/80">
+                          {t("services.electro.list")}
+                        </div>
+                      </div>
+                    )}
+                    {s.id === "heating" && t("services.heating.list") !== "services.heating.list" && (
+                      <div className="mt-4 border-t border-white/5 pt-4">
+                        <div className="whitespace-pre-line text-[11px] leading-relaxed text-[#8F8F8F]/80">
+                          {t("services.heating.list")}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
