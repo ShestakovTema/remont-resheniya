@@ -484,7 +484,7 @@ function RepairTypeNav() {
   return (
     <section className="relative z-10 py-10 md:py-20">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-3 lg:gap-6">
           {items.map((item, i) => (
             <Reveal key={item.id} delay={i * 0.1} y={40}>
               <Link
