@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
-import { Footer, About, Services, Testimonials, Contact } from "@/routes/index";
-import { LeadForm } from "@/components/site/lead-form";
+import { Footer, About, Services, Testimonials, Contact, FullscreenGallery } from "@/routes/index";
 import { LangProvider } from "@/lib/i18n";
+import { useState } from "react";
+import { Maximize2 } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
 
 export const Route = createFileRoute("/newbuilding/")({
   component: () => (
@@ -13,9 +15,15 @@ export const Route = createFileRoute("/newbuilding/")({
   ),
 });
 
-const PHONE_NUMBER = "+7 916 799-12-16";
+const zilartAssets = [
+  "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1582408921715-18e7826363bb?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800"
+];
 
 function NewBuildingPage() {
+  const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
+
   return (
     <div className="bg-[#070707] text-white min-h-screen">
       <Nav />
@@ -91,24 +99,39 @@ function NewBuildingPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800",
-              "https://images.unsplash.com/photo-1505691938895-1758d7eaa511?auto=format&fit=crop&q=80&w=800",
-              "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800"
-            ].map((src, i) => (
+            {zilartAssets.map((src, i) => (
               <Reveal key={src} delay={0.05 * i}>
-                <div className="group relative aspect-[16/10] overflow-hidden rounded-xl">
+                <div 
+                  className="group relative aspect-[16/10] overflow-hidden rounded-xl cursor-pointer"
+                  onClick={() => setFullscreenIdx(i)}
+                >
                   <img
                     src={src}
                     alt={`ЖК Зиларт — фото работ ${i + 1}`}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 hover:opacity-100">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
+                      <Maximize2 className="text-white" size={20} />
+                    </div>
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
         </section>
+
+        <AnimatePresence>
+          {fullscreenIdx !== null && (
+            <FullscreenGallery 
+              images={zilartAssets} 
+              initialIdx={fullscreenIdx} 
+              onClose={() => setFullscreenIdx(null)} 
+            />
+          )}
+        </AnimatePresence>
+
         <About />
         <Services />
         <Testimonials />

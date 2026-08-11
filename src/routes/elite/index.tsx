@@ -1,7 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal, TextReveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
-import { Footer, About, Services, Testimonials, Contact } from "@/routes/index";
+import { Footer, About, Services, Testimonials, Contact, FullscreenGallery } from "@/routes/index";
+import { Maximize2 } from "lucide-react";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+
 import { LeadForm } from "@/components/site/lead-form";
 import { LangProvider } from "@/lib/i18n";
 import { regisseurAssets } from "@/lib/regisseur-assets";
@@ -17,6 +21,9 @@ export const Route = createFileRoute("/elite/")({
 const PHONE_NUMBER = "+7 916 799-12-16";
 
 function ElitePage() {
+  const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
+
+
   return (
     <div className="bg-[#070707] text-white min-h-screen">
       <Nav />
@@ -100,18 +107,37 @@ function ElitePage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {regisseurAssets.map((src, i) => (
               <Reveal key={src} delay={0.05 * i}>
-                <div className="group relative aspect-[16/10] overflow-hidden rounded-xl">
+                <div 
+                  className="group relative aspect-[16/10] overflow-hidden rounded-xl cursor-pointer"
+                  onClick={() => setFullscreenIdx(i)}
+                >
                   <img
                     src={src}
                     alt={`ЖК Режиссёр — ход работ, фото ${i + 1}`}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 hover:opacity-100">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
+                      <Maximize2 className="text-white" size={20} />
+                    </div>
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
         </section>
+
+        <AnimatePresence>
+          {fullscreenIdx !== null && (
+            <FullscreenGallery 
+              images={regisseurAssets} 
+              initialIdx={fullscreenIdx} 
+              onClose={() => setFullscreenIdx(null)} 
+            />
+          )}
+        </AnimatePresence>
+
         
         <div className="grid md:grid-cols-2 gap-12">
             {[1, 2].map((i) => (

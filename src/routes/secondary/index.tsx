@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
-import { Footer, About, Services, Testimonials, Contact } from "@/routes/index";
-import { LeadForm } from "@/components/site/lead-form";
+import { Footer, About, Services, Testimonials, Contact, FullscreenGallery } from "@/routes/index";
 import { LangProvider } from "@/lib/i18n";
+import { useState } from "react";
+import { Maximize2 } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
 
 export const Route = createFileRoute("/secondary/")({
   component: () => (
@@ -13,9 +15,15 @@ export const Route = createFileRoute("/secondary/")({
   ),
 });
 
-const PHONE_NUMBER = "+7 916 799-12-16";
+const secondaryAssets = [
+  "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1582268611958-ebaf161c8e28?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=800"
+];
 
 function SecondaryPage() {
+  const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
+
   return (
     <div className="bg-[#070707] text-white min-h-screen">
       <Nav />
@@ -92,24 +100,39 @@ function SecondaryPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=800",
-              "https://images.unsplash.com/photo-1534349762230-e0cadf78f5db?auto=format&fit=crop&q=80&w=800",
-              "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=800"
-            ].map((src, i) => (
+            {secondaryAssets.map((src, i) => (
               <Reveal key={src} delay={0.05 * i}>
-                <div className="group relative aspect-[16/10] overflow-hidden rounded-xl">
+                <div 
+                  className="group relative aspect-[16/10] overflow-hidden rounded-xl cursor-pointer"
+                  onClick={() => setFullscreenIdx(i)}
+                >
                   <img
                     src={src}
                     alt={`Сталинка — фото работ ${i + 1}`}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 hover:opacity-100">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
+                      <Maximize2 className="text-white" size={20} />
+                    </div>
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
         </section>
+
+        <AnimatePresence>
+          {fullscreenIdx !== null && (
+            <FullscreenGallery 
+              images={secondaryAssets} 
+              initialIdx={fullscreenIdx} 
+              onClose={() => setFullscreenIdx(null)} 
+            />
+          )}
+        </AnimatePresence>
+
         <About />
         <Services />
         <Testimonials />

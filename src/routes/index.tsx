@@ -305,9 +305,10 @@ function Hero() {
 function HeroShowcase() {
   const items = [
     "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&q=80&w=600",
+    regisseurAssets[0],
     "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=600",
     "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=600"
+
   ];
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -406,7 +407,7 @@ function Marquee() {
 function FeaturedWork() {
   const t = useT();
   return (
-    <section id="work" className="relative py-20 sm:py-28 md:py-40">
+    <section id="work" className="relative pt-10 pb-20 sm:pt-14 sm:pb-28 md:pt-20 md:pb-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="mb-10 flex flex-col gap-8 sm:mb-16 md:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -521,7 +522,7 @@ function WorkInProgress() {
   const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
 
   return (
-    <section id="work-in-progress" className="relative py-20 sm:py-28 md:py-40">
+    <section id="work-in-progress" className="relative pt-20 pb-0 sm:pt-28 sm:pb-0 md:pt-40 md:pb-0">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="mb-10 flex flex-col gap-8 sm:mb-16 md:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -662,7 +663,7 @@ function RegisseurImage({ src, index, onClick }: { src: string, index: number, o
   );
 }
 
-function FullscreenGallery({ images, initialIdx, onClose }: { images: string[], initialIdx: number, onClose: () => void }) {
+export function FullscreenGallery({ images, initialIdx, onClose }: { images: string[], initialIdx: number, onClose: () => void }) {
   const [idx, setIdx] = useState(initialIdx);
   const [direction, setDirection] = useState(0);
 
