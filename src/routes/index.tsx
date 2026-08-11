@@ -596,13 +596,13 @@ function RegisseurCarousel({ onImageClick }: { onImageClick: (idx: number) => vo
       <div className="absolute -top-12 right-0 hidden items-center gap-4 md:flex">
         <button 
           onClick={() => scroll('left')}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-colors hover:bg-white/10"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
         >
           <ChevronLeft size={20} />
         </button>
         <button 
           onClick={() => scroll('right')}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-colors hover:bg-white/10"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
         >
           <ChevronRight size={20} />
         </button>
@@ -1145,9 +1145,10 @@ function Services() {
               </Magnetic>
             </DialogTrigger>
             <DialogContent 
-              className="max-w-4xl border-white/10 bg-[#070707] text-white sm:rounded-3xl"
-              onPointerDownOutside={(e) => e.preventDefault()}
-              onInteractOutside={(e) => e.preventDefault()}
+              className="max-w-4xl border-white/10 bg-[#070707] text-white sm:rounded-3xl mt-10 md:mt-20"
+              onPointerDownOutside={(e) => {
+                // If the target is the overlay, we close. Radix manages this via Dialog.
+              }}
             >
               <DialogHeader>
                 <DialogTitle className="font-display text-3xl md:text-5xl">{t("services.modal.title")}</DialogTitle>
