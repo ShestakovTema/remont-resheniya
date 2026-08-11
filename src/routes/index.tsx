@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, Copy } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { Check, Copy, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 import { SmoothScroll } from "@/components/site/smooth-scroll";
@@ -13,6 +13,14 @@ import { Magnetic } from "@/components/site/magnetic";
 import { LeadForm } from "@/components/site/lead-form";
 import { CostCalculator } from "@/components/site/calculator";
 import { regisseurAssets } from "@/lib/regisseur-assets";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogTrigger,
+  DialogClose
+} from "@/components/ui/dialog";
 
 /* ------------------------------ SITE-WIDE AURORA ------------------------------ */
 function SiteAurora() {
@@ -182,6 +190,7 @@ function Index() {
         <div className="relative z-10">
           <Hero />
           <Marquee />
+          <RepairTypeNav />
           <WorkInProgress />
           <FeaturedWork />
           <About />
@@ -447,8 +456,70 @@ function DesktopProjectsList() {
   );
 }
 
+/* ------------------------------ REPAIR TYPE NAV ------------------------------ */
+function RepairTypeNav() {
+  const t = useT();
+  const items = [
+    { 
+      id: "elite", 
+      t: t("repairNav.elite"), 
+      href: "/elite", 
+      img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800" 
+    },
+    { 
+      id: "new", 
+      t: t("repairNav.new"), 
+      href: "/newbuilding", 
+      img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800" 
+    },
+    { 
+      id: "secondary", 
+      t: t("repairNav.secondary"), 
+      href: "/secondary", 
+      img: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=800" 
+    },
+  ];
+
+  return (
+    <section className="relative z-10 py-10 md:py-20">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
+          {items.map((item, i) => (
+            <Reveal key={item.id} delay={i * 0.1} y={40}>
+              <a 
+                href={item.href}
+                className="group relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl md:aspect-[4/3]"
+              >
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src={item.img} 
+                    alt={item.t}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/20" />
+                </div>
+                <div className="relative z-10 text-center">
+                  <h3 className="font-display text-2xl text-white transition-transform duration-500 group-hover:scale-110 sm:text-3xl md:text-4xl">
+                    {item.t}
+                  </h3>
+                  <div className="mt-2 flex items-center justify-center overflow-hidden">
+                    <span className="h-px w-0 bg-white transition-all duration-500 group-hover:w-12" />
+                  </div>
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------ WORK IN PROGRESS ------------------------------ */
 function WorkInProgress() {
   const t = useT();
+  const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
+
   return (
     <section id="work-in-progress" className="relative py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
@@ -480,7 +551,7 @@ function WorkInProgress() {
                 </div>
               </div>
               
-              <RegisseurCarousel />
+              <RegisseurCarousel onImageClick={(idx) => setFullscreenIdx(idx)} />
               
               <div className="max-w-3xl">
                 <h3 className="font-display text-3xl md:text-5xl mb-4">{p.name}</h3>
@@ -489,33 +560,61 @@ function WorkInProgress() {
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {fullscreenIdx !== null && (
+          <FullscreenGallery 
+            images={regisseurAssets} 
+            initialIdx={fullscreenIdx} 
+            onClose={() => setFullscreenIdx(null)} 
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
 
-function RegisseurCarousel() {
+function RegisseurCarousel({ onImageClick }: { onImageClick: (idx: number) => void }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, clientWidth } = scrollRef.current;
+    const scrollTo = direction === 'left' 
+      ? scrollLeft - clientWidth * 0.7 
+      : scrollLeft + clientWidth * 0.7;
+    
+    scrollRef.current.scrollTo({
+      left: scrollTo,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <div className="relative w-full">
+    <div className="group/carousel relative w-full">
+      {/* Desktop Controls */}
+      <div className="absolute -top-12 right-0 hidden items-center gap-4 md:flex">
+        <button 
+          onClick={() => scroll('left')}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-colors hover:bg-white/10"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <button 
+          onClick={() => scroll('right')}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-colors hover:bg-white/10"
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
+
       <div 
+        ref={scrollRef}
         className="flex gap-4 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory px-[2vw] md:px-0"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {regisseurAssets.map((src, i) => (
-          <motion.div
-            key={src}
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1], delay: i * 0.05 }}
-            className="relative aspect-[16/10] w-[85vw] md:w-[60vw] shrink-0 overflow-hidden rounded-xl snap-center"
-          >
-            <img
-              src={src}
-              alt={`Объект Режиссёр фото ${i + 1}`}
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-            />
-          </motion.div>
+          <RegisseurImage key={src} src={src} index={i} onClick={() => onImageClick(i)} />
         ))}
       </div>
       
@@ -525,6 +624,106 @@ function RegisseurCarousel() {
         </div>
       </div>
     </div>
+  );
+}
+
+function RegisseurImage({ src, index, onClick }: { src: string, index: number, onClick: () => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.0, 1.1]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 60, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: index * 0.05 }}
+      className="relative aspect-[16/10] w-[85vw] md:w-[60vw] shrink-0 cursor-pointer overflow-hidden rounded-xl snap-center"
+      onClick={onClick}
+    >
+      <motion.div style={{ y }} className="absolute inset-0 h-[110%] w-full">
+        <motion.img
+          src={src}
+          alt={`Объект Режиссёр фото ${index + 1}`}
+          loading="lazy"
+          style={{ scale }}
+          className="h-full w-full object-cover transition-transform duration-700 hover:brightness-110"
+        />
+      </motion.div>
+      <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 hover:opacity-100">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
+          <Maximize2 className="text-white" size={20} />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function FullscreenGallery({ images, initialIdx, onClose }: { images: string[], initialIdx: number, onClose: () => void }) {
+  const [idx, setIdx] = useState(initialIdx);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") setIdx((prev) => (prev > 0 ? prev - 1 : prev));
+      if (e.key === "ArrowRight") setIdx((prev) => (prev < images.length - 1 ? prev + 1 : prev));
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [images.length, onClose]);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl"
+    >
+      <button 
+        onClick={onClose}
+        className="absolute right-6 top-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+      >
+        <X size={24} />
+      </button>
+
+      <div className="relative h-full w-full flex items-center justify-center p-4 md:p-20">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={idx}
+            src={images[idx]}
+            initial={{ opacity: 0, scale: 0.9, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            exit={{ opacity: 0, scale: 0.9, x: -20 }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+            className="max-h-full max-w-full object-contain shadow-2xl"
+          />
+        </AnimatePresence>
+
+        {idx > 0 && (
+          <button 
+            onClick={() => setIdx(idx - 1)}
+            className="absolute left-6 top-1/2 -translate-y-1/2 flex h-16 w-16 items-center justify-center rounded-full bg-white/5 text-white transition-colors hover:bg-white/10"
+          >
+            <ChevronLeft size={32} />
+          </button>
+        )}
+
+        {idx < images.length - 1 && (
+          <button 
+            onClick={() => setIdx(idx + 1)}
+            className="absolute right-6 top-1/2 -translate-y-1/2 flex h-16 w-16 items-center justify-center rounded-full bg-white/5 text-white transition-colors hover:bg-white/10"
+          >
+            <ChevronRight size={32} />
+          </button>
+        )}
+      </div>
+
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 font-mono text-sm tracking-widest text-white/50">
+        {idx + 1} / {images.length}
+      </div>
+    </motion.div>
   );
 }
 
@@ -902,6 +1101,46 @@ function Services() {
             <ServiceRow key={s.id} {...s} last={i === services.length - 1} />
           ))}
         </ul>
+
+        <div className="mt-16 flex justify-center">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Magnetic>
+                <button 
+                  className="group relative inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/5 px-8 py-5 text-lg font-medium text-white transition-all hover:bg-white/10"
+                  data-cursor="link"
+                >
+                  <span>{t("services.more.btn")}</span>
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-black transition-transform group-hover:rotate-45">
+                    <Maximize2 size={12} strokeWidth={3} />
+                  </div>
+                </button>
+              </Magnetic>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl border-white/10 bg-[#070707] text-white sm:rounded-3xl">
+              <DialogHeader>
+                <DialogTitle className="font-display text-3xl md:text-5xl">{t("services.modal.title")}</DialogTitle>
+              </DialogHeader>
+              <div className="mt-8 grid gap-6 max-h-[70vh] overflow-y-auto pr-4 scrollbar-hide sm:grid-cols-2">
+                {services.map((s) => (
+                  <div key={s.id} className="group rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-colors hover:border-white/20">
+                    <div className="flex items-start justify-between">
+                      <span className="font-mono text-[10px] tracking-widest text-white/30">{s.n}</span>
+                      <a href={s.href} className="text-white/40 hover:text-white transition-colors">→</a>
+                    </div>
+                    <h4 className="font-display mt-4 text-xl">{s.t.replace(' →', '')}</h4>
+                    <p className="mt-2 text-sm text-[#8F8F8F] leading-relaxed">{s.d}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 flex justify-end">
+                <DialogClose asChild>
+                  <button className="text-xs uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors">Закрыть</button>
+                </DialogClose>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
     </section>
   );
