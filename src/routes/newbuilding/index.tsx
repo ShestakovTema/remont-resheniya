@@ -50,34 +50,65 @@ function NewBuildingPage() {
             <h2 className="text-5xl font-display mb-12">Портфолио работ</h2>
         </Reveal>
         
-        <div className="grid md:grid-cols-2 gap-12">
-            {[1, 2].map((i) => (
-                <div key={i} className="group border border-white/10 p-6 rounded-xl hover:border-white/30 transition-all overflow-hidden bg-white/[0.02]">
-                    <div className="space-y-4 mb-8">
-                        <div className="relative group/img">
-                            <span className="absolute top-4 left-4 z-10 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs uppercase tracking-widest font-bold">До</span>
-                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800" className="rounded-lg w-full h-80 object-cover transition-transform duration-700 group-hover/img:scale-105" alt="До" />
-                        </div>
-                        <div className="relative group/img">
-                            <span className="absolute top-4 left-4 z-10 bg-white text-black px-3 py-1 rounded text-xs uppercase tracking-widest font-bold">После</span>
-                            <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=800" className="rounded-lg w-full h-80 object-cover transition-transform duration-700 group-hover/img:scale-105" alt="После" />
-                        </div>
-                    </div>
-                    <div className="space-y-4">
-                        <h3 className="text-2xl font-bold text-white/90">Квартира в ЖК "Зиларт" №{i}</h3>
-                        <div className="space-y-2">
-                            <p className="text-white/40 text-xs uppercase tracking-widest">Задача (ТЗ):</p>
-                            <p className="text-gray-400">Черновая и чистовая отделка с нуля. Возведение перегородок, разводка инженерии, укладка инженерной доски и покраска стен по дизайн-проекту.</p>
-                        </div>
-                        <div className="flex items-center gap-4 pt-2">
-                            <div className="bg-white/5 px-4 py-2 rounded-full text-sm text-gray-300">
-                                Срок: <span className="text-white font-bold">3 месяца</span>
-                            </div>
-                        </div>
-                    </div>
+        <section className="mb-24 rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-10">
+          <Reveal>
+            <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40">Новостройка</span>
+              <span className="h-px w-8 bg-white/20" />
+              <span className="text-xs uppercase tracking-[0.3em] text-white/30">Сдан · 2024</span>
+            </div>
+            <h3 className="font-display mb-6 text-3xl sm:text-5xl">ЖК «Зиларт» — Инженерные системы</h3>
+          </Reveal>
+
+          <div className="mb-10 grid gap-10 md:grid-cols-2">
+            <Reveal delay={0.1}>
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-3">Задача (ТЗ)</p>
+              <p className="text-gray-400">
+                Комплексная подготовка квартиры под чистовую отделку. Необходимо было выполнить 
+                возведение межкомнатных перегородок из пазогребневых плит, полную разводку 
+                электросети (более 80 точек), монтаж системы водоснабжения с установкой системы 
+                защиты от протечек и качественную штукатурку стен под покраску.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-3">Что сделали</p>
+              <ul className="list-disc list-inside space-y-2 text-gray-400">
+                <li>Монтаж перегородок с соблюдением геометрии углов 90°</li>
+                <li>Прокладка кабелей ГОСТ в гофре, сборка силового щита</li>
+                <li>Разводка труб Rehau, установка инсталляций, фильтров очистки</li>
+                <li>Механизированная штукатурка стен и шпаклевка в 3 слоя</li>
+                <li>Шумоизоляция пола перед заливкой стяжки</li>
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                  Площадь: <span className="font-bold text-white">78 м²</span>
                 </div>
+                <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                  Срок: <span className="font-bold text-white">2,5 месяца</span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800",
+              "https://images.unsplash.com/photo-1505691938895-1758d7eaa511?auto=format&fit=crop&q=80&w=800",
+              "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800"
+            ].map((src, i) => (
+              <Reveal key={src} delay={0.05 * i}>
+                <div className="group relative aspect-[16/10] overflow-hidden rounded-xl">
+                  <img
+                    src={src}
+                    alt={`ЖК Зиларт — фото работ ${i + 1}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </Reveal>
             ))}
-        </div>
+          </div>
+        </section>
         <About />
         <Services />
         <Testimonials />
