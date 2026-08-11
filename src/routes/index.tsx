@@ -484,12 +484,12 @@ function RepairTypeNav() {
   return (
     <section className="relative z-10 py-10 md:py-20">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-6">
           {items.map((item, i) => (
             <Reveal key={item.id} delay={i * 0.1} y={40}>
               <Link
                 to={item.href}
-                className="group relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl md:aspect-[4/3]"
+                className="group relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl lg:aspect-[4/3]"
               >
                 <div className="absolute inset-0 z-0">
                   <img 
@@ -500,7 +500,7 @@ function RepairTypeNav() {
                   <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/20" />
                 </div>
                 <div className="relative z-10 text-center">
-                  <h3 className="font-display text-2xl text-white transition-transform duration-500 group-hover:scale-110 sm:text-3xl md:text-4xl">
+                  <h3 className="font-display px-4 text-2xl text-white transition-transform duration-500 group-hover:scale-110 sm:text-3xl lg:text-4xl">
                     {item.t}
                   </h3>
                   <div className="mt-2 flex items-center justify-center overflow-hidden">
