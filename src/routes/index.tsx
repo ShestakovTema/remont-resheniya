@@ -128,7 +128,7 @@ const UPCOMING_PROJECTS: Project[] = [
     name: "Элитная квартира в ЖК «Режиссёр»",
     category: "Элитный ремонт",
     year: "В работе",
-    image: regisseurAssets[0],
+    image: regisseurAssets[0] || "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200",
     url: "/elite/"
   }
 ];
@@ -526,8 +526,6 @@ function MobileProjectsCarousel() {
             <a
               key={p.name}
               href={p.url}
-              target="_blank"
-              rel="noreferrer"
               className="group relative block shrink-0 overflow-hidden rounded-lg"
               style={{ width: `${slidePercent}%`, marginRight: i < PROJECTS.length - 1 ? gapPx : 0 }}
               onClick={(e) => {
