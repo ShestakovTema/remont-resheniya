@@ -85,6 +85,11 @@ const ru: Dict = {
   "services.commissioning.desc": "Проверка всех систем и запуск оборудования в эксплуатацию.",
   "services.cleaning.title": "Клининг и вывоз мусора",
   "services.cleaning.desc": "Оперативный вывоз строительного мусора и финальная уборка объекта.",
+  "services.more.btn": "Показать подробный перечень работ",
+  "services.modal.title": "Полный перечень услуг",
+  "repairNav.elite": "Элитный ремонт",
+  "repairNav.new": "Новостройки",
+  "repairNav.secondary": "Вторичное жилье",
 
   "process.section": "(05) Процесс",
   "process.h": "Пять шагов к новому дому.",
