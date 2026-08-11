@@ -663,7 +663,7 @@ function RegisseurImage({ src, index, onClick }: { src: string, index: number, o
   );
 }
 
-function FullscreenGallery({ images, initialIdx, onClose }: { images: string[], initialIdx: number, onClose: () => void }) {
+export function FullscreenGallery({ images, initialIdx, onClose }: { images: string[], initialIdx: number, onClose: () => void }) {
   const [idx, setIdx] = useState(initialIdx);
   const [direction, setDirection] = useState(0);
 
