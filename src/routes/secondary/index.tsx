@@ -51,34 +51,65 @@ function SecondaryPage() {
             <h2 className="text-5xl font-display mb-12">Портфолио работ</h2>
         </Reveal>
         
-        <div className="grid md:grid-cols-2 gap-12">
-            {[1, 2].map((i) => (
-                <div key={i} className="group border border-white/10 p-6 rounded-xl hover:border-white/30 transition-all overflow-hidden bg-white/[0.02]">
-                    <div className="space-y-4 mb-8">
-                        <div className="relative group/img">
-                            <span className="absolute top-4 left-4 z-10 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs uppercase tracking-widest font-bold">До</span>
-                            <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=800" className="rounded-lg w-full h-80 object-cover transition-transform duration-700 group-hover/img:scale-105" alt="До" />
-                        </div>
-                        <div className="relative group/img">
-                            <span className="absolute top-4 left-4 z-10 bg-white text-black px-3 py-1 rounded text-xs uppercase tracking-widest font-bold">После</span>
-                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800" className="rounded-lg w-full h-80 object-cover transition-transform duration-700 group-hover/img:scale-105" alt="После" />
-                        </div>
-                    </div>
-                    <div className="space-y-4">
-                        <h3 className="text-2xl font-bold text-white/90">Квартира в старом центре №{i}</h3>
-                        <div className="space-y-2">
-                            <p className="text-white/40 text-xs uppercase tracking-widest">Задача (ТЗ):</p>
-                            <p className="text-gray-400">Полный демонтаж до кирпича. Замена всех деревянных перекрытий, усиление проемов, монтаж новой системы отопления и кондиционирования. Восстановление лепнины.</p>
-                        </div>
-                        <div className="flex items-center gap-4 pt-2">
-                            <div className="bg-white/5 px-4 py-2 rounded-full text-sm text-gray-300">
-                                Срок: <span className="text-white font-bold">5 месяцев</span>
-                            </div>
-                        </div>
-                    </div>
+        <section className="mb-24 rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-10">
+          <Reveal>
+            <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40">Вторичное жилье</span>
+              <span className="h-px w-8 bg-white/20" />
+              <span className="text-xs uppercase tracking-[0.3em] text-white/30">Сдан · 2024</span>
+            </div>
+            <h3 className="font-display mb-6 text-3xl sm:text-5xl">Реновация в сталинском доме</h3>
+          </Reveal>
+
+          <div className="mb-10 grid gap-10 md:grid-cols-2">
+            <Reveal delay={0.1}>
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-3">Задача (ТЗ)</p>
+              <p className="text-gray-400">
+                Капитальный ремонт квартиры в доме 1954 года постройки. Требовался полный демонтаж 
+                старых перегородок и дранки, замена всех коммуникаций, усиление дверных проемов, 
+                монтаж новой системы отопления с заменой радиаторов и подготовка поверхностей 
+                под высококачественную покраску.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-3">Что сделали</p>
+              <ul className="list-disc list-inside space-y-2 text-gray-400">
+                <li>Демонтаж до кирпичного основания, вывоз 40 кубов мусора</li>
+                <li>Замена стояков, разводка труб и монтаж радиаторов Rifar</li>
+                <li>Монтаж электрощита, прокладка новой меди, заземление</li>
+                <li>Выравнивание стен по маякам, армирование сеткой от трещин</li>
+                <li>Подготовка стен под покраску и потолков из ГКЛ</li>
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                  Площадь: <span className="font-bold text-white">92 м²</span>
                 </div>
+                <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                  Срок: <span className="font-bold text-white">4 месяца</span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=800",
+              "https://images.unsplash.com/photo-1534349762230-e0cadf78f5db?auto=format&fit=crop&q=80&w=800",
+              "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=800"
+            ].map((src, i) => (
+              <Reveal key={src} delay={0.05 * i}>
+                <div className="group relative aspect-[16/10] overflow-hidden rounded-xl">
+                  <img
+                    src={src}
+                    alt={`Сталинка — фото работ ${i + 1}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </Reveal>
             ))}
-        </div>
+          </div>
+        </section>
         <About />
         <Services />
         <Testimonials />
