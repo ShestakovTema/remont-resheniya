@@ -441,9 +441,75 @@ function DesktopProjectsList() {
   return (
     <div className="hidden md:flex md:flex-col md:gap-36">
       {PROJECTS.map((p, i) => (
-        <ProjectRow key={p.name} project={p} index={i} />
+        <ProjectRow key={p.name} project={p} index={i} totalCount={PROJECTS.length} />
       ))}
     </div>
+  );
+}
+
+function WorkInProgress() {
+  const t = useT();
+  return (
+    <section id="work-in-progress" className="relative py-20 sm:py-28 md:py-40 border-t border-white/10">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
+        <div className="mb-10 flex flex-col gap-8 sm:mb-16 md:mb-24 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <Reveal className="text-xs uppercase tracking-[0.3em] text-white/60">
+              {t("workInProgress.section")}
+            </Reveal>
+            <h2 className="font-display mt-4 max-w-[12ch] text-5xl sm:text-6xl md:max-w-none md:text-7xl lg:max-w-[16ch] lg:text-8xl">
+              <TextReveal key={`wipa-${t("workInProgress.h.a")}`} text={t("workInProgress.h.a")} />
+              <br />
+              <TextReveal key={`wipb-${t("workInProgress.h.b")}`} text={t("workInProgress.h.b")} delay={0.15} className="italic" />
+            </h2>
+          </div>
+          <Reveal className="max-w-xs text-[#8F8F8F]">
+            {t("workInProgress.desc")}
+          </Reveal>
+        </div>
+
+        <div className="hidden md:flex md:flex-col md:gap-36">
+          {UPCOMING_PROJECTS.map((p, i) => (
+            <ProjectRow key={p.name} project={p} index={i} totalCount={UPCOMING_PROJECTS.length} />
+          ))}
+        </div>
+
+        <div className="md:hidden">
+          <div className="relative overflow-hidden">
+            <div className="flex">
+              {UPCOMING_PROJECTS.map((p, i) => (
+                <div
+                  key={p.name}
+                  className="group relative block shrink-0 overflow-hidden rounded-lg"
+                  style={{ width: `85%`, marginRight: i < UPCOMING_PROJECTS.length - 1 ? 16 : 0 }}
+                >
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
+                      <div className="min-w-0">
+                        <div className="text-[10px] uppercase tracking-[0.3em] text-white/70">
+                          {p.category}
+                        </div>
+                        <div className="font-display mt-1 truncate text-xl">{p.name}</div>
+                      </div>
+                      <div className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-white/70">
+                        {p.year}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
