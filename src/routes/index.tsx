@@ -546,10 +546,11 @@ function WorkInProgress() {
                 <h3 className="font-display text-3xl md:text-5xl mb-4">{p.name}</h3>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                 <div className="text-sm font-medium uppercase tracking-[0.2em] text-white/40">
                   {p.category}
                 </div>
+                <span className="h-px w-8 bg-white/20" />
                 <div className="text-xs uppercase tracking-[0.2em] text-white/30">
                   {p.year}
                 </div>
