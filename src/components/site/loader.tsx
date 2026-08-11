@@ -2,9 +2,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export function IntroLoader() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [count, setCount] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const shown = window.localStorage.getItem("intro_loader_shown");
+    if (!shown) {
+      setShow(true);
+      window.localStorage.setItem("intro_loader_shown", "true");
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

@@ -21,12 +21,15 @@ function ElitePage() {
       <Nav />
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
         <Reveal>
-          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Элитный ремонт</h1>
+          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Элитные объекты</h1>
+          <a href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mb-10 uppercase text-xs tracking-widest group">
+            <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную
+          </a>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
-              Премиальные материалы, авторский надзор и безупречное исполнение. Мы создаем интерьеры, которые подчеркивают ваш статус.
+              Специализированные инженерные решения для премиальных интерьеров. Безупречный электромонтаж, надежная сантехника и идеальная черновая подготовка.
             </p>
           </Reveal>
           <Reveal delay={0.4}>

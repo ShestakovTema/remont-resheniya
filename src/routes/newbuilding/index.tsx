@@ -21,12 +21,15 @@ function NewBuildingPage() {
       <Nav />
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
         <Reveal>
-          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Ремонт новостроек</h1>
+          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Новостройки</h1>
+          <a href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mb-10 uppercase text-xs tracking-widest group">
+            <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную
+          </a>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
-              Профессиональный подход к ремонту в новых домах с учетом усадки и всех технических особенностей современных ЖК.
+              Базовые инженерные работы в новых домах: профессиональный электромонтаж, разводка сантехники и черновая отделка с учетом всех норм.
             </p>
           </Reveal>
           <Reveal delay={0.4}>
