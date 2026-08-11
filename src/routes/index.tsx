@@ -1219,7 +1219,7 @@ function ServiceRow({
       className={`group relative overflow-hidden border-white/10 ${last ? "border-b" : "border-b"}`}
       data-cursor="link"
     >
-      <a href={href} className="block">
+      <Link to={href} className="block">
         <motion.div
           initial={false}
           animate={{ y: hover ? 0 : "100%" }}
@@ -1246,7 +1246,7 @@ function ServiceRow({
             {d}
           </motion.p>
         </div>
-      </a>
+      </Link>
     </li>
   );
 }
