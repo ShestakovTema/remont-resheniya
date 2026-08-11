@@ -87,7 +87,7 @@ function ElitePage() {
             <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2">
               <span className="text-xs uppercase tracking-[0.3em] text-white/40">Элитный ремонт</span>
               <span className="h-px w-8 bg-white/20" />
-              <span className="text-xs uppercase tracking-[0.3em] text-white/30">В работе · 2026</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-white/30">В работе · 2025-2026</span>
             </div>
             <h3 className="font-display mb-6 text-3xl sm:text-5xl">Элитная квартира в ЖК «Режиссёр»</h3>
           </Reveal>
