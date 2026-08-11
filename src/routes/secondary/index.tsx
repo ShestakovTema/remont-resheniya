@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
-import { Footer } from "@/routes/index";
+import { Footer, About, Services, Testimonials, Contact } from "@/routes/index";
 import { LeadForm } from "@/components/site/lead-form";
 import { LangProvider } from "@/lib/i18n";
 
@@ -109,6 +109,10 @@ function SecondaryPage() {
                 </div>
             ))}
         </div>
+        <About />
+        <Services />
+        <Testimonials />
+        <Contact />
       </main>
       <Footer />
     </div>
