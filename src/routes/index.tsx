@@ -542,6 +542,10 @@ function WorkInProgress() {
         <div className="space-y-24">
           {UPCOMING_PROJECTS.map((p, i) => (
             <div key={p.name} className="space-y-8">
+              <div className="max-w-3xl">
+                <h3 className="font-display text-3xl md:text-5xl mb-4">{p.name}</h3>
+              </div>
+
               <div className="flex items-center justify-between">
                 <div className="text-sm font-medium uppercase tracking-[0.2em] text-white/40">
                   {p.category}
@@ -552,10 +556,6 @@ function WorkInProgress() {
               </div>
               
               <RegisseurCarousel onImageClick={(idx) => setFullscreenIdx(idx)} />
-              
-              <div className="max-w-3xl">
-                <h3 className="font-display text-3xl md:text-5xl mb-4">{p.name}</h3>
-              </div>
             </div>
           ))}
         </div>
@@ -663,16 +663,31 @@ function RegisseurImage({ src, index, onClick }: { src: string, index: number, o
 
 function FullscreenGallery({ images, initialIdx, onClose }: { images: string[], initialIdx: number, onClose: () => void }) {
   const [idx, setIdx] = useState(initialIdx);
+  const [direction, setDirection] = useState(0);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft") setIdx((prev) => (prev > 0 ? prev - 1 : prev));
-      if (e.key === "ArrowRight") setIdx((prev) => (prev < images.length - 1 ? prev + 1 : prev));
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [images.length, onClose]);
+
+  const handleNext = () => {
+    if (idx < images.length - 1) {
+      setDirection(1);
+      setIdx(idx + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (idx > 0) {
+      setDirection(-1);
+      setIdx(idx - 1);
+    }
+  };
 
   return (
     <motion.div 
@@ -680,31 +695,40 @@ function FullscreenGallery({ images, initialIdx, onClose }: { images: string[], 
       animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <button 
         onClick={onClose}
-        className="absolute right-6 top-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+        className="absolute right-6 top-6 z-[110] flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
       >
         <X size={24} />
       </button>
 
-      <div className="relative h-full w-full flex items-center justify-center p-4 md:p-20">
-        <AnimatePresence mode="wait">
+      <div 
+        className="relative h-full w-full flex items-center justify-center p-4 md:p-20 pointer-events-none"
+      >
+        <AnimatePresence mode="popLayout" initial={false}>
           <motion.img
             key={idx}
             src={images[idx]}
-            initial={{ opacity: 0, scale: 0.9, x: 20 }}
+            initial={{ opacity: 0, scale: 0.9, x: direction > 0 ? 50 : -50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            exit={{ opacity: 0, scale: 0.9, x: -20 }}
-            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
-            className="max-h-full max-w-full object-contain shadow-2xl"
+            exit={{ opacity: 0, scale: 0.9, x: direction > 0 ? -50 : 50 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="max-h-full max-w-full object-contain shadow-2xl pointer-events-auto"
+            onClick={(e) => e.stopPropagation()}
           />
         </AnimatePresence>
 
         {idx > 0 && (
           <button 
-            onClick={() => setIdx(idx - 1)}
-            className="absolute left-6 top-1/2 -translate-y-1/2 flex h-16 w-16 items-center justify-center rounded-full bg-white/5 text-white transition-colors hover:bg-white/10"
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrev();
+            }}
+            className="absolute left-6 top-1/2 z-[110] -translate-y-1/2 flex h-16 w-16 items-center justify-center rounded-full bg-white/5 text-white transition-colors hover:bg-white/10 pointer-events-auto"
           >
             <ChevronLeft size={32} />
           </button>
@@ -712,8 +736,11 @@ function FullscreenGallery({ images, initialIdx, onClose }: { images: string[], 
 
         {idx < images.length - 1 && (
           <button 
-            onClick={() => setIdx(idx + 1)}
-            className="absolute right-6 top-1/2 -translate-y-1/2 flex h-16 w-16 items-center justify-center rounded-full bg-white/5 text-white transition-colors hover:bg-white/10"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNext();
+            }}
+            className="absolute right-6 top-1/2 z-[110] -translate-y-1/2 flex h-16 w-16 items-center justify-center rounded-full bg-white/5 text-white transition-colors hover:bg-white/10 pointer-events-auto"
           >
             <ChevronRight size={32} />
           </button>
@@ -1117,11 +1144,18 @@ function Services() {
                 </button>
               </Magnetic>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl border-white/10 bg-[#070707] text-white sm:rounded-3xl">
+            <DialogContent 
+              className="max-w-4xl border-white/10 bg-[#070707] text-white sm:rounded-3xl"
+              onPointerDownOutside={(e) => e.preventDefault()}
+              onInteractOutside={(e) => e.preventDefault()}
+            >
               <DialogHeader>
                 <DialogTitle className="font-display text-3xl md:text-5xl">{t("services.modal.title")}</DialogTitle>
               </DialogHeader>
-              <div className="mt-8 grid gap-6 max-h-[70vh] overflow-y-auto pr-4 scrollbar-hide sm:grid-cols-2">
+              <div 
+                className="mt-8 grid gap-6 max-h-[70vh] overflow-y-auto pr-4 sm:grid-cols-2"
+                style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.1) transparent' }}
+              >
                 {services.map((s) => (
                   <div key={s.id} className="group rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-colors hover:border-white/20">
                     <div className="flex items-start justify-between">
@@ -1130,6 +1164,22 @@ function Services() {
                     </div>
                     <h4 className="font-display mt-4 text-xl">{s.t.replace(' →', '')}</h4>
                     <p className="mt-2 text-sm text-[#8F8F8F] leading-relaxed">{s.d}</p>
+                    
+                    {/* Detailed sub-services list if available */}
+                    {s.id === "electro" && t("services.electro.list") !== "services.electro.list" && (
+                      <div className="mt-4 border-t border-white/5 pt-4">
+                        <div className="whitespace-pre-line text-[11px] leading-relaxed text-[#8F8F8F]/80">
+                          {t("services.electro.list")}
+                        </div>
+                      </div>
+                    )}
+                    {s.id === "heating" && t("services.heating.list") !== "services.heating.list" && (
+                      <div className="mt-4 border-t border-white/5 pt-4">
+                        <div className="whitespace-pre-line text-[11px] leading-relaxed text-[#8F8F8F]/80">
+                          {t("services.heating.list")}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
