@@ -546,7 +546,7 @@ function WorkInProgress() {
                 <h3 className="font-display text-3xl md:text-5xl mb-4">{p.name}</h3>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pb-6">
                 <div className="text-sm font-medium uppercase tracking-[0.2em] text-white/40">
                   {p.category}
                 </div>
