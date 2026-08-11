@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Copy, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
@@ -486,8 +486,8 @@ function RepairTypeNav() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
           {items.map((item, i) => (
             <Reveal key={item.id} delay={i * 0.1} y={40}>
-              <a 
-                href={item.href}
+              <Link
+                to={item.href}
                 className="group relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl md:aspect-[4/3]"
               >
                 <div className="absolute inset-0 z-0">
@@ -506,7 +506,7 @@ function RepairTypeNav() {
                     <span className="h-px w-0 bg-white transition-all duration-500 group-hover:w-12" />
                   </div>
                 </div>
-              </a>
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -832,9 +832,9 @@ function MobileProjectsCarousel() {
       >
         <div className="flex" style={translateStyle}>
           {PROJECTS.map((p, i) => (
-            <a
+            <Link
               key={p.name}
-              href={p.url}
+              to={p.url}
               className="group relative block shrink-0 overflow-hidden rounded-lg"
               style={{ width: `${slidePercent}%`, marginRight: i < PROJECTS.length - 1 ? gapPx : 0 }}
               onClick={(e) => {
