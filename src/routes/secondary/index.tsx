@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
 import { Footer } from "@/routes/index";
@@ -22,14 +22,14 @@ function SecondaryPage() {
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
         <Reveal>
           <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Вторичное жилье</h1>
-          <a href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mb-10 uppercase text-xs tracking-widest group">
+          <Link to="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mb-10 uppercase text-xs tracking-widest group">
             <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную
-          </a>
+          </Link>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
-              Капитальное обновление инженерных сетей: полная замена электрики и сантехники, демонтаж и качественные черновые работы в старом фонде.
+              Капитальное обновление инженерных сетей: полная замена электрики и сантехники, демонтаж, черновые работы и отделка под покраску в старом фонде. Мебель и потолки — через проверенных партнёров.
             </p>
           </Reveal>
           <Reveal delay={0.4}>

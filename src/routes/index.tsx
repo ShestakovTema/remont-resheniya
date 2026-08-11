@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Copy, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
@@ -486,8 +486,8 @@ function RepairTypeNav() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
           {items.map((item, i) => (
             <Reveal key={item.id} delay={i * 0.1} y={40}>
-              <a 
-                href={item.href}
+              <Link
+                to={item.href}
                 className="group relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl md:aspect-[4/3]"
               >
                 <div className="absolute inset-0 z-0">
@@ -506,7 +506,7 @@ function RepairTypeNav() {
                     <span className="h-px w-0 bg-white transition-all duration-500 group-hover:w-12" />
                   </div>
                 </div>
-              </a>
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -546,10 +546,11 @@ function WorkInProgress() {
                 <h3 className="font-display text-3xl md:text-5xl mb-4">{p.name}</h3>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                 <div className="text-sm font-medium uppercase tracking-[0.2em] text-white/40">
                   {p.category}
                 </div>
+                <span className="h-px w-8 bg-white/20" />
                 <div className="text-xs uppercase tracking-[0.2em] text-white/30">
                   {p.year}
                 </div>
@@ -593,7 +594,7 @@ function RegisseurCarousel({ onImageClick }: { onImageClick: (idx: number) => vo
   return (
     <div className="group/carousel relative w-full">
       {/* Desktop Controls */}
-      <div className="absolute -top-12 right-0 hidden items-center gap-4 md:flex">
+      <div className="mb-4 hidden items-center justify-end gap-4 md:flex">
         <button 
           onClick={() => scroll('left')}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
@@ -831,9 +832,9 @@ function MobileProjectsCarousel() {
       >
         <div className="flex" style={translateStyle}>
           {PROJECTS.map((p, i) => (
-            <a
+            <Link
               key={p.name}
-              href={p.url}
+              to={p.url}
               className="group relative block shrink-0 overflow-hidden rounded-lg"
               style={{ width: `${slidePercent}%`, marginRight: i < PROJECTS.length - 1 ? gapPx : 0 }}
               onClick={(e) => {
@@ -863,7 +864,7 @@ function MobileProjectsCarousel() {
               <div className="absolute left-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] font-mono tracking-widest text-white/80">
                 {String(i + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -1161,7 +1162,7 @@ function Services() {
                   <div key={s.id} className="group rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-colors hover:border-white/20">
                     <div className="flex items-start justify-between">
                       <span className="font-mono text-[10px] tracking-widest text-white/30">{s.n}</span>
-                      <a href={s.href} className="text-white/40 hover:text-white transition-colors">→</a>
+                      <Link to={s.href} className="text-white/40 hover:text-white transition-colors">→</Link>
                     </div>
                     <h4 className="font-display mt-4 text-xl">{s.t.replace(' →', '')}</h4>
                     <p className="mt-2 text-sm text-[#8F8F8F] leading-relaxed">{s.d}</p>
@@ -1218,7 +1219,7 @@ function ServiceRow({
       className={`group relative overflow-hidden border-white/10 ${last ? "border-b" : "border-b"}`}
       data-cursor="link"
     >
-      <a href={href} className="block">
+      <Link to={href} className="block">
         <motion.div
           initial={false}
           animate={{ y: hover ? 0 : "100%" }}
@@ -1245,7 +1246,7 @@ function ServiceRow({
             {d}
           </motion.p>
         </div>
-      </a>
+      </Link>
     </li>
   );
 }
