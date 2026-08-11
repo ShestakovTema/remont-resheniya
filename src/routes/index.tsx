@@ -1162,7 +1162,7 @@ function Services() {
                   <div key={s.id} className="group rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-colors hover:border-white/20">
                     <div className="flex items-start justify-between">
                       <span className="font-mono text-[10px] tracking-widest text-white/30">{s.n}</span>
-                      <a href={s.href} className="text-white/40 hover:text-white transition-colors">→</a>
+                      <Link to={s.href} className="text-white/40 hover:text-white transition-colors">→</Link>
                     </div>
                     <h4 className="font-display mt-4 text-xl">{s.t.replace(' →', '')}</h4>
                     <p className="mt-2 text-sm text-[#8F8F8F] leading-relaxed">{s.d}</p>
