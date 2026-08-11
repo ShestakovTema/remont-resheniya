@@ -594,7 +594,7 @@ function RegisseurCarousel({ onImageClick }: { onImageClick: (idx: number) => vo
   return (
     <div className="group/carousel relative w-full">
       {/* Desktop Controls */}
-      <div className="absolute -top-12 right-0 hidden items-center gap-4 md:flex">
+      <div className="mb-4 hidden items-center justify-end gap-4 md:flex">
         <button 
           onClick={() => scroll('left')}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
