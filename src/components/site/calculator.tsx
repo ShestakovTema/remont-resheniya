@@ -37,7 +37,9 @@ export function CostCalculator() {
         </div>
         <div className="text-center pt-4">
           <p className="text-gray-400">Ориентировочная стоимость:</p>
-          <p className="text-3xl font-bold">{range.min.toLocaleString()} - {range.max.toLocaleString()} тыс. руб.</p>
+          <p className="text-3xl font-bold">
+            {new Intl.NumberFormat("ru-RU").format(range.min).replace(/\s/g, '\u00A0')} - {new Intl.NumberFormat("ru-RU").format(range.max).replace(/\s/g, '\u00A0')} тыс. руб.
+          </p>
         </div>
       </div>
     </div>
