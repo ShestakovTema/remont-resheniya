@@ -18,13 +18,13 @@ export function LeadForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-sm mx-auto">
+    <form onSubmit={handleSubmit} className="w-full space-y-5 md:space-y-6">
       <Input
         placeholder="Ваше имя"
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         required
-        className="bg-[#141414] border-white/10 text-white"
+        className="h-14 bg-[#141414] border-white/10 text-lg text-white md:h-16 md:text-xl"
       />
       <Input
         placeholder="Ваш телефон"
@@ -32,9 +32,9 @@ export function LeadForm() {
         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
         required
         type="tel"
-        className="bg-[#141414] border-white/10 text-white"
+        className="h-14 bg-[#141414] border-white/10 text-lg text-white md:h-16 md:text-xl"
       />
-      <Button disabled={isSubmitting} className="w-full bg-white text-black rounded-full hover:scale-105 transition-transform">
+      <Button disabled={isSubmitting} className="h-14 w-full bg-white text-lg font-bold text-black rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all md:h-16 md:text-xl">
         {isSubmitting ? "Отправка..." : "Оставить заявку"}
       </Button>
     </form>
