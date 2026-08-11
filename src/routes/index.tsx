@@ -12,6 +12,7 @@ import { Reveal, TextReveal } from "@/components/site/reveal";
 import { Magnetic } from "@/components/site/magnetic";
 import { LeadForm } from "@/components/site/lead-form";
 import { CostCalculator } from "@/components/site/calculator";
+import { regisseurAssets } from "@/lib/regisseur-assets";
 
 /* ------------------------------ SITE-WIDE AURORA ------------------------------ */
 function SiteAurora() {
@@ -122,6 +123,16 @@ const PROJECTS: Project[] = [
   { name: "Вилла в Подмосковье", category: "Загородный дом", year: "2025", image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
 ];
 
+const UPCOMING_PROJECTS: Project[] = [
+  {
+    name: "Элитная квартира в ЖК «Режиссёр»",
+    category: "Элитный ремонт",
+    year: "В работе",
+    image: regisseurAssets[0],
+    url: "/elite/"
+  }
+];
+
 function Index() {
   const footerRef = useRef<HTMLDivElement | null>(null);
   const [footerHeight, setFooterHeight] = useState(0);
@@ -172,6 +183,7 @@ function Index() {
           <Hero />
           <Marquee />
           <FeaturedWork />
+          <WorkInProgress />
           <About />
           <Services />
           <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-20">
@@ -565,7 +577,7 @@ function MobileProjectsCarousel() {
   );
 }
 
-function ProjectRow({ project, index }: { project: Project; index: number }) {
+function ProjectRow({ project, index, totalCount }: { project: Project; index: number; totalCount: number }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
@@ -645,7 +657,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
         className="col-span-12 flex flex-col gap-2 md:col-span-3 md:[direction:ltr]"
       >
         <div className="text-xs uppercase tracking-[0.3em] text-white/50">
-          {String(index + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
+          {String(index + 1).padStart(2, "0")} / {String(totalCount).padStart(2, "0")}
         </div>
         <div className="font-display text-2xl">{project.name}</div>
         <div className="text-sm text-[#8F8F8F]">{project.category}</div>
