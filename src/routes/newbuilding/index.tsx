@@ -45,36 +45,6 @@ function NewBuildingPage() {
           </Reveal>
         </div>
 
-        {/* Action Buttons Section */}
-        <div className="flex flex-col items-center gap-8 mb-32 max-w-4xl mx-auto">
-          <Reveal delay={0.5} className="w-full">
-            <div className="mx-auto flex w-full flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10 text-center">
-              <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-                Позвоните нам
-              </span>
-              <a
-                href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
-                className="group inline-flex items-center justify-center gap-4 text-3xl font-medium text-white transition-colors hover:text-white/70 sm:text-4xl md:text-5xl lg:text-6xl"
-              >
-                <span data-cursor="link">{PHONE_NUMBER}</span>
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">
-                  →
-                </span>
-              </a>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.55} className="text-sm font-medium uppercase tracking-[0.2em] text-white/30">
-            ИЛИ
-          </Reveal>
-
-          <Reveal delay={0.6} className="w-full">
-            <div className="mx-auto flex w-full flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10 text-left">
-              <h3 className="text-xl font-bold mb-4 text-center">Оставить заявку</h3>
-              <LeadForm />
-            </div>
-          </Reveal>
-        </div>
 
         <Reveal>
             <h2 className="text-5xl font-display mb-12">Портфолио работ</h2>
