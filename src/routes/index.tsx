@@ -182,8 +182,8 @@ function Index() {
         <div className="relative z-10">
           <Hero />
           <Marquee />
-          <FeaturedWork />
           <WorkInProgress />
+          <FeaturedWork />
           <About />
           <Services />
           <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-20">
