@@ -252,7 +252,7 @@ function Hero() {
           <br />
           <TextReveal key={`h1b-${t("hero.h1.b")}`} text={t("hero.h1.b")} as="span" delay={0.2} />
           <br />
-          {t("hero.h1.c") && <TextReveal key={`h1c-${t("hero.h1.c")}`} text={t("hero.h1.c")} as="span" delay={0.4} className="italic" />}
+          {t("hero.h1.c") && t("hero.h1.c") !== "hero.h1.c" && <TextReveal key={`h1c-${t("hero.h1.c")}`} text={t("hero.h1.c")} as="span" delay={0.4} className="italic" />}
         </h1>
 
         <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
