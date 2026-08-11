@@ -974,7 +974,7 @@ function ProjectRow({ project, index, totalCount }: { project: Project; index: n
 }
 
 /* ------------------------------ ABOUT ------------------------------ */
-function About() {
+export function About() {
   const t = useT();
   const stats = [
     { k: "15+", v: t("about.stat.1") },
@@ -1085,7 +1085,7 @@ function Stat({ value }: { value: string }) {
 }
 
 /* ------------------------------ SERVICES ------------------------------ */
-function Services() {
+export function Services() {
   const t = useT();
   const services = [
     { id: "elite", n: "01", t: t("services.elite.title"), d: t("services.elite.desc"), href: "/elite" },
@@ -1146,7 +1146,7 @@ function Services() {
               </Magnetic>
             </DialogTrigger>
             <DialogContent 
-              className="max-w-4xl border-white/10 bg-[#070707] text-white sm:rounded-3xl mt-10 md:mt-20"
+              className="max-w-4xl border-white/10 bg-[#070707] text-white sm:rounded-3xl mt-10 md:mt-20 pointer-events-auto"
               onPointerDownOutside={(e) => {
                 // If the target is the overlay, we close. Radix manages this via Dialog.
               }}
@@ -1253,7 +1253,7 @@ function ServiceRow({
 
 
 /* ------------------------------ TESTIMONIALS ------------------------------ */
-function Testimonials() {
+export function Testimonials() {
   const t = useT();
   const QUOTES = [
     { q: t("test.1.q"), a: "Алексей И.", r: "Элитный ремонт в Хамовниках" },
@@ -1469,7 +1469,7 @@ function EmailAction({ email, href }: { email: string; href: string }) {
   );
 }
 
-function Contact() {
+export function Contact() {
   const t = useT();
   return (
     <section id="contact" className="relative overflow-hidden border-t border-white/10 py-20 sm:py-28 md:py-44">
