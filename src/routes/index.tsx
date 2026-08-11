@@ -864,7 +864,7 @@ function MobileProjectsCarousel() {
               <div className="absolute left-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] font-mono tracking-widest text-white/80">
                 {String(i + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
