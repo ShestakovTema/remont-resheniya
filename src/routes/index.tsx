@@ -266,9 +266,13 @@ function Index() {
           <RepairTypeNav />
           <WorkInProgress />
           <FeaturedWork />
-          <About />
-          <Services id="services" />
-          <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-20">
+          <div id="about" className="pt-24">
+            <About />
+          </div>
+          <div id="services">
+            <Services />
+          </div>
+          <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-12">
             <CostCalculator />
           </div>
           <ProcessPhotos />
@@ -1058,7 +1062,7 @@ export function About() {
     { k: "3", v: t("about.stat.4") },
   ];
   return (
-    <section id="about" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
+    <section className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="grid grid-cols-12 gap-8">
           <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">
@@ -1194,7 +1198,7 @@ export function Services({ id }: { id?: string }) {
 
 
   return (
-    <section id={id || "services"} className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
+    <section id={id} className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="mb-16 grid grid-cols-12 gap-8">
           <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">

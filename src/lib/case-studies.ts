@@ -211,10 +211,21 @@ import e7 from "@/assets/process/electro/7.png.asset.json";
 import e8 from "@/assets/process/electro/8.png.asset.json";
 import e9 from "@/assets/process/electro/9.png.asset.json";
 import e10 from "@/assets/process/electro/10.png.asset.json";
+import e11 from "@/assets/process/electro/11.png.asset.json";
+import e12 from "@/assets/process/electro/12.png.asset.json";
+import e13 from "@/assets/process/electro/13.png.asset.json";
+import e14 from "@/assets/process/electro/14.png.asset.json";
+import e15 from "@/assets/process/electro/15.png.asset.json";
+import e16 from "@/assets/process/electro/16.png.asset.json";
+import e17 from "@/assets/process/electro/17.png.asset.json";
+import e18 from "@/assets/process/electro/18.png.asset.json";
+import e19 from "@/assets/process/electro/19.png.asset.json";
+import e20 from "@/assets/process/electro/20.png.asset.json";
 
 export const processPhotos = {
   electro: [
-    e1.url, e2.url, e3.url, e4.url, e5.url, e6.url, e7.url, e8.url, e9.url, e10.url
+    e1.url, e2.url, e3.url, e4.url, e5.url, e6.url, e7.url, e8.url, e9.url, e10.url,
+    e11.url, e12.url, e13.url, e14.url, e15.url, e16.url, e17.url, e18.url, e19.url, e20.url
   ],
   plumbing: [
     "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",

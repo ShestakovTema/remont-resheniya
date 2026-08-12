@@ -53,7 +53,7 @@ export function Nav() {
 
           <nav className="hidden items-center gap-1 lg:flex">
             {LINKS.map((l) => {
-              const href = l.href;
+              const href = (location.pathname !== "/" && l.href === "#about") ? "/#about" : l.href;
               
               return (
                 <Magnetic
