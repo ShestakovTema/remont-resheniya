@@ -35,11 +35,21 @@ export function CostCalculator() {
           <label className="text-sm text-gray-400 mb-2 block">Площадь: {meters} м²</label>
           <Slider value={[meters]} onValueChange={(v) => v[0] !== undefined && setMeters(v[0])} min={20} max={200} />
         </div>
-        <div className="text-center pt-4">
+        <div className="text-center pt-4 flex flex-col items-center">
           <p className="text-gray-400">Ориентировочная стоимость от:</p>
-          <p className="text-3xl font-bold">
+          <p className="text-3xl font-bold mb-1">
             от {new Intl.NumberFormat("ru-RU").format(range.min).replace(/\s/g, '\u00A0')} тыс. руб.
           </p>
+          <p className="text-[10px] text-white/40 mb-4 uppercase tracking-wider">
+            Стоимость может сильно варьироваться
+          </p>
+          <Button 
+            variant="outline" 
+            className="border-white/20 hover:bg-white/10"
+            asChild
+          >
+            <a href="#contact">Узнать точную стоимость</a>
+          </Button>
         </div>
       </div>
     </div>
