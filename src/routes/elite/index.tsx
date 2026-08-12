@@ -29,14 +29,14 @@ function ElitePage() {
       <Nav />
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
         <Reveal>
-          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Современные ремонты</h1>
+          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Современные объекты</h1>
           <Link to="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mb-10 uppercase text-xs tracking-widest group">
             <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную</Link>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
-              Наш профиль в премиальных объектах — электромонтаж, сантехника, черновые работы и отделка под покраску. Полный ремонт «под ключ» мы не делаем, но мебель и потолки организуем через проверенных партнёров.
+              Наш профиль в современных объектах — электромонтаж, сантехника, перепланировка квартир и отделка под покраску. Полный ремонт «под ключ» мы не делаем, но мебель и потолки организуем через проверенных партнёров.
             </p>
           </Reveal>
           <Reveal delay={0.4}>
@@ -62,11 +62,11 @@ function ElitePage() {
         <section className="mb-24 rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-10">
           <Reveal>
             <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/40">Элитный ремонт</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40">Современный ремонт</span>
               <span className="h-px w-8 bg-white/20" />
               <span className="text-xs uppercase tracking-[0.3em] text-white/30">В работе · 2025-2026</span>
             </div>
-            <h3 className="font-display mb-6 text-3xl sm:text-5xl">ЖК Режиссер 105 квадратных метров</h3>
+            <h3 className="font-display mb-6 text-3xl sm:text-5xl">ЖК «Режиссёр», 105 м²</h3>
           </Reveal>
 
           <div className="mb-10 grid gap-10 md:grid-cols-2">

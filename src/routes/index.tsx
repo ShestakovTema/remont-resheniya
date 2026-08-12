@@ -99,42 +99,42 @@ type Project = {
 
 const PROJECTS: Project[] = [
   { 
-    name: "Элитная квартира на Тверской", 
-    category: "Элитный ремонт", 
+    name: "Современная квартира на Тверской", 
+    category: "Электрика и сантехника", 
     year: "2025", 
     image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", 
     beforeImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200",
     url: "/elite/" 
   },
-  { name: "ЖК 'Премиум Парк'", category: "Новостройка", year: "2025", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
+  { name: "ЖК 'Премиум Парк'", category: "Сделана перепланировка", year: "2025", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { 
     name: "Лофт в старом центре", 
-    category: "Ремонт вторички", 
+    category: "Сантехника и демонтаж", 
     year: "2024", 
     image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200", 
     beforeImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200",
     url: "/secondary/" 
   },
-  { name: "Пентхаус с видом на Сити", category: "Элитный ремонт", year: "2024", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
-  { name: "Семейная квартира в Хамовниках", category: "Новостройка", year: "2024", image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
-  { name: "Апартаменты в Москва-Сити", category: "Элитный ремонт", year: "2023", image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Пентхаус с видом на Сити", category: "Полная электрика", year: "2024", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Семейная квартира в Хамовниках", category: "Перепланировка и инженерия", year: "2024", image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
+  { name: "Апартаменты в Хамовниках", category: "Электрика и перепланировка", year: "2023", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
   { 
-    name: "Дизайнерский ремонт на Арбате", 
-    category: "Вторичное жилье", 
+    name: "Современный ремонт на Арбате", 
+    category: "Замена коммуникаций", 
     year: "2025", 
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200", 
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1200", 
     beforeImage: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200",
     url: "/secondary/" 
   },
-  { name: "Квартира-студия в ЖК 'Зиларт'", category: "Новостройка", year: "2024", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
-  { name: "Реновация квартиры 1985г.", category: "Ремонт вторички", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
-  { name: "Вилла в Подмосковье", category: "Загородный дом", year: "2025", image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Квартира-студия в ЖК 'Зиларт'", category: "Монтаж инженерии", year: "2024", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
+  { name: "Реновация квартиры 1985г.", category: "Сделана перепланировка", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
+  { name: "Вилла в Подмосковье", category: "Инженерные системы", year: "2025", image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
 ];
 
 const UPCOMING_PROJECTS: Project[] = [
   {
-    name: "ЖК Режиссер 105 квадратных метров",
-    category: "Элитный ремонт",
+    name: "ЖК «Режиссёр», 105 м²",
+    category: "Современный ремонт",
     year: "В работе",
     image: regisseurAssets[0] || "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200",
     url: "/elite/"
