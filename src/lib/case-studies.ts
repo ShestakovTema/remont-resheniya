@@ -227,11 +227,23 @@ export const processPhotos = {
     e1.url, e2.url, e3.url, e4.url, e5.url, e6.url, e7.url, e8.url, e9.url, e10.url,
     e11.url, e12.url, e13.url, e14.url, e15.url, e16.url, e17.url, e18.url, e19.url, e20.url
   ],
+import p1 from "@/assets/process/plumbing/p1.png.asset.json";
+import p2 from "@/assets/process/plumbing/p2.png.asset.json";
+import p3 from "@/assets/process/plumbing/p3.png.asset.json";
+import p4 from "@/assets/process/plumbing/p4.png.asset.json";
+import p5 from "@/assets/process/plumbing/p5.png.asset.json";
+import p6 from "@/assets/process/plumbing/p6.png.asset.json";
+import p7 from "@/assets/process/plumbing/p7.png.asset.json";
+import p8 from "@/assets/process/plumbing/p8.png.asset.json";
+import p9 from "@/assets/process/plumbing/p9.png.asset.json";
+import p10 from "@/assets/process/plumbing/p10.png.asset.json";
+
+export const processPhotos = {
+  electro: [
+    e1.url, e2.url, e3.url, e4.url, e5.url, e6.url, e7.url, e8.url, e9.url, e10.url,
+    e11.url, e12.url, e13.url, e14.url, e15.url, e16.url, e17.url, e18.url, e19.url, e20.url
+  ],
   plumbing: [
-    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1607400201585-545b73e56130?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1517646281502-74c1a9a7a84b?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1620626011761-9963d7521477?auto=format&fit=crop&q=80&w=800"
+    p1.url, p2.url, p3.url, p4.url, p5.url, p6.url, p7.url, p8.url, p9.url, p10.url
   ]
 };
