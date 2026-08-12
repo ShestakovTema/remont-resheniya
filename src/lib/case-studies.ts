@@ -201,13 +201,20 @@ export const secondaryCaseStudies = [
   }
 ];
 
+import e1 from "@/assets/process/electro/1.png.asset.json";
+import e2 from "@/assets/process/electro/2.png.asset.json";
+import e3 from "@/assets/process/electro/3.png.asset.json";
+import e4 from "@/assets/process/electro/4.png.asset.json";
+import e5 from "@/assets/process/electro/5.png.asset.json";
+import e6 from "@/assets/process/electro/6.png.asset.json";
+import e7 from "@/assets/process/electro/7.png.asset.json";
+import e8 from "@/assets/process/electro/8.png.asset.json";
+import e9 from "@/assets/process/electro/9.png.asset.json";
+import e10 from "@/assets/process/electro/10.png.asset.json";
+
 export const processPhotos = {
   electro: [
-    "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1558438192-35bf3fd184c5?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1565608438257-fac3c27beb36?auto=format&fit=crop&q=80&w=800"
+    e1.url, e2.url, e3.url, e4.url, e5.url, e6.url, e7.url, e8.url, e9.url, e10.url
   ],
   plumbing: [
     "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
