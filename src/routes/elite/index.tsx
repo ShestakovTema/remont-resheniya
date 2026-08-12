@@ -155,8 +155,8 @@ function ElitePage() {
                     <div className="space-y-4">
                         <h3 className="text-2xl font-bold text-white/90">Объект в Хамовниках №{i}</h3>
                         <div className="space-y-2">
-                            <p className="text-white/40 text-xs uppercase tracking-widest">Задача (ТЗ):</p>
-                            <p className="text-gray-400">Создание интерьера в классическом стиле с использованием натурального мрамора и ценных пород дерева. Полная звукоизоляция и система "Умный дом".</p>
+                            <p className="text-white/40 text-xs uppercase tracking-widest">Работы:</p>
+                            <p className="text-gray-400">Полный электромонтаж, разводка труб водоснабжения и отопления, перепланировка и подготовка стен под покраску.</p>
                         </div>
                         <div className="flex items-center gap-4 pt-2">
                             <div className="bg-white/5 px-4 py-2 rounded-full text-sm text-gray-300">
