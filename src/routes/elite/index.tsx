@@ -136,9 +136,13 @@ function ElitePage() {
           )}
         </AnimatePresence>
 
-        <About />
+        <Reveal id="about" className="pt-20">
+          <About />
+        </Reveal>
+        <Reveal id="services">
+          <Services />
+        </Reveal>
         <ProcessPhotos />
-        <Services />
         <Testimonials />
         <Contact />
       </main>
