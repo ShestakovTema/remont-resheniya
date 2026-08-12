@@ -221,12 +221,6 @@ import e17 from "@/assets/process/electro/17.png.asset.json";
 import e18 from "@/assets/process/electro/18.png.asset.json";
 import e19 from "@/assets/process/electro/19.png.asset.json";
 import e20 from "@/assets/process/electro/20.png.asset.json";
-
-export const processPhotos = {
-  electro: [
-    e1.url, e2.url, e3.url, e4.url, e5.url, e6.url, e7.url, e8.url, e9.url, e10.url,
-    e11.url, e12.url, e13.url, e14.url, e15.url, e16.url, e17.url, e18.url, e19.url, e20.url
-  ],
 import p1 from "@/assets/process/plumbing/p1.png.asset.json";
 import p2 from "@/assets/process/plumbing/p2.png.asset.json";
 import p3 from "@/assets/process/plumbing/p3.png.asset.json";
