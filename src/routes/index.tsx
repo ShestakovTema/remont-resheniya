@@ -1072,28 +1072,27 @@ export function About() {
               <br />
               <TextReveal key={`ac-${t("about.h.c")}`} text={t("about.h.c")} delay={0.25} className="italic" />
             </h2>
-            <div className="mt-14 grid gap-14 lg:grid-cols-2">
-              <div className="space-y-8 md:space-y-12">
+            <div className="mt-14 space-y-12">
+              <div className="grid gap-14 lg:grid-cols-2">
                 <Reveal className="text-lg leading-relaxed text-[#8F8F8F] sm:text-xl">
                   {t("about.p1")}
                 </Reveal>
-
-                <Reveal delay={0.2}>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
-                    <div className="mb-4 flex items-center gap-3">
-                      <div className="h-px w-8 bg-white/40" />
-                      <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Профессиональный инструмент</span>
-                    </div>
-                    <p className="text-lg font-medium leading-relaxed text-white md:text-xl">
-                      {t("about.tools")}
-                    </p>
-                  </div>
-                </Reveal>
-
                 <Reveal delay={0.4} className="text-lg leading-relaxed text-[#8F8F8F] sm:text-xl">
                   {t("about.p2")}
                 </Reveal>
               </div>
+
+              <Reveal delay={0.2}>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="h-px w-8 bg-white/40" />
+                    <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Профессиональный инструмент</span>
+                  </div>
+                  <p className="text-lg font-medium leading-relaxed text-white md:text-2xl">
+                    {t("about.tools")}
+                  </p>
+                </div>
+              </Reveal>
             </div>
           </div>
         </div>
