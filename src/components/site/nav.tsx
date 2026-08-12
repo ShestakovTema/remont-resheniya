@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "@tanstack/react-router";
 import { Globe } from "lucide-react";
 import { Magnetic } from "./magnetic";
 import { useLang, useT } from "@/lib/i18n";
@@ -21,6 +22,7 @@ const LINKS = [
 ];
 
 export function Nav() {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const [cta, setCta] = useState<"idle" | "in" | "out">("idle");
   const ctaAnim =
@@ -50,17 +52,22 @@ export function Nav() {
           </Magnetic>
 
           <nav className="hidden items-center gap-1 lg:flex">
-            {LINKS.map((l) => (
-              <Magnetic
-                key={l.href}
-                as="a"
-                href={l.href}
-                strength={14}
-                className="group relative px-4 py-2 text-sm text-white/70 transition-colors hover:text-white"
-              >
-                <span data-cursor="link">{t(l.key)}</span>
-              </Magnetic>
-            ))}
+            {LINKS.map((l) => {
+              const isHomePage = location.pathname === "/";
+              const href = isHomePage ? l.href : `/${l.href}`;
+              
+              return (
+                <Magnetic
+                  key={l.href}
+                  as="a"
+                  href={href}
+                  strength={14}
+                  className="group relative px-4 py-2 text-sm text-white/70 transition-colors hover:text-white"
+                >
+                  <span data-cursor="link">{t(l.key)}</span>
+                </Magnetic>
+              );
+            })}
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
@@ -109,17 +116,21 @@ export function Nav() {
             className="fixed inset-x-0 top-16 z-[75] border-b border-white/10 bg-[#070707]/95 backdrop-blur-md lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 py-6">
-              {LINKS.map((l) => (
-                <li key={l.href}>
-                  <a
-                    onClick={() => setOpen(false)}
-                    href={l.href}
-                    className="font-display block py-3 text-4xl text-white"
-                  >
-                    {t(l.key)}
-                  </a>
-                </li>
-              ))}
+              {LINKS.map((l) => {
+                const isHomePage = location.pathname === "/";
+                const href = isHomePage ? l.href : `/${l.href}`;
+                return (
+                  <li key={l.href}>
+                    <a
+                      onClick={() => setOpen(false)}
+                      href={href}
+                      className="font-display block py-3 text-4xl text-white"
+                    >
+                      {t(l.key)}
+                    </a>
+                  </li>
+                );
+              })}
               {/* Language switcher removed */}
             </ul>
           </motion.div>

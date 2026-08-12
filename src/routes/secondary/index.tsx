@@ -26,7 +26,7 @@ function SecondaryPage() {
   };
 
   return (
-    <div className="bg-[#070707] text-white min-h-screen">
+    <div id="top" className="bg-[#070707] text-white min-h-screen">
       <Nav />
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
         <Reveal>
@@ -35,7 +35,7 @@ function SecondaryPage() {
             <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную
           </Link>
         </Reveal>
-        <div className="grid md:grid-cols-2 gap-20 mb-20">
+        <div id="about" className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
               Капитальное обновление инженерных сетей: полная замена электрики и сантехники, демонтаж, перепланировка квартир и отделка под покраску in старом фонде. Мебель и потолки — через проверенных партнёров.
@@ -56,7 +56,7 @@ function SecondaryPage() {
         </div>
 
         <Reveal>
-          <h2 className="text-5xl font-display mb-12">Портфолио работ</h2>
+          <h2 id="work" className="text-5xl font-display mb-12">Портфолио работ</h2>
         </Reveal>
         
         <div className="space-y-24">

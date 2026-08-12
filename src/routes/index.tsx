@@ -194,12 +194,12 @@ function Index() {
           <WorkInProgress />
           <FeaturedWork />
           <About />
-          <Services />
+          <Services id="services" />
           <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-20">
             <CostCalculator />
           </div>
-          <Testimonials />
-          <Contact />
+          <Testimonials id="testimonials" />
+          <Contact id="contact" />
         </div>
       </main>
 
@@ -482,7 +482,7 @@ function RepairTypeNav() {
   ];
 
   return (
-    <section className="relative z-10 py-10 md:py-20">
+    <section className="relative z-10 pt-10 pb-5 md:pt-20 md:pb-10">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {items.map((item, i) => (
@@ -522,7 +522,7 @@ function WorkInProgress() {
   const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
 
   return (
-    <section id="work-in-progress" className="relative pt-20 pb-0 sm:pt-28 sm:pb-0 md:pt-40 md:pb-0">
+    <section id="work-in-progress" className="relative pt-10 pb-0 sm:pt-14 sm:pb-0 md:pt-20 md:pb-0">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="mb-10 flex flex-col gap-8 sm:mb-16 md:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <div>
