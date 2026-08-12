@@ -15,9 +15,9 @@ const LANG_FULL: Record<(typeof LANGS)[number], string> = {
 
 const LINKS = [
   { key: "nav.work", href: "#work" },
-  { key: "nav.process", href: "#process-photos" },
   { key: "nav.about", href: "#about" },
   { key: "nav.services", href: "#services" },
+  { key: "nav.process", href: "#process-photos" },
   { key: "nav.contact", href: "#contact" },
 ];
 
@@ -44,7 +44,7 @@ export function Nav() {
         className="fixed inset-x-0 top-0 z-[80] border-b backdrop-blur-md"
       >
         <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-6 lg:h-20 lg:px-10">
-          <Magnetic as="a" href="/#top" className="inline-flex items-center gap-2" strength={16}>
+          <Magnetic as="a" href={location.pathname === "/" ? "#top" : "/#top"} className="inline-flex items-center gap-2" strength={16}>
             <span className="grid h-7 w-7 place-items-center rounded-sm border border-white/30 text-[8px] font-medium tracking-tighter text-white">
               РР
             </span>
@@ -73,7 +73,7 @@ export function Nav() {
             {/* Language switcher removed per requirements */}
             <Magnetic
               as="a"
-              href="/#contact"
+              href={location.pathname === "/" ? "#contact" : "/#contact"}
               strength={18}
               onMouseEnter={() => setCta("in")}
               onMouseLeave={() => setCta((s) => (s === "in" ? "out" : s))}
