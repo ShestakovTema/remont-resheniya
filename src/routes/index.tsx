@@ -194,12 +194,12 @@ function Index() {
           <WorkInProgress />
           <FeaturedWork />
           <About />
-          <Services />
+          <Services id="services" />
           <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-20">
             <CostCalculator />
           </div>
-          <Testimonials />
-          <Contact />
+          <Testimonials id="testimonials" />
+          <Contact id="contact" />
         </div>
       </main>
 
@@ -482,7 +482,7 @@ function RepairTypeNav() {
   ];
 
   return (
-    <section className="relative z-10 py-10 md:py-20">
+    <section className="relative z-10 pt-10 pb-5 md:pt-20 md:pb-10">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {items.map((item, i) => (
@@ -522,7 +522,7 @@ function WorkInProgress() {
   const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
 
   return (
-    <section id="work-in-progress" className="relative pt-20 pb-0 sm:pt-28 sm:pb-0 md:pt-40 md:pb-0">
+    <section id="work-in-progress" className="relative pt-10 pb-0 sm:pt-14 sm:pb-0 md:pt-20 md:pb-0">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="mb-10 flex flex-col gap-8 sm:mb-16 md:mb-24 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -1086,7 +1086,7 @@ function Stat({ value }: { value: string }) {
 }
 
 /* ------------------------------ SERVICES ------------------------------ */
-export function Services() {
+export function Services({ id }: { id?: string }) {
   const t = useT();
   const services = [
     { id: "elite", n: "01", t: t("services.elite.title"), d: t("services.elite.desc"), href: "/elite" },
@@ -1106,7 +1106,7 @@ export function Services() {
 
 
   return (
-    <section id="services" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
+    <section id={id || "services"} className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="mb-16 grid grid-cols-12 gap-8">
           <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">
@@ -1254,7 +1254,7 @@ function ServiceRow({
 
 
 /* ------------------------------ TESTIMONIALS ------------------------------ */
-export function Testimonials() {
+export function Testimonials({ id }: { id?: string }) {
   const t = useT();
   const QUOTES = [
     { q: t("test.1.q"), a: "Алексей И.", r: "Элитный ремонт в Хамовниках" },
@@ -1268,7 +1268,7 @@ export function Testimonials() {
   }, [QUOTES.length]);
   const cur = QUOTES[i] || QUOTES[0];
   return (
-    <section className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
+    <section id={id || "testimonials"} className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-10">
         <div className="mb-16 flex items-end justify-between">
           <Reveal className="text-xs uppercase tracking-[0.3em] text-white/60">
@@ -1470,10 +1470,10 @@ function EmailAction({ email, href }: { email: string; href: string }) {
   );
 }
 
-export function Contact() {
+export function Contact({ id }: { id?: string }) {
   const t = useT();
   return (
-    <section id="contact" className="relative overflow-hidden border-t border-white/10 py-20 sm:py-28 md:py-44">
+    <section id={id || "contact"} className="relative overflow-hidden border-t border-white/10 py-20 sm:py-28 md:py-44">
       <div className="relative mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <Reveal className="text-xs uppercase tracking-[0.3em] text-white/60">
           {t("contact.section")}
