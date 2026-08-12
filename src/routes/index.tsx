@@ -151,16 +151,41 @@ export function ProcessPhotos() {
   const [fullscreenIdx, setFullscreenIdx] = useState<{ type: 'electro' | 'plumbing', idx: number } | null>(null);
   const [activeTab, setActiveTab] = useState<'electro' | 'plumbing'>('electro');
   const [page, setPage] = useState(0);
-  const ITEMS_PER_PAGE = 6;
+  const [isMobile, setIsMobile] = useState(false);
+  const ITEMS_PER_PAGE = isMobile ? 1 : 6;
 
   const photos = processPhotos[activeTab];
   const paginatedPhotos = photos.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
   const totalPages = Math.ceil(photos.length / ITEMS_PER_PAGE);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   // Reset page when tab changes
   useEffect(() => {
     setPage(0);
   }, [activeTab]);
+
+  const handleNext = () => setPage(p => Math.min(totalPages - 1, p + 1));
+  const handlePrev = () => setPage(p => Math.max(0, p - 1));
+
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) handleNext();
+      else handlePrev();
+    }
+    setTouchStart(null);
+  };
 
   return (
     <section id="process-photos" className="relative py-20 sm:py-32">
@@ -189,7 +214,11 @@ export function ProcessPhotos() {
           </div>
         </Reveal>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div 
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          onTouchStart={isMobile ? handleTouchStart : undefined}
+          onTouchEnd={isMobile ? handleTouchEnd : undefined}
+        >
           {paginatedPhotos.map((src, i) => {
             const globalIdx = page * ITEMS_PER_PAGE + i;
             return (
@@ -212,18 +241,26 @@ export function ProcessPhotos() {
           })}
         </div>
 
+        {isMobile && (
+          <div className="mt-4 flex justify-center">
+            <span className="text-[10px] uppercase tracking-widest text-white/40 animate-pulse">
+              ← Листайте влево-вправо →
+            </span>
+          </div>
+        )}
+
         {totalPages > 1 && (
           <div className="mt-12 flex flex-col items-center gap-6">
             <div className="flex items-center gap-4">
               <button 
-                onClick={() => setPage(p => Math.max(0, p - 1))}
+                onClick={handlePrev}
                 disabled={page === 0}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 disabled:opacity-20 disabled:cursor-not-allowed"
               >
                 <ChevronLeft size={20} />
               </button>
               <div className="flex gap-2">
-                {Array.from({ length: totalPages }).map((_, i) => (
+                {Array.from({ length: Math.min(totalPages, isMobile ? 8 : 10) }).map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setPage(i)}
@@ -232,7 +269,7 @@ export function ProcessPhotos() {
                 ))}
               </div>
               <button 
-                onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+                onClick={handleNext}
                 disabled={page === totalPages - 1}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 disabled:opacity-20 disabled:cursor-not-allowed"
               >
@@ -240,7 +277,7 @@ export function ProcessPhotos() {
               </button>
             </div>
             <div className="text-[10px] uppercase tracking-[0.3em] text-white/30">
-              Страница {page + 1} из {totalPages}
+              {isMobile ? `Фото ${page + 1} из ${photos.length}` : `Страница ${page + 1} из ${totalPages}`}
             </div>
           </div>
         )}
