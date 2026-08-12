@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
+import { SmoothScroll } from "@/components/site/smooth-scroll";
 import { Footer, About, Services, Testimonials, Contact, FullscreenGallery, ProcessPhotos } from "@/routes/index";
 import { LangProvider } from "@/lib/i18n";
 import { useState } from "react";
@@ -28,6 +29,7 @@ function ElitePage() {
   return (
     <div id="top" className="bg-[#070707] text-white min-h-screen">
       <Nav />
+      <SmoothScroll />
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
         <Reveal>
           <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Современные объекты</h1>

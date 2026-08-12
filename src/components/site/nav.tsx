@@ -15,9 +15,9 @@ const LANG_FULL: Record<(typeof LANGS)[number], string> = {
 
 const LINKS = [
   { key: "nav.work", href: "#work" },
+  { key: "nav.process", href: "#process-photos" },
   { key: "nav.about", href: "#about" },
   { key: "nav.services", href: "#services" },
-  { key: "nav.blog", href: "#blog" },
   { key: "nav.contact", href: "#contact" },
 ];
 
