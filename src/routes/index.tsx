@@ -194,12 +194,12 @@ function Index() {
           <WorkInProgress />
           <FeaturedWork />
           <About />
-          <Services id="services" />
+          <Services />
           <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-20">
             <CostCalculator />
           </div>
-          <Testimonials id="testimonials" />
-          <Contact id="contact" />
+          <Testimonials />
+          <Contact />
         </div>
       </main>
 
@@ -1086,7 +1086,7 @@ function Stat({ value }: { value: string }) {
 }
 
 /* ------------------------------ SERVICES ------------------------------ */
-export function Services() {
+export function Services({ id }: { id?: string }) {
   const t = useT();
   const services = [
     { id: "elite", n: "01", t: t("services.elite.title"), d: t("services.elite.desc"), href: "/elite" },
@@ -1254,7 +1254,7 @@ function ServiceRow({
 
 
 /* ------------------------------ TESTIMONIALS ------------------------------ */
-export function Testimonials() {
+export function Testimonials({ id }: { id?: string }) {
   const t = useT();
   const QUOTES = [
     { q: t("test.1.q"), a: "Алексей И.", r: "Элитный ремонт в Хамовниках" },
@@ -1470,10 +1470,10 @@ function EmailAction({ email, href }: { email: string; href: string }) {
   );
 }
 
-export function Contact() {
+export function Contact({ id }: { id?: string }) {
   const t = useT();
   return (
-    <section id="contact" className="relative overflow-hidden border-t border-white/10 py-20 sm:py-28 md:py-44">
+    <section id={id || "contact"} className="relative overflow-hidden border-t border-white/10 py-20 sm:py-28 md:py-44">
       <div className="relative mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <Reveal className="text-xs uppercase tracking-[0.3em] text-white/60">
           {t("contact.section")}
