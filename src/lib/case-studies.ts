@@ -1,4 +1,6 @@
 
+import { regisseurAssets } from "./regisseur-assets";
+
 export const eliteCaseStudies = [
   {
     title: "ЖК «Режиссёр», 105 м²",

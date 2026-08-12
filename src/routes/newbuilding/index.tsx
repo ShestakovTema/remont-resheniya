@@ -94,7 +94,7 @@ function NewBuildingPage() {
               {/* Mobile-optimized scrollable gallery */}
               <div className="relative -mx-6 sm:mx-0 overflow-hidden">
                 <div className="flex gap-4 overflow-x-auto px-6 sm:px-0 pb-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible no-scrollbar scroll-smooth snap-x snap-mandatory">
-                  {project.assets.map((src, i) => (
+                  {project.assets.map((src: string, i: number) => (
                     <div 
                       key={src} 
                       className="min-w-[85vw] sm:min-w-0 snap-center group relative aspect-[16/10] overflow-hidden rounded-xl cursor-pointer"
