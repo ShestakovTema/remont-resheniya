@@ -175,9 +175,13 @@ export function ProcessPhotos() {
   const handlePrev = () => setPage(p => Math.max(0, p - 1));
 
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.targetTouches[0]) {
+      setTouchStart(e.targetTouches[0].clientX);
+    }
+  };
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStart === null) return;
+    if (touchStart === null || !e.changedTouches[0]) return;
     const touchEnd = e.changedTouches[0].clientX;
     const diff = touchStart - touchEnd;
     if (Math.abs(diff) > 50) {
