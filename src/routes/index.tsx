@@ -1106,7 +1106,7 @@ export function Services({ id }: { id?: string }) {
 
 
   return (
-    <section id="services" className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
+    <section id={id || "services"} className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <div className="mb-16 grid grid-cols-12 gap-8">
           <Reveal className="col-span-12 text-xs uppercase tracking-[0.3em] text-white/60 md:col-span-3">
@@ -1268,7 +1268,7 @@ export function Testimonials({ id }: { id?: string }) {
   }, [QUOTES.length]);
   const cur = QUOTES[i] || QUOTES[0];
   return (
-    <section className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
+    <section id={id || "testimonials"} className="relative border-t border-white/10 py-20 sm:py-28 md:py-40">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-10">
         <div className="mb-16 flex items-end justify-between">
           <Reveal className="text-xs uppercase tracking-[0.3em] text-white/60">
