@@ -16,7 +16,7 @@ export const Route = createFileRoute("/newbuilding/")({
 });
 
 const zilartAssets = [
-  "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800",
+  "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
   "https://images.unsplash.com/photo-1582408921715-18e7826363bb?auto=format&fit=crop&q=80&w=800",
   "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800"
 ];
@@ -36,7 +36,7 @@ function NewBuildingPage() {
         <div className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
-              Инженерия и подготовка в новых домах: электромонтаж, разводка сантехники, черновые работы и отделка под покраску с учётом всех норм. Мебель и потолки — через партнёров.
+              Инженерия и подготовка в новых домах: электромонтаж, разводка сантехники, перепланировка квартир и отделка под покраску с учётом всех норм. Мебель и потолки — через партнёров.
             </p>
           </Reveal>
           <Reveal delay={0.4}>
