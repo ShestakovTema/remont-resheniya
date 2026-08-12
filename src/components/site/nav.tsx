@@ -53,8 +53,7 @@ export function Nav() {
 
           <nav className="hidden items-center gap-1 lg:flex">
             {LINKS.map((l) => {
-              const isHomePage = location.pathname === "/";
-              const href = isHomePage ? l.href : `/${l.href}`;
+              const href = l.href;
               
               return (
                 <Magnetic
@@ -117,8 +116,7 @@ export function Nav() {
           >
             <ul className="flex flex-col gap-1 px-6 py-6">
               {LINKS.map((l) => {
-                const isHomePage = location.pathname === "/";
-                const href = isHomePage ? l.href : `/${l.href}`;
+                const href = l.href;
                 return (
                   <li key={l.href}>
                     <a

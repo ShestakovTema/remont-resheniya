@@ -14,6 +14,12 @@ import { LeadForm } from "@/components/site/lead-form";
 import { CostCalculator } from "@/components/site/calculator";
 import { regisseurAssets } from "@/lib/regisseur-assets";
 import { 
+  processPhotos,
+  eliteCaseStudies, 
+  newBuildingCaseStudies, 
+  secondaryCaseStudies 
+} from "@/lib/case-studies";
+import { 
   Dialog, 
   DialogContent, 
   DialogHeader, 
@@ -141,6 +147,73 @@ const UPCOMING_PROJECTS: Project[] = [
   }
 ];
 
+export function ProcessPhotos() {
+  const [fullscreenIdx, setFullscreenIdx] = useState<{ type: 'electro' | 'plumbing', idx: number } | null>(null);
+  const [activeTab, setActiveTab] = useState<'electro' | 'plumbing'>('electro');
+
+  const photos = processPhotos[activeTab];
+
+  return (
+    <section id="process-photos" className="relative py-20 sm:py-32">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
+        <Reveal>
+          <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40">(05) Процесс</span>
+              <h2 className="font-display mt-4 text-5xl sm:text-7xl">Фотографии <br/><span className="italic">процесса работ</span></h2>
+            </div>
+            
+            <div className="flex gap-2 rounded-full border border-white/10 bg-white/5 p-1">
+              <button 
+                onClick={() => setActiveTab('electro')}
+                className={`rounded-full px-6 py-2 text-sm transition-colors ${activeTab === 'electro' ? 'bg-white text-black' : 'text-white/60 hover:text-white'}`}
+              >
+                Электрика
+              </button>
+              <button 
+                onClick={() => setActiveTab('plumbing')}
+                className={`rounded-full px-6 py-2 text-sm transition-colors ${activeTab === 'plumbing' ? 'bg-white text-black' : 'text-white/60 hover:text-white'}`}
+              >
+                Сантехника
+              </button>
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {photos.map((src, i) => (
+            <Reveal key={src} delay={i * 0.1}>
+              <div 
+                className="group relative aspect-[4/5] cursor-pointer overflow-hidden rounded-xl"
+                onClick={() => setFullscreenIdx({ type: activeTab, idx: i })}
+              >
+                <img 
+                  src={src} 
+                  alt={`${activeTab === 'electro' ? 'Электрика' : 'Сантехника'} - процесс`}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
+                  <Maximize2 className="text-white" size={24} />
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {fullscreenIdx && (
+          <FullscreenGallery 
+            images={processPhotos[fullscreenIdx.type]} 
+            initialIdx={fullscreenIdx.idx} 
+            onClose={() => setFullscreenIdx(null)} 
+          />
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}
+
 function Index() {
   const footerRef = useRef<HTMLDivElement | null>(null);
   const [footerHeight, setFooterHeight] = useState(0);
@@ -198,6 +271,7 @@ function Index() {
           <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-20">
             <CostCalculator />
           </div>
+          <ProcessPhotos />
           <Testimonials id="testimonials" />
           <Contact id="contact" />
         </div>

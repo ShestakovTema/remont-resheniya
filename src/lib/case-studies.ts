@@ -200,3 +200,20 @@ export const secondaryCaseStudies = [
     ]
   }
 ];
+
+export const processPhotos = {
+  electro: [
+    "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1558438192-35bf3fd184c5?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1565608438257-fac3c27beb36?auto=format&fit=crop&q=80&w=800"
+  ],
+  plumbing: [
+    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1607400201585-545b73e56130?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1517646281502-74c1a9a7a84b?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1620626011761-9963d7521477?auto=format&fit=crop&q=80&w=800"
+  ]
+};
