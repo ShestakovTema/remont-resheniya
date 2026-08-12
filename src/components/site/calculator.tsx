@@ -45,7 +45,7 @@ export function CostCalculator() {
           </p>
           <Button 
             variant="outline" 
-            className="border-white/20 hover:bg-white/10"
+            className="border-white/20 hover:bg-white hover:text-black transition-colors duration-300"
             asChild
           >
             <a href="#contact">Узнать точную стоимость</a>
