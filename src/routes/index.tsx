@@ -266,9 +266,13 @@ function Index() {
           <RepairTypeNav />
           <WorkInProgress />
           <FeaturedWork />
-          <About />
-          <Services id="services" />
-          <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-20">
+          <div id="about" className="pt-24">
+            <About />
+          </div>
+          <div id="services">
+            <Services />
+          </div>
+          <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-12">
             <CostCalculator />
           </div>
           <ProcessPhotos />
