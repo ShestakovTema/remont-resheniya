@@ -136,9 +136,13 @@ function SecondaryPage() {
           )}
         </AnimatePresence>
 
-        <About />
+        <div id="about" className="pt-20">
+          <About />
+        </div>
+        <div id="services">
+          <Services />
+        </div>
         <ProcessPhotos />
-        <Services />
         <Testimonials />
         <Contact />
       </main>
