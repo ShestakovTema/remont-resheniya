@@ -1,4 +1,6 @@
 
+import { regisseurAssets } from "./regisseur-assets";
+
 export const eliteCaseStudies = [
   {
     title: "ЖК «Режиссёр», 105 м²",
@@ -15,7 +17,7 @@ export const eliteCaseStudies = [
     ],
     area: "105 м²",
     time: "3,5 месяца",
-    assets: [
+    assets: regisseurAssets.length > 0 ? regisseurAssets : [
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
@@ -40,11 +42,11 @@ export const eliteCaseStudies = [
     area: "85 м²",
     time: "4 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1582268611958-ebaf161c8e28?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1556911227-491958aee147?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=800"
+      "https://images.unsplash.com/photo-1600566752355-3979ff69a3bc?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=800"
     ]
   },
   {

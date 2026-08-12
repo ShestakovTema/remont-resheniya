@@ -122,9 +122,9 @@ const PROJECTS: Project[] = [
     name: "Современный ремонт на Арбате", 
     category: "Замена коммуникаций", 
     year: "2025", 
-    image: "https://images.unsplash.com/photo-1603988492906-4fb0fb251cb8?auto=format&fit=crop&q=80&w=1200", 
-    beforeImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200",
-    url: "/secondary/" 
+    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200", 
+    beforeImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200",
+    url: "/elite/" 
   },
   { name: "Квартира-студия в ЖК 'Зиларт'", category: "Монтаж инженерии", year: "2024", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { name: "Реновация квартиры 1985г.", category: "Сделана перепланировка", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
@@ -484,12 +484,12 @@ function RepairTypeNav() {
   return (
     <section className="relative z-10 py-10 md:py-20">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-3 lg:gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {items.map((item, i) => (
             <Reveal key={item.id} delay={i * 0.1} y={40}>
               <Link
                 to={item.href}
-                className="group relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl lg:aspect-[4/3]"
+                className="group relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl lg:aspect-[4/3] lg:min-h-[400px]"
               >
                 <div className="absolute inset-0 z-0">
                   <img 
