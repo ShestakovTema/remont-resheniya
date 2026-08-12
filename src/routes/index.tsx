@@ -201,16 +201,16 @@ export function ProcessPhotos() {
               <h2 className="font-display mt-4 text-5xl sm:text-7xl">Фотографии <br/><span className="italic">процесса работ</span></h2>
             </div>
             
-            <div className="flex gap-2 rounded-full border border-white/10 bg-white/5 p-1">
+            <div className="flex w-full gap-2 rounded-full border border-white/10 bg-white/5 p-1 sm:max-w-md lg:w-auto">
               <button 
                 onClick={() => setActiveTab('electro')}
-                className={`rounded-full px-6 py-2 text-sm transition-colors ${activeTab === 'electro' ? 'bg-white text-black' : 'text-white/60 hover:text-white'}`}
+                className={`flex-1 rounded-full px-6 py-2 text-sm transition-colors lg:flex-none ${activeTab === 'electro' ? 'bg-white text-black' : 'text-white/60 hover:text-white'}`}
               >
                 Электрика
               </button>
               <button 
                 onClick={() => setActiveTab('plumbing')}
-                className={`rounded-full px-6 py-2 text-sm transition-colors ${activeTab === 'plumbing' ? 'bg-white text-black' : 'text-white/60 hover:text-white'}`}
+                className={`flex-1 rounded-full px-6 py-2 text-sm transition-colors lg:flex-none ${activeTab === 'plumbing' ? 'bg-white text-black' : 'text-white/60 hover:text-white'}`}
               >
                 Сантехника
               </button>
