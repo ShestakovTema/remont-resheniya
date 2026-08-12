@@ -484,12 +484,12 @@ function RepairTypeNav() {
   return (
     <section className="relative z-10 py-10 md:py-20">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-3 lg:gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {items.map((item, i) => (
             <Reveal key={item.id} delay={i * 0.1} y={40}>
               <Link
                 to={item.href}
-                className="group relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl lg:aspect-[4/3]"
+                className="group relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl lg:aspect-[4/3] lg:min-h-[400px]"
               >
                 <div className="absolute inset-0 z-0">
                   <img 
