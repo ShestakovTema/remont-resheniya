@@ -133,7 +133,7 @@ const PROJECTS: Project[] = [
 
 const UPCOMING_PROJECTS: Project[] = [
   {
-    name: "Элитная квартира в ЖК «Режиссёр»",
+    name: "ЖК Режиссер 105 квадратных метров",
     category: "Элитный ремонт",
     year: "В работе",
     image: regisseurAssets[0] || "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200",

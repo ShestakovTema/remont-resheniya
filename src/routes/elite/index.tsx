@@ -29,7 +29,7 @@ function ElitePage() {
       <Nav />
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
         <Reveal>
-          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Элитные объекты</h1>
+          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Современные ремонты</h1>
           <Link to="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mb-10 uppercase text-xs tracking-widest group">
             <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную</Link>
         </Reveal>
@@ -66,7 +66,7 @@ function ElitePage() {
               <span className="h-px w-8 bg-white/20" />
               <span className="text-xs uppercase tracking-[0.3em] text-white/30">В работе · 2025-2026</span>
             </div>
-            <h3 className="font-display mb-6 text-3xl sm:text-5xl">Элитная квартира в ЖК «Режиссёр»</h3>
+            <h3 className="font-display mb-6 text-3xl sm:text-5xl">ЖК Режиссер 105 квадратных метров</h3>
           </Reveal>
 
           <div className="mb-10 grid gap-10 md:grid-cols-2">
