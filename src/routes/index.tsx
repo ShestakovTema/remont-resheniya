@@ -122,13 +122,13 @@ const PROJECTS: Project[] = [
     name: "Современный ремонт на Арбате", 
     category: "Замена коммуникаций", 
     year: "2025", 
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1200", 
-    beforeImage: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1603988492906-4fb0fb251cb8?auto=format&fit=crop&q=80&w=1200", 
+    beforeImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200",
     url: "/secondary/" 
   },
   { name: "Квартира-студия в ЖК 'Зиларт'", category: "Монтаж инженерии", year: "2024", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { name: "Реновация квартиры 1985г.", category: "Сделана перепланировка", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
-  { name: "Вилла в Подмосковье", category: "Инженерные системы", year: "2025", image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Вилла в Подмосковье", category: "Инженерные системы", year: "2025", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
 ];
 
 const UPCOMING_PROJECTS: Project[] = [
