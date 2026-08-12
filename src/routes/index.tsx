@@ -150,8 +150,17 @@ const UPCOMING_PROJECTS: Project[] = [
 export function ProcessPhotos() {
   const [fullscreenIdx, setFullscreenIdx] = useState<{ type: 'electro' | 'plumbing', idx: number } | null>(null);
   const [activeTab, setActiveTab] = useState<'electro' | 'plumbing'>('electro');
+  const [page, setPage] = useState(0);
+  const ITEMS_PER_PAGE = 6;
 
   const photos = processPhotos[activeTab];
+  const paginatedPhotos = photos.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(photos.length / ITEMS_PER_PAGE);
+
+  // Reset page when tab changes
+  useEffect(() => {
+    setPage(0);
+  }, [activeTab]);
 
   return (
     <section id="process-photos" className="relative py-20 sm:py-32">
@@ -180,25 +189,61 @@ export function ProcessPhotos() {
           </div>
         </Reveal>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {photos.map((src, i) => (
-            <Reveal key={src} delay={i * 0.1}>
-              <div 
-                className="group relative aspect-[4/5] cursor-pointer overflow-hidden rounded-xl"
-                onClick={() => setFullscreenIdx({ type: activeTab, idx: i })}
-              >
-                <img 
-                  src={src} 
-                  alt={`${activeTab === 'electro' ? 'Электрика' : 'Сантехника'} - процесс`}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
-                  <Maximize2 className="text-white" size={24} />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {paginatedPhotos.map((src, i) => {
+            const globalIdx = page * ITEMS_PER_PAGE + i;
+            return (
+              <Reveal key={src} delay={i * 0.1}>
+                <div 
+                  className="group relative aspect-[4/5] cursor-pointer overflow-hidden rounded-xl"
+                  onClick={() => setFullscreenIdx({ type: activeTab, idx: globalIdx })}
+                >
+                  <img 
+                    src={src} 
+                    alt={`${activeTab === 'electro' ? 'Электрика' : 'Сантехника'} - процесс`}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
+                    <Maximize2 className="text-white" size={24} />
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
+
+        {totalPages > 1 && (
+          <div className="mt-12 flex flex-col items-center gap-6">
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={() => setPage(p => Math.max(0, p - 1))}
+                disabled={page === 0}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 disabled:opacity-20 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <div className="flex gap-2">
+                {Array.from({ length: totalPages }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setPage(i)}
+                    className={`h-2 w-2 rounded-full transition-all duration-300 ${page === i ? 'w-6 bg-white' : 'bg-white/20'}`}
+                  />
+                ))}
+              </div>
+              <button 
+                onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+                disabled={page === totalPages - 1}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 disabled:opacity-20 disabled:cursor-not-allowed"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+            <div className="text-[10px] uppercase tracking-[0.3em] text-white/30">
+              Страница {page + 1} из {totalPages}
+            </div>
+          </div>
+        )}
       </div>
 
       <AnimatePresence>
