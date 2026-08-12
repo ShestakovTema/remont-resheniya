@@ -1,9 +1,10 @@
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "@tanstack/react-router";
-import { Globe } from "lucide-react";
+import { Globe, ChevronDown } from "lucide-react";
 import { Magnetic } from "./magnetic";
 import { useLang, useT } from "@/lib/i18n";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 const LANGS = ["ru"] as const;
 const LANG_SHORT: Record<(typeof LANGS)[number], string> = {
@@ -37,6 +38,8 @@ export function Nav() {
   const bg = useTransform(scrollY, [0, 120], ["rgba(7,7,7,0)", "rgba(7,7,7,0.55)"]);
   const border = useTransform(scrollY, [0, 120], ["rgba(255,255,255,0)", "rgba(255,255,255,0.08)"]);
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   return (
     <>
       <motion.header
@@ -52,6 +55,54 @@ export function Nav() {
           </Magnetic>
 
           <nav className="hidden items-center gap-1 lg:flex">
+            {/* Repair Types Dropdown */}
+            <DropdownMenu.Root open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+              <DropdownMenu.Trigger asChild>
+                <div className="px-4">
+                  <Magnetic
+                    as="button"
+                    strength={14}
+                    className="group relative flex items-center gap-1 py-2 text-sm text-white/70 transition-colors hover:text-white outline-none"
+                  >
+                    <span data-cursor="link">{t("nav.repairTypes")}</span>
+                    <ChevronDown size={14} className={`transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
+                  </Magnetic>
+                </div>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Portal>
+                <DropdownMenu.Content
+                  className="z-[90] min-w-[200px] rounded-xl border border-white/10 bg-[#070707]/90 p-1 backdrop-blur-xl animate-in fade-in zoom-in-95 duration-200"
+                  sideOffset={8}
+                  align="start"
+                >
+                  <DropdownMenu.Item asChild>
+                    <a
+                      href="/elite"
+                      className="flex cursor-pointer items-center rounded-lg px-3 py-2 text-sm text-white/60 outline-none transition-colors hover:bg-white/5 hover:text-white"
+                    >
+                      {t("nav.repairTypes.elite")}
+                    </a>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item asChild>
+                    <a
+                      href="/newbuilding"
+                      className="flex cursor-pointer items-center rounded-lg px-3 py-2 text-sm text-white/60 outline-none transition-colors hover:bg-white/5 hover:text-white"
+                    >
+                      {t("nav.repairTypes.new")}
+                    </a>
+                  </DropdownMenu.Item>
+                  <DropdownMenu.Item asChild>
+                    <a
+                      href="/secondary"
+                      className="flex cursor-pointer items-center rounded-lg px-3 py-2 text-sm text-white/60 outline-none transition-colors hover:bg-white/5 hover:text-white"
+                    >
+                      {t("nav.repairTypes.secondary")}
+                    </a>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Portal>
+            </DropdownMenu.Root>
+
             {LINKS.map((l) => {
               const href = (location.pathname !== "/" && l.href === "#about") ? "/#about" : l.href;
               
@@ -70,7 +121,6 @@ export function Nav() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            {/* Language switcher removed per requirements */}
             <Magnetic
               as="a"
               href={location.pathname === "/" ? "#contact" : "/#contact"}
@@ -88,7 +138,6 @@ export function Nav() {
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
-            {/* Mobile language switcher removed */}
             <button
               aria-label="Toggle menu"
               onClick={() => setOpen((v) => !v)}
@@ -112,9 +161,25 @@ export function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
-            className="fixed inset-x-0 top-16 z-[75] border-b border-white/10 bg-[#070707]/95 backdrop-blur-md lg:hidden"
+            className="fixed inset-x-0 top-16 z-[75] border-b border-white/10 bg-[#070707]/95 backdrop-blur-md lg:hidden max-h-[calc(100vh-64px)] overflow-y-auto"
           >
             <ul className="flex flex-col gap-1 px-6 py-6">
+              <li>
+                <div className="font-display block py-3 text-4xl text-white/40 uppercase text-xs tracking-[0.2em] mb-2">
+                  {t("nav.repairTypes")}
+                </div>
+                <div className="flex flex-col gap-2 pl-4 mb-4">
+                  <a href="/elite" onClick={() => setOpen(false)} className="text-2xl text-white/70 hover:text-white">
+                    {t("nav.repairTypes.elite")}
+                  </a>
+                  <a href="/newbuilding" onClick={() => setOpen(false)} className="text-2xl text-white/70 hover:text-white">
+                    {t("nav.repairTypes.new")}
+                  </a>
+                  <a href="/secondary" onClick={() => setOpen(false)} className="text-2xl text-white/70 hover:text-white">
+                    {t("nav.repairTypes.secondary")}
+                  </a>
+                </div>
+              </li>
               {LINKS.map((l) => {
                 const href = l.href;
                 return (
@@ -129,65 +194,10 @@ export function Nav() {
                   </li>
                 );
               })}
-              {/* Language switcher removed */}
             </ul>
           </motion.div>
         ) : null}
       </AnimatePresence>
     </>
-  );
-}
-
-function MobileLangSwitcher() {
-  const { lang, setLang } = useLang();
-  const [open, setOpen] = useState(false);
-  const wrapRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const onClick = (e: MouseEvent) => {
-      if (!wrapRef.current) return;
-      if (!wrapRef.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
-  }, []);
-
-  return (
-    <div ref={wrapRef} className="relative">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 rounded-full border border-white/20 px-3 h-10 text-white/80 transition-colors hover:text-white"
-        aria-label="Change language"
-        aria-expanded={open}
-      >
-        <Globe size={16} />
-        <span className="text-[11px] tracking-widest uppercase">
-          {LANG_SHORT[lang]}
-        </span>
-      </button>
-      <div
-        className={`absolute right-0 top-full z-[85] mt-2 min-w-[10rem] origin-top-right overflow-hidden rounded-lg border border-white/10 bg-[#070707]/95 shadow-lg backdrop-blur-md transition-all duration-200 ${
-          open ? "pointer-events-auto scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0"
-        }`}
-      >
-        {LANGS.map((l) => (
-          <button
-            key={l}
-            onClick={() => {
-              setLang(l);
-              setOpen(false);
-            }}
-            className={`flex w-full items-center justify-between px-4 py-2.5 text-[11px] uppercase tracking-widest transition-colors ${
-              l === lang
-                ? "bg-white/5 text-white"
-                : "text-white/60 hover:bg-white/5 hover:text-white"
-            }`}
-          >
-            <span>{LANG_FULL[l]}</span>
-            <span className="text-white/40">{LANG_SHORT[l]}</span>
-          </button>
-        ))}
-      </div>
-    </div>
   );
 }

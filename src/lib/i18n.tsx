@@ -6,6 +6,10 @@ type Dict = Record<string, string>;
 
 const ru: Dict = {
   "nav.work": "Портфолио",
+  "nav.repairTypes": "Тип ремонта",
+  "nav.repairTypes.elite": "Современные объекты",
+  "nav.repairTypes.new": "Новостройки",
+  "nav.repairTypes.secondary": "Вторичка",
   "nav.process": "Фото",
   "nav.about": "О компании",
   "nav.services": "Услуги",
