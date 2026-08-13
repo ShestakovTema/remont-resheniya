@@ -19,6 +19,7 @@ import {
   newBuildingCaseStudies, 
   secondaryCaseStudies 
 } from "@/lib/case-studies";
+import arbatAsset from "@/assets/arbat-new.jpg.asset.json";
 import villaAsset from "@/assets/villa-podmoskovye-new.jpg.asset.json";
 import { 
   Dialog, 
@@ -129,7 +130,7 @@ const PROJECTS: Project[] = [
     name: "Современный ремонт на Арбате", 
     category: "Замена коммуникаций", 
     year: "2025", 
-    image: "/mnt/user-uploads/file-50", 
+    image: arbatAsset.url, 
     beforeImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200",
     url: "/elite/" 
   },

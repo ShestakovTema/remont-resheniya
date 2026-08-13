@@ -42,7 +42,7 @@ export const eliteCaseStudies = [
     area: "85 м²",
     time: "4 месяца",
     assets: [
-      "/mnt/user-uploads/file-50",
+      arbatAsset.url,
       "https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800",
@@ -201,6 +201,7 @@ export const secondaryCaseStudies = [
   }
 ];
 
+import arbatAsset from "@/assets/arbat-new.jpg.asset.json";
 import villaAsset from "@/assets/villa-podmoskovye-new.jpg.asset.json";
 import e1 from "@/assets/process/electro/1.png.asset.json";
 import e2 from "@/assets/process/electro/2.png.asset.json";
