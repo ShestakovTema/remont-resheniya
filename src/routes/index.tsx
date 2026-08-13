@@ -163,22 +163,6 @@ const UPCOMING_PROJECTS: Project[] = [
 
 
 function Index() {
-  const footerRef = useRef<HTMLDivElement | null>(null);
-  const [footerHeight, setFooterHeight] = useState(0);
-
-  useEffect(() => {
-    const el = footerRef.current;
-    if (!el) return;
-    const update = () => setFooterHeight(el.offsetHeight);
-    update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    window.addEventListener("resize", update);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", update);
-    };
-  }, []);
 
   return (
     <LangProvider>
@@ -230,9 +214,6 @@ function Index() {
       </main>
 
 
-      {/* Spacer equal to footer height so page can scroll far enough
-          for Contact to lift off and reveal the pinned footer below */}
-      <div style={{ height: footerHeight }} aria-hidden />
     </LangProvider>
   );
 }

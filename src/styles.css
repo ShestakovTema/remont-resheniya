@@ -149,8 +149,7 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  html, body { background: #070707; }
-  html, body { overflow-x: hidden; }
+  html, body { background: #070707; overflow-x: hidden; }
   html { scroll-behavior: auto; }
   /* Custom cursor: hide default only on fine pointer devices */
   @media (hover: hover) and (pointer: fine) {
