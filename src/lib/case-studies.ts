@@ -176,7 +176,7 @@ export const secondaryCaseStudies = [
     ]
   },
   {
-    title: "Сталинка в Сокольниках",
+    title: "Студия в Сталинке",
     type: "Вторичное жилье",
     year: "Сдан · 2023",
     desc: "Капитальный ремонт с сохранением исторического духа и внедрением современных инженерных решений. Требовался бережный демонтаж и полная замена всех скрытых коммуникаций в условиях сложного старого фонда.",
@@ -190,11 +190,12 @@ export const secondaryCaseStudies = [
     area: "84 м²",
     time: "4,5 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1582268611958-ebaf161c8e28?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=800"
+      stalinStudio1.url,
+      stalinStudio2.url,
+      stalinStudio3.url
     ]
   }
+
 ];
 
 import arbatAsset from "@/assets/arbat-new.jpg.asset.json";
@@ -219,7 +220,11 @@ import stalin3 from "@/assets/stalin-3.jpg.asset.json";
 import pyatietazhka1 from "@/assets/pyatietazhka/p1.jpg.asset.json";
 import pyatietazhka2 from "@/assets/pyatietazhka/p2.jpg.asset.json";
 import pyatietazhka3 from "@/assets/pyatietazhka/p3.jpg.asset.json";
+import stalinStudio1 from "@/assets/stalin-studio/1.asset.json";
+import stalinStudio2 from "@/assets/stalin-studio/2.asset.json";
+import stalinStudio3 from "@/assets/stalin-studio/3.asset.json";
 import e1 from "@/assets/process/electro/1.png.asset.json";
+
 import e2 from "@/assets/process/electro/2.png.asset.json";
 import e3 from "@/assets/process/electro/3.png.asset.json";
 import e4 from "@/assets/process/electro/4.png.asset.json";
