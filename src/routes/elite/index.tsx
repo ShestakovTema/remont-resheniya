@@ -139,7 +139,7 @@ function ElitePage() {
           )}
         </AnimatePresence>
 
-        <div id="about" className="pt-20">
+        <div className="pt-20">
           <About />
         </div>
         <div id="services">

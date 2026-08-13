@@ -15,11 +15,11 @@ const LANG_FULL: Record<(typeof LANGS)[number], string> = {
 };
 
 const LINKS = [
-  { key: "nav.work", href: "#work" },
-  { key: "nav.about", href: "#about" },
-  { key: "nav.services", href: "#services" },
-  { key: "nav.process", href: "#process-photos" },
-  { key: "nav.contact", href: "#contact" },
+  { key: "nav.work", href: "work" },
+  { key: "nav.about", href: "about" },
+  { key: "nav.services", href: "services" },
+  { key: "nav.process", href: "process-photos" },
+  { key: "nav.contact", href: "contact" },
 ];
 
 export function Nav() {
@@ -49,12 +49,10 @@ export function Nav() {
         <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-6 lg:h-20 lg:px-10">
           <Magnetic 
             as="a" 
-            href={location.pathname === "/" ? "#top" : "/#top"} 
+            href={location.pathname === "/" ? "#top" : `${location.pathname}#top`} 
             onClick={(e: React.MouseEvent) => {
-              if (location.pathname === "/") {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="inline-flex items-center gap-2" 
             strength={16}
@@ -115,13 +113,16 @@ export function Nav() {
             </DropdownMenu.Root>
 
             {LINKS.map((l) => {
-              const isAnchor = l.href.startsWith("#");
-              const href = (location.pathname !== "/" && isAnchor) ? `/${l.href}` : l.href;
+              const href = location.pathname === "/" ? `#${l.href}` : `${location.pathname}#${l.href}`;
               const handleClick = (e: React.MouseEvent) => {
-                if (location.pathname === "/" && isAnchor) {
-                  e.preventDefault();
-                  const id = l.href.replace("#", "");
-                  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                e.preventDefault();
+                const id = l.href;
+                const element = document.getElementById(id);
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                } else if (location.pathname !== "/") {
+                  // Fallback for subpages if IDs differ, though we should align them
+                  window.location.hash = l.href;
                 }
               };
 
@@ -143,12 +144,10 @@ export function Nav() {
           <div className="hidden items-center gap-3 lg:flex">
             <Magnetic
               as="a"
-              href={location.pathname === "/" ? "#contact" : "/#contact"}
+              href={location.pathname === "/" ? "#contact" : `${location.pathname}#contact`}
               onClick={(e: React.MouseEvent) => {
-                if (location.pathname === "/") {
-                  e.preventDefault();
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                }
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
               }}
               strength={18}
               onMouseEnter={() => setCta("in")}
@@ -207,20 +206,21 @@ export function Nav() {
                 </div>
               </li>
               {LINKS.map((l) => {
-                const isAnchor = l.href.startsWith("#");
-                const href = (location.pathname !== "/" && isAnchor) ? `/${l.href}` : l.href;
+                const href = location.pathname === "/" ? `#${l.href}` : `${location.pathname}#${l.href}`;
                 return (
                   <li key={l.href}>
                     <a
+                      href={href}
                       onClick={(e) => {
                         setOpen(false);
-                        if (location.pathname === "/" && isAnchor) {
-                          e.preventDefault();
-                          const id = l.href.replace("#", "");
-                          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                        e.preventDefault();
+                        const element = document.getElementById(l.href);
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        } else if (location.pathname !== "/") {
+                          window.location.hash = l.href;
                         }
                       }}
-                      href={href}
                       className="font-display block py-3 text-4xl text-white"
                     >
                       {t(l.key)}
