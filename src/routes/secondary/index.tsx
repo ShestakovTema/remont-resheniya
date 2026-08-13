@@ -1,158 +1,140 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Reveal } from "@/components/site/reveal";
-import { Nav } from "@/components/site/nav";
-import { SmoothScroll } from "@/components/site/smooth-scroll";
-import { Footer, About, Services, Testimonials, Contact, ProcessPhotos } from "@/routes/index";
-import { FullscreenGallery } from "@/components/site/fullscreen-gallery";
-import { Cursor } from "@/components/site/cursor";
-
-import { LangProvider } from "@/lib/i18n";
+import { ChevronLeft } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Maximize2 } from "lucide-react";
-import { AnimatePresence } from "framer-motion";
+import { 
+  Footer, 
+  About, 
+  Services, 
+  Testimonials, 
+  Contact, 
+  ProcessPhotos,
+  FullscreenGallery,
+  Reveal,
+  TextReveal,
+  Cursor
+} from "@/components/site";
 import { secondaryCaseStudies } from "@/lib/case-studies";
 
 export const Route = createFileRoute("/secondary/")({
-  component: () => (
-    <LangProvider>
-      <SecondaryPage />
-    </LangProvider>
-  ),
+  component: SecondaryPage,
 });
 
 function SecondaryPage() {
-  const [fullscreenImages, setFullscreenImages] = useState<string[] | null>(null);
-  const [fullscreenIdx, setFullscreenIdx] = useState(0);
-
-  const openGallery = (assets: string[], idx: number) => {
-    setFullscreenImages(assets);
-    setFullscreenIdx(idx);
-  };
+  const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
+  const allImages = secondaryCaseStudies.flatMap(cs => cs.assets);
 
   return (
-    <div id="top" className="bg-[#070707] text-white min-h-screen">
+    <div className="relative min-h-screen bg-[#070707] text-white overflow-x-hidden">
       <Cursor />
-      <Nav />
-      <SmoothScroll />
-      <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
-        <Reveal>
-          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Вторичное жилье</h1>
-          <Link to="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mb-10 uppercase text-xs tracking-widest group">
-            <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную
-          </Link>
-        </Reveal>
-        <div id="about" className="grid md:grid-cols-2 gap-20 mb-20">
+      
+      <div className="fixed left-6 top-6 z-50 md:left-10 md:top-10">
+        <Link 
+          to="/" 
+          className="group flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white/10"
+        >
+          <ChevronLeft className="transition-transform group-hover:-translate-x-1" />
+        </Link>
+      </div>
 
-          <Reveal delay={0.2}>
-            <p className="text-xl text-gray-400">
-              Капитальное обновление инженерных сетей: полная замена электрики и сантехники, демонтаж, перепланировка квартир и отделка под покраску в старом фонде, а также мебель и потолки.
+      <main className="relative z-10">
+        <section className="relative flex min-h-[70vh] items-center pt-32 pb-20 px-5 sm:px-6 md:px-10">
+          <div className="mx-auto max-w-[1600px] w-full">
+            <Reveal>
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40">Категория</span>
+            </Reveal>
+            <h1 className="font-display mt-6 text-[clamp(2.5rem,10vw,6rem)] leading-[0.9]">
+              <TextReveal text="Вторичное" />
+              <br />
+              <TextReveal text="жильё" className="italic" delay={0.1} />
+            </h1>
+            <Reveal delay={0.3} className="mt-12 max-w-2xl text-lg text-[#8F8F8F] md:text-xl">
+              С заботой о наследии. Мы проводим глубокую реновацию инженерных систем с учетом специфики старого фонда, гарантируя надежность на десятилетия.
+            </Reveal>
+          </div>
+        </section>
 
-            </p>
-          </Reveal>
-          <Reveal delay={0.4}>
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold">Особенности:</h3>
-              <ul className="list-disc list-inside text-gray-400 space-y-2">
-                <li>Полный демонтаж и вывоз мусора</li>
-                <li>Замена электрики и сантехники</li>
-                <li>Минимальный шум для соседей</li>
-                <li>Согласование перепланировки под ключ</li>
-                <li>Бережная работа в жилых домах</li>
-              </ul>
-            </div>
-          </Reveal>
-        </div>
-
-        <Reveal>
-          <h2 id="work" className="text-5xl font-display mb-12">Портфолио работ</h2>
-        </Reveal>
-        
-        <div className="space-y-24">
-          {secondaryCaseStudies.map((project, pIdx) => (
-            <section key={pIdx} className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-10 transition-colors hover:border-white/20">
-              <Reveal>
-                <div className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2">
-                  <span className="text-xs uppercase tracking-[0.3em] text-white/40">{project.type}</span>
-                  <span className="h-px w-8 bg-white/20" />
-                  <span className="text-xs uppercase tracking-[0.3em] text-white/30">{project.year}</span>
-                </div>
-                <h3 className="font-display mb-6 text-3xl sm:text-5xl">{project.title}</h3>
-              </Reveal>
-
-              <div className="mb-10 grid gap-10 md:grid-cols-2">
-                <Reveal delay={0.1}>
-                  <p className="text-white/40 text-xs uppercase tracking-widest mb-3">Задача (ТЗ)</p>
-                  <p className="text-gray-400 leading-relaxed">{project.desc}</p>
-                </Reveal>
-                <Reveal delay={0.2}>
-                  <p className="text-white/40 text-xs uppercase tracking-widest mb-3">Что сделали</p>
-                  <ul className="list-disc list-inside space-y-2 text-gray-400">
-                    {project.work.map((w, i) => <li key={i}>{w}</li>)}
-                  </ul>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
-                      Площадь: <span className="font-bold text-white">{project.area}</span>
+        <section className="py-20 px-5 sm:px-6 md:px-10 border-t border-white/10">
+          <div className="mx-auto max-w-[1600px]">
+            <div className="grid gap-20">
+              {secondaryCaseStudies.map((project, idx) => (
+                <div key={project.title} className="grid gap-12 lg:grid-cols-2 lg:items-start">
+                  <Reveal className="space-y-8 lg:sticky lg:top-32">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">Кейс {idx + 1}</span>
+                      <h2 className="font-display mt-4 text-4xl md:text-5xl">{project.title}</h2>
                     </div>
-                    <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
-                      Срок: <span className="font-bold text-white">{project.time}</span>
-                    </div>
-                  </div>
-                </Reveal>
-              </div>
-
-              {/* Mobile-optimized scrollable gallery */}
-              <div className="relative -mx-6 sm:mx-0 overflow-hidden">
-                <div className="flex gap-4 overflow-x-auto px-6 sm:px-0 pb-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible no-scrollbar scroll-smooth snap-x snap-mandatory">
-                  {project.assets.map((src: string, i: number) => (
-                    <div 
-                      key={src} 
-                      className="min-w-[85vw] sm:min-w-0 snap-center group relative aspect-[16/10] overflow-hidden rounded-xl cursor-pointer"
-                      onClick={() => openGallery(project.assets, i)}
-                    >
-                      <img
-                        src={src}
-                        alt={`${project.title} — фото ${i + 1}`}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
-                          <Maximize2 className="text-white" size={20} />
-                        </div>
+                    
+                    <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
+                      <div>
+                        <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">Год</span>
+                        <p className="mt-1 text-sm">{project.year}</p>
+                      </div>
+                      <div>
+                        <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">Тип</span>
+                        <p className="mt-1 text-sm">{project.type}</p>
+                      </div>
+                      <div className="col-span-2">
+                        <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">Задачи</span>
+                        <p className="mt-2 text-sm leading-relaxed text-[#8F8F8F]">{project.desc}</p>
                       </div>
                     </div>
-                  ))}
-                </div>
-                {/* Mobile hint */}
-                <div className="flex justify-center mt-2 sm:hidden text-[10px] uppercase tracking-widest text-white/30">
-                  Листайте для просмотра →
-                </div>
-              </div>
-            </section>
-          ))}
-        </div>
 
-        <AnimatePresence>
-          {fullscreenImages && (
-            <FullscreenGallery 
-              images={fullscreenImages} 
-              initialIdx={fullscreenIdx} 
-              onClose={() => setFullscreenImages(null)} 
-            />
-          )}
-        </AnimatePresence>
+                    <button 
+                      onClick={() => {
+                        const startIdx = secondaryCaseStudies.slice(0, idx).reduce((acc, p) => acc + p.assets.length, 0);
+                        setFullscreenIdx(startIdx);
+                      }}
+                      className="group inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-medium transition-all hover:bg-white/10"
+                    >
+                      Смотреть проект
+                      <span className="transition-transform group-hover:translate-x-1">→</span>
+                    </button>
+                  </Reveal>
 
-        <div id="about" className="pt-20">
-          <About />
-        </div>
-        <div id="services">
-          <Services />
-        </div>
+                  <div className="grid gap-4 sm:grid-cols-2 lg:gap-6">
+                    {project.assets.map((asset, assetIdx) => (
+                      <div 
+                        key={assetIdx}
+                        className={`overflow-hidden rounded-2xl bg-white/5 cursor-pointer ${assetIdx === 0 ? 'sm:col-span-2 aspect-[16/9]' : 'aspect-square'}`}
+                        onClick={() => {
+                          const startIdx = secondaryCaseStudies.slice(0, idx).reduce((acc, p) => acc + p.assets.length, 0);
+                          setFullscreenIdx(startIdx + assetIdx);
+                        }}
+                      >
+                        <Reveal delay={assetIdx * 0.1} className="h-full w-full">
+                          <img 
+                            src={asset} 
+                            alt={`${project.title} detail ${assetIdx + 1}`}
+                            className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                          />
+                        </Reveal>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <About />
+        <Services />
         <ProcessPhotos />
         <Testimonials />
         <Contact />
+        <Footer />
       </main>
-      <Footer />
+
+      <AnimatePresence>
+        {fullscreenIdx !== null && (
+          <FullscreenGallery 
+            images={allImages} 
+            initialIdx={fullscreenIdx} 
+            onClose={() => setFullscreenIdx(null)} 
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
