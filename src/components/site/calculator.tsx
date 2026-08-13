@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useLocation } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export function CostCalculator() {
+  const location = useLocation();
   const [meters, setMeters] = useState(50);
   const [type, setType] = useState("elite");
 
@@ -48,7 +50,7 @@ export function CostCalculator() {
             className="border-white/20 hover:bg-white hover:text-black transition-colors duration-300"
             asChild
           >
-            <a href="#contact">Узнать точную стоимость</a>
+            <a href={location.pathname === "/" ? "#contact" : "/#contact"}>Узнать точную стоимость</a>
           </Button>
         </div>
       </div>
