@@ -779,7 +779,7 @@ function RegisseurCarousel({ onImageClick }: { onImageClick: (idx: number) => vo
       <div 
         ref={scrollRef}
         className="flex gap-4 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory px-[2vw] md:px-0"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', touchAction: 'pan-y' }}
       >
         {regisseurAssets.map((src, i) => (
           <RegisseurImage key={src} src={src} index={i} onClick={() => onImageClick(i)} />
