@@ -170,9 +170,9 @@ export const secondaryCaseStudies = [
     area: "58 м²",
     time: "3 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1603988492906-4fb0fb251cb8?auto=format&fit=crop&q=80&w=800"
+      pyatietazhka1.url,
+      pyatietazhka2.url,
+      pyatietazhka3.url
     ]
   },
   {
