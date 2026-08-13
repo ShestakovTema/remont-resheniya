@@ -150,9 +150,9 @@ export const secondaryCaseStudies = [
     area: "92 м²",
     time: "4 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1582268611958-ebaf161c8e28?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=800"
+      stalin1.url,
+      stalin2.url,
+      stalin3.url
     ]
   },
   {
@@ -213,6 +213,9 @@ import heart3 from "@/assets/serdtse-stolitsy-3.jpg.asset.json";
 import simvol1 from "@/assets/simvol-1.jpg.asset.json";
 import simvol2 from "@/assets/simvol-2.jpg.asset.json";
 import simvol3 from "@/assets/simvol-3.jpg.asset.json";
+import stalin1 from "@/assets/stalin-1.jpg.asset.json";
+import stalin2 from "@/assets/stalin-2.jpg.asset.json";
+import stalin3 from "@/assets/stalin-3.jpg.asset.json";
 import e1 from "@/assets/process/electro/1.png.asset.json";
 import e2 from "@/assets/process/electro/2.png.asset.json";
 import e3 from "@/assets/process/electro/3.png.asset.json";
