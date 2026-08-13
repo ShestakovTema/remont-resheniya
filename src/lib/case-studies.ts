@@ -16,7 +16,7 @@ export const eliteCaseStudies = [
       "Координация мебельщиков и потолочников через партнёров"
     ],
     area: "105 м²",
-    time: "3,5 месяца",
+    time: "1,5 месяца",
     assets: (regisseurAssets.length > 0 ? regisseurAssets : [
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
@@ -40,7 +40,7 @@ export const eliteCaseStudies = [
       "Подготовка поверхностей под высококачественную покраску"
     ],
     area: "85 м²",
-    time: "4 месяца",
+    time: "2 месяца",
     assets: [
       arbatAsset.url,
       arbatBath.url,
@@ -61,7 +61,7 @@ export const eliteCaseStudies = [
       "Монтаж скрытых люков и систем хранения"
     ],
     area: "120 м²",
-    time: "5 месяцев",
+    time: "2,5 месяца",
     assets: [
       "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800",
       hamovniki1.url,
@@ -84,7 +84,7 @@ export const newBuildingCaseStudies = [
       "Шумоизоляция пола перед заливкой стяжки"
     ],
     area: "78 м²",
-    time: "2,5 месяца",
+    time: "1,2 месяца",
     assets: [
       zilartLobby.url,
       zilartLiving.url,
@@ -105,7 +105,7 @@ export const newBuildingCaseStudies = [
       "Подготовка пола под паркетную доску"
     ],
     area: "115 м²",
-    time: "3 месяца",
+    time: "1,5 месяца",
     assets: [
       heart1.url,
       heart2.url,
@@ -125,7 +125,7 @@ export const newBuildingCaseStudies = [
       "Гидроизоляция мокрых зон"
     ],
     area: "94 м²",
-    time: "2,5 месяца",
+    time: "1,2 месяца",
     assets: [
       simvol1.url,
       simvol2.url,
@@ -148,7 +148,7 @@ export const secondaryCaseStudies = [
       "Подготовка стен под покраску и потолков из ГКЛ"
     ],
     area: "92 м²",
-    time: "4 месяца",
+    time: "2 месяца",
     assets: [
       stalin1.url,
       stalin2.url,
@@ -168,7 +168,7 @@ export const secondaryCaseStudies = [
       "Штукатурка стен по маякам с выведением углов 90°"
     ],
     area: "58 м²",
-    time: "3 месяца",
+    time: "1,5 месяца",
     assets: [
       pyatietazhka1.url,
       pyatietazhka2.url,
@@ -188,7 +188,7 @@ export const secondaryCaseStudies = [
       "Подготовка оснований под паркет и лепной декор"
     ],
     area: "84 м²",
-    time: "4,5 месяца",
+    time: "2,2 месяца",
     assets: [
       stalinStudio1.url,
       stalinStudio2.url,
