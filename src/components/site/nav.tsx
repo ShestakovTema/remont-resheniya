@@ -47,7 +47,12 @@ export function Nav() {
         className="fixed inset-x-0 top-0 z-[80] border-b backdrop-blur-md"
       >
         <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-6 lg:h-20 lg:px-10">
-          <Magnetic as="a" href={location.pathname === "/" ? "#top" : "/#top"} className="inline-flex items-center gap-2" strength={16}>
+          <Magnetic as="a" href={location.pathname === "/" ? "#top" : "/#top"} onClick={(e) => {
+51:             if (location.pathname === "/") {
+52:               e.preventDefault();
+53:               window.scrollTo({ top: 0, behavior: "smooth" });
+54:             }
+55:           }} className="inline-flex items-center gap-2" strength={16}>
             <span className="grid h-7 w-7 place-items-center rounded-sm border border-white/30 text-[8px] font-medium tracking-tighter text-white">
               РР
             </span>
@@ -106,6 +111,13 @@ export function Nav() {
             {LINKS.map((l) => {
               const isAnchor = l.href.startsWith("#");
               const href = (location.pathname !== "/" && isAnchor) ? `/${l.href}` : l.href;
+109:               const handleClick = (e: React.MouseEvent) => {
+110:                 if (location.pathname === "/" && isAnchor) {
+111:                   e.preventDefault();
+112:                   const id = l.href.replace("#", "");
+113:                   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+114:                 }
+115:               };
               
               return (
                 <Magnetic
