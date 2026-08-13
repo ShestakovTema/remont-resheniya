@@ -42,11 +42,11 @@ export const eliteCaseStudies = [
     area: "85 м²",
     time: "4 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1628592102751-ba83b03bc67e?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1556911227-4d19b8a8921b?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1582268611958-ebaf161c8e28?auto=format&fit=crop&q=80&w=800"
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&q=80&w=800"
     ]
   },
   {

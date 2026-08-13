@@ -128,13 +128,13 @@ const PROJECTS: Project[] = [
     name: "Современный ремонт на Арбате", 
     category: "Замена коммуникаций", 
     year: "2025", 
-    image: "https://images.unsplash.com/photo-1628592102751-ba83b03bc67e?auto=format&fit=crop&q=80&w=1200", 
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200", 
     beforeImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200",
     url: "/elite/" 
   },
   { name: "Квартира-студия в ЖК 'Зиларт'", category: "Монтаж инженерии", year: "2024", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { name: "Реновация квартиры 1985г.", category: "Сделана перепланировка", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
-  { name: "Вилла в Подмосковье", category: "Инженерные системы", year: "2025", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Вилла в Подмосковье", category: "Инженерные системы", year: "2025", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
 ];
 
 const UPCOMING_PROJECTS: Project[] = [

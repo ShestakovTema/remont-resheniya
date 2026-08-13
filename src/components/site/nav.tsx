@@ -104,7 +104,8 @@ export function Nav() {
             </DropdownMenu.Root>
 
             {LINKS.map((l) => {
-              const href = (location.pathname !== "/" && l.href === "#about") ? "/#about" : l.href;
+              const isAnchor = l.href.startsWith("#");
+              const href = (location.pathname !== "/" && isAnchor) ? `/${l.href}` : l.href;
               
               return (
                 <Magnetic
