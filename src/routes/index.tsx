@@ -862,7 +862,7 @@ export function FullscreenGallery({ images, initialIdx, onClose }: { images: str
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl [&_*]:cursor-auto"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl"
       style={{ cursor: 'auto' }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
