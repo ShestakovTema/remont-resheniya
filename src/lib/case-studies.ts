@@ -74,7 +74,7 @@ export const newBuildingCaseStudies = [
   {
     title: "ЖК «Зиларт» — Инженерные системы",
     type: "Новостройка",
-    year: "Сдан · 2024",
+    year: "Сдан · 2027",
     desc: "Комплексная подготовка квартиры под чистовую отделку. Необходимо было выполнить возведение межкомнатных перегородок из пазогребневых плит, полную разводку электросети (более 80 точек), монтаж системы водоснабжения с установкой системы защиты от протечек и качественную штукатурку стен под покраску.",
     work: [
       "Монтаж перегородок с соблюдением геометрии углов 90°",
@@ -86,10 +86,10 @@ export const newBuildingCaseStudies = [
     area: "78 м²",
     time: "2,5 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1582408921715-18e7826363bb?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"
+      zilartLobby.url,
+      zilartLiving.url,
+      zilartHall.url,
+      zilartBath.url
     ]
   },
   {
@@ -203,6 +203,10 @@ import arbatHall from "@/assets/arbat/hall.jpg.asset.json";
 import hamovniki1 from "@/assets/hamovniki-1.jpg.asset.json";
 import hamovniki2 from "@/assets/hamovniki-2.jpg.asset.json";
 import villaAsset from "@/assets/villa-podmoskovye-new.jpg.asset.json";
+import zilartLobby from "@/assets/zilart/lobby.jpg.asset.json";
+import zilartLiving from "@/assets/zilart/living.jpg.asset.json";
+import zilartHall from "@/assets/zilart/hall.jpg.asset.json";
+import zilartBath from "@/assets/zilart/bath.jpg.asset.json";
 import e1 from "@/assets/process/electro/1.png.asset.json";
 import e2 from "@/assets/process/electro/2.png.asset.json";
 import e3 from "@/assets/process/electro/3.png.asset.json";
