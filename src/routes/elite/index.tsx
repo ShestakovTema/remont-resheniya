@@ -8,13 +8,13 @@ import {
   Services, 
   Testimonials, 
   Contact, 
-  ProcessPhotos 
+  ProcessPhotos,
+  FullscreenGallery,
+  Reveal,
+  TextReveal,
+  Cursor
 } from "@/components/site";
-import { FullscreenGallery } from "@/components/site/fullscreen-gallery";
-import { Reveal, TextReveal } from "@/components/site/reveal";
 import { eliteCaseStudies } from "@/lib/case-studies";
-import { Cursor } from "@/components/site/cursor";
-import { regisseurAssets } from "@/lib/regisseur-assets";
 
 export const Route = createFileRoute("/elite/")({
   component: ElitePage,
@@ -63,11 +63,11 @@ function ElitePage() {
           <div className="mx-auto max-w-[1600px]">
             <div className="grid gap-20">
               {eliteCaseStudies.map((project, idx) => (
-                <div key={project.name} className="grid gap-12 lg:grid-cols-2 lg:items-start">
+                <div key={project.title} className="grid gap-12 lg:grid-cols-2 lg:items-start">
                   <Reveal className="space-y-8 lg:sticky lg:top-32">
                     <div>
                       <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">Кейс {idx + 1}</span>
-                      <h2 className="font-display mt-4 text-4xl md:text-5xl">{project.name}</h2>
+                      <h2 className="font-display mt-4 text-4xl md:text-5xl">{project.title}</h2>
                     </div>
                     
                     <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
@@ -76,12 +76,12 @@ function ElitePage() {
                         <p className="mt-1 text-sm">{project.year}</p>
                       </div>
                       <div>
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">Локация</span>
-                        <p className="mt-1 text-sm">{project.location}</p>
+                        <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">Тип</span>
+                        <p className="mt-1 text-sm">{project.type}</p>
                       </div>
                       <div className="col-span-2">
                         <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">Задачи</span>
-                        <p className="mt-2 text-sm leading-relaxed text-[#8F8F8F]">{project.description}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-[#8F8F8F]">{project.desc}</p>
                       </div>
                     </div>
 
@@ -99,21 +99,22 @@ function ElitePage() {
 
                   <div className="grid gap-4 sm:grid-cols-2 lg:gap-6">
                     {project.assets.map((asset, assetIdx) => (
-                      <Reveal 
-                        key={assetIdx} 
-                        delay={assetIdx * 0.1}
+                      <div 
+                        key={assetIdx}
                         className={`overflow-hidden rounded-2xl bg-white/5 cursor-pointer ${assetIdx === 0 ? 'sm:col-span-2 aspect-[16/9]' : 'aspect-square'}`}
                         onClick={() => {
                           const startIdx = eliteCaseStudies.slice(0, idx).reduce((acc, p) => acc + p.assets.length, 0);
                           setFullscreenIdx(startIdx + assetIdx);
                         }}
                       >
-                        <img 
-                          src={asset} 
-                          alt={`${project.name} detail ${assetIdx + 1}`}
-                          className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                        />
-                      </Reveal>
+                        <Reveal delay={assetIdx * 0.1} className="h-full w-full">
+                          <img 
+                            src={asset} 
+                            alt={`${project.title} detail ${assetIdx + 1}`}
+                            className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                          />
+                        </Reveal>
+                      </div>
                     ))}
                   </div>
                 </div>
