@@ -254,9 +254,9 @@ import p7 from "@/assets/process/plumbing/p7.png.asset.json";
 import p8 from "@/assets/process/plumbing/p8.png.asset.json";
 import p9 from "@/assets/process/plumbing/p9.png.asset.json";
 import p10 from "@/assets/process/plumbing/p10.png.asset.json";
-import p11 from "@/assets/process/plumbing/p11.asset.json";
-import p12 from "@/assets/process/plumbing/p12.asset.json";
-import p13 from "@/assets/process/plumbing/p13.asset.json";
+import p11 from "@/assets/process/plumbing/p11.png.asset.json";
+import p12 from "@/assets/process/plumbing/p12.png.asset.json";
+import p13 from "@/assets/process/plumbing/p13.png.asset.json";
 
 export const processPhotos = {
   electro: [
