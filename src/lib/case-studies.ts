@@ -202,6 +202,8 @@ export const secondaryCaseStudies = [
 ];
 
 import arbatAsset from "@/assets/arbat-new.jpg.asset.json";
+import arbatBath from "@/assets/arbat/bath.jpg.asset.json";
+import arbatHall from "@/assets/arbat/hall.jpg.asset.json";
 import villaAsset from "@/assets/villa-podmoskovye-new.jpg.asset.json";
 import e1 from "@/assets/process/electro/1.png.asset.json";
 import e2 from "@/assets/process/electro/2.png.asset.json";
