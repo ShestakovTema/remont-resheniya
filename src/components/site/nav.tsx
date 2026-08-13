@@ -49,12 +49,10 @@ export function Nav() {
         <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-6 lg:h-20 lg:px-10">
           <Magnetic 
             as="a" 
-            href={location.pathname === "/" ? "#top" : "/#top"} 
+            href={location.pathname === "/" ? "#top" : `${location.pathname}#top`} 
             onClick={(e: React.MouseEvent) => {
-              if (location.pathname === "/") {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="inline-flex items-center gap-2" 
             strength={16}
