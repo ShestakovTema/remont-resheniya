@@ -172,15 +172,7 @@ function Index() {
       <ScrollProgress />
       <Nav />
 
-      {/* Footer permanently pinned to viewport bottom, behind main content on z */}
-      <div
-        ref={footerRef}
-        className="fixed inset-x-0 bottom-0 z-0 bg-[#141414] text-white"
-      >
-        <Footer />
-      </div>
-
-      <main id="top" className="relative z-10 overflow-hidden rounded-b-[40px] bg-[#070707] text-white md:rounded-b-[56px]">
+      <main id="top" className="relative z-10 overflow-hidden bg-[#070707] text-white">
         <SiteAurora />
         <div
           aria-hidden
@@ -211,6 +203,7 @@ function Index() {
           <Testimonials id="testimonials" />
           <Contact id="contact" />
         </div>
+        <Footer />
       </main>
 
 
