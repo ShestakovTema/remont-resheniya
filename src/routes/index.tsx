@@ -19,6 +19,7 @@ import {
   newBuildingCaseStudies, 
   secondaryCaseStudies 
 } from "@/lib/case-studies";
+import villaAsset from "@/assets/villa-podmoskovye-new.jpg.asset.json";
 import { 
   Dialog, 
   DialogContent, 
@@ -134,7 +135,7 @@ const PROJECTS: Project[] = [
   },
   { name: "Квартира-студия в ЖК 'Зиларт'", category: "Монтаж инженерии", year: "2024", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { name: "Реновация квартиры 1985г.", category: "Сделана перепланировка", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
-  { name: "Вилла в Подмосковье", category: "Инженерные системы", year: "2025", image: "/mnt/user-uploads/file-51", url: "/elite/" },
+  { name: "Вилла в Подмосковье", category: "Инженерные системы", year: "2025", image: villaAsset.url, url: "/elite/" },
 ];
 
 const UPCOMING_PROJECTS: Project[] = [
