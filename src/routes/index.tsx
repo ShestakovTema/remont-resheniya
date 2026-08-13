@@ -1071,10 +1071,8 @@ function ProjectRow({ project, index, totalCount }: { project: Project; index: n
       >
         <Magnetic strength={12} className="group relative block overflow-hidden rounded-lg">
           <div
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
             data-cursor="view"
-            data-cursor-label="STF"
+            data-cursor-label="ОТКРЫТЬ"
             className="relative block aspect-[16/10] w-full overflow-hidden"
           >
             <motion.div style={{ y }} className="absolute inset-0 will-change-transform">
@@ -1087,16 +1085,6 @@ function ProjectRow({ project, index, totalCount }: { project: Project; index: n
                 style={{ scale }}
                 className="h-[115%] w-full object-cover"
               />
-              {project.beforeImage && hover && (
-                <motion.img
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  src={project.beforeImage}
-                  alt={`До: ${project.name}`}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              )}
             </motion.div>
             <motion.div
               initial={false}
@@ -1764,7 +1752,7 @@ export function Footer() {
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/50">
               {t("footer.studioLead")}
             </p>
-            <div className="space-y-1 text-sm text-white">
+            <div className="space-y-1 text-sm text-white/60">
               <p>ИП Ларионов Михаил Валентинович</p>
             </div>
           </div>
@@ -1774,7 +1762,7 @@ export function Footer() {
               {t("footer.legal")}
             </p>
             <div className="space-y-1 text-sm text-white/60">
-              <p>© {year} Ремонт Решения — {t("footer.rights")}</p>
+              <p>© {year} Ремонт Решения</p>
             </div>
           </div>
         </div>

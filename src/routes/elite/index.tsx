@@ -28,6 +28,7 @@ function ElitePage() {
 
   return (
     <div id="top" className="bg-[#070707] text-white min-h-screen">
+      <Cursor />
       <Nav />
       <SmoothScroll />
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
