@@ -157,9 +157,15 @@
     html.tf-cursor, html.tf-cursor * { cursor: none !important; }
   }
   ::selection { background: #ffffff; color: #070707; }
-  /* Hide Lovable badge */
-  .lovable-badge {
+  /* Hide Lovable badge and related elements */
+  #lovable-badge,
+  .lovable-badge,
+  [class*="lovable-badge"],
+  a[href*="lovable.dev"] {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 }
 
