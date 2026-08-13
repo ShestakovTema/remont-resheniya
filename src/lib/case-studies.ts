@@ -170,9 +170,9 @@ export const secondaryCaseStudies = [
     area: "58 м²",
     time: "3 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1603988492906-4fb0fb251cb8?auto=format&fit=crop&q=80&w=800"
+      pyatietazhka1.url,
+      pyatietazhka2.url,
+      pyatietazhka3.url
     ]
   },
   {
@@ -216,6 +216,9 @@ import simvol3 from "@/assets/simvol-3.jpg.asset.json";
 import stalin1 from "@/assets/stalin-1.jpg.asset.json";
 import stalin2 from "@/assets/stalin-2.jpg.asset.json";
 import stalin3 from "@/assets/stalin-3.jpg.asset.json";
+import pyatietazhka1 from "@/assets/pyatietazhka/p1.jpg.asset.json";
+import pyatietazhka2 from "@/assets/pyatietazhka/p2.jpg.asset.json";
+import pyatietazhka3 from "@/assets/pyatietazhka/p3.jpg.asset.json";
 import e1 from "@/assets/process/electro/1.png.asset.json";
 import e2 from "@/assets/process/electro/2.png.asset.json";
 import e3 from "@/assets/process/electro/3.png.asset.json";
