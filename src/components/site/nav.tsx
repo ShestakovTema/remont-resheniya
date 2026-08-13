@@ -15,11 +15,11 @@ const LANG_FULL: Record<(typeof LANGS)[number], string> = {
 };
 
 const LINKS = [
-  { key: "nav.work", href: "#work" },
-  { key: "nav.about", href: "#about" },
-  { key: "nav.services", href: "#services" },
-  { key: "nav.process", href: "#process-photos" },
-  { key: "nav.contact", href: "#contact" },
+  { key: "nav.work", href: "work" },
+  { key: "nav.about", href: "about" },
+  { key: "nav.services", href: "services" },
+  { key: "nav.process", href: "process-photos" },
+  { key: "nav.contact", href: "contact" },
 ];
 
 export function Nav() {
@@ -115,13 +115,16 @@ export function Nav() {
             </DropdownMenu.Root>
 
             {LINKS.map((l) => {
-              const isAnchor = l.href.startsWith("#");
-              const href = (location.pathname !== "/" && isAnchor) ? `/${l.href}` : l.href;
+              const href = location.pathname === "/" ? `#${l.href}` : `${location.pathname}#${l.href}`;
               const handleClick = (e: React.MouseEvent) => {
-                if (location.pathname === "/" && isAnchor) {
-                  e.preventDefault();
-                  const id = l.href.replace("#", "");
-                  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                e.preventDefault();
+                const id = l.href;
+                const element = document.getElementById(id);
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                } else if (location.pathname !== "/") {
+                  // Fallback for subpages if IDs differ, though we should align them
+                  window.location.hash = l.href;
                 }
               };
 
