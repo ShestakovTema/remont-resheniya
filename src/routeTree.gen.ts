@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as R404RouteImport } from './routes/404'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as EliteIndexRouteImport } from './routes/elite/index'
 import { Route as NewbuildingIndexRouteImport } from './routes/newbuilding/index'
@@ -18,6 +20,16 @@ import { Route as SecondaryIndexRouteImport } from './routes/secondary/index'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R404Route = R404RouteImport.update({
+  id: '/404',
+  path: '/404',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -43,6 +55,8 @@ const SecondaryIndexRoute = SecondaryIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
+  '/privacy': typeof PrivacyRoute
   '/blog/': typeof BlogIndexRoute
   '/elite/': typeof EliteIndexRoute
   '/newbuilding/': typeof NewbuildingIndexRoute
@@ -50,6 +64,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
+  '/privacy': typeof PrivacyRoute
   '/blog': typeof BlogIndexRoute
   '/elite': typeof EliteIndexRoute
   '/newbuilding': typeof NewbuildingIndexRoute
@@ -58,6 +74,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/404': typeof R404Route
+  '/privacy': typeof PrivacyRoute
   '/blog/': typeof BlogIndexRoute
   '/elite/': typeof EliteIndexRoute
   '/newbuilding/': typeof NewbuildingIndexRoute
@@ -65,14 +83,38 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blog/' | '/elite/' | '/newbuilding/' | '/secondary/'
+  fullPaths:
+    | '/'
+    | '/404'
+    | '/privacy'
+    | '/blog/'
+    | '/elite/'
+    | '/newbuilding/'
+    | '/secondary/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog' | '/elite' | '/newbuilding' | '/secondary'
-  id: '__root__' | '/' | '/blog/' | '/elite/' | '/newbuilding/' | '/secondary/'
+  to:
+    | '/'
+    | '/404'
+    | '/privacy'
+    | '/blog'
+    | '/elite'
+    | '/newbuilding'
+    | '/secondary'
+  id:
+    | '__root__'
+    | '/'
+    | '/404'
+    | '/privacy'
+    | '/blog/'
+    | '/elite/'
+    | '/newbuilding/'
+    | '/secondary/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R404Route: typeof R404Route
+  PrivacyRoute: typeof PrivacyRoute
   BlogIndexRoute: typeof BlogIndexRoute
   EliteIndexRoute: typeof EliteIndexRoute
   NewbuildingIndexRoute: typeof NewbuildingIndexRoute
@@ -86,6 +128,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/404': {
+      id: '/404'
+      path: '/404'
+      fullPath: '/404'
+      preLoaderRoute: typeof R404RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -121,6 +177,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R404Route: R404Route,
+  PrivacyRoute: PrivacyRoute,
   BlogIndexRoute: BlogIndexRoute,
   EliteIndexRoute: EliteIndexRoute,
   NewbuildingIndexRoute: NewbuildingIndexRoute,

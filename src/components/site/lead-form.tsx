@@ -59,7 +59,7 @@ export function LeadForm() {
             htmlFor="privacy" 
             className="text-xs text-white/40 leading-tight cursor-pointer hover:text-white/60 transition-colors"
           >
-            Я согласен с <Link to="/privacy" as={undefined} {...({} as any)} className="underline hover:text-white">политикой обработки персональных данных</Link>
+            Я согласен с <a href="/privacy" className="underline hover:text-white">политикой обработки персональных данных</a>
           </label>
         </div>
       </div>
