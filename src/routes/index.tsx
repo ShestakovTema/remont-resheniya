@@ -1710,19 +1710,19 @@ export function Footer() {
               {t("footer.gallery")}
             </p>
             <div className="space-y-1 text-sm">
-              <a href="#work" className="block text-white transition-colors hover:text-white/60">
+              <a href="#work" onClick={(e) => { e.preventDefault(); document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }); }} className="block text-white transition-colors hover:text-white/60">
                 {t("nav.work")}
               </a>
-              <a href="#about" className="block text-white transition-colors hover:text-white/60">
+              <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }} className="block text-white transition-colors hover:text-white/60">
                 {t("nav.about")}
               </a>
-              <a href="#services" className="block text-white transition-colors hover:text-white/60">
+              <a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="block text-white transition-colors hover:text-white/60">
                 {t("nav.services")}
               </a>
-              <a href="#blog" className="block text-white transition-colors hover:text-white/60">
+              <a href="#blog" onClick={(e) => { e.preventDefault(); document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth' }); }} className="block text-white transition-colors hover:text-white/60">
                 {t("nav.blog")}
               </a>
-              <a href="#contact" className="block text-white transition-colors hover:text-white/60">
+              <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="block text-white transition-colors hover:text-white/60">
                 {t("nav.contact")}
               </a>
             </div>

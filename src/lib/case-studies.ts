@@ -42,7 +42,7 @@ export const eliteCaseStudies = [
     area: "85 м²",
     time: "4 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200",
+      "/__l5e/assets-v1/ba0032dd-7ccb-4f79-9921-dd37caa8a1d7/arbat-living-room.jpg",
       "https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800",
@@ -194,7 +194,7 @@ export const secondaryCaseStudies = [
     area: "76 м²",
     time: "3,5 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=800",
+      "/__l5e/assets-v1/8a553957-9d94-42d8-9866-d718f11226ae/villa-living-room.jpg",
       "https://images.unsplash.com/photo-1582268611958-ebaf161c8e28?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80&w=800"
     ]

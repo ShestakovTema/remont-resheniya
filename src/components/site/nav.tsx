@@ -47,7 +47,18 @@ export function Nav() {
         className="fixed inset-x-0 top-0 z-[80] border-b backdrop-blur-md"
       >
         <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-6 lg:h-20 lg:px-10">
-          <Magnetic as="a" href={location.pathname === "/" ? "#top" : "/#top"} className="inline-flex items-center gap-2" strength={16}>
+          <Magnetic 
+            as="a" 
+            href={location.pathname === "/" ? "#top" : "/#top"} 
+            onClick={(e: React.MouseEvent) => {
+              if (location.pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className="inline-flex items-center gap-2" 
+            strength={16}
+          >
             <span className="grid h-7 w-7 place-items-center rounded-sm border border-white/30 text-[8px] font-medium tracking-tighter text-white">
               РР
             </span>
@@ -106,12 +117,20 @@ export function Nav() {
             {LINKS.map((l) => {
               const isAnchor = l.href.startsWith("#");
               const href = (location.pathname !== "/" && isAnchor) ? `/${l.href}` : l.href;
-              
+              const handleClick = (e: React.MouseEvent) => {
+                if (location.pathname === "/" && isAnchor) {
+                  e.preventDefault();
+                  const id = l.href.replace("#", "");
+                  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                }
+              };
+
               return (
                 <Magnetic
                   key={l.href}
                   as="a"
                   href={href}
+                  onClick={handleClick}
                   strength={14}
                   className="group relative px-4 py-2 text-sm text-white/70 transition-colors hover:text-white"
                 >
@@ -125,6 +144,12 @@ export function Nav() {
             <Magnetic
               as="a"
               href={location.pathname === "/" ? "#contact" : "/#contact"}
+              onClick={(e: React.MouseEvent) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
               strength={18}
               onMouseEnter={() => setCta("in")}
               onMouseLeave={() => setCta((s) => (s === "in" ? "out" : s))}
@@ -187,7 +212,14 @@ export function Nav() {
                 return (
                   <li key={l.href}>
                     <a
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        setOpen(false);
+                        if (location.pathname === "/" && isAnchor) {
+                          e.preventDefault();
+                          const id = l.href.replace("#", "");
+                          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
                       href={href}
                       className="font-display block py-3 text-4xl text-white"
                     >
