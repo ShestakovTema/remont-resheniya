@@ -52,9 +52,6 @@ export function CostCalculator() {
           >
             <a href={location.pathname === "/" ? "#contact" : "/#contact"}>Узнать точную стоимость</a>
           </Button>
-          <p className="mt-4 text-[10px] text-white/30 max-w-[280px]">
-            Нажимая кнопку, вы соглашаетесь с <a href="/privacy" className="underline hover:text-white/60">политикой обработки персональных данных</a>
-          </p>
         </div>
       </div>
     </div>
