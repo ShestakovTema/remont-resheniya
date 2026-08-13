@@ -81,7 +81,7 @@ export function Cursor() {
     <motion.div
       aria-hidden
       style={{ x: sx, y: sy }}
-      className="pointer-events-none fixed left-0 top-0 z-[2147483647] -translate-x-1/2 -translate-y-1/2 mix-blend-difference hidden md:block"
+      className="pointer-events-none fixed left-0 top-0 z-[2147483647] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
     >
       <motion.div
         animate={{ width: size, height: size, opacity: 1 }}
