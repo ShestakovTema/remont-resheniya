@@ -30,7 +30,14 @@ import {
   DialogClose
 } from "@/components/ui/dialog";
 import { FullscreenGallery } from "@/components/site/fullscreen-gallery";
+import { Footer } from "@/components/site/footer";
+import { About } from "@/components/site/about";
+import { Services } from "@/components/site/services";
+import { Testimonials } from "@/components/site/testimonials";
+import { Contact } from "@/components/site/contact";
+import { ProcessPhotos } from "@/components/site/process-photos";
 import { PHONE_NUMBER, WHATSAPP_HREF, SITE_HANDLE } from "@/lib/constants";
+
 
 
 /* ------------------------------ SITE-WIDE AURORA ------------------------------ */
