@@ -2,8 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
-import { Footer, About, Services, Testimonials, Contact, FullscreenGallery, ProcessPhotos } from "@/routes/index";
+import { Footer, About, Services, Testimonials, Contact, ProcessPhotos } from "@/routes/index";
+import { FullscreenGallery } from "@/components/site/fullscreen-gallery";
 import { Cursor } from "@/components/site/cursor";
+
 import { LangProvider } from "@/lib/i18n";
 import { useState } from "react";
 import { Maximize2 } from "lucide-react";
