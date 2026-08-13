@@ -208,20 +208,21 @@ export function Nav() {
                 </div>
               </li>
               {LINKS.map((l) => {
-                const isAnchor = l.href.startsWith("#");
-                const href = (location.pathname !== "/" && isAnchor) ? `/${l.href}` : l.href;
+                const href = location.pathname === "/" ? `#${l.href}` : `${location.pathname}#${l.href}`;
                 return (
                   <li key={l.href}>
                     <a
+                      href={href}
                       onClick={(e) => {
                         setOpen(false);
-                        if (location.pathname === "/" && isAnchor) {
-                          e.preventDefault();
-                          const id = l.href.replace("#", "");
-                          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+                        e.preventDefault();
+                        const element = document.getElementById(l.href);
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        } else if (location.pathname !== "/") {
+                          window.location.hash = l.href;
                         }
                       }}
-                      href={href}
                       className="font-display block py-3 text-4xl text-white"
                     >
                       {t(l.key)}
