@@ -64,10 +64,8 @@ export const eliteCaseStudies = [
     time: "5 месяцев",
     assets: [
       "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800"
+      hamovniki1.url,
+      hamovniki2.url
     ]
   }
 ];
@@ -202,6 +200,8 @@ export const secondaryCaseStudies = [
 import arbatAsset from "@/assets/arbat-new.jpg.asset.json";
 import arbatBath from "@/assets/arbat/bath.jpg.asset.json";
 import arbatHall from "@/assets/arbat/hall.jpg.asset.json";
+import hamovniki1 from "@/assets/hamovniki-1.jpg.asset.json";
+import hamovniki2 from "@/assets/hamovniki-2.jpg.asset.json";
 import villaAsset from "@/assets/villa-podmoskovye-new.jpg.asset.json";
 import e1 from "@/assets/process/electro/1.png.asset.json";
 import e2 from "@/assets/process/electro/2.png.asset.json";
