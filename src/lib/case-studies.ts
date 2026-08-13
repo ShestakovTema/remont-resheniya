@@ -107,9 +107,9 @@ export const newBuildingCaseStudies = [
     area: "115 м²",
     time: "3 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800"
+      heart1.url,
+      heart2.url,
+      heart3.url
     ]
   },
   {
@@ -207,6 +207,9 @@ import zilartLobby from "@/assets/zilart/lobby.jpg.asset.json";
 import zilartLiving from "@/assets/zilart/living.jpg.asset.json";
 import zilartHall from "@/assets/zilart/hall.jpg.asset.json";
 import zilartBath from "@/assets/zilart/bath.jpg.asset.json";
+import heart1 from "@/assets/serdtse-stolitsy-1.jpg.asset.json";
+import heart2 from "@/assets/serdtse-stolitsy-2.jpg.asset.json";
+import heart3 from "@/assets/serdtse-stolitsy-3.jpg.asset.json";
 import e1 from "@/assets/process/electro/1.png.asset.json";
 import e2 from "@/assets/process/electro/2.png.asset.json";
 import e3 from "@/assets/process/electro/3.png.asset.json";
