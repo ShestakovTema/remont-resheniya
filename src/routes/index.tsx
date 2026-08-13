@@ -887,7 +887,7 @@ function RegisseurMobileGallery({ onImageClick }: { onImageClick: (idx: number) 
                     <div className="text-[10px] uppercase tracking-[0.3em] text-white/70">
                       ЖК «Режиссёр»
                     </div>
-                    <div className="font-display mt-1 truncate text-xl">Фото {i + 1}</div>
+                    <div className="font-display mt-1 truncate text-xl">Проект в работе</div>
                   </div>
                 </div>
               </div>
