@@ -40,7 +40,7 @@ export const eliteCaseStudies = [
       "Подготовка поверхностей под высококачественную покраску"
     ],
     area: "85 м²",
-    time: "2 месяца",
+    time: "2,5 месяца",
     assets: [
       arbatAsset.url,
       arbatBath.url,
@@ -84,7 +84,7 @@ export const newBuildingCaseStudies = [
       "Шумоизоляция пола перед заливкой стяжки"
     ],
     area: "78 м²",
-    time: "1,2 месяца",
+    time: "1,5 месяца",
     assets: [
       zilartLobby.url,
       zilartLiving.url,
@@ -125,7 +125,7 @@ export const newBuildingCaseStudies = [
       "Гидроизоляция мокрых зон"
     ],
     area: "94 м²",
-    time: "1,2 месяца",
+    time: "1,5 месяца",
     assets: [
       simvol1.url,
       simvol2.url,
@@ -148,7 +148,7 @@ export const secondaryCaseStudies = [
       "Подготовка стен под покраску и потолков из ГКЛ"
     ],
     area: "92 м²",
-    time: "2 месяца",
+    time: "2,5 месяца",
     assets: [
       stalin1.url,
       stalin2.url,
@@ -188,7 +188,7 @@ export const secondaryCaseStudies = [
       "Подготовка оснований под паркет и лепной декор"
     ],
     area: "84 м²",
-    time: "2,2 месяца",
+    time: "2,5 месяца",
     assets: [
       stalinStudio1.url,
       stalinStudio2.url,
