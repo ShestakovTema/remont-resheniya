@@ -254,6 +254,9 @@ import p7 from "@/assets/process/plumbing/p7.png.asset.json";
 import p8 from "@/assets/process/plumbing/p8.png.asset.json";
 import p9 from "@/assets/process/plumbing/p9.png.asset.json";
 import p10 from "@/assets/process/plumbing/p10.png.asset.json";
+import p11 from "@/assets/process/plumbing/p11.asset.json";
+import p12 from "@/assets/process/plumbing/p12.asset.json";
+import p13 from "@/assets/process/plumbing/p13.asset.json";
 
 export const processPhotos = {
   electro: [
@@ -261,6 +264,7 @@ export const processPhotos = {
     e11.url, e12.url, e13.url, e14.url, e15.url, e16.url, e17.url, e18.url, e19.url, e20.url
   ],
   plumbing: [
-    p1.url, p2.url, p3.url, p4.url, p5.url, p6.url, p7.url, p8.url, p9.url, p10.url
+    p1.url, p2.url, p3.url, p4.url, p5.url, p6.url, p7.url, p8.url, p9.url, p10.url,
+    p11.url, p12.url, p13.url
   ]
 };
