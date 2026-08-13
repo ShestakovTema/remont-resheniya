@@ -3,6 +3,7 @@ import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
 import { Footer, About, Services, Testimonials, Contact, FullscreenGallery, ProcessPhotos } from "@/routes/index";
+import { Cursor } from "@/components/site/cursor";
 import { LangProvider } from "@/lib/i18n";
 import { useState } from "react";
 import { Maximize2 } from "lucide-react";
@@ -28,6 +29,7 @@ function SecondaryPage() {
 
   return (
     <div id="top" className="bg-[#070707] text-white min-h-screen">
+      <Cursor />
       <Nav />
       <SmoothScroll />
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
