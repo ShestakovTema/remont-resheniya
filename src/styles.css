@@ -157,6 +157,10 @@
     html.tf-cursor, html.tf-cursor * { cursor: none !important; }
   }
   ::selection { background: #ffffff; color: #070707; }
+  /* Hide Lovable badge */
+  .lovable-badge {
+    display: none !important;
+  }
 }
 
 @utility font-display {
