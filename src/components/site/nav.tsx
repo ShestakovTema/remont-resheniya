@@ -50,7 +50,7 @@ export function Nav() {
           <Magnetic 
             as="a" 
             href={location.pathname === "/" ? "#top" : "/#top"} 
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent) => {
               if (location.pathname === "/") {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -144,7 +144,7 @@ export function Nav() {
             <Magnetic
               as="a"
               href={location.pathname === "/" ? "#contact" : "/#contact"}
-              onClick={(e) => {
+              onClick={(e: React.MouseEvent) => {
                 if (location.pathname === "/") {
                   e.preventDefault();
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
