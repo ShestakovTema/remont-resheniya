@@ -759,37 +759,155 @@ function RegisseurCarousel({ onImageClick }: { onImageClick: (idx: number) => vo
   };
 
   return (
-    <div className="group/carousel relative w-full">
-      {/* Desktop Controls */}
-      <div className="mb-4 hidden items-center justify-end gap-4 md:flex">
-        <button 
-          onClick={() => scroll('left')}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
-        >
-          <ChevronLeft size={20} />
-        </button>
-        <button 
-          onClick={() => scroll('right')}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
-        >
-          <ChevronRight size={20} />
-        </button>
-      </div>
+    <>
+      <div className="group/carousel relative hidden w-full md:block">
+        <div className="mb-4 flex items-center justify-end gap-4">
+          <button 
+            onClick={() => scroll('left')}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button 
+            onClick={() => scroll('right')}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
 
-      <div 
-        ref={scrollRef}
-        className="flex gap-4 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory px-[2vw] md:px-0"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', touchAction: 'auto' }}
-      >
-        {regisseurAssets.map((src, i) => (
-          <RegisseurImage key={src} src={src} index={i} onClick={() => onImageClick(i)} />
-        ))}
+        <div 
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory px-0"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {regisseurAssets.map((src, i) => (
+            <RegisseurImage key={src} src={src} index={i} onClick={() => onImageClick(i)} />
+          ))}
+        </div>
       </div>
       
-      <div className="flex items-center justify-center gap-2 mt-4 md:hidden">
-        <div className="text-[10px] uppercase tracking-[0.3em] text-white/30">
-          Листайте вправо →
+      <RegisseurMobileGallery onImageClick={onImageClick} />
+    </>
+  );
+}
+
+function RegisseurMobileGallery({ onImageClick }: { onImageClick: (idx: number) => void }) {
+  const [active, setActive] = useState(0);
+  const [dragDx, setDragDx] = useState(0);
+  const startX = useRef(0);
+  const startY = useRef(0);
+  const dragging = useRef(false);
+  const axisLocked = useRef<"x" | "y" | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+
+  const commit = (nextIdx: number) => {
+    const clamped = Math.max(0, Math.min(regisseurAssets.length - 1, nextIdx));
+    setActive(clamped);
+    setDragDx(0);
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    dragging.current = true;
+    axisLocked.current = null;
+    startX.current = e.touches[0]?.clientX ?? 0;
+    startY.current = e.touches[0]?.clientY ?? 0;
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!dragging.current) return;
+    const dx = (e.touches[0]?.clientX ?? 0) - startX.current;
+    const dy = (e.touches[0]?.clientY ?? 0) - startY.current;
+    if (!axisLocked.current) {
+      if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+        axisLocked.current = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      }
+    }
+    if (axisLocked.current === "x") {
+      const el = trackRef.current;
+      const max = el ? el.clientWidth * 0.6 : 300;
+      const clamped = Math.max(-max, Math.min(max, dx));
+      setDragDx(clamped);
+    }
+  };
+  const onTouchEnd = () => {
+    if (!dragging.current) return;
+    dragging.current = false;
+    if (axisLocked.current !== "x") {
+      setDragDx(0);
+      return;
+    }
+    const el = trackRef.current;
+    const width = el ? el.clientWidth : 300;
+    const threshold = Math.min(60, width * 0.12);
+    if (dragDx <= -threshold) commit(active + 1);
+    else if (dragDx >= threshold) commit(active - 1);
+    else setDragDx(0);
+  };
+
+  const slidePercent = 85;
+  const gapPx = 16;
+  const baseOffset = (100 - slidePercent) / 2;
+  const translateStyle = {
+    transform: `translate3d(calc(${baseOffset}% - ${active * slidePercent}% - ${active * gapPx}px + ${dragDx}px), 0, 0)`,
+    transition: dragging.current ? "none" : "transform 450ms cubic-bezier(0.22, 1, 0.36, 1)",
+  } as const;
+
+  return (
+    <div className="md:hidden">
+      <div
+        ref={trackRef}
+        className="relative overflow-hidden"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onTouchCancel={onTouchEnd}
+        style={{ touchAction: "pan-y" }}
+      >
+        <div className="flex" style={translateStyle}>
+          {regisseurAssets.map((src, i) => (
+            <div
+              key={src}
+              className="group relative block shrink-0 overflow-hidden rounded-lg"
+              style={{ width: `${slidePercent}%`, marginRight: i < regisseurAssets.length - 1 ? gapPx : 0 }}
+              onClick={(e) => {
+                if (Math.abs(dragDx) > 4) e.preventDefault();
+                else onImageClick(i);
+              }}
+            >
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <img
+                  src={src}
+                  alt={`ЖК Режиссер фото ${i + 1}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
+                  <div className="min-w-0">
+                    <div className="text-[10px] uppercase tracking-[0.3em] text-white/70">
+                      ЖК «Режиссёр»
+                    </div>
+                    <div className="font-display mt-1 truncate text-xl">Фото {i + 1}</div>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute left-3 top-3 rounded-full bg-white/10 px-2 py-1 text-[10px] font-mono tracking-widest text-white/80">
+                {String(i + 1).padStart(2, "0")} / {String(regisseurAssets.length).padStart(2, "0")}
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
+      <div className="mt-4 flex items-center justify-center gap-1.5">
+        {regisseurAssets.map((_, i) => (
+          <span
+            key={i}
+            className={`h-1 rounded-full transition-all ${i === active ? "w-6 bg-white" : "w-1.5 bg-white/25"}`}
+          />
+        ))}
+      </div>
+      <div className="mt-3 text-center text-[10px] uppercase tracking-[0.3em] text-white/40">
+        {active + 1} / {regisseurAssets.length} — swipe →
       </div>
     </div>
   );
