@@ -39,6 +39,7 @@ function NewBuildingPage() {
             <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную</Link>
         </Reveal>
         <div id="about" className="grid md:grid-cols-2 gap-20 mb-20">
+
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
               Инженерия и подготовка в новых домах: электромонтаж, разводка сантехники, перепланировка квартир и отделка под покраску с учетом всех норм, а также мебель и потолки.

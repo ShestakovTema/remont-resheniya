@@ -40,6 +40,7 @@ function SecondaryPage() {
           </Link>
         </Reveal>
         <div id="about" className="grid md:grid-cols-2 gap-20 mb-20">
+
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
               Капитальное обновление инженерных сетей: полная замена электрики и сантехники, демонтаж, перепланировка квартир и отделка под покраску в старом фонде, а также мебель и потолки.
