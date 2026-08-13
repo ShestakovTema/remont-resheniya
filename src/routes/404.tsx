@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/404' as any)({
+export const Route = createFileRoute('/404')({
   component: NotFoundPage,
 });
 

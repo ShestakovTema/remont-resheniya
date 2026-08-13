@@ -3,7 +3,7 @@ import { Nav } from '@/components/site/nav';
 import { SmoothScroll } from '@/components/site/smooth-scroll';
 import { Cursor } from '@/components/site/cursor';
 
-export const Route = createFileRoute('/privacy' as any)({
+export const Route = createFileRoute('/privacy')({
   component: PrivacyPage,
 });
 
