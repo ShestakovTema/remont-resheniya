@@ -163,22 +163,6 @@ const UPCOMING_PROJECTS: Project[] = [
 
 
 function Index() {
-  const footerRef = useRef<HTMLDivElement | null>(null);
-  const [footerHeight, setFooterHeight] = useState(0);
-
-  useEffect(() => {
-    const el = footerRef.current;
-    if (!el) return;
-    const update = () => setFooterHeight(el.offsetHeight);
-    update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    window.addEventListener("resize", update);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", update);
-    };
-  }, []);
 
   return (
     <LangProvider>
@@ -188,15 +172,7 @@ function Index() {
       <ScrollProgress />
       <Nav />
 
-      {/* Footer permanently pinned to viewport bottom, behind main content on z */}
-      <div
-        ref={footerRef}
-        className="fixed inset-x-0 bottom-0 z-0 bg-[#141414] text-white"
-      >
-        <Footer />
-      </div>
-
-      <main id="top" className="relative z-10 overflow-hidden rounded-b-[40px] bg-[#070707] text-white md:rounded-b-[56px]">
+      <main id="top" className="relative z-10 overflow-hidden bg-[#070707] text-white">
         <SiteAurora />
         <div
           aria-hidden
@@ -227,12 +203,10 @@ function Index() {
           <Testimonials id="testimonials" />
           <Contact id="contact" />
         </div>
+        <Footer />
       </main>
 
 
-      {/* Spacer equal to footer height so page can scroll far enough
-          for Contact to lift off and reveal the pinned footer below */}
-      <div style={{ height: footerHeight }} aria-hidden />
     </LangProvider>
   );
 }

@@ -35,8 +35,8 @@ export function Nav() {
   const { lang, setLang } = useLang();
   const t = useT();
   const { scrollY } = useScroll();
-  const bg = useTransform(scrollY, [0, 120], ["rgba(7,7,7,0)", "rgba(7,7,7,0.55)"]);
-  const border = useTransform(scrollY, [0, 120], ["rgba(255,255,255,0)", "rgba(255,255,255,0.08)"]);
+  const bg = useTransform(scrollY, [0, 120], ["rgba(7,7,7,0)", "rgba(10,10,10,0.8)"]);
+  const border = useTransform(scrollY, [0, 120], ["rgba(255,255,255,0)", "rgba(255,255,255,0.1)"]);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -44,7 +44,7 @@ export function Nav() {
     <>
       <motion.header
         style={{ backgroundColor: bg, borderBottomColor: border }}
-        className="fixed inset-x-0 top-0 z-[80] border-b backdrop-blur-md"
+        className="fixed inset-x-0 top-0 z-[80] border-b backdrop-blur-lg"
       >
         <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-6 lg:h-20 lg:px-10">
           <Magnetic 
@@ -82,7 +82,7 @@ export function Nav() {
               </DropdownMenu.Trigger>
               <DropdownMenu.Portal>
                 <DropdownMenu.Content
-                  className="z-[90] min-w-[200px] rounded-xl border border-white/10 bg-[#070707]/90 p-1 backdrop-blur-xl animate-in fade-in zoom-in-95 duration-200"
+                  className="z-[90] min-w-[200px] rounded-xl border border-white/10 bg-[#0a0a0a]/95 p-1 backdrop-blur-xl animate-in fade-in zoom-in-95 duration-200 shadow-2xl"
                   sideOffset={8}
                   align="start"
                 >
