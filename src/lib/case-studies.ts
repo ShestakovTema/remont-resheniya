@@ -43,10 +43,8 @@ export const eliteCaseStudies = [
     time: "4 месяца",
     assets: [
       arbatAsset.url,
-      "https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&q=80&w=800"
+      arbatBath.url,
+      arbatHall.url
     ]
   },
   {
