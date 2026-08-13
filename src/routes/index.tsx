@@ -1071,8 +1071,10 @@ function ProjectRow({ project, index, totalCount }: { project: Project; index: n
       >
         <Magnetic strength={12} className="group relative block overflow-hidden rounded-lg">
           <div
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
             data-cursor="view"
-            data-cursor-label="ОТКРЫТЬ"
+            data-cursor-label="STF"
             className="relative block aspect-[16/10] w-full overflow-hidden"
           >
             <motion.div style={{ y }} className="absolute inset-0 will-change-transform">
@@ -1759,11 +1761,8 @@ export function Footer() {
 
           <div className="space-y-3">
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/50">
-              {t("footer.legal")}
+              © {year} Ремонт Решения
             </p>
-            <div className="space-y-1 text-sm text-white/60">
-              <p>© {year} Ремонт Решения</p>
-            </div>
           </div>
         </div>
       </div>
