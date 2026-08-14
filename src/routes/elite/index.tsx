@@ -110,6 +110,7 @@ function ElitePage() {
                         src={src}
                         alt={`${project.title} — фото ${i + 1}`}
                         loading="lazy"
+                        decoding="async"
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

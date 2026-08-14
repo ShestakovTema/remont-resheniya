@@ -179,7 +179,7 @@ export function IntroLoader() {
           <div className="relative">
           <div className="font-display text-center text-[14vw] leading-none text-white md:text-[8vw]">
             <motion.span
-              initial={{ y: isMobile ? "40%" : "110%", opacity: isMobile ? 0 : 1 }}
+              initial={{ y: isMobile ? "40%" : "110%", opacity: isMobile ? 0 : 0.8 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: isMobile ? 0.5 : 1, ease: [0.19, 1, 0.22, 1] }}
               className="inline-block"
