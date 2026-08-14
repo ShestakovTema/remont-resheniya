@@ -114,7 +114,7 @@ export function IntroLoader() {
           key="loader"
           initial={{ opacity: 1 }}
           exit={{ y: "-100%" }}
-          transition={{ duration: isMobile ? 0.6 : 1.05, ease: [0.85, 0, 0.15, 1] }}
+          transition={{ duration: isMobile ? 0.4 : 0.8, ease: [0.85, 0, 0.15, 1] }}
           className="fixed inset-0 z-[120] flex items-center justify-center overflow-hidden bg-[#050505] px-8 md:px-14"
         >
           {/* Intense aurora background */}
@@ -179,7 +179,7 @@ export function IntroLoader() {
           <div className="relative">
           <div className="font-display text-center text-[14vw] leading-none text-white md:text-[8vw]">
             <motion.span
-              initial={{ y: isMobile ? "40%" : "110%", opacity: isMobile ? 0 : 1 }}
+              initial={{ y: isMobile ? "40%" : "110%", opacity: isMobile ? 0 : 0.8 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: isMobile ? 0.5 : 1, ease: [0.19, 1, 0.22, 1] }}
               className="inline-block"
