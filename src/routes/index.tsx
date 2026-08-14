@@ -51,9 +51,9 @@ function SiteAurora() {
   const xPositions = [-10, 20, 45, 72, 90, 5, 30, 55, 78];
   // Massively reduce orb count and disable animation on mobile to prevent
   // repaint jank from many large blur-3xl layers.
-  const count = isMobile ? 5 : 26;
+  const count = isMobile ? 3 : 12;
   const orbs = Array.from({ length: count }, (_, i) => ({
-    top: `${1 + i * 3.8}%`,
+    top: `${1 + i * 8.5}%`,
     left: `${xPositions[i % xPositions.length]}%`,
     size: `${28 + ((i * 7) % 12)}vmax`,
     color: palette[i % palette.length],
@@ -65,7 +65,7 @@ function SiteAurora() {
       {orbs.map((o, i) => (
         <div
           key={i}
-          className={`absolute rounded-full blur-2xl will-change-transform ${isMobile ? "" : "aurora blur-3xl"}`}
+          className={`absolute rounded-full blur-2xl ${isMobile ? "" : "aurora blur-3xl"}`}
           style={{
             top: o.top,
             left: o.left,
@@ -342,7 +342,7 @@ function Index() {
         <SiteAurora />
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 z-[5] hidden opacity-60 md:block will-change-contents"
+          className="pointer-events-none fixed inset-0 z-[5] hidden opacity-60 md:block"
           style={{
             backgroundImage:
               "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)",
