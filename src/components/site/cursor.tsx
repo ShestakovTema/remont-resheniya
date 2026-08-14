@@ -5,8 +5,8 @@ export function Cursor() {
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   // Very snappy — near-instant follow, no perceptible lag.
-  const sx = useSpring(x, { stiffness: 1500, damping: 90, mass: 0.15, restDelta: 0.001 });
-  const sy = useSpring(y, { stiffness: 1500, damping: 90, mass: 0.15, restDelta: 0.001 });
+  const sx = useSpring(x, { stiffness: 1500, damping: 90, mass: 0.15 });
+  const sy = useSpring(y, { stiffness: 1500, damping: 90, mass: 0.15 });
   const [kind, setKind] = useState<"idle" | "link" | "view">("idle");
   const [label, setLabel] = useState<string>("");
   const labelRef = useRef<HTMLSpanElement | null>(null);
@@ -80,7 +80,7 @@ export function Cursor() {
   return (
     <motion.div
       aria-hidden
-      style={{ x: sx, y: sy, willChange: "transform" }}
+      style={{ x: sx, y: sy }}
       className="pointer-events-none fixed left-0 top-0 z-[2147483647] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
     >
       <motion.div

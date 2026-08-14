@@ -16,8 +16,8 @@ export function Magnetic({ children, className, strength = 24, as = "div", href,
   const ref = useRef<HTMLElement | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 260, damping: 20, mass: 0.4, restDelta: 0.001 });
-  const sy = useSpring(y, { stiffness: 260, damping: 20, mass: 0.4, restDelta: 0.001 });
+  const sx = useSpring(x, { stiffness: 260, damping: 20, mass: 0.4 });
+  const sy = useSpring(y, { stiffness: 260, damping: 20, mass: 0.4 });
 
   const onMove = (e: MouseEvent) => {
     const el = ref.current;
@@ -43,7 +43,7 @@ export function Magnetic({ children, className, strength = 24, as = "div", href,
       onMouseMove={onMove}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onLeave}
-      style={{ x: sx, y: sy, willChange: "transform" }}
+      style={{ x: sx, y: sy }}
       className={className}
     >
       {children}

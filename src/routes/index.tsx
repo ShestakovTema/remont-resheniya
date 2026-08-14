@@ -65,7 +65,7 @@ function SiteAurora() {
       {orbs.map((o, i) => (
         <div
           key={i}
-          className={`absolute rounded-full blur-2xl will-change-transform ${isMobile ? "" : "aurora blur-3xl"}`}
+          className={`absolute rounded-full blur-2xl ${isMobile ? "" : "aurora blur-3xl"}`}
           style={{
             top: o.top,
             left: o.left,
@@ -342,7 +342,7 @@ function Index() {
         <SiteAurora />
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 z-[5] hidden opacity-60 md:block will-change-contents"
+          className="pointer-events-none fixed inset-0 z-[5] hidden opacity-60 md:block"
           style={{
             backgroundImage:
               "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)",
