@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            нету там такой кнопки" },
+      { title: "Ремонт Решения — Профессиональный ремонт и отделка под ключ" },
       {
         name: "description",
         content:
@@ -92,7 +92,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Ремонт Решения" },
       { name: "theme-color", content: "#070707" },
-      { property: "og:title", content: "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            нету там такой кнопки" },
+      { property: "og:title", content: "Ремонт Решения — Профессиональный ремонт и отделка под ключ" },
       {
         property: "og:description",
         content:
@@ -100,7 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            нету там такой кнопки" },
+      { name: "twitter:title", content: "Ремонт Решения — Профессиональный ремонт и отделка под ключ" },
       { name: "twitter:description", content: "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области." },
       { property: "og:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
       { name: "twitter:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
