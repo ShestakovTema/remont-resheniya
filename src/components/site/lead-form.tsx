@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
+import { submitLead } from "@/lib/leads.functions";
 
 export function LeadForm() {
   const [formData, setFormData] = useState({ name: "", phone: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreed, setAgreed] = useState(true);
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,12 +16,18 @@ export function LeadForm() {
       toast.error("Необходимо согласие на обработку персональных данных");
       return;
     }
+    
     setIsSubmitting(true);
-    // Simulation
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    toast.success("Заявка получена! Мы свяжемся с вами в ближайшее время.");
-    setFormData({ name: "", phone: "" });
-    setIsSubmitting(false);
+    try {
+      await submitLead({ data: formData });
+      toast.success("Заявка получена! Мы свяжемся с вами в ближайшее время.");
+      setFormData({ name: "", phone: "" });
+    } catch (error) {
+      console.error("Ошибка при отправке формы:", error);
+      toast.error("Произошла ошибка при отправке. Пожалуйста, попробуйте позже.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
 
