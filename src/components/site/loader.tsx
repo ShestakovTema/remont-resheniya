@@ -114,7 +114,7 @@ export function IntroLoader() {
           key="loader"
           initial={{ opacity: 1 }}
           exit={{ y: "-100%" }}
-          transition={{ duration: isMobile ? 0.6 : 1.05, ease: [0.85, 0, 0.15, 1] }}
+          transition={{ duration: isMobile ? 0.4 : 0.8, ease: [0.85, 0, 0.15, 1] }}
           className="fixed inset-0 z-[120] flex items-center justify-center overflow-hidden bg-[#050505] px-8 md:px-14"
         >
           {/* Intense aurora background */}

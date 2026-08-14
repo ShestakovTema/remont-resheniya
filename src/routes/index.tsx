@@ -65,7 +65,7 @@ function SiteAurora() {
       {orbs.map((o, i) => (
         <div
           key={i}
-          className={`absolute rounded-full blur-2xl ${isMobile ? "" : "aurora blur-3xl"}`}
+          className={`absolute rounded-full blur-2xl will-change-transform ${isMobile ? "" : "aurora blur-3xl"}`}
           style={{
             top: o.top,
             left: o.left,
@@ -236,6 +236,8 @@ export function ProcessPhotos() {
                   <img 
                     src={src} 
                     alt={`${activeTab === 'electro' ? 'Электрика' : 'Сантехника'} - процесс`}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
@@ -340,7 +342,7 @@ function Index() {
         <SiteAurora />
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 z-[5] hidden opacity-60 md:block"
+          className="pointer-events-none fixed inset-0 z-[5] hidden opacity-60 md:block will-change-contents"
           style={{
             backgroundImage:
               "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)",
