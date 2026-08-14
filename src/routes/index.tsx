@@ -51,9 +51,9 @@ function SiteAurora() {
   const xPositions = [-10, 20, 45, 72, 90, 5, 30, 55, 78];
   // Massively reduce orb count and disable animation on mobile to prevent
   // repaint jank from many large blur-3xl layers.
-  const count = isMobile ? 5 : 26;
+  const count = isMobile ? 3 : 12;
   const orbs = Array.from({ length: count }, (_, i) => ({
-    top: `${1 + i * 3.8}%`,
+    top: `${1 + i * 8.5}%`,
     left: `${xPositions[i % xPositions.length]}%`,
     size: `${28 + ((i * 7) % 12)}vmax`,
     color: palette[i % palette.length],
