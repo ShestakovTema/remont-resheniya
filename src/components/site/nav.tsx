@@ -15,10 +15,10 @@ const LANG_FULL: Record<(typeof LANGS)[number], string> = {
 };
 
 const LINKS = [
-  { key: "nav.work", href: "work" },
   { key: "nav.about", href: "about" },
-  { key: "nav.services", href: "services" },
   { key: "nav.process", href: "process-photos" },
+  { key: "nav.work", href: "work" },
+  { key: "nav.services", href: "services" },
   { key: "nav.contact", href: "contact" },
 ];
 
