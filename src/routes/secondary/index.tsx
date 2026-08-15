@@ -157,7 +157,6 @@ function SecondaryPage() {
         </div>
         <Testimonials id="testimonials" />
         <Contact id="contact" />
-      </main>
         </main>
       </div>
       <Footer />
