@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { Nav } from '@/components/site/nav';
 import { ChevronLeft } from 'lucide-react';
 import { SmoothScroll } from '@/components/site/smooth-scroll';
 import { Cursor } from '@/components/site/cursor';
@@ -13,7 +12,7 @@ function PrivacyPage() {
     <div className="bg-[#070707] text-white min-h-screen">
       <SmoothScroll />
       <Cursor />
-      <Nav />
+      
       <main className="mx-auto max-w-4xl px-6 py-32 md:py-40">
         <div className="mb-12 flex justify-center">
           <button 
@@ -30,7 +29,7 @@ function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold text-white mb-4">1. Общие положения</h2>
             <p>
-              Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006. №152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые ИП Ларионов Михаил Валентинович (далее — Оператор).
+              Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006. №152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые сайтом «Ремонт Решения» (далее — Оператор).
             </p>
           </section>
 
@@ -44,9 +43,8 @@ function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold text-white mb-4">3. Оператор может обрабатывать следующие персональные данные Пользователя</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Фамилия, имя, отчество;</li>
-              <li>Номер телефона;</li>
-              <li>Адрес электронной почты.</li>
+              <li>Имя;</li>
+              <li>Номер телефона.</li>
             </ul>
           </section>
 
