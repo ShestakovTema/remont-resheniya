@@ -115,12 +115,12 @@ export function Nav() {
             </DropdownMenu.Root>
 
             {LINKS.map((l) => {
-              const href = location.pathname === "/" ? `#${l.href}` : `/#${l.href}`;
+              const href = `#${l.href}`;
               const handleClick = (e: React.MouseEvent) => {
-                if (location.pathname === "/") {
+                const element = document.getElementById(l.href);
+                if (element) {
                   e.preventDefault();
-                  const element = document.getElementById(l.href);
-                  element?.scrollIntoView({ behavior: "smooth" });
+                  element.scrollIntoView({ behavior: "smooth" });
                 }
               };
 
