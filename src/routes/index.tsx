@@ -1656,8 +1656,9 @@ const MAIL_BODY = [
 
 
 const PHONE_NUMBER = "+79167991216";
-const WHATSAPP_MESSAGE = "Здравствуйте, хотели бы узнать по поводу ремонта";
+const WHATSAPP_MESSAGE = "Здравствуйте, хотел бы спросить по поводу ремонта";
 const whatsappHref = `https://wa.me/${PHONE_NUMBER.replace(/\+/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+const telegramHref = `https://t.me/+79167991216`;
 
 function HoverUnderlineAction({
   label,
@@ -1782,17 +1783,44 @@ export function Contact({ id }: { id?: string }) {
                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
                   {t("contact.whatsapp.label")}
                 </span>
-                <Reveal delay={0.1}>
-                  <a
-                    href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
-                    className="group inline-flex items-center gap-4 text-3xl font-medium text-white transition-colors hover:text-white/70 sm:text-4xl md:text-5xl lg:text-6xl"
-                  >
-                    <span data-cursor="link">{PHONE_NUMBER}</span>
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">
-                      →
-                    </span>
-                  </a>
-                </Reveal>
+                <div className="flex flex-col items-center gap-6">
+                  <Reveal delay={0.1}>
+                    <a
+                      href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
+                      className="group inline-flex items-center gap-4 text-3xl font-medium text-white transition-colors hover:text-white/70 sm:text-4xl md:text-5xl lg:text-6xl"
+                    >
+                      <span data-cursor="link">{PHONE_NUMBER}</span>
+                      <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">
+                        →
+                      </span>
+                    </a>
+                  </Reveal>
+
+                  <div className="flex flex-wrap justify-center gap-4">
+                    <Reveal delay={0.2}>
+                      <a
+                        href={whatsappHref}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-[#25D366] hover:text-black hover:border-[#25D366]"
+                        data-cursor="link"
+                      >
+                        WhatsApp
+                      </a>
+                    </Reveal>
+                    <Reveal delay={0.3}>
+                      <a
+                        href={telegramHref}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-[#0088cc] hover:text-white hover:border-[#0088cc]"
+                        data-cursor="link"
+                      >
+                        Telegram
+                      </a>
+                    </Reveal>
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -1858,7 +1886,7 @@ export function Footer() {
                 rel="noreferrer"
                 className="block transition-colors hover:text-white/60"
               >
-                WhatsApp: {PHONE_NUMBER}
+                WhatsApp / Telegram
               </a>
             </div>
           </div>
