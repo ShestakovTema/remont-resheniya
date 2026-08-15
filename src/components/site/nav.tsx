@@ -142,10 +142,13 @@ export function Nav() {
           <div className="hidden items-center gap-3 lg:flex">
             <Magnetic
               as="a"
-              href={location.pathname === "/" ? "#contact" : `${location.pathname}#contact`}
+              href="#contact"
               onClick={(e: React.MouseEvent) => {
-                e.preventDefault();
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                const element = document.getElementById("contact");
+                if (element) {
+                  e.preventDefault();
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
               }}
               strength={18}
               onMouseEnter={() => setCta("in")}
