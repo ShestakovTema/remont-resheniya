@@ -406,7 +406,9 @@ function Hero() {
       <div className="grain absolute inset-0" aria-hidden />
 
       {/* Floating showcase — visible on md+ where the hero has empty space to the right */}
-      <HeroShowcase />
+      <div className="absolute right-[4%] top-[16%] z-[6] hidden lg:block">
+        <HeroShowcase />
+      </div>
 
       <motion.div style={{ y, opacity } as any} className="relative z-10 mx-auto flex max-w-[1600px] flex-col gap-10 px-5 sm:gap-14 sm:px-6 md:px-10">
 

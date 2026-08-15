@@ -62,7 +62,7 @@ const ru: Dict = {
   "about.stat.3": "довольных семей",
   "about.stat.4": "года гарантии",
 
-  "services.section": "(04) Направления",
+  "services.section": "(05) Направления",
   "services.h.a": "Полный спектр",
   "services.h.b": "услуг под ключ.",
   "services.elite.title": "Современные объекты",
