@@ -1797,9 +1797,6 @@ export function Contact({ id }: { id?: string }) {
             </div>
           </Reveal>
 
-          <Reveal delay={0.55} className="text-sm font-medium uppercase tracking-[0.2em] text-white/30">
-            ИЛИ
-          </Reveal>
 
 
           <Reveal delay={0.7} className="max-w-md text-base text-[#8F8F8F] sm:text-lg">
