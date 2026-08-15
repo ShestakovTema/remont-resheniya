@@ -304,7 +304,7 @@ export function ProcessPhotos() {
   );
 }
 
-export { HeroShowcase };
+export { HeroShowcase, SiteAurora };
 
 function Index() {
   const footerRef = useRef<HTMLDivElement | null>(null);

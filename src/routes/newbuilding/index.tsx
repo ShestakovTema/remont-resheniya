@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
-import { Footer, About, Services, Testimonials, Contact, FullscreenGallery, ProcessPhotos, HeroShowcase } from "@/routes/index";
+import { Footer, About, Services, Testimonials, Contact, FullscreenGallery, ProcessPhotos, HeroShowcase, SiteAurora } from "@/routes/index";
 import { Cursor } from "@/components/site/cursor";
 import { LangProvider } from "@/lib/i18n";
 import { useState } from "react";
@@ -32,7 +32,9 @@ function NewBuildingPage() {
       <Cursor />
       <Nav />
       <SmoothScroll />
-      <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
+      <div className="relative z-10 overflow-hidden bg-[#070707]">
+        <SiteAurora />
+        <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 mb-10">
           <Reveal>
             <h1 className="text-5xl sm:text-7xl font-display italic">Новостройки</h1>
@@ -154,6 +156,8 @@ function NewBuildingPage() {
         <Testimonials id="testimonials" />
         <Contact id="contact" />
       </main>
+        </main>
+      </div>
       <Footer />
       <div className="bg-[#141414] pb-10 px-10 text-center">
         <div className="flex flex-col sm:flex-row justify-center gap-4 text-[10px] uppercase tracking-widest text-white/30">
