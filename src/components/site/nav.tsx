@@ -115,12 +115,12 @@ export function Nav() {
             </DropdownMenu.Root>
 
             {LINKS.map((l) => {
-              const href = location.pathname === "/" ? `#${l.href}` : `/#${l.href}`;
+              const href = `#${l.href}`;
               const handleClick = (e: React.MouseEvent) => {
-                if (location.pathname === "/") {
+                const element = document.getElementById(l.href);
+                if (element) {
                   e.preventDefault();
-                  const element = document.getElementById(l.href);
-                  element?.scrollIntoView({ behavior: "smooth" });
+                  element.scrollIntoView({ behavior: "smooth" });
                 }
               };
 
@@ -142,10 +142,13 @@ export function Nav() {
           <div className="hidden items-center gap-3 lg:flex">
             <Magnetic
               as="a"
-              href={location.pathname === "/" ? "#contact" : `${location.pathname}#contact`}
+              href="#contact"
               onClick={(e: React.MouseEvent) => {
-                e.preventDefault();
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                const element = document.getElementById("contact");
+                if (element) {
+                  e.preventDefault();
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
               }}
               strength={18}
               onMouseEnter={() => setCta("in")}
@@ -204,19 +207,17 @@ export function Nav() {
                 </div>
               </li>
               {LINKS.map((l) => {
-                const href = location.pathname === "/" ? `#${l.href}` : `${location.pathname}#${l.href}`;
+                const href = `#${l.href}`;
                 return (
                   <li key={l.href}>
                     <a
                       href={href}
                       onClick={(e) => {
                         setOpen(false);
-                        e.preventDefault();
                         const element = document.getElementById(l.href);
                         if (element) {
+                          e.preventDefault();
                           element.scrollIntoView({ behavior: "smooth" });
-                        } else if (location.pathname !== "/") {
-                          window.location.hash = l.href;
                         }
                       }}
                       className="font-display block py-3 text-4xl text-white"
