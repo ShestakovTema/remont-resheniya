@@ -10,7 +10,10 @@ import { IntroLoader } from "@/components/site/loader";
 import { ScrollProgress } from "@/components/site/scroll-progress";
 import { Reveal, TextReveal } from "@/components/site/reveal";
 import { Magnetic } from "@/components/site/magnetic";
+import { LeadForm } from "@/components/site/lead-form";
+import { regisseurAssets } from "@/lib/regisseur-assets";
 import { 
+
   processPhotos,
   eliteCaseStudies, 
   newBuildingCaseStudies, 
