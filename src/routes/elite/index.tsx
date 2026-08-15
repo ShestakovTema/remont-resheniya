@@ -35,7 +35,7 @@ function ElitePage() {
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 mb-10">
           <Reveal>
-            <h1 className="text-5xl sm:text-7xl font-display italic">Современные объекты</h1>
+            <h1 className="text-5xl sm:text-7xl font-display italic">Премиум объекты</h1>
             <Link to="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mt-6 uppercase text-xs tracking-widest group">
               <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную</Link>
           </Reveal>
@@ -47,7 +47,7 @@ function ElitePage() {
         <div id="about" className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400">
-              Наш профиль в современных объектах — электромонтаж, сантехника, перепланировка квартир и отделка под покраску под ключ, а также мебель и потолки.
+              Наш профиль в премиум объектах — электромонтаж, сантехника, перепланировка квартир и отделка под покраску под ключ, а также мебель и потолки.
 
             </p>
           </Reveal>
