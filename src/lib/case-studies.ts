@@ -150,9 +150,9 @@ export const secondaryCaseStudies = [
     area: "92 м²",
     time: "2,5 месяца",
     assets: [
-      stalin1.url,
-      stalin2.url,
-      stalin3.url
+      stalinNew1.url,
+      stalinNew2.url,
+      stalinNew3.url
     ]
   },
   {
