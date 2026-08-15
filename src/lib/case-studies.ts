@@ -150,9 +150,9 @@ export const secondaryCaseStudies = [
     area: "92 м²",
     time: "2,5 месяца",
     assets: [
-      stalin1.url,
-      stalin2.url,
-      stalin3.url
+      stalinNew1.url,
+      stalinNew2.url,
+      stalinNew3.url
     ]
   },
   {
@@ -214,9 +214,9 @@ import heart3 from "@/assets/serdtse-stolitsy-3.jpg.asset.json";
 import simvol1 from "@/assets/simvol-1.jpg.asset.json";
 import simvol2 from "@/assets/simvol-2.jpg.asset.json";
 import simvol3 from "@/assets/simvol-3.jpg.asset.json";
-import stalin1 from "@/assets/stalin-1.jpg.asset.json";
-import stalin2 from "@/assets/stalin-2.jpg.asset.json";
-import stalin3 from "@/assets/stalin-3.jpg.asset.json";
+import stalinNew1 from "@/assets/stalin/1.asset.json";
+import stalinNew2 from "@/assets/stalin/2.asset.json";
+import stalinNew3 from "@/assets/stalin/3.asset.json";
 import pyatietazhka1 from "@/assets/pyatietazhka/p1.jpg.asset.json";
 import pyatietazhka2 from "@/assets/pyatietazhka/p2.jpg.asset.json";
 import pyatietazhka3 from "@/assets/pyatietazhka/p3.jpg.asset.json";
