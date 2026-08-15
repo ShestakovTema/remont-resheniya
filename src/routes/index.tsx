@@ -1886,7 +1886,7 @@ export function Footer() {
                 rel="noreferrer"
                 className="block transition-colors hover:text-white/60"
               >
-                WhatsApp: {PHONE_NUMBER}
+                WhatsApp / Telegram
               </a>
             </div>
           </div>
