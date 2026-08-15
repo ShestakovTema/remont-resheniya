@@ -148,7 +148,7 @@ function NewBuildingPage() {
             </section>
           ))}
         </div>
-        <div id="services">
+        <div id="services" className="pt-20">
           <Services />
         </div>
         <Testimonials />
