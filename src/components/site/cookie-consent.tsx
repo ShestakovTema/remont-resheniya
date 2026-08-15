@@ -44,8 +44,8 @@ export function CookieConsent() {
             
             <h3 className="text-lg font-semibold text-white mb-2">Мы используем файлы cookie</h3>
             <p className="text-sm text-white/60 mb-6 leading-relaxed">
-              Мы используем файлы cookie для улучшения работы сайта и анализа трафика. 
-              Вы можете принять использование всех файлов cookie или отказаться от них.
+              Используем файлы Cookies для улучшения работы сайта.
+              Подробнее в <a href="/cookies" className="underline hover:text-white transition-colors">Политике использования Cookies</a>.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3">

@@ -1877,6 +1877,10 @@ export function Footer() {
             <p className="text-sm text-white/60">
               ИП Ларионов Михаил Валентинович
             </p>
+            <div className="pt-2 space-y-2 text-xs text-white/40 uppercase tracking-widest">
+              <a href="/privacy" className="block hover:text-white transition-colors">Политика конфиденциальности</a>
+              <a href="/cookies" className="block hover:text-white transition-colors">Политика Cookies</a>
+            </div>
           </div>
         </div>
       </div>

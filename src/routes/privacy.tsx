@@ -14,7 +14,7 @@ function PrivacyPage() {
       <Cursor />
       <Nav />
       <main className="mx-auto max-w-4xl px-6 py-32 md:py-40">
-        <h1 className="font-display text-4xl md:text-6xl mb-12 italic">Политика обработки персональных данных</h1>
+        <h1 className="font-display text-4xl md:text-6xl mb-12 italic text-center text-balance">Политика обработки персональных данных</h1>
         
         <div className="space-y-8 text-white/70 leading-relaxed">
           <section>
