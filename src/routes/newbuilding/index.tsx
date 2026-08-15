@@ -152,7 +152,6 @@ function NewBuildingPage() {
       <Footer />
       <div className="bg-[#141414] pb-10 px-10 text-center">
         <div className="flex flex-col sm:flex-row justify-center gap-4 text-[10px] uppercase tracking-widest text-white/30">
-          <a href="/privacy" className="hover:text-white transition-colors">Политика конфиденциальности</a>
           <a href="/cookies" className="hover:text-white transition-colors">Политика Cookies</a>
         </div>
       </div>
