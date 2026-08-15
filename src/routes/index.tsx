@@ -107,7 +107,7 @@ type Project = {
 
 const PROJECTS: Project[] = [
   { 
-    name: "Современная квартира на Тверской", 
+    name: "Премиум квартира на Тверской", 
     category: "Электрика и сантехника", 
     year: "2025", 
     image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", 
@@ -127,7 +127,7 @@ const PROJECTS: Project[] = [
   { name: "Семейная квартира в Хамовниках", category: "Перепланировка и инженерия", year: "2024", image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
   { name: "Апартаменты в Хамовниках", category: "Электрика и перепланировка", year: "2023", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
   { 
-    name: "Современный ремонт на Арбате", 
+    name: "Премиум ремонт на Арбате", 
     category: "Замена коммуникаций", 
     year: "2025", 
     image: arbatAsset.url, 
@@ -142,7 +142,7 @@ const PROJECTS: Project[] = [
 const UPCOMING_PROJECTS: Project[] = [
   {
     name: "ЖК «Режиссёр», 105 м²",
-    category: "Современный ремонт",
+    category: "Премиум ремонт",
     year: "В работе",
     image: regisseurAssets[0] || "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200",
     url: "/elite/"
@@ -355,8 +355,8 @@ function Index() {
         <div className="relative z-10">
           <Hero />
           <Marquee />
-          <RepairTypeNav />
           <WorkInProgress />
+          <RepairTypeNav />
           <div id="about" className="pt-24">
             <About />
           </div>
