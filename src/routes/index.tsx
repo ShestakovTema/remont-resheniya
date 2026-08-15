@@ -355,17 +355,17 @@ function Index() {
           <Marquee />
           <RepairTypeNav />
           <WorkInProgress />
-          <FeaturedWork />
           <div id="about" className="pt-24">
             <About />
           </div>
+          <ProcessPhotos />
+          <FeaturedWork />
           <div id="services">
             <Services />
           </div>
           <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-12">
             <CostCalculator />
           </div>
-          <ProcessPhotos />
           <Testimonials id="testimonials" />
           <Contact id="contact" />
         </div>
