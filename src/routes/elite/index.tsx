@@ -152,8 +152,8 @@ function ElitePage() {
         <div id="services" className="pt-20">
           <Services />
         </div>
-        <Testimonials />
-        <Contact />
+        <Testimonials id="testimonials" />
+        <Contact id="contact" />
       </main>
       <Footer />
       <div className="bg-[#141414] pb-10 px-10 text-center">
