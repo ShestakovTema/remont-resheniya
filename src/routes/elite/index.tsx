@@ -60,11 +60,26 @@ function ElitePage() {
           </Reveal>
         </div>
 
-        <Reveal>
-          <h2 id="work" className="text-5xl font-display mb-12">Портфолио работ</h2>
-        </Reveal>
 
-        <div className="space-y-24">
+
+        <AnimatePresence>
+          {fullscreenImages && (
+            <FullscreenGallery 
+              images={fullscreenImages} 
+              initialIdx={fullscreenIdx} 
+              onClose={() => setFullscreenImages(null)} 
+            />
+          )}
+        </AnimatePresence>
+
+        <div className="pt-20">
+          <About />
+        </div>
+        <ProcessPhotos />
+        <Reveal>
+          <h2 id="work" className="text-5xl font-display my-12">Портфолио работ</h2>
+        </Reveal>
+        <div className="space-y-24 mb-20">
           {eliteCaseStudies.map((project, pIdx) => (
             <section key={pIdx} className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-10 transition-colors hover:border-white/20">
               <Reveal>
@@ -129,24 +144,9 @@ function ElitePage() {
             </section>
           ))}
         </div>
-
-        <AnimatePresence>
-          {fullscreenImages && (
-            <FullscreenGallery 
-              images={fullscreenImages} 
-              initialIdx={fullscreenIdx} 
-              onClose={() => setFullscreenImages(null)} 
-            />
-          )}
-        </AnimatePresence>
-
-        <div className="pt-20">
-          <About />
-        </div>
         <div id="services">
           <Services />
         </div>
-        <ProcessPhotos />
         <Testimonials />
         <Contact />
       </main>
