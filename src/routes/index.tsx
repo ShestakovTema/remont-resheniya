@@ -1797,16 +1797,7 @@ export function Contact({ id }: { id?: string }) {
             </div>
           </Reveal>
 
-          <Reveal delay={0.55} className="text-sm font-medium uppercase tracking-[0.2em] text-white/30">
-            ИЛИ
-          </Reveal>
 
-          <Reveal delay={0.6} className="w-full">
-            <div className="mx-auto flex w-full flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10 text-left">
-              <h3 className="text-xl font-bold mb-4 text-center">Оставить заявку</h3>
-              <LeadForm />
-            </div>
-          </Reveal>
 
           <Reveal delay={0.7} className="max-w-md text-base text-[#8F8F8F] sm:text-lg">
             {t("contact.desc")}
@@ -1874,11 +1865,7 @@ export function Footer() {
 
 
           <div className="space-y-3">
-            <p className="text-sm text-white/60">
-              ИП Ларионов Михаил Валентинович
-            </p>
             <div className="pt-2 space-y-2 text-xs text-white/40 uppercase tracking-widest">
-              <a href="/privacy" className="block hover:text-white transition-colors">Политика конфиденциальности</a>
               <a href="/cookies" className="block hover:text-white transition-colors">Политика Cookies</a>
             </div>
           </div>
