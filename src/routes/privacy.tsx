@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { Nav } from '@/components/site/nav';
+import { ChevronLeft } from 'lucide-react';
 import { SmoothScroll } from '@/components/site/smooth-scroll';
 import { Cursor } from '@/components/site/cursor';
 
@@ -14,6 +15,15 @@ function PrivacyPage() {
       <Cursor />
       <Nav />
       <main className="mx-auto max-w-4xl px-6 py-32 md:py-40">
+        <div className="mb-12 flex justify-center">
+          <button 
+            onClick={() => window.history.back()}
+            className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40 transition-colors hover:text-white"
+          >
+            <ChevronLeft size={14} />
+            Назад
+          </button>
+        </div>
         <h1 className="font-display text-4xl md:text-6xl mb-12 italic text-center text-balance">Политика обработки персональных данных</h1>
         
         <div className="space-y-8 text-white/70 leading-relaxed">

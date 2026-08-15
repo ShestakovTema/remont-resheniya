@@ -13,7 +13,10 @@ export function LeadForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!agreed) {
-      toast.error("Необходимо согласие на обработку персональных данных");
+      toast.error("Пожалуйста, подтвердите согласие на обработку персональных данных", {
+        description: "Нажмите на чекбокс внизу формы",
+        duration: 4000,
+      });
       return;
     }
     

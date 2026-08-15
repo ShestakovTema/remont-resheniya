@@ -115,16 +115,12 @@ export function Nav() {
             </DropdownMenu.Root>
 
             {LINKS.map((l) => {
-              const href = location.pathname === "/" ? `#${l.href}` : `${location.pathname}#${l.href}`;
+              const href = location.pathname === "/" ? `#${l.href}` : `/#${l.href}`;
               const handleClick = (e: React.MouseEvent) => {
-                e.preventDefault();
-                const id = l.href;
-                const element = document.getElementById(id);
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                } else if (location.pathname !== "/") {
-                  // Fallback for subpages if IDs differ, though we should align them
-                  window.location.hash = l.href;
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  const element = document.getElementById(l.href);
+                  element?.scrollIntoView({ behavior: "smooth" });
                 }
               };
 
