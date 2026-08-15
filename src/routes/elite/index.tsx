@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/reveal";
 import { Nav } from "@/components/site/nav";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
-import { Footer, About, Services, Testimonials, Contact, FullscreenGallery, ProcessPhotos } from "@/routes/index";
+import { Footer, About, Services, Testimonials, Contact, FullscreenGallery, ProcessPhotos, HeroShowcase } from "@/routes/index";
 import { Cursor } from "@/components/site/cursor";
 import { LangProvider } from "@/lib/i18n";
 import { useState } from "react";
@@ -33,11 +33,16 @@ function ElitePage() {
       <Nav />
       <SmoothScroll />
       <main className="pt-32 px-5 sm:px-10 max-w-[1600px] mx-auto pb-20">
-        <Reveal>
-          <h1 className="text-5xl sm:text-7xl font-display mb-10 italic">Современные объекты</h1>
-          <Link to="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mb-10 uppercase text-xs tracking-widest group">
-            <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную</Link>
-        </Reveal>
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 mb-10">
+          <Reveal>
+            <h1 className="text-5xl sm:text-7xl font-display italic">Современные объекты</h1>
+            <Link to="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors mt-6 uppercase text-xs tracking-widest group">
+              <span className="inline-block transition-transform group-hover:-translate-x-1">←</span> На главную</Link>
+          </Reveal>
+          <div className="hidden lg:block scale-75 origin-right">
+            <HeroShowcase />
+          </div>
+        </div>
         
         <div id="about" className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>

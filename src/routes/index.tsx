@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Copy, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 
 import { SmoothScroll } from "@/components/site/smooth-scroll";
 import { Cursor } from "@/components/site/cursor";
@@ -199,7 +199,7 @@ export function ProcessPhotos() {
         <Reveal>
           <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <span className="text-xs uppercase tracking-[0.3em] text-white/40">(05) Процесс</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40">(06) Процесс</span>
               <h2 className="font-display mt-4 text-5xl sm:text-7xl">Фотографии <br/><span className="italic">процесса работ</span></h2>
             </div>
             
@@ -304,6 +304,8 @@ export function ProcessPhotos() {
   );
 }
 
+export { HeroShowcase };
+
 function Index() {
   const footerRef = useRef<HTMLDivElement | null>(null);
   const [footerHeight, setFooterHeight] = useState(0);
@@ -404,7 +406,9 @@ function Hero() {
       <div className="grain absolute inset-0" aria-hidden />
 
       {/* Floating showcase — visible on md+ where the hero has empty space to the right */}
-      <HeroShowcase />
+      <div className="absolute right-[4%] top-[16%] z-[6] hidden lg:block">
+        <HeroShowcase />
+      </div>
 
       <motion.div style={{ y, opacity } as any} className="relative z-10 mx-auto flex max-w-[1600px] flex-col gap-10 px-5 sm:gap-14 sm:px-6 md:px-10">
 
@@ -486,7 +490,7 @@ function HeroShowcase() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute right-[4%] top-[16%] z-[6] hidden h-[30vmin] w-[30vmin] max-h-[420px] max-w-[420px] lg:block"
+      className="pointer-events-none relative z-[6] h-[30vmin] w-[30vmin] max-h-[420px] max-w-[420px]"
     >
       {/* rotating ring text */}
       <motion.svg
@@ -1365,7 +1369,7 @@ function Stat({ value }: { value: string }) {
   }, [match, target]);
 
   if (!match) {
-    return <span className="font-display text-5xl sm:text-6xl md:text-8xl">{value}</span>;
+    return <span className="font-display text-4xl sm:text-5xl md:text-7xl">{value}</span>;
   }
   return (
     <span ref={ref} className="font-display text-5xl sm:text-6xl md:text-8xl tabular-nums">
