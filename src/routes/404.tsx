@@ -13,13 +13,13 @@ function NotFoundPage() {
       <div className="flex flex-1 items-center justify-center px-4 pt-16">
         <div className="max-w-md text-center">
           <div className="mb-8 flex justify-center">
-            <button 
-              onClick={() => window.history.back()}
+            <Link 
+              to="/"
               className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40 transition-colors hover:text-white"
             >
               <ChevronLeft size={14} />
-              Назад
-            </button>
+              На главную
+            </Link>
           </div>
         <h1 className="font-display text-8xl font-bold md:text-9xl">404</h1>
         <h2 className="mt-4 text-2xl font-medium uppercase tracking-widest md:text-3xl">Страница не найдена</h2>
