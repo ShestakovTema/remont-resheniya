@@ -83,7 +83,7 @@ function SecondaryPage() {
         </div>
         <ProcessPhotos />
         <Reveal>
-          <h2 id="work" className="text-5xl font-display my-12">Портфолио работ</h2>
+          <h2 id="work" className="text-5xl font-display my-12"><span className="text-xs uppercase tracking-[0.3em] text-white/40 block mb-4">(04) Портфолио</span>Портфолио работ</h2>
         </Reveal>
         <div className="space-y-24 mb-20">
           {secondaryCaseStudies.map((project, pIdx) => (

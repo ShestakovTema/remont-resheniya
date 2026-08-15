@@ -10,9 +10,6 @@ import { IntroLoader } from "@/components/site/loader";
 import { ScrollProgress } from "@/components/site/scroll-progress";
 import { Reveal, TextReveal } from "@/components/site/reveal";
 import { Magnetic } from "@/components/site/magnetic";
-import { LeadForm } from "@/components/site/lead-form";
-import { CostCalculator } from "@/components/site/calculator";
-import { regisseurAssets } from "@/lib/regisseur-assets";
 import { 
   processPhotos,
   eliteCaseStudies, 
@@ -199,7 +196,7 @@ export function ProcessPhotos() {
         <Reveal>
           <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <span className="text-xs uppercase tracking-[0.3em] text-white/40">(06) Процесс</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40">(03) Фото</span>
               <h2 className="font-display mt-4 text-5xl sm:text-7xl">Фотографии <br/><span className="italic">процесса работ</span></h2>
             </div>
             
@@ -364,9 +361,6 @@ function Index() {
           <FeaturedWork />
           <div id="services">
             <Services />
-          </div>
-          <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10 py-12">
-            <CostCalculator />
           </div>
           <Testimonials id="testimonials" />
           <Contact id="contact" />
