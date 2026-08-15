@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { Nav } from '@/components/site/nav';
 import { ChevronLeft } from 'lucide-react';
 import { SmoothScroll } from '@/components/site/smooth-scroll';
 import { Cursor } from '@/components/site/cursor';
@@ -13,7 +12,7 @@ function CookiesPage() {
     <div className="bg-[#070707] text-white min-h-screen">
       <SmoothScroll />
       <Cursor />
-      <Nav />
+      
       <main className="mx-auto max-w-4xl px-6 py-32 md:py-40">
         <div className="mb-12 flex justify-center">
           <button 
