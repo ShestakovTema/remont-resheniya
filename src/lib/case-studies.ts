@@ -176,7 +176,7 @@ export const secondaryCaseStudies = [
     ]
   },
   {
-    title: "Студия в Сталинке",
+    title: "Квартира в Сталинке",
     type: "Вторичное жилье",
     year: "Сдан · 2023",
     desc: "Капитальный ремонт с сохранением исторического духа и внедрением современных инженерных решений. Требовался бережный демонтаж и полная замена всех скрытых коммуникаций в условиях сложного старого фонда.",
@@ -220,9 +220,9 @@ import stalinNew3 from "@/assets/stalin/3.asset.json";
 import pyatietazhka1 from "@/assets/pyatietazhka/p1.jpg.asset.json";
 import pyatietazhka2 from "@/assets/pyatietazhka/p2.jpg.asset.json";
 import pyatietazhka3 from "@/assets/pyatietazhka/p3.jpg.asset.json";
-import stalinStudio1 from "@/assets/stalin-studio/1.asset.json";
-import stalinStudio2 from "@/assets/stalin-studio/2.asset.json";
-import stalinStudio3 from "@/assets/stalin-studio/3.asset.json";
+import stalinStudio1 from "@/assets/stalin-studio/1.jpg.asset.json";
+import stalinStudio2 from "@/assets/stalin-studio/2.jpg.asset.json";
+import stalinStudio3 from "@/assets/stalin-studio/3.jpg.asset.json";
 import e1 from "@/assets/process/electro/1.png.asset.json";
 
 import e2 from "@/assets/process/electro/2.png.asset.json";
