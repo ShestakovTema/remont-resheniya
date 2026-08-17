@@ -6,10 +6,32 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Статический экспорт: `npm run build:static` — генерирует HTML-файлы всех
+// страниц в .output/public (можно залить на обычный хостинг вроде reg.ru).
+const STATIC = process.env["STATIC_EXPORT"] === "1";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    ...(STATIC
+      ? {
+          prerender: {
+            enabled: true,
+            crawlLinks: true,
+brk            autoSubfolderIndex: true,
+          },
+          pages: [
+            { path: "/" },
+            { path: "/elite" },
+            { path: "/newbuilding" },
+            { path: "/secondary" },
+            { path: "/privacy" },
+            { path: "/cookies" },
+            { path: "/404" },
+          ],
+        }
+      : {}),
   },
 });
