@@ -20,7 +20,7 @@ export default defineConfig({
           prerender: {
             enabled: true,
             crawlLinks: true,
-brk            autoSubfolderIndex: true,
+autoSubfolderIndex: true,
           },
           pages: [
             { path: "/" },
