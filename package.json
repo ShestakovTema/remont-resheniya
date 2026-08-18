@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "build:static": "STATIC_EXPORT=1 vite build && cp dist/client/404/index.html dist/client/404.html"
+    "build:static": "node scripts/fetch-assets.mjs && STATIC_EXPORT=1 vite build && cp dist/client/404/index.html dist/client/404.html"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
