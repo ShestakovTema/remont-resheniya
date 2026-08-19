@@ -16,19 +16,19 @@ const ARTICLES = [
   {
     title: "Как выбрать материалы для новостройки",
     excerpt: "Основные моменты, на которые стоит обратить внимание при выборе черновых и чистовых материалов в новом доме.",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800",
+    image: "/images/interior-1581094794329-c8112a89af12.jpg",
     date: "12.05.2025"
   },
   {
     title: "Секреты элитного ремонта",
     excerpt: "Что делает ремонт по-настоящему премиальным: от шумоизоляции до интеграции систем умного дома.",
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
+    image: "/images/interior-1600210492486-724fe5c67fb0.jpg",
     date: "10.05.2025"
   },
   {
     title: "Тренды в дизайне интерьера 2025",
     excerpt: "Минимализм, экологичность и функциональность — главные направления этого года.",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
+    image: "/images/interior-1618221195710-dd6b41faaea6.jpg",
     date: "05.05.2025"
   }
 ];

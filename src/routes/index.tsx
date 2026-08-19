@@ -86,11 +86,11 @@ import { LangProvider, useT } from "@/lib/i18n";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { property: "og:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
-      { name: "twitter:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
+      { property: "og:image", content: "https://remontresheniya.ru/images/interior-1600210492486-724fe5c67fb0.jpg" },
+      { name: "twitter:image", content: "https://remontresheniya.ru/images/interior-1600210492486-724fe5c67fb0.jpg" },
     ],
     links: [
-      { rel: "preload", as: "image", href: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", fetchPriority: "high" } as never,
+      { rel: "preload", as: "image", href: "/images/interior-1600210492486-724fe5c67fb0.jpg", fetchPriority: "high" } as never,
     ],
   }),
   component: Index,
@@ -110,32 +110,32 @@ const PROJECTS: Project[] = [
     name: "Премиум квартира на Тверской", 
     category: "Электрика и сантехника", 
     year: "2025", 
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200", 
-    beforeImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200",
+    image: "/images/interior-1600210492486-724fe5c67fb0.jpg", 
+    beforeImage: "/images/interior-1513694203232-719a280e022f.jpg",
     url: "/elite/" 
   },
-  { name: "ЖК 'Премиум Парк'", category: "Сделана перепланировка", year: "2025", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
+  { name: "ЖК 'Премиум Парк'", category: "Сделана перепланировка", year: "2025", image: "/images/interior-1618221195710-dd6b41faaea6.jpg", url: "/newbuilding/" },
   { 
     name: "Лофт в старом центре", 
     category: "Сантехника и демонтаж", 
     year: "2024", 
-    image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200", 
-    beforeImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200",
+    image: "/images/interior-1574362848149-11496d93a7c7.jpg", 
+    beforeImage: "/images/interior-1584622650111-993a426fbf0a.jpg",
     url: "/secondary/" 
   },
-  { name: "Пентхаус с видом на Сити", category: "Полная электрика", year: "2024", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
-  { name: "Семейная квартира в Хамовниках", category: "Перепланировка и инженерия", year: "2024", image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
-  { name: "Апартаменты в Хамовниках", category: "Электрика и перепланировка", year: "2023", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200", url: "/elite/" },
+  { name: "Пентхаус с видом на Сити", category: "Полная электрика", year: "2024", image: "/images/interior-1600607687920-4e2a09cf159d.jpg", url: "/elite/" },
+  { name: "Семейная квартира в Хамовниках", category: "Перепланировка и инженерия", year: "2024", image: "/images/interior-1484154218962-a197022b5858.jpg", url: "/newbuilding/" },
+  { name: "Апартаменты в Хамовниках", category: "Электрика и перепланировка", year: "2023", image: "/images/interior-1545324418-cc1a3fa10c00.jpg", url: "/elite/" },
   { 
     name: "Премиум ремонт на Арбате", 
     category: "Замена коммуникаций", 
     year: "2025", 
     image: arbatAsset.url, 
-    beforeImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200",
+    beforeImage: "/images/interior-1545324418-cc1a3fa10c00.jpg",
     url: "/elite/" 
   },
-  { name: "Квартира-студия в ЖК 'Зиларт'", category: "Монтаж инженерии", year: "2024", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200", url: "/newbuilding/" },
-  { name: "Реновация квартиры 1985г.", category: "Сделана перепланировка", year: "2024", image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=1200", url: "/secondary/" },
+  { name: "Квартира-студия в ЖК 'Зиларт'", category: "Монтаж инженерии", year: "2024", image: "/images/interior-1502672260266-1c1ef2d93688.jpg", url: "/newbuilding/" },
+  { name: "Реновация квартиры 1985г.", category: "Сделана перепланировка", year: "2024", image: "/images/interior-1516455590571-18256e5bb9ff.jpg", url: "/secondary/" },
   { name: "Вилла в Подмосковье", category: "Инженерные системы", year: "2025", image: villaAsset.url, url: "/elite/" },
 ];
 
@@ -144,7 +144,7 @@ const UPCOMING_PROJECTS: Project[] = [
     name: "ЖК «Режиссёр», 105 м²",
     category: "Премиум ремонт",
     year: "В работе",
-    image: regisseurAssets[0] || "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200",
+    image: regisseurAssets[0] || "/images/interior-1600210492486-724fe5c67fb0.jpg",
     url: "/elite/"
   }
 ];
@@ -473,10 +473,10 @@ function Hero() {
 /* Floating showcase in the empty right side of the hero */
 function HeroShowcase() {
   const items = [
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=600",
+    "/images/interior-1600210492486-724fe5c67fb0.jpg",
     regisseurAssets[0],
-    "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=600",
-    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=600"
+    "/images/interior-1574362848149-11496d93a7c7.jpg",
+    "/images/interior-1600607687920-4e2a09cf159d.jpg"
 
   ];
   const [i, setI] = useState(0);
@@ -634,19 +634,19 @@ function RepairTypeNav() {
       id: "elite", 
       t: t("repairNav.elite"), 
       href: "/elite", 
-      img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800" 
+      img: "/images/interior-1600210492486-724fe5c67fb0.jpg" 
     },
     { 
       id: "new", 
       t: t("repairNav.new"), 
       href: "/newbuilding", 
-      img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800" 
+      img: "/images/interior-1618221195710-dd6b41faaea6.jpg" 
     },
     { 
       id: "secondary", 
       t: t("repairNav.secondary"), 
       href: "/secondary", 
-      img: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=800" 
+      img: "/images/interior-1574362848149-11496d93a7c7.jpg" 
     },
   ];
 

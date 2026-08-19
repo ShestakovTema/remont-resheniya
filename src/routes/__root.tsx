@@ -102,8 +102,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Ремонт Решения — Профессиональный ремонт и отделка под ключ" },
       { name: "twitter:description", content: "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области." },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
-      { name: "twitter:image", content: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
+      { property: "og:image", content: "https://remontresheniya.ru/images/interior-1600210492486-724fe5c67fb0.jpg" },
+      { name: "twitter:image", content: "https://remontresheniya.ru/images/interior-1600210492486-724fe5c67fb0.jpg" },
     ],
     links: [
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
