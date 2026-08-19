@@ -18,12 +18,12 @@ export const eliteCaseStudies = [
     area: "105 м²",
     time: "1,5 месяца",
     assets: (regisseurAssets.length > 0 ? regisseurAssets : [
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1603988492906-4fb0fb251cb8?auto=format&fit=crop&q=80&w=800"
+      "/images/interior-1600210492486-724fe5c67fb0.jpg",
+      "/images/interior-1513694203232-719a280e022f.jpg",
+      "/images/interior-1618221195710-dd6b41faaea6.jpg",
+      "/images/interior-1600607687920-4e2a09cf159d.jpg",
+      "/images/interior-1545324418-cc1a3fa10c00.jpg",
+      "/images/interior-1574362848149-11496d93a7c7.jpg"
     ]).slice(0, 9)
   },
   {
@@ -63,7 +63,7 @@ export const eliteCaseStudies = [
     area: "120 м²",
     time: "2,5 месяца",
     assets: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800",
+      "/images/interior-1545324418-cc1a3fa10c00.jpg",
       hamovniki1.url,
       hamovniki2.url
     ]
