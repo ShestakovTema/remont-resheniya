@@ -33,7 +33,7 @@ images.forEach(imagePath => {
   try {
     console.log(`Optimizing: ${imagePath} -> ${webpPath}`);
     // Using magick to convert to webp with quality 75
-    execSync(`nix run nixpkgs#imagemagick -- magick "${imagePath}" -quality 75 "${webpPath}"`);
+    execSync(`nix run nixpkgs#imagemagick -- "${imagePath}" -quality 75 "${webpPath}"`);
     
     // Also remove the original to save space in the bundle if requested, 
     // but here we just want to replace references. 
