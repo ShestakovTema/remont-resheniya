@@ -60,16 +60,20 @@ export function TextReveal({
         let cleanWord = w;
         let wordIsBold = false;
 
-        if (cleanWord.startsWith("**")) {
-          inBold = true;
-          cleanWord = cleanWord.slice(2);
+        // Check for opening stars
+        if (cleanWord.includes("**") && !inBold) {
+          if (cleanWord.startsWith("**")) {
+            inBold = true;
+            cleanWord = cleanWord.replace("**", "");
+          }
         }
 
         wordIsBold = inBold;
 
-        if (cleanWord.endsWith("**")) {
+        // Check for closing stars (could have punctuation after)
+        if (cleanWord.includes("**") && inBold) {
           inBold = false;
-          cleanWord = cleanWord.slice(0, -2);
+          cleanWord = cleanWord.replace("**", "");
         }
         
         return (
