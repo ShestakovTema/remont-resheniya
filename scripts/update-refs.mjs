@@ -42,13 +42,22 @@ allFiles.forEach(filePath => {
   let changed = false;
   
   Object.entries(mapping).forEach(([oldPath, newPath]) => {
+    // Escape for regex
+    const escapedOld = oldPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    
+    // Check if the content contains the old path
     if (content.includes(oldPath)) {
-      // Use global replace for strings like "/images/..." or "/__l5e/..."
-      // Be careful not to replace partial strings if possible, but these paths are quite specific.
-      const escapedOld = oldPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const regex = new RegExp(escapedOld, 'g');
       content = content.replace(regex, newPath);
       changed = true;
+    }
+    
+    // If it's an asset.json, we should also update content_type if we're replacing the URL
+    if (filePath.endsWith('.asset.json') && content.includes(newPath)) {
+      if (content.includes('"content_type": "image/jpeg"') || content.includes('"content_type": "image/jpg"') || content.includes('"content_type": "image/png"')) {
+         content = content.replace(/"content_type": "image\/(jpeg|jpg|png)"/, '"content_type": "image/webp"');
+         changed = true;
+      }
     }
   });
   
