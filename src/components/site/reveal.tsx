@@ -55,12 +55,12 @@ export function TextReveal({
   return (
     <As ref={ref as never} className={className}>
       {words.map((w, i) => {
-        // Detect bold markers: **word**
-        const isBold = w.startsWith("**") && w.endsWith("**");
-        const cleanWord = isBold ? w.slice(2, -2) : w;
+        // Handle bold markers in the word (could be mid-word or wrapping multiple words)
+        // This is a simplified markdown-ish parser for the TextReveal component
+        const parts = w.split(/(\*\*.*?\*\*)/g);
         
         return (
-          <span key={i} className={`inline-block overflow-hidden align-bottom pb-[0.15em] ${isBold ? 'font-bold' : ''}`}>
+          <span key={i} className="inline-block overflow-hidden align-bottom pb-[0.15em]">
             <motion.span
               initial={{ y: "110%" }}
               animate={inView ? { y: "0%" } : { y: "110%" }}
@@ -71,7 +71,12 @@ export function TextReveal({
               }}
               className="inline-block"
             >
-              {cleanWord}
+              {parts.map((part, pIdx) => {
+                if (part.startsWith("**") && part.endsWith("**")) {
+                  return <span key={pIdx} className="font-bold text-white">{part.slice(2, -2)}</span>;
+                }
+                return part;
+              })}
               {i < words.length - 1 ? "\u00A0" : ""}
             </motion.span>
           </span>

@@ -1278,10 +1278,10 @@ export function About() {
             <div className="mt-14 space-y-12">
               <div className="grid gap-14 lg:grid-cols-2">
                 <Reveal className="text-lg leading-relaxed text-[#8F8F8F] sm:text-xl">
-                  {t("about.p1")}
+                  <div dangerouslySetInnerHTML={{ __html: t("about.p1").replace(/\*\*(.*?)\*\*/g, '<span class="font-bold text-white">$1</span>') }} />
                 </Reveal>
                 <Reveal delay={0.4} className="text-lg leading-relaxed text-[#8F8F8F] sm:text-xl">
-                  {t("about.p2")}
+                  <div dangerouslySetInnerHTML={{ __html: t("about.p2").replace(/\*\*(.*?)\*\*/g, '<span class="font-bold text-white">$1</span>') }} />
                 </Reveal>
               </div>
 
