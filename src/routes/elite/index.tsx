@@ -49,8 +49,8 @@ function ElitePage() {
         
         <div id="about" className="grid md:grid-cols-2 gap-20 mb-20">
           <Reveal delay={0.2}>
-            <p className="text-xl text-gray-400">
-              Наш профиль в премиум объектах — электромонтаж, сантехнику, перепланировку квартир, отделку под покраску под ключ, а также мебель и потолки.
+            <p className="text-xl text-[#8F8F8F] leading-relaxed">
+              Наш профиль в премиум объектах — <span className="font-bold text-white">электромонтаж, сантехнику, перепланировку квартир, отделку под покраску</span> под ключ, а также мебель и потолки. Наш опыт позволяет реализовывать <span className="font-bold text-white">проекты любой сложности</span>.
             </p>
           </Reveal>
           <Reveal delay={0.4}>

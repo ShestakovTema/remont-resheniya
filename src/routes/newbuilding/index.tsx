@@ -49,8 +49,8 @@ function NewBuildingPage() {
         <div id="about" className="grid md:grid-cols-2 gap-20 mb-20">
 
           <Reveal delay={0.2}>
-            <p className="text-xl text-gray-400">
-              Инженерия и подготовка в новых домах: электромонтаж, сантехнику, перепланировку квартир, отделку под покраску с учетом всех норм, а также мебель и потолки.
+            <p className="text-xl text-[#8F8F8F] leading-relaxed">
+              Инженерия и подготовка в новых домах: <span className="font-bold text-white">электромонтаж, сантехнику, перепланировку квартир, отделку под покраску</span> с учетом всех норм, а также мебель и потолки. Наш опыт позволяет реализовывать <span className="font-bold text-white">проекты любой сложности</span>.
             </p>
           </Reveal>
           <Reveal delay={0.4}>

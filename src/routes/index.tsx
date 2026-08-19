@@ -1278,10 +1278,26 @@ export function About() {
             <div className="mt-14 space-y-12">
               <div className="grid gap-14 lg:grid-cols-2">
                 <Reveal className="text-lg leading-relaxed text-[#8F8F8F] sm:text-xl">
-                  <div dangerouslySetInnerHTML={{ __html: t("about.p1").replace(/\*\*(.*?)\*\*/g, '<span class="font-bold text-white">$1</span>') }} />
+                  {(() => {
+                    const parts = t("about.p1").split(/(\*\*.*?\*\*)/g);
+                    return parts.map((part, i) => {
+                      if (part.startsWith('**') && part.endsWith('**')) {
+                        return <span key={i} className="font-bold text-white">{part.slice(2, -2)}</span>;
+                      }
+                      return part;
+                    });
+                  })()}
                 </Reveal>
                 <Reveal delay={0.4} className="text-lg leading-relaxed text-[#8F8F8F] sm:text-xl">
-                  <div dangerouslySetInnerHTML={{ __html: t("about.p2").replace(/\*\*(.*?)\*\*/g, '<span class="font-bold text-white">$1</span>') }} />
+                  {(() => {
+                    const parts = t("about.p2").split(/(\*\*.*?\*\*)/g);
+                    return parts.map((part, i) => {
+                      if (part.startsWith('**') && part.endsWith('**')) {
+                        return <span key={i} className="font-bold text-white">{part.slice(2, -2)}</span>;
+                      }
+                      return part;
+                    });
+                  })()}
                 </Reveal>
               </div>
 
