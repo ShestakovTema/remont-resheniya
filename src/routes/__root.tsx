@@ -90,8 +90,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области.",
       },
+      { name: "keywords", content: "ремонт квартир, электромонтаж, сантехника, перепланировка, отделка под покраску, ремонт москва" },
       { name: "author", content: "Ремонт Решения" },
       { name: "theme-color", content: "#070707" },
+      { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
       {
         property: "og:description",
@@ -99,6 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://remontresheniya.ru/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
       { name: "twitter:description", content: "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области." },
