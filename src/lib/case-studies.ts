@@ -20,8 +20,8 @@ export const eliteCaseStudies = [
     assets: (regisseurAssets.length > 0 ? regisseurAssets : [
       "/images/interior-1600210492486-724fe5c67fb0.webp",
       "/images/interior-1513694203232-719a280e022f.webp",
-      "/images/interior-1618221195710-dd6b41faaea6.webp",
-      "/images/interior-1600607687920-4e2a09cf159d.webp",
+      "/images/interior-1618221195710-dd6b41faaea6.jpg",
+      "/images/interior-1600607687920-4e2a09cf159d.jpg",
       "/images/interior-1545324418-cc1a3fa10c00.webp",
       "/images/interior-1574362848149-11496d93a7c7.webp"
     ]).slice(0, 9)

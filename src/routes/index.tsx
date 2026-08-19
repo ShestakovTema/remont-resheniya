@@ -122,7 +122,7 @@ const PROJECTS: Project[] = [
     beforeImage: "/images/interior-1513694203232-719a280e022f.webp",
     url: "/elite/" 
   },
-  { name: "ЖК 'Премиум Парк'", category: "Сделана перепланировка", year: "2025", image: "/images/interior-1618221195710-dd6b41faaea6.webp", url: "/newbuilding/" },
+  { name: "ЖК 'Премиум Парк'", category: "Сделана перепланировка", year: "2025", image: "/images/interior-1618221195710-dd6b41faaea6.jpg", url: "/newbuilding/" },
   { 
     name: "Лофт в старом центре", 
     category: "Сантехника и демонтаж", 
@@ -131,7 +131,7 @@ const PROJECTS: Project[] = [
     beforeImage: "/images/interior-1584622650111-993a426fbf0a.webp",
     url: "/secondary/" 
   },
-  { name: "Пентхаус с видом на Сити", category: "Полная электрика", year: "2024", image: "/images/interior-1600607687920-4e2a09cf159d.webp", url: "/elite/" },
+  { name: "Пентхаус с видом на Сити", category: "Полная электрика", year: "2024", image: "/images/interior-1600607687920-4e2a09cf159d.jpg", url: "/elite/" },
   { name: "Семейная квартира в Хамовниках", category: "Перепланировка и инженерия", year: "2024", image: "/images/interior-1484154218962-a197022b5858.webp", url: "/newbuilding/" },
   { name: "Апартаменты в Хамовниках", category: "Электрика и перепланировка", year: "2023", image: "/images/interior-1545324418-cc1a3fa10c00.webp", url: "/elite/" },
   { 
@@ -484,7 +484,7 @@ function HeroShowcase() {
     "/images/interior-1600210492486-724fe5c67fb0.webp",
     regisseurAssets[0],
     "/images/interior-1574362848149-11496d93a7c7.webp",
-    "/images/interior-1600607687920-4e2a09cf159d.webp"
+    "/images/interior-1600607687920-4e2a09cf159d.jpg"
 
   ];
   const [i, setI] = useState(0);
@@ -648,7 +648,7 @@ function RepairTypeNav() {
       id: "new", 
       t: t("repairNav.new"), 
       href: "/newbuilding", 
-      img: "/images/interior-1618221195710-dd6b41faaea6.webp" 
+      img: "/images/interior-1618221195710-dd6b41faaea6.jpg" 
     },
     { 
       id: "secondary", 
