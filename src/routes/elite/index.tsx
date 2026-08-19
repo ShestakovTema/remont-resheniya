@@ -11,6 +11,13 @@ import { AnimatePresence } from "framer-motion";
 import { eliteCaseStudies } from "@/lib/case-studies";
 
 export const Route = createFileRoute("/elite/")({
+  head: () => ({
+    title: "Премиум объекты — Ремонт Решения",
+    meta: [
+      { property: "og:title", content: "Премиум объекты — Ремонт Решения" },
+      { name: "twitter:title", content: "Премиум объекты — Ремонт Решения" },
+    ],
+  }),
   component: () => (
     <LangProvider>
       <ElitePage />

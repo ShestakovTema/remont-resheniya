@@ -11,6 +11,13 @@ import { AnimatePresence } from "framer-motion";
 import { newBuildingCaseStudies } from "@/lib/case-studies";
 
 export const Route = createFileRoute("/newbuilding/")({
+  head: () => ({
+    title: "Новостройки — Ремонт Решения",
+    meta: [
+      { property: "og:title", content: "Новостройки — Ремонт Решения" },
+      { name: "twitter:title", content: "Новостройки — Ремонт Решения" },
+    ],
+  }),
   component: () => (
     <LangProvider>
       <NewBuildingPage />

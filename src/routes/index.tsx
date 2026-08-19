@@ -85,7 +85,10 @@ import { LangProvider, useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    title: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску",
     meta: [
+      { property: "og:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
+      { name: "twitter:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
       { property: "og:image", content: "https://remontresheniya.ru/images/interior-1600210492486-724fe5c67fb0.jpg" },
       { name: "twitter:image", content: "https://remontresheniya.ru/images/interior-1600210492486-724fe5c67fb0.jpg" },
     ],
