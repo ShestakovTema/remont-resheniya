@@ -2,10 +2,10 @@
   "version": 1,
   "asset_id": "cb31d63b-b1f5-442c-9011-6e7b7280c52b",
   "project_id": "c8097a1c-3859-4731-871c-12cd1e5f3acf",
-  "url": "/__l5e/assets-v1/cb31d63b-b1f5-442c-9011-6e7b7280c52b/hall.jpg",
+  "url": "/assets-l5e/assets-v1/cb31d63b-b1f5-442c-9011-6e7b7280c52b/hall.webp",
   "r2_key": "a/v1/c8097a1c-3859-4731-871c-12cd1e5f3acf/cb31d63b-b1f5-442c-9011-6e7b7280c52b/hall.jpg",
   "original_filename": "hall.jpg",
   "size": 931979,
-  "content_type": "image/jpeg",
+  "content_type": "image/webp",
   "created_at": "2026-08-13T17:37:48Z"
 }
