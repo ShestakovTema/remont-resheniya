@@ -87,8 +87,8 @@ export const newBuildingCaseStudies = [
     time: "1,5 месяца",
     assets: [
       zilartLobby.url,
-      zilartLiving.url,
-      zilartHall.url,
+      zilartLivingNew.url,
+      zilartHallNew.url,
       zilartBath.url
     ]
   },
@@ -206,7 +206,9 @@ import hamovniki2 from "@/assets/hamovniki-2.jpg.asset.json";
 import villaAsset from "@/assets/villa-podmoskovye-new.jpg.asset.json";
 import zilartLobby from "@/assets/zilart/lobby.jpg.asset.json";
 import zilartLiving from "@/assets/zilart/living.jpg.asset.json";
+import zilartLivingNew from "@/assets/zilart/living-new.jpg.asset.json";
 import zilartHall from "@/assets/zilart/hall.jpg.asset.json";
+import zilartHallNew from "@/assets/zilart/hall-new.jpg.asset.json";
 import zilartBath from "@/assets/zilart/bath.jpg.asset.json";
 import heart1 from "@/assets/serdtse-stolitsy-1.jpg.asset.json";
 import heart2 from "@/assets/serdtse-stolitsy-2.jpg.asset.json";
