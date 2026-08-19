@@ -6,6 +6,7 @@ const PUBLIC_DIR = 'public';
 const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png'];
 
 function findImages(dir, fileList = []) {
+  if (!fs.existsSync(dir)) return fileList;
   const files = fs.readdirSync(dir);
   files.forEach(file => {
     const filePath = path.join(dir, file);
@@ -32,15 +33,14 @@ images.forEach(imagePath => {
   
   try {
     console.log(`Optimizing: ${imagePath} -> ${webpPath}`);
-    // Using convert command explicitly if available via nix run
+    // Using convert command explicitly via nix run imagemagick
     execSync(`nix run nixpkgs#imagemagick -- convert "${imagePath}" -quality 75 "${webpPath}"`);
     
-    // Also remove the original to save space in the bundle if requested, 
-    // but here we just want to replace references. 
-    // Actually, I'll keep originals for a moment to ensure build doesn't break if I miss a ref.
-    // But for "static export" and "hosting", we want to switch the code to use .webp.
+    // Create mapping from relative public path
+    const publicOld = imagePath.startsWith('public/') ? imagePath.substring(6) : imagePath;
+    const publicNew = webpPath.startsWith('public/') ? webpPath.substring(6) : webpPath;
     
-    mapping[imagePath.replace(/^public\//, '/')] = webpPath.replace(/^public\//, '/');
+    mapping[publicOld.startsWith('/') ? publicOld : '/' + publicOld] = publicNew.startsWith('/') ? publicNew : '/' + publicNew;
   } catch (err) {
     console.error(`Failed to optimize ${imagePath}:`, err.message);
   }
