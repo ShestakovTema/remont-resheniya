@@ -90,8 +90,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области.",
       },
+      { name: "keywords", content: "ремонт квартир, электромонтаж, сантехника, перепланировка, отделка под покраску, ремонт москва" },
       { name: "author", content: "Ремонт Решения" },
       { name: "theme-color", content: "#070707" },
+      { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
       {
         property: "og:description",
@@ -99,6 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://remontresheniya.ru/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
       { name: "twitter:description", content: "Ремонт Решения — экспертный ремонт любой сложности. 15 лет опыта в элитном ремонте, отделке новостроек и вторичного жилья в Москве и области." },
@@ -119,6 +122,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         media: "print",
         onLoad: "this.media='all'"
       } as any,
+      { rel: "canonical", href: "https://remontresheniya.ru/" },
     ],
   }),
   shellComponent: RootShell,
@@ -132,6 +136,31 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="ru">
       <head>
         <HeadContent />
+        {/* Yandex.Metrika counter */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(m,e,t,r,i,k,a){
+                  m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                  m[i].l=1*new Date();
+                  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+              })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111768505', 'ym');
+              ym(111768505, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+            `,
+          }}
+        />
+        <noscript>
+          <div>
+            <img
+              src="https://mc.yandex.ru/watch/111768505"
+              style={{ position: "absolute", left: "-9999px" }}
+              alt=""
+            />
+          </div>
+        </noscript>
+        {/* /Yandex.Metrika counter */}
       </head>
       <body>
         {children}

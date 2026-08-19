@@ -87,12 +87,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     title: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску",
     meta: [
+      { name: "description", content: "Ремонт Решения — экспертный ремонт любой сложности в Москве. 15 лет опыта, гарантия 3 года. Профессиональная электрика, сантехника и отделка." },
+      { name: "keywords", content: "ремонт квартир, электромонтаж, сантехника, перепланировка, отделка под покраску, ремонт москва" },
       { property: "og:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
+      { property: "og:description", content: "Ремонт Решения — экспертный ремонт любой сложности в Москве. 15 лет опыта, гарантия 3 года." },
       { name: "twitter:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
       { property: "og:image", content: "https://remontresheniya.ru/images/interior-1600210492486-724fe5c67fb0.jpg" },
       { name: "twitter:image", content: "https://remontresheniya.ru/images/interior-1600210492486-724fe5c67fb0.jpg" },
+      { name: "robots", content: "index, follow" },
     ],
     links: [
+      { rel: "canonical", href: "https://remontresheniya.ru/" },
       { rel: "preload", as: "image", href: "/images/interior-1600210492486-724fe5c67fb0.jpg", fetchPriority: "high" } as never,
     ],
   }),
