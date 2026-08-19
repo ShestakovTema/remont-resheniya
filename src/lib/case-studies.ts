@@ -87,8 +87,8 @@ export const newBuildingCaseStudies = [
     time: "1,5 месяца",
     assets: [
       zilartLobby.url,
-      zilartLivingNew.url,
-      zilartHallNew.url,
+      zilartLiving.url,
+      zilartHall.url,
       zilartBath.url
     ]
   },
