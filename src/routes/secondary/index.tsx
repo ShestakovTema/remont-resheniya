@@ -11,6 +11,13 @@ import { AnimatePresence } from "framer-motion";
 import { secondaryCaseStudies } from "@/lib/case-studies";
 
 export const Route = createFileRoute("/secondary/")({
+  head: () => ({
+    title: "Вторичное жилье — Ремонт Решения",
+    meta: [
+      { property: "og:title", content: "Вторичное жилье — Ремонт Решения" },
+      { name: "twitter:title", content: "Вторичное жилье — Ремонт Решения" },
+    ],
+  }),
   component: () => (
     <LangProvider>
       <SecondaryPage />
