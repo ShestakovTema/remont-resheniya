@@ -54,23 +54,29 @@ export function TextReveal({
   const words = text.split(" ");
   return (
     <As ref={ref as never} className={className}>
-      {words.map((w, i) => (
-        <span key={i} className="inline-block overflow-hidden align-bottom pb-[0.15em]">
-          <motion.span
-            initial={{ y: "110%" }}
-            animate={inView ? { y: "0%" } : { y: "110%" }}
-            transition={{
-              duration: 0.9,
-              ease: [0.19, 1, 0.22, 1],
-              delay: delay + i * stagger,
-            }}
-            className="inline-block"
-          >
-            {w}
-            {i < words.length - 1 ? "\u00A0" : ""}
-          </motion.span>
-        </span>
-      ))}
+      {words.map((w, i) => {
+        // Detect bold markers: **word**
+        const isBold = w.startsWith("**") && w.endsWith("**");
+        const cleanWord = isBold ? w.slice(2, -2) : w;
+        
+        return (
+          <span key={i} className={`inline-block overflow-hidden align-bottom pb-[0.15em] ${isBold ? 'font-bold' : ''}`}>
+            <motion.span
+              initial={{ y: "110%" }}
+              animate={inView ? { y: "0%" } : { y: "110%" }}
+              transition={{
+                duration: 0.9,
+                ease: [0.19, 1, 0.22, 1],
+                delay: delay + i * stagger,
+              }}
+              className="inline-block"
+            >
+              {cleanWord}
+              {i < words.length - 1 ? "\u00A0" : ""}
+            </motion.span>
+          </span>
+        );
+      })}
     </As>
   );
 }
