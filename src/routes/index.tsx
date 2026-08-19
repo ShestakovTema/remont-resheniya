@@ -701,7 +701,7 @@ function WorkInProgress() {
             <h2 className="font-display mt-4 max-w-[12ch] text-5xl sm:text-6xl md:max-w-none md:text-7xl lg:max-w-[16ch] lg:text-8xl">
               <TextReveal key={`wipa-${t("workInProgress.h.a")}`} text={t("workInProgress.h.a")} />
               <br />
-              <TextReveal key={`wipb-${t("workInProgress.h.b")}`} text={t("workInProgress.h.b")} delay={0.15} className="italic" />
+              <TextReveal key={`wipb-${t("workInProgress.h.b")}`} text={t("workInProgress.h.b")} delay={0.15} />
             </h2>
           </div>
           <Reveal className="max-w-xs text-[#8F8F8F]">
