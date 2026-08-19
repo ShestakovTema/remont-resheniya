@@ -49,8 +49,8 @@ function SecondaryPage() {
         <div id="about" className="grid md:grid-cols-2 gap-20 mb-20">
 
           <Reveal delay={0.2}>
-            <p className="text-xl text-gray-400">
-              Капитальное обновление инженерных сетей: электромонтаж, сантехнику, перепланировку квартир, отделку под покраску в старом фонде, а также мебель и потолки.
+            <p className="text-xl text-gray-400 leading-relaxed">
+              Капитальное обновление инженерных сетей: <span className="font-bold text-white">электромонтаж, сантехнику, перепланировку квартир, отделку под покраску</span> в старом фонде, а также мебель и потолки.
             </p>
           </Reveal>
           <Reveal delay={0.4}>
