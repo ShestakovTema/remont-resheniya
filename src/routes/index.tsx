@@ -271,15 +271,17 @@ export function ProcessPhotos() {
               <button 
                 onClick={handlePrev}
                 disabled={page === 0}
+                aria-label="Previous page"
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 disabled:opacity-20 disabled:cursor-not-allowed"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={20} aria-hidden="true" />
               </button>
               <div className="flex gap-2">
                 {Array.from({ length: Math.min(totalPages, isMobile ? 8 : 10) }).map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setPage(i)}
+                    aria-label={`Go to page ${i + 1}`}
                     className={`h-2 w-2 rounded-full transition-all duration-300 ${page === i ? 'w-6 bg-white' : 'bg-white/20'}`}
                   />
                 ))}
@@ -287,9 +289,10 @@ export function ProcessPhotos() {
               <button 
                 onClick={handleNext}
                 disabled={page === totalPages - 1}
+                aria-label="Next page"
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 disabled:opacity-20 disabled:cursor-not-allowed"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={20} aria-hidden="true" />
               </button>
             </div>
             <div className="text-[10px] uppercase tracking-[0.3em] text-white/30">
@@ -775,15 +778,17 @@ function RegisseurCarousel({ onImageClick }: { onImageClick: (idx: number) => vo
         <div className="mb-4 flex items-center justify-end gap-4">
           <button 
             onClick={() => scroll('left')}
+            aria-label="Scroll left"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={20} aria-hidden="true" />
           </button>
           <button 
             onClick={() => scroll('right')}
+            aria-label="Scroll right"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-colors hover:bg-white/10"
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={20} aria-hidden="true" />
           </button>
         </div>
 
@@ -1591,8 +1596,9 @@ export function Testimonials({ id }: { id?: string }) {
           </Reveal>
           <div className="flex gap-2">
             {QUOTES.map((_, idx) => (
-              <div
+              <button
                 key={idx}
+                type="button"
                 aria-label={`Show testimonial ${idx + 1}`}
                 onClick={() => setI(idx)}
                 className={`h-[2px] w-8 transition-colors ${idx === i ? "bg-white" : "bg-white/25"}`}

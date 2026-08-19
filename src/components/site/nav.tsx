@@ -74,9 +74,10 @@ export function Nav() {
                     as="button"
                     strength={14}
                     className="group relative flex items-center gap-1 py-2 text-sm text-white/70 transition-colors hover:text-white outline-none"
+                    aria-label={t("nav.repairTypes")}
                   >
                     <span data-cursor="link">{t("nav.repairTypes")}</span>
-                    <ChevronDown size={14} className={`transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown size={14} className={`transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} aria-hidden="true" />
                   </Magnetic>
                 </div>
               </DropdownMenu.Trigger>
