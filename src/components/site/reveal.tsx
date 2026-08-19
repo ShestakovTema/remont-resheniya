@@ -52,15 +52,32 @@ export function TextReveal({
   const ref = useRef<HTMLElement | null>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
   const words = text.split(" ");
+  let inBold = false;
+
   return (
     <As ref={ref as never} className={className}>
       {words.map((w, i) => {
-        // Detect bold markers: **word**
-        const isBold = w.startsWith("**") && w.endsWith("**");
-        const cleanWord = isBold ? w.slice(2, -2) : w;
+        let cleanWord = w;
+        let wordIsBold = false;
+
+        // Check for opening stars
+        if (cleanWord.includes("**") && !inBold) {
+          if (cleanWord.startsWith("**")) {
+            inBold = true;
+            cleanWord = cleanWord.replace("**", "");
+          }
+        }
+
+        wordIsBold = inBold;
+
+        // Check for closing stars (could have punctuation after)
+        if (cleanWord.includes("**") && inBold) {
+          inBold = false;
+          cleanWord = cleanWord.replace("**", "");
+        }
         
         return (
-          <span key={i} className={`inline-block overflow-hidden align-bottom pb-[0.15em] ${isBold ? 'font-bold' : ''}`}>
+          <span key={i} className={`inline-block overflow-hidden align-bottom pb-[0.15em] ${wordIsBold ? 'font-bold text-white' : ''}`}>
             <motion.span
               initial={{ y: "110%" }}
               animate={inView ? { y: "0%" } : { y: "110%" }}
