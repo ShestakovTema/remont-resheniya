@@ -128,10 +128,11 @@ export const newBuildingCaseStudies = [
     area: "94 м²",
     time: "1,5 месяца",
     assets: [
-      simvol1.url,
-      simvol2.url,
-      simvol3.url
+      "/images/simvol-new-1.webp",
+      "/images/simvol-new-2.webp",
+      "/images/simvol-new-3.webp"
     ]
+
   }
 ];
 
@@ -208,9 +209,6 @@ import villaAsset from "@/assets/villa-podmoskovye-new.jpg.asset.json";
 import zilartLivingNew from "@/assets/zilart/living-new.jpg.asset.json";
 import zilartHallNew from "@/assets/zilart/hall-new.jpg.asset.json";
 import zilartBath from "@/assets/zilart/bath.jpg.asset.json";
-import simvol1 from "@/assets/simvol-1.jpg.asset.json";
-import simvol2 from "@/assets/simvol-2.jpg.asset.json";
-import simvol3 from "@/assets/simvol-3.jpg.asset.json";
 import stalinNew1 from "@/assets/stalin/1.asset.json";
 import stalinNew2 from "@/assets/stalin/2.asset.json";
 import stalinNew3 from "@/assets/stalin/3.asset.json";
