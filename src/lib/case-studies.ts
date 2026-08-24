@@ -86,10 +86,11 @@ export const newBuildingCaseStudies = [
     area: "78 м²",
     time: "1,5 месяца",
     assets: [
-      zilartLobby.url,
-      zilartLiving.url,
-      zilartHall.url,
+      "/images/zilart-new-1.webp",
+      "/images/zilart-new-2.webp",
+      "/images/zilart-new-3.webp",
       zilartBath.url
+
     ]
   },
   {
