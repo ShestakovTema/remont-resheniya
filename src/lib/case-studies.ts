@@ -108,9 +108,9 @@ export const newBuildingCaseStudies = [
     area: "115 м²",
     time: "1,5 месяца",
     assets: [
-      heart1.url,
-      heart2.url,
-      heart3.url
+      "/images/heart-new-1.webp",
+      "/images/heart-new-2.webp",
+      "/images/heart-new-3.webp"
     ]
   },
   {
