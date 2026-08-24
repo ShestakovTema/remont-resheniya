@@ -128,10 +128,11 @@ export const newBuildingCaseStudies = [
     area: "94 м²",
     time: "1,5 месяца",
     assets: [
-      simvol1.url,
-      simvol2.url,
-      simvol3.url
+      "/images/simvol-new-1.webp",
+      "/images/simvol-new-2.webp",
+      "/images/simvol-new-3.webp"
     ]
+
   }
 ];
 
