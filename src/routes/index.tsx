@@ -618,6 +618,9 @@ function FeaturedWork() {
 
 function DesktopProjectsList() {
   const [enabled, setEnabled] = useState(false);
+  const [active, setActive] = useState(0);
+  const perView = 2;
+  const maxIndex = Math.max(0, PROJECTS.length - perView);
   useEffect(() => {
     if (typeof window === "undefined") return;
     const mq = window.matchMedia("(min-width: 768px)");
@@ -627,12 +630,111 @@ function DesktopProjectsList() {
     return () => mq.removeEventListener("change", update);
   }, []);
   if (!enabled) return null;
+  const go = (i: number) => setActive(Math.min(maxIndex, Math.max(0, i)));
+  const gapPx = 32;
   return (
-    <div className="hidden md:flex md:flex-col md:gap-36">
-      {PROJECTS.map((p, i) => (
-        <ProjectRow key={p.name} project={p} index={i} totalCount={PROJECTS.length} />
-      ))}
+    <div className="hidden md:block">
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <div className="text-xs uppercase tracking-[0.3em] text-white/40">
+          {String(active + 1).padStart(2, "0")} — {String(Math.min(PROJECTS.length, active + perView)).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
+        </div>
+        <div className="flex gap-3">
+          <button
+            type="button"
+            aria-label="Предыдущие проекты"
+            onClick={() => go(active - 1)}
+            disabled={active === 0}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 transition-colors hover:bg-white/15 disabled:opacity-30"
+          >
+            <ChevronLeft size={20} aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            aria-label="Следующие проекты"
+            onClick={() => go(active + 1)}
+            disabled={active >= maxIndex}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 transition-colors hover:bg-white/15 disabled:opacity-30"
+          >
+            <ChevronRight size={20} aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+
+      <div className="overflow-hidden">
+        <div
+          className="flex"
+          style={{
+            gap: `${gapPx}px`,
+            transform: `translate3d(calc(-${active * (100 / perView)}% - ${active * (gapPx / perView)}px), 0, 0)`,
+            transition: "transform 550ms cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
+        >
+          {PROJECTS.map((p, i) => (
+            <div
+              key={p.name}
+              className="shrink-0"
+              style={{ width: `calc(${100 / perView}% - ${(gapPx * (perView - 1)) / perView}px)` }}
+            >
+              <ProjectCard project={p} index={i} totalCount={PROJECTS.length} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-8 flex justify-center gap-2">
+        {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Показать проекты с ${i + 1}`}
+            onClick={() => go(i)}
+            className={`h-1.5 rounded-full transition-all ${i === active ? "w-8 bg-white" : "w-3 bg-white/25 hover:bg-white/50"}`}
+          />
+        ))}
+      </div>
     </div>
+  );
+}
+
+function ProjectCard({ project, index, totalCount }: { project: Project; index: number; totalCount: number }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <Link
+      to={project.url}
+      className="group block"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <div className="relative aspect-[16/11] w-full overflow-hidden rounded-lg">
+        <img
+          src={project.image}
+          alt={project.name}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500"
+          style={{ opacity: hover ? 1 : 0 }}
+        />
+        <div className="absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 font-mono text-[10px] tracking-widest text-white/80 backdrop-blur-md">
+          {String(index + 1).padStart(2, "0")} / {String(totalCount).padStart(2, "0")}
+        </div>
+        <div
+          className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 transition-all duration-500"
+          style={{ opacity: hover ? 1 : 0, transform: hover ? "translateY(0)" : "translateY(12px)" }}
+        >
+          <div className="min-w-0">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-white/70">{project.category}</div>
+            <div className="font-display mt-2 text-3xl">{project.name}</div>
+          </div>
+          <div className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-white/70">{project.year}</div>
+        </div>
+      </div>
+      <div className="mt-4 flex items-baseline justify-between gap-4">
+        <div className="font-display truncate text-2xl">{project.name}</div>
+        <div className="shrink-0 text-sm text-[#8F8F8F]">{project.category}</div>
+      </div>
+    </Link>
   );
 }
 
@@ -1209,84 +1311,6 @@ function MobileProjectsCarousel() {
   );
 }
 
-function ProjectRow({ project, index, totalCount }: { project: Project; index: number; totalCount: number }) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1.05, 1.15]);
-  const [hover, setHover] = useState(false);
-  const alignRight = index % 2 === 1;
-
-  return (
-    <div
-      ref={ref}
-      className={`grid grid-cols-12 items-center gap-6 ${alignRight ? "md:[direction:rtl]" : ""}`}
-    >
-      <motion.div
-        className="col-span-12 md:col-span-9 md:[direction:ltr]"
-        initial={{ opacity: 0, y: 60, scale: 0.96 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.9, ease: [0.19, 1, 0.22, 1] }}
-      >
-        <Magnetic strength={12} className="group relative block overflow-hidden rounded-lg">
-          <div
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            data-cursor="view"
-            data-cursor-label="STF"
-            className="relative block aspect-[16/10] w-full overflow-hidden"
-          >
-            <motion.div style={{ y }} className="absolute inset-0 will-change-transform">
-              <motion.img
-                src={project.image}
-                alt={project.name}
-                width={1600}
-                height={1000}
-                loading="lazy"
-                style={{ scale }}
-                className="h-[115%] w-full object-cover"
-              />
-            </motion.div>
-            <motion.div
-              initial={false}
-              animate={{ opacity: hover ? 1 : 0 }}
-              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
-              className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
-            />
-            <motion.div
-              initial={false}
-              animate={{ opacity: hover ? 1 : 0, y: hover ? 0 : 12 }}
-              transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
-              className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 md:p-10"
-            >
-              <div className="min-w-0">
-                <div className="text-[10px] uppercase tracking-[0.3em] text-white/70 sm:text-xs">
-                  {project.category}
-                </div>
-                <div className="font-display mt-2 text-2xl sm:text-3xl md:text-5xl">{project.name}</div>
-              </div>
-              <div className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-white/70 sm:text-xs">
-                {project.year}
-              </div>
-            </motion.div>
-          </div>
-        </Magnetic>
-      </motion.div>
-
-      <Reveal
-        y={16}
-        className="col-span-12 flex flex-col gap-2 md:col-span-3 md:[direction:ltr]"
-      >
-        <div className="text-xs uppercase tracking-[0.3em] text-white/50">
-          {String(index + 1).padStart(2, "0")} / {String(totalCount).padStart(2, "0")}
-        </div>
-        <div className="font-display text-2xl">{project.name}</div>
-        <div className="text-sm text-[#8F8F8F]">{project.category}</div>
-      </Reveal>
-    </div>
-  );
-}
 
 /* ------------------------------ ABOUT ------------------------------ */
 export function About() {
