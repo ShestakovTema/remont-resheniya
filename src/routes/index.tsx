@@ -319,7 +319,9 @@ export function ProcessPhotos() {
 
 export { HeroShowcase, SiteAurora };
 
-function Index() {
+export type HeroTitle = { a: string; b: string; c?: string };
+
+export function HomePage({ h1 }: { h1?: HeroTitle }) {
   const footerRef = useRef<HTMLDivElement | null>(null);
   const [footerHeight, setFooterHeight] = useState(0);
 
@@ -366,7 +368,7 @@ function Index() {
           }}
         />
         <div className="relative z-10">
-          <Hero />
+          <Hero h1={h1} />
           <Marquee />
           <WorkInProgress />
           <RepairTypeNav />
@@ -391,9 +393,16 @@ function Index() {
   );
 }
 
+function Index() {
+  return <HomePage />;
+}
+
 /* ------------------------------ HERO ------------------------------ */
-function Hero() {
+function Hero({ h1 }: { h1?: HeroTitle }) {
   const t = useT();
+  const h1a = h1?.a ?? t("hero.h1.a");
+  const h1b = h1?.b ?? t("hero.h1.b");
+  const h1c = h1 ? (h1.c ?? "") : t("hero.h1.c");
   const ref = useRef<HTMLDivElement | null>(null);
   const [enableParallax, setEnableParallax] = useState(false);
   useEffect(() => {
