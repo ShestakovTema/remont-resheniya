@@ -319,7 +319,9 @@ export function ProcessPhotos() {
 
 export { HeroShowcase, SiteAurora };
 
-function Index() {
+export type HeroTitle = { a: string; b: string; c?: string };
+
+export function HomePage({ h1 }: { h1?: HeroTitle }) {
   const footerRef = useRef<HTMLDivElement | null>(null);
   const [footerHeight, setFooterHeight] = useState(0);
 
@@ -366,7 +368,7 @@ function Index() {
           }}
         />
         <div className="relative z-10">
-          <Hero />
+          <Hero h1={h1} />
           <Marquee />
           <WorkInProgress />
           <RepairTypeNav />
