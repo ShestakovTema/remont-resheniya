@@ -696,6 +696,8 @@ function RepairTypeNav() {
 }
 
 /* ------------------------------ WORK IN PROGRESS ------------------------------ */
+const regisseurCase = eliteCaseStudies[0];
+
 function WorkInProgress() {
   const t = useT();
   const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
