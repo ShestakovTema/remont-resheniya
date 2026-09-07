@@ -398,7 +398,7 @@ function Index() {
 }
 
 /* ------------------------------ HERO ------------------------------ */
-function Hero({ h1 }: { h1?: HeroTitle }) {
+function Hero({ h1 }: { h1?: HeroTitle | undefined }) {
   const t = useT();
   const h1a = h1?.a ?? t("hero.h1.a");
   const h1b = h1?.b ?? t("hero.h1.b");
@@ -454,28 +454,16 @@ function Hero({ h1 }: { h1?: HeroTitle }) {
           <Reveal delay={0.6} className="flex w-full flex-wrap items-center justify-center gap-3 md:w-auto md:justify-end">
             <Magnetic
               as="a"
-              href="#work"
+              href="#contact"
               className="group relative inline-flex w-full max-w-[300px] flex-none items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-medium text-black sm:w-auto sm:min-w-[170px]"
             >
               <span
                 data-cursor="link"
                 className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100"
               >
-                {t("hero.cta.projects")}
+                Позвонить нам
               </span>
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Magnetic>
-            <Magnetic
-              as="a"
-              href="#contact"
-              className="group relative inline-flex w-full max-w-[300px] flex-none items-center justify-center gap-3 rounded-full border border-white/20 px-6 py-4 text-sm text-white/90 sm:w-auto sm:min-w-[170px]"
-            >
-              <span
-                data-cursor="link"
-                className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100"
-              >
-                {t("hero.cta.contact")}
-              </span>
             </Magnetic>
           </Reveal>
 
@@ -708,6 +696,8 @@ function RepairTypeNav() {
 }
 
 /* ------------------------------ WORK IN PROGRESS ------------------------------ */
+const regisseurCase = eliteCaseStudies[0];
+
 function WorkInProgress() {
   const t = useT();
   const [fullscreenIdx, setFullscreenIdx] = useState<number | null>(null);
@@ -747,7 +737,30 @@ function WorkInProgress() {
                   {p.year}
                 </div>
               </div>
-              
+
+              {i === 0 && regisseurCase && (
+                <div className="mb-10 grid gap-10 md:grid-cols-2">
+                  <Reveal delay={0.1}>
+                    <p className="mb-3 text-xs uppercase tracking-widest text-white/40">Задача (ТЗ)</p>
+                    <p className="leading-relaxed text-gray-400">{regisseurCase.desc}</p>
+                  </Reveal>
+                  <Reveal delay={0.2}>
+                    <p className="mb-3 text-xs uppercase tracking-widest text-white/40">Что сделали</p>
+                    <ul className="list-inside list-disc space-y-2 text-gray-400">
+                      {regisseurCase.work.map((w) => <li key={w}>{w}</li>)}
+                    </ul>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                        Площадь: <span className="font-bold text-white">{regisseurCase.area}</span>
+                      </div>
+                      <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                        Срок: <span className="font-bold text-white">{regisseurCase.time}</span>
+                      </div>
+                    </div>
+                  </Reveal>
+                </div>
+              )}
+
               <RegisseurCarousel onImageClick={(idx) => setFullscreenIdx(idx)} />
             </div>
           ))}

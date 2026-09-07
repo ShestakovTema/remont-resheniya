@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as ElektrikaVKvartireRouteImport } from './routes/elektrika-v-kvartire'
+import { Route as OtdelkaKvartirVMoskveRouteImport } from './routes/otdelka-kvartir-v-moskve'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ZamenaProvodkiVKvartireRouteImport } from './routes/zamena-provodki-v-kvartire'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as EliteIndexRouteImport } from './routes/elite/index'
 import { Route as NewbuildingIndexRouteImport } from './routes/newbuilding/index'
@@ -33,9 +36,24 @@ const CookiesRoute = CookiesRouteImport.update({
   path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ElektrikaVKvartireRoute = ElektrikaVKvartireRouteImport.update({
+  id: '/elektrika-v-kvartire',
+  path: '/elektrika-v-kvartire',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OtdelkaKvartirVMoskveRoute = OtdelkaKvartirVMoskveRouteImport.update({
+  id: '/otdelka-kvartir-v-moskve',
+  path: '/otdelka-kvartir-v-moskve',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZamenaProvodkiVKvartireRoute = ZamenaProvodkiVKvartireRouteImport.update({
+  id: '/zamena-provodki-v-kvartire',
+  path: '/zamena-provodki-v-kvartire',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -63,7 +81,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/cookies': typeof CookiesRoute
+  '/elektrika-v-kvartire': typeof ElektrikaVKvartireRoute
+  '/otdelka-kvartir-v-moskve': typeof OtdelkaKvartirVMoskveRoute
   '/privacy': typeof PrivacyRoute
+  '/zamena-provodki-v-kvartire': typeof ZamenaProvodkiVKvartireRoute
   '/blog/': typeof BlogIndexRoute
   '/elite/': typeof EliteIndexRoute
   '/newbuilding/': typeof NewbuildingIndexRoute
@@ -73,7 +94,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/cookies': typeof CookiesRoute
+  '/elektrika-v-kvartire': typeof ElektrikaVKvartireRoute
+  '/otdelka-kvartir-v-moskve': typeof OtdelkaKvartirVMoskveRoute
   '/privacy': typeof PrivacyRoute
+  '/zamena-provodki-v-kvartire': typeof ZamenaProvodkiVKvartireRoute
   '/blog': typeof BlogIndexRoute
   '/elite': typeof EliteIndexRoute
   '/newbuilding': typeof NewbuildingIndexRoute
@@ -84,7 +108,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/cookies': typeof CookiesRoute
+  '/elektrika-v-kvartire': typeof ElektrikaVKvartireRoute
+  '/otdelka-kvartir-v-moskve': typeof OtdelkaKvartirVMoskveRoute
   '/privacy': typeof PrivacyRoute
+  '/zamena-provodki-v-kvartire': typeof ZamenaProvodkiVKvartireRoute
   '/blog/': typeof BlogIndexRoute
   '/elite/': typeof EliteIndexRoute
   '/newbuilding/': typeof NewbuildingIndexRoute
@@ -96,7 +123,10 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/cookies'
+    | '/elektrika-v-kvartire'
+    | '/otdelka-kvartir-v-moskve'
     | '/privacy'
+    | '/zamena-provodki-v-kvartire'
     | '/blog/'
     | '/elite/'
     | '/newbuilding/'
@@ -106,7 +136,10 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/cookies'
+    | '/elektrika-v-kvartire'
+    | '/otdelka-kvartir-v-moskve'
     | '/privacy'
+    | '/zamena-provodki-v-kvartire'
     | '/blog'
     | '/elite'
     | '/newbuilding'
@@ -116,7 +149,10 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/cookies'
+    | '/elektrika-v-kvartire'
+    | '/otdelka-kvartir-v-moskve'
     | '/privacy'
+    | '/zamena-provodki-v-kvartire'
     | '/blog/'
     | '/elite/'
     | '/newbuilding/'
@@ -127,7 +163,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
   CookiesRoute: typeof CookiesRoute
+  ElektrikaVKvartireRoute: typeof ElektrikaVKvartireRoute
+  OtdelkaKvartirVMoskveRoute: typeof OtdelkaKvartirVMoskveRoute
   PrivacyRoute: typeof PrivacyRoute
+  ZamenaProvodkiVKvartireRoute: typeof ZamenaProvodkiVKvartireRoute
   BlogIndexRoute: typeof BlogIndexRoute
   EliteIndexRoute: typeof EliteIndexRoute
   NewbuildingIndexRoute: typeof NewbuildingIndexRoute
@@ -157,11 +196,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/elektrika-v-kvartire': {
+      id: '/elektrika-v-kvartire'
+      path: '/elektrika-v-kvartire'
+      fullPath: '/elektrika-v-kvartire'
+      preLoaderRoute: typeof ElektrikaVKvartireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/otdelka-kvartir-v-moskve': {
+      id: '/otdelka-kvartir-v-moskve'
+      path: '/otdelka-kvartir-v-moskve'
+      fullPath: '/otdelka-kvartir-v-moskve'
+      preLoaderRoute: typeof OtdelkaKvartirVMoskveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zamena-provodki-v-kvartire': {
+      id: '/zamena-provodki-v-kvartire'
+      path: '/zamena-provodki-v-kvartire'
+      fullPath: '/zamena-provodki-v-kvartire'
+      preLoaderRoute: typeof ZamenaProvodkiVKvartireRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -199,7 +259,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
   CookiesRoute: CookiesRoute,
+  ElektrikaVKvartireRoute: ElektrikaVKvartireRoute,
+  OtdelkaKvartirVMoskveRoute: OtdelkaKvartirVMoskveRoute,
   PrivacyRoute: PrivacyRoute,
+  ZamenaProvodkiVKvartireRoute: ZamenaProvodkiVKvartireRoute,
   BlogIndexRoute: BlogIndexRoute,
   EliteIndexRoute: EliteIndexRoute,
   NewbuildingIndexRoute: NewbuildingIndexRoute,
