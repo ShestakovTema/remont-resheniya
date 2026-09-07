@@ -735,7 +735,30 @@ function WorkInProgress() {
                   {p.year}
                 </div>
               </div>
-              
+
+              {i === 0 && regisseurCase && (
+                <div className="mb-10 grid gap-10 md:grid-cols-2">
+                  <Reveal delay={0.1}>
+                    <p className="mb-3 text-xs uppercase tracking-widest text-white/40">Задача (ТЗ)</p>
+                    <p className="leading-relaxed text-gray-400">{regisseurCase.desc}</p>
+                  </Reveal>
+                  <Reveal delay={0.2}>
+                    <p className="mb-3 text-xs uppercase tracking-widest text-white/40">Что сделали</p>
+                    <ul className="list-inside list-disc space-y-2 text-gray-400">
+                      {regisseurCase.work.map((w) => <li key={w}>{w}</li>)}
+                    </ul>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                        Площадь: <span className="font-bold text-white">{regisseurCase.area}</span>
+                      </div>
+                      <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300">
+                        Срок: <span className="font-bold text-white">{regisseurCase.time}</span>
+                      </div>
+                    </div>
+                  </Reveal>
+                </div>
+              )}
+
               <RegisseurCarousel onImageClick={(idx) => setFullscreenIdx(idx)} />
             </div>
           ))}
