@@ -7,7 +7,6 @@ import { CaseStudiesCarousel } from "@/components/site/case-studies-carousel";
 import { Cursor } from "@/components/site/cursor";
 import { LangProvider } from "@/lib/i18n";
 import { useState } from "react";
-import { Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { eliteCaseStudies } from "@/lib/case-studies";
 
