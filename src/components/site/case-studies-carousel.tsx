@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
-import { Reveal } from "@/components/site/reveal";
 
 type CaseStudy = {
   title: string;
@@ -128,7 +127,6 @@ export function CaseStudiesCarousel({
           />
         ))}
       </div>
-      <Reveal className="sr-only">Портфолио</Reveal>
     </div>
   );
 }
