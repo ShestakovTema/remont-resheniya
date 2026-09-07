@@ -454,28 +454,16 @@ function Hero({ h1 }: { h1?: HeroTitle | undefined }) {
           <Reveal delay={0.6} className="flex w-full flex-wrap items-center justify-center gap-3 md:w-auto md:justify-end">
             <Magnetic
               as="a"
-              href="#work"
+              href="#contact"
               className="group relative inline-flex w-full max-w-[300px] flex-none items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-medium text-black sm:w-auto sm:min-w-[170px]"
             >
               <span
                 data-cursor="link"
                 className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100"
               >
-                {t("hero.cta.projects")}
+                Позвонить нам
               </span>
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Magnetic>
-            <Magnetic
-              as="a"
-              href="#contact"
-              className="group relative inline-flex w-full max-w-[300px] flex-none items-center justify-center gap-3 rounded-full border border-white/20 px-6 py-4 text-sm text-white/90 sm:w-auto sm:min-w-[170px]"
-            >
-              <span
-                data-cursor="link"
-                className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100"
-              >
-                {t("hero.cta.contact")}
-              </span>
             </Magnetic>
           </Reveal>
 
