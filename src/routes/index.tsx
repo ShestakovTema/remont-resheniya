@@ -439,11 +439,11 @@ function Hero({ h1 }: { h1?: HeroTitle | undefined }) {
         </div>
 
         <h1 className="font-display max-w-[16ch] break-words text-[clamp(2.75rem,12vw,4.75rem)] leading-[0.9] md:text-[9vw]">
-          <TextReveal key={`h1a-${t("hero.h1.a")}`} text={t("hero.h1.a")} as="span" />
+          <TextReveal key={`h1a-${h1a}`} text={h1a} as="span" />
           <br />
-          <TextReveal key={`h1b-${t("hero.h1.b")}`} text={t("hero.h1.b")} as="span" delay={0.2} />
+          <TextReveal key={`h1b-${h1b}`} text={h1b} as="span" delay={0.2} />
           <br />
-          {t("hero.h1.c") && t("hero.h1.c") !== "hero.h1.c" && <TextReveal key={`h1c-${t("hero.h1.c")}`} text={t("hero.h1.c")} as="span" delay={0.4} className="italic" />}
+          {h1c && <TextReveal key={`h1c-${h1c}`} text={h1c} as="span" delay={0.4} className="italic" />}
         </h1>
 
         <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
