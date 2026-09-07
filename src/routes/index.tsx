@@ -618,6 +618,9 @@ function FeaturedWork() {
 
 function DesktopProjectsList() {
   const [enabled, setEnabled] = useState(false);
+  const [active, setActive] = useState(0);
+  const perView = 2;
+  const maxIndex = Math.max(0, PROJECTS.length - perView);
   useEffect(() => {
     if (typeof window === "undefined") return;
     const mq = window.matchMedia("(min-width: 768px)");
@@ -627,12 +630,111 @@ function DesktopProjectsList() {
     return () => mq.removeEventListener("change", update);
   }, []);
   if (!enabled) return null;
+  const go = (i: number) => setActive(Math.min(maxIndex, Math.max(0, i)));
+  const gapPx = 32;
   return (
-    <div className="hidden md:flex md:flex-col md:gap-36">
-      {PROJECTS.map((p, i) => (
-        <ProjectRow key={p.name} project={p} index={i} totalCount={PROJECTS.length} />
-      ))}
+    <div className="hidden md:block">
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <div className="text-xs uppercase tracking-[0.3em] text-white/40">
+          {String(active + 1).padStart(2, "0")} — {String(Math.min(PROJECTS.length, active + perView)).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
+        </div>
+        <div className="flex gap-3">
+          <button
+            type="button"
+            aria-label="Предыдущие проекты"
+            onClick={() => go(active - 1)}
+            disabled={active === 0}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 transition-colors hover:bg-white/15 disabled:opacity-30"
+          >
+            <ChevronLeft size={20} aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            aria-label="Следующие проекты"
+            onClick={() => go(active + 1)}
+            disabled={active >= maxIndex}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 transition-colors hover:bg-white/15 disabled:opacity-30"
+          >
+            <ChevronRight size={20} aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+
+      <div className="overflow-hidden">
+        <div
+          className="flex"
+          style={{
+            gap: `${gapPx}px`,
+            transform: `translate3d(calc(-${active * (100 / perView)}% - ${active * (gapPx / perView)}px), 0, 0)`,
+            transition: "transform 550ms cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
+        >
+          {PROJECTS.map((p, i) => (
+            <div
+              key={p.name}
+              className="shrink-0"
+              style={{ width: `calc(${100 / perView}% - ${(gapPx * (perView - 1)) / perView}px)` }}
+            >
+              <ProjectCard project={p} index={i} totalCount={PROJECTS.length} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-8 flex justify-center gap-2">
+        {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            aria-label={`Показать проекты с ${i + 1}`}
+            onClick={() => go(i)}
+            className={`h-1.5 rounded-full transition-all ${i === active ? "w-8 bg-white" : "w-3 bg-white/25 hover:bg-white/50"}`}
+          />
+        ))}
+      </div>
     </div>
+  );
+}
+
+function ProjectCard({ project, index, totalCount }: { project: Project; index: number; totalCount: number }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <Link
+      to={project.url}
+      className="group block"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <div className="relative aspect-[16/11] w-full overflow-hidden rounded-lg">
+        <img
+          src={project.image}
+          alt={project.name}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-500"
+          style={{ opacity: hover ? 1 : 0 }}
+        />
+        <div className="absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 font-mono text-[10px] tracking-widest text-white/80 backdrop-blur-md">
+          {String(index + 1).padStart(2, "0")} / {String(totalCount).padStart(2, "0")}
+        </div>
+        <div
+          className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 transition-all duration-500"
+          style={{ opacity: hover ? 1 : 0, transform: hover ? "translateY(0)" : "translateY(12px)" }}
+        >
+          <div className="min-w-0">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-white/70">{project.category}</div>
+            <div className="font-display mt-2 text-3xl">{project.name}</div>
+          </div>
+          <div className="shrink-0 text-[10px] uppercase tracking-[0.3em] text-white/70">{project.year}</div>
+        </div>
+      </div>
+      <div className="mt-4 flex items-baseline justify-between gap-4">
+        <div className="font-display truncate text-2xl">{project.name}</div>
+        <div className="shrink-0 text-sm text-[#8F8F8F]">{project.category}</div>
+      </div>
+    </Link>
   );
 }
 
