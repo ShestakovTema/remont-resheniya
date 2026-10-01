@@ -22,5 +22,11 @@ export const Route = createFileRoute("/elektrika-v-kvartire")({
     ],
     links: [{ rel: "canonical", href: "https://remontresheniya.pro/elektrika-v-kvartire" }],
   }),
-  component: () => <HomePage h1={{ a: "Электрика", b: "в квартире" }} />,
+  component: () => (
+    <HomePage
+      h1={{ a: "Электрика", b: "в квартире" }}
+      heroDescription="Поменяем проводку, сделаем электрику в вашей квартире"
+      electricityLanding
+    />
+  ),
 });

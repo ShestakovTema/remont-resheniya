@@ -130,7 +130,7 @@ const ru: Dict = {
   "contact.desc":
     "Позвоните, и мы уточним все нюансы ремонта и сразу рассчитаем смету.",
   "contact.email.label": "Почта · пишите нам",
-  "contact.whatsapp.label": "Позвоните или Напишите в WhatsApp/Telegram",
+  "contact.phone.label": "Позвоните или напишите в Telegram",
   "contact.copied": "Скопировано!",
   "contact.opened": "Открыто!",
 
