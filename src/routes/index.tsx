@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Check, Copy, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { Cable, Check, ChevronLeft, ChevronRight, Copy, Gauge, Maximize2, Phone, ShieldCheck, X } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect, type ReactNode } from "react";
 
@@ -159,7 +159,7 @@ const UPCOMING_PROJECTS: Project[] = [
   }
 ];
 
-export function ProcessPhotos() {
+export function ProcessPhotos({ section = "(03) Фото" }: { section?: string }) {
   const [fullscreenIdx, setFullscreenIdx] = useState<{ type: 'electro' | 'plumbing', idx: number } | null>(null);
   const [activeTab, setActiveTab] = useState<'electro' | 'plumbing'>('electro');
   const [page, setPage] = useState(0);
@@ -209,7 +209,7 @@ export function ProcessPhotos() {
         <Reveal>
           <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <span className="text-xs uppercase tracking-[0.3em] text-white/40">(03) Фото</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40">{section}</span>
               <h2 className="font-display mt-4 text-5xl sm:text-7xl">Фотографии <br/><span className="italic">процесса работ</span></h2>
             </div>
             
@@ -320,8 +320,13 @@ export function ProcessPhotos() {
 export { HeroShowcase, SiteAurora };
 
 export type HeroTitle = { a: string; b: string; c?: string };
+type HomePageProps = {
+  h1?: HeroTitle;
+  heroDescription?: string;
+  electricityLanding?: boolean;
+};
 
-export function HomePage({ h1 }: { h1?: HeroTitle }) {
+export function HomePage({ h1, heroDescription, electricityLanding = false }: HomePageProps) {
   const footerRef = useRef<HTMLDivElement | null>(null);
   const [footerHeight, setFooterHeight] = useState(0);
 
@@ -368,19 +373,28 @@ export function HomePage({ h1 }: { h1?: HeroTitle }) {
           }}
         />
         <div className="relative z-10">
-          <Hero h1={h1} />
-          <Marquee />
-          <WorkInProgress />
-          <RepairTypeNav />
-          <div id="about" className="pt-24">
-            <About />
-          </div>
-          <ProcessPhotos />
-          <FeaturedWork />
-          <div id="services">
-            <Services />
-          </div>
-          <Testimonials id="testimonials" />
+          <Hero h1={h1} description={heroDescription} />
+          {electricityLanding ? (
+            <>
+              <ProcessPhotos section="(01) Фото" />
+              <ElectricityBenefits />
+            </>
+          ) : (
+            <>
+              <Marquee />
+              <WorkInProgress />
+              <RepairTypeNav />
+              <div id="about" className="pt-24">
+                <About />
+              </div>
+              <ProcessPhotos />
+              <FeaturedWork />
+              <div id="services">
+                <Services />
+              </div>
+              <Testimonials id="testimonials" />
+            </>
+          )}
           <Contact id="contact" />
         </div>
       </main>
@@ -398,7 +412,7 @@ function Index() {
 }
 
 /* ------------------------------ HERO ------------------------------ */
-function Hero({ h1 }: { h1?: HeroTitle | undefined }) {
+function Hero({ h1, description }: { h1?: HeroTitle | undefined; description?: string | undefined }) {
   const t = useT();
   const h1a = h1?.a ?? t("hero.h1.a");
   const h1b = h1?.b ?? t("hero.h1.b");
@@ -448,7 +462,7 @@ function Hero({ h1 }: { h1?: HeroTitle | undefined }) {
 
         <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
           <Reveal delay={0.5} className="max-w-xl text-base text-[#8F8F8F] sm:text-lg md:text-xl">
-            {t("hero.sub")}
+            {description ?? t("hero.sub")}
           </Reveal>
 
           <Reveal delay={0.6} className="flex w-full flex-wrap items-center justify-center gap-3 md:w-auto md:justify-end">
@@ -1735,9 +1749,63 @@ const MAIL_BODY = [
 
 
 const PHONE_NUMBER = "+79167991216";
-const WHATSAPP_MESSAGE = "Здравствуйте, хотел бы спросить по поводу ремонта";
-const whatsappHref = `https://wa.me/${PHONE_NUMBER.replace(/\+/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 const telegramHref = `https://t.me/+79167991216`;
+
+const ELECTRICITY_BENEFITS = [
+  {
+    icon: Cable,
+    title: "Новая проводка под ключ",
+    description: "Заменим старые линии, проложим кабели и подготовим точки под технику и освещение.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Безопасный электрощит",
+    description: "Соберём щит с автоматами и защитой, проверим каждую линию перед сдачей.",
+  },
+  {
+    icon: Gauge,
+    title: "Точный расчёт нагрузки",
+    description: "Распределим мощность по группам, чтобы сеть стабильно работала без перегрузок.",
+  },
+];
+
+function ElectricityBenefits() {
+  return (
+    <section id="benefits" className="relative border-t border-white/10 py-20 sm:py-28 md:py-36">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
+        <Reveal>
+          <span className="text-xs uppercase tracking-[0.3em] text-white/40">(02) Преимущества</span>
+          <h2 className="font-display mt-4 max-w-[13ch] text-5xl leading-[0.95] sm:text-7xl md:text-8xl">
+            Сделаем электрику <span className="italic">надёжно.</span>
+          </h2>
+        </Reveal>
+
+        <div className="mt-12 grid gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 md:grid-cols-3">
+          {ELECTRICITY_BENEFITS.map(({ icon: Icon, title, description }, index) => (
+            <Reveal key={title} delay={index * 0.1} className="h-full">
+              <article className="flex h-full min-h-64 flex-col bg-background p-6 sm:p-8">
+                <Icon aria-hidden="true" className="h-8 w-8 text-white" strokeWidth={1.5} />
+                <h3 className="mt-10 text-2xl font-medium text-white">{title}</h3>
+                <p className="mt-4 max-w-sm text-base leading-relaxed text-[#8F8F8F]">{description}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.35} className="mt-10 flex justify-center">
+          <Magnetic
+            as="a"
+            href={`tel:${PHONE_NUMBER}`}
+            className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-white px-7 py-3 text-sm font-medium text-black"
+          >
+            <Phone aria-hidden="true" size={18} />
+            <span data-cursor="link">Позвонить</span>
+          </Magnetic>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
 function HoverUnderlineAction({
   label,
@@ -1860,7 +1928,7 @@ export function Contact({ id }: { id?: string }) {
             <div className="mx-auto flex w-full flex-col items-stretch gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:p-10">
               <div className="relative flex flex-col items-center gap-2 rounded-2xl px-4 py-4">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-                  {t("contact.whatsapp.label")}
+                  {t("contact.phone.label")}
                 </span>
                 <div className="flex flex-col items-center gap-6">
                   <Reveal delay={0.1}>
@@ -1875,18 +1943,7 @@ export function Contact({ id }: { id?: string }) {
                     </a>
                   </Reveal>
 
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Reveal delay={0.2}>
-                      <a
-                        href={whatsappHref}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-[#25D366] hover:text-black hover:border-[#25D366]"
-                        data-cursor="link"
-                      >
-                        WhatsApp
-                      </a>
-                    </Reveal>
+                  <div className="flex justify-center">
                     <Reveal delay={0.3}>
                       <a
                         href={telegramHref}
@@ -1960,12 +2017,12 @@ export function Footer() {
                 Тел: {PHONE_NUMBER}
               </a>
               <a
-                href={whatsappHref}
+                href={telegramHref}
                 target="_blank"
                 rel="noreferrer"
                 className="block transition-colors hover:text-white/60"
               >
-                WhatsApp / Telegram
+                Telegram
               </a>
             </div>
           </div>
