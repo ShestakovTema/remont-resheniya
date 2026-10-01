@@ -412,7 +412,7 @@ function Index() {
 }
 
 /* ------------------------------ HERO ------------------------------ */
-function Hero({ h1, description }: { h1?: HeroTitle | undefined; description?: string }) {
+function Hero({ h1, description }: { h1?: HeroTitle | undefined; description?: string | undefined }) {
   const t = useT();
   const h1a = h1?.a ?? t("hero.h1.a");
   const h1b = h1?.b ?? t("hero.h1.b");
@@ -1783,7 +1783,7 @@ function ElectricityBenefits() {
         <div className="mt-12 grid gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 md:grid-cols-3">
           {ELECTRICITY_BENEFITS.map(({ icon: Icon, title, description }, index) => (
             <Reveal key={title} delay={index * 0.1} className="h-full">
-              <article className="flex h-full min-h-64 flex-col bg-[#0b0b0b] p-6 sm:p-8">
+              <article className="flex h-full min-h-64 flex-col bg-background p-6 sm:p-8">
                 <Icon aria-hidden="true" className="h-8 w-8 text-white" strokeWidth={1.5} />
                 <h3 className="mt-10 text-2xl font-medium text-white">{title}</h3>
                 <p className="mt-4 max-w-sm text-base leading-relaxed text-[#8F8F8F]">{description}</p>
