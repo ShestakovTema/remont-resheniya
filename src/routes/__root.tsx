@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -41,12 +42,13 @@ function NotFoundComponent() {
 }
 
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
+  const normalizedError = error instanceof Error ? error : new Error(String(error));
+  console.error(normalizedError);
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
+    reportLovableError(normalizedError, { boundary: "tanstack_root_error_component" });
+  }, [normalizedError]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -120,9 +122,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap",
-        media: "print",
-        onLoad: "this.media='all'"
-      } as any,
+      },
       { rel: "canonical", href: "https://remontresheniya.pro/" },
     ],
   }),
