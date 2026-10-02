@@ -373,10 +373,10 @@ export function HomePage({ h1, heroDescription, electricityLanding = false }: Ho
           }}
         />
         <div className="relative z-10">
-          <Hero h1={h1} description={heroDescription} />
+          <Hero h1={h1} description={heroDescription} compact={electricityLanding} />
           {electricityLanding ? (
             <>
-              <ProcessPhotos section="(01) Фото" />
+              <ProcessPhotos section="(01) Фото" compactTop />
               <ElectricityBenefits />
             </>
           ) : (
@@ -434,7 +434,7 @@ function Hero({ h1, description, compact = false }: { h1?: HeroTitle | undefined
   const opacity = enableParallax ? opacityRaw : undefined;
 
   return (
-    <section ref={ref} className="relative min-h-[92svh] overflow-hidden pt-24 md:pt-32 pb-4 md:pb-6">
+    <section ref={ref} className={`relative overflow-hidden pt-24 pb-4 md:pt-32 md:pb-6 ${compact ? "min-h-[76svh] md:min-h-[80svh]" : "min-h-[92svh]"}`}>
       {/* subtle grain */}
       <div className="grain absolute inset-0" aria-hidden />
 
