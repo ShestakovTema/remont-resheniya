@@ -204,7 +204,7 @@ export function ProcessPhotos({ section = "(03) Фото", compactTop = false }:
   };
 
   return (
-    <section id="process-photos" className="relative py-20 sm:py-32">
+    <section id="process-photos" className={compactTop ? "relative pt-6 pb-20 sm:pt-10 sm:pb-32" : "relative py-20 sm:py-32"}>
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <Reveal>
           <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
