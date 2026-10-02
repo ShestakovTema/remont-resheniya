@@ -531,7 +531,7 @@ function HeroShowcase() {
           style={{ fontSize: "9px", letterSpacing: "0.32em", textTransform: "uppercase" }}
         >
           <textPath href="#tf-hero-ring">
-            Ремонт и отделка · 15 лет опыта · Качество под ключ · Москва и МО ·
+            Ремонт и отделка · 15 лет опыта · Качество под ключ · Москва ·
           </textPath>
         </text>
       </motion.svg>
