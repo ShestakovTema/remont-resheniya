@@ -159,7 +159,7 @@ const UPCOMING_PROJECTS: Project[] = [
   }
 ];
 
-export function ProcessPhotos({ section = "(03) Фото" }: { section?: string }) {
+export function ProcessPhotos({ section = "(03) Фото", compactTop = false }: { section?: string; compactTop?: boolean }) {
   const [fullscreenIdx, setFullscreenIdx] = useState<{ type: 'electro' | 'plumbing', idx: number } | null>(null);
   const [activeTab, setActiveTab] = useState<'electro' | 'plumbing'>('electro');
   const [page, setPage] = useState(0);
@@ -204,7 +204,7 @@ export function ProcessPhotos({ section = "(03) Фото" }: { section?: string 
   };
 
   return (
-    <section id="process-photos" className="relative py-20 sm:py-32">
+    <section id="process-photos" className={compactTop ? "relative pt-6 pb-20 sm:pt-10 sm:pb-32" : "relative py-20 sm:py-32"}>
       <div className="mx-auto max-w-[1600px] px-5 sm:px-6 md:px-10">
         <Reveal>
           <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -373,10 +373,10 @@ export function HomePage({ h1, heroDescription, electricityLanding = false }: Ho
           }}
         />
         <div className="relative z-10">
-          <Hero h1={h1} description={heroDescription} />
+          <Hero h1={h1} description={heroDescription} compact={electricityLanding} />
           {electricityLanding ? (
             <>
-              <ProcessPhotos section="(01) Фото" />
+              <ProcessPhotos section="(01) Фото" compactTop />
               <ElectricityBenefits />
             </>
           ) : (
@@ -412,7 +412,7 @@ function Index() {
 }
 
 /* ------------------------------ HERO ------------------------------ */
-function Hero({ h1, description }: { h1?: HeroTitle | undefined; description?: string | undefined }) {
+function Hero({ h1, description, compact = false }: { h1?: HeroTitle | undefined; description?: string | undefined; compact?: boolean }) {
   const t = useT();
   const h1a = h1?.a ?? t("hero.h1.a");
   const h1b = h1?.b ?? t("hero.h1.b");
@@ -434,7 +434,7 @@ function Hero({ h1, description }: { h1?: HeroTitle | undefined; description?: s
   const opacity = enableParallax ? opacityRaw : undefined;
 
   return (
-    <section ref={ref} className="relative min-h-[92svh] overflow-hidden pt-24 md:pt-32 pb-4 md:pb-6">
+    <section ref={ref} className={`relative overflow-hidden pt-24 pb-4 md:pt-32 md:pb-6 ${compact ? "min-h-[76svh] md:min-h-[80svh]" : "min-h-[92svh]"}`}>
       {/* subtle grain */}
       <div className="grain absolute inset-0" aria-hidden />
 
