@@ -159,7 +159,7 @@ const UPCOMING_PROJECTS: Project[] = [
   }
 ];
 
-export function ProcessPhotos({ section = "(03) Фото" }: { section?: string }) {
+export function ProcessPhotos({ section = "(03) Фото", compactTop = false }: { section?: string; compactTop?: boolean }) {
   const [fullscreenIdx, setFullscreenIdx] = useState<{ type: 'electro' | 'plumbing', idx: number } | null>(null);
   const [activeTab, setActiveTab] = useState<'electro' | 'plumbing'>('electro');
   const [page, setPage] = useState(0);
