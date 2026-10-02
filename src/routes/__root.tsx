@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Ремонт Решения — профессиональный электромонтаж, сантехника, перепланировка квартир и отделка под покраску в Москве и области. 15 лет опыта.",
+          "Ремонт Решения — профессиональный электромонтаж, сантехника, перепланировка квартир и отделка под покраску в Москве. 15 лет опыта.",
       },
       { name: "keywords", content: "ремонт квартир, электромонтаж, сантехника, перепланировка, отделка под покраску, ремонт москва" },
       { name: "author", content: "Ремонт Решения" },
@@ -100,13 +100,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Ремонт Решения — профессиональный электромонтаж, сантехника, перепланировка квартир и отделка под покраску в Москве и области. 15 лет опыта.",
+          "Ремонт Решения — профессиональный электромонтаж, сантехника, перепланировка квартир и отделка под покраску в Москве. 15 лет опыта.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://remontresheniya.pro/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
-      { name: "twitter:description", content: "Ремонт Решения — профессиональный электромонтаж, сантехника, перепланировка квартир и отделка под покраску в Москве и области. 15 лет опыта." },
+      { name: "twitter:description", content: "Ремонт Решения — профессиональный электромонтаж, сантехника, перепланировка квартир и отделка под покраску в Москве. 15 лет опыта." },
 
       { property: "og:image", content: "https://remontresheniya.pro/images/interior-1600210492486-724fe5c67fb0.jpg" },
       { name: "twitter:image", content: "https://remontresheniya.pro/images/interior-1600210492486-724fe5c67fb0.jpg" },
