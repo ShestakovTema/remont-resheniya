@@ -22,8 +22,15 @@ const LINKS = [
   { key: "nav.contact", href: "contact" },
 ];
 
+const ELECTRICITY_LINKS = [
+  { label: "Фото", href: "process-photos" },
+  { label: "Преимущества", href: "benefits" },
+  { label: "Контакты", href: "contact" },
+];
+
 export function Nav() {
   const location = useLocation();
+  const links = location.pathname === "/elektrika-v-kvartire" ? ELECTRICITY_LINKS : LINKS;
   const [open, setOpen] = useState(false);
   const [cta, setCta] = useState<"idle" | "in" | "out">("idle");
   const ctaAnim =
@@ -115,7 +122,7 @@ export function Nav() {
               </DropdownMenu.Portal>
             </DropdownMenu.Root>
 
-            {LINKS.map((l) => {
+            {links.map((l) => {
               const href = `#${l.href}`;
               const handleClick = (e: React.MouseEvent) => {
                 const element = document.getElementById(l.href);
@@ -134,7 +141,7 @@ export function Nav() {
                   strength={14}
                   className="group relative px-4 py-2 text-sm text-white/70 transition-colors hover:text-white"
                 >
-                  <span data-cursor="link">{t(l.key)}</span>
+                  <span data-cursor="link">{"label" in l ? l.label : t(l.key)}</span>
                 </Magnetic>
               );
             })}
@@ -207,7 +214,7 @@ export function Nav() {
                   </a>
                 </div>
               </li>
-              {LINKS.map((l) => {
+              {links.map((l) => {
                 const href = `#${l.href}`;
                 return (
                   <li key={l.href}>
@@ -223,7 +230,7 @@ export function Nav() {
                       }}
                       className="font-display block py-3 text-4xl text-white"
                     >
-                      {t(l.key)}
+                      {"label" in l ? l.label : t(l.key)}
                     </a>
                   </li>
                 );
