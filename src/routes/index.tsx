@@ -412,7 +412,7 @@ function Index() {
 }
 
 /* ------------------------------ HERO ------------------------------ */
-function Hero({ h1, description }: { h1?: HeroTitle | undefined; description?: string | undefined }) {
+function Hero({ h1, description, compact = false }: { h1?: HeroTitle | undefined; description?: string | undefined; compact?: boolean }) {
   const t = useT();
   const h1a = h1?.a ?? t("hero.h1.a");
   const h1b = h1?.b ?? t("hero.h1.b");
