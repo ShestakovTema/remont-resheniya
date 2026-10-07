@@ -11,6 +11,7 @@ import { ScrollProgress } from "@/components/site/scroll-progress";
 import { Reveal, TextReveal } from "@/components/site/reveal";
 import { Magnetic } from "@/components/site/magnetic";
 import { LeadForm } from "@/components/site/lead-form";
+import { PrivateMasterHome } from "@/components/site/private-master-home";
 import { regisseurAssets } from "@/lib/regisseur-assets";
 import { 
 
@@ -85,22 +86,20 @@ import { LangProvider, useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    title: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску",
+    title: "Замена проводки от Частного Мастера — Михаил, Москва",
     meta: [
-      { title: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
-      { name: "description", content: "Ремонт Решения — профессиональный электромонтаж, сантехника, перепланировка квартир и отделка под покраску в Москве. 15 лет опыта." },
-      { name: "keywords", content: "ремонт квартир, электромонтаж, сантехника, перепланировка, отделка под покраску, ремонт москва" },
-      { property: "og:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
-      { property: "og:description", content: "Ремонт Решения — профессиональный электромонтаж, сантехника, перепланировка квартир и отделка под покраску в Москве. 15 лет опыта." },
-
-      { name: "twitter:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
-      { property: "og:image", content: "https://remontresheniya.pro/images/interior-1600210492486-724fe5c67fb0.webp" },
-      { name: "twitter:image", content: "https://remontresheniya.pro/images/interior-1600210492486-724fe5c67fb0.webp" },
+      { title: "Замена проводки от Частного Мастера — Михаил, Москва" },
+      { name: "description", content: "Частный мастер Михаил: замена проводки, диагностика электрики, штробление без пыли и сантехника в Москве. 12 лет в строительстве." },
+      { property: "og:title", content: "Замена проводки от Частного Мастера — Михаил, Москва" },
+      { property: "og:description", content: "Электрика, сантехника и помощь по дому в Москве. Михаил — электрик 5 категории, 12 лет в строительстве." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Замена проводки от Частного Мастера — Михаил" },
+      { name: "twitter:description", content: "Замена проводки и помощь по дому в Москве. Частный мастер Михаил." },
       { name: "robots", content: "index, follow" },
     ],
     links: [
       { rel: "canonical", href: "https://remontresheniya.pro/" },
-      { rel: "preload", as: "image", href: "/images/interior-1600210492486-724fe5c67fb0.webp", fetchPriority: "high" } as never,
     ],
   }),
   component: Index,
@@ -408,7 +407,7 @@ export function HomePage({ h1, heroDescription, electricityLanding = false }: Ho
 }
 
 function Index() {
-  return <HomePage />;
+  return <PrivateMasterHome><ProcessPhotos section="(05) Работы" /></PrivateMasterHome>;
 }
 
 /* ------------------------------ HERO ------------------------------ */

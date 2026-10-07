@@ -46,6 +46,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+  --color-contact-action: var(--contact-action);
+  --color-contact-action-foreground: var(--contact-action-foreground);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -63,6 +65,8 @@
 
 :root {
   --radius: 0.5rem;
+  --contact-action: oklch(0.62 0.19 258);
+  --contact-action-foreground: oklch(1 0 0);
   /* Ремонт Решения palette — pure premium dark */
   --background: oklch(0.06 0 0);           /* #070707 */
   --foreground: oklch(0.985 0 0);          /* near white */
@@ -264,4 +268,21 @@ html[lang="ar"] [class*="tracking-"] {
 }
 html[lang="ar"] .italic {
   font-style: normal;
+}
+
+.master-home { letter-spacing: 0; }
+.master-home .font-display { letter-spacing: 0; }
+.master-container { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: 40px; }
+.master-header { position: relative; z-index: 20; background: var(--background); }
+.master-hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr); align-items: center; gap: 64px; padding-block: 56px 64px; }
+.master-portrait { width: 100%; max-width: 360px; justify-self: end; }
+.master-portrait img { width: 100%; height: auto; aspect-ratio: 432 / 768; object-fit: cover; border-radius: 8px; }
+.master-section { padding-block: 96px; scroll-margin-top: 24px; }
+.master-eyebrow { font-size: 12px; color: var(--muted-foreground); text-transform: uppercase; }
+.master-confirm { --background: oklch(1 0 0); --foreground: oklch(0.15 0 0); --muted: oklch(0.9 0 0); --muted-foreground: oklch(0.5 0 0); --border: oklch(0.9 0 0); color: var(--foreground); }
+@media (max-width: 767px) {
+  .master-container { padding-inline: 20px; }
+  .master-hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 40px 56px; }
+  .master-portrait { justify-self: start; max-width: 320px; }
+  .master-section { padding-block: 64px; }
 }

@@ -10,3 +10,5 @@
 <!-- LOVABLE:END -->
 
 - Keep the reusable home page configurable for focused service landing pages so shared presentation stays consistent without duplicating route content.
+- Render the private-master experience only for the index route, composing the unchanged shared ProcessPhotos through children; other landing pages retain HomePage to isolate homepage changes.
+- Homepage contact actions use a shared slide-confirmation dialog before fixed contact destinations; this is a client-side accidental/automated-click barrier, not an authorization or CAPTCHA mechanism.
