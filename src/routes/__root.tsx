@@ -108,8 +108,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Ремонт Решения — Профессиональная электрика, сантехника, перепланировка квартир и отделка под покраску" },
       { name: "twitter:description", content: "Ремонт Решения — профессиональный электромонтаж, сантехника, перепланировка квартир и отделка под покраску в Москве. 15 лет опыта." },
 
-      { property: "og:image", content: "https://remontresheniya.pro/images/interior-1600210492486-724fe5c67fb0.jpg" },
-      { name: "twitter:image", content: "https://remontresheniya.pro/images/interior-1600210492486-724fe5c67fb0.jpg" },
     ],
     links: [
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
