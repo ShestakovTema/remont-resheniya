@@ -5,6 +5,7 @@ import { Footer } from "@/routes/index";
 import { LangProvider } from "@/lib/i18n";
 
 export const Route = createFileRoute("/blog/")({
+  head: () => ({ meta: [{"title": "Блог о ремонте квартир — Ремонт Решения"}, {"name": "description", "content": "Статьи о ремонте квартир, выборе материалов и инженерных работах."}, {"property": "og:title", "content": "Блог о ремонте квартир — Ремонт Решения"}, {"property": "og:description", "content": "Статьи о ремонте квартир, выборе материалов и инженерных работах."}, {"property": "og:type", "content": "website"}, {"name": "twitter:card", "content": "summary_large_image"}] }),
   component: () => (
     <LangProvider>
       <BlogPage />

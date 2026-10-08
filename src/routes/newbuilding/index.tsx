@@ -14,6 +14,8 @@ export const Route = createFileRoute("/newbuilding/")({
   head: () => ({
     title: "Новостройки — Ремонт Решения",
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "description", content: "Ремонт квартир в новостройках под ключ. Инженерные системы, перепланировка и качественная отделка в новых домах Москвы." },
       { name: "keywords", content: "ремонт в новостройке, ремонт под ключ новостройка, отделка новой квартиры" },
       { property: "og:title", content: "Новостройки — Ремонт Решения" },

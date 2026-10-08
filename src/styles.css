@@ -271,7 +271,7 @@ html[lang="ar"] .italic {
 }
 
 .master-home { letter-spacing: 0; }
-.master-home .font-display { letter-spacing: 0; }
+.master-home .font-display { letter-spacing: 0; font-family: var(--font-display), "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"; }
 .master-container { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: 40px; }
 .master-header { position: relative; z-index: 20; background: var(--background); }
 .master-hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr); align-items: center; gap: 64px; padding-block: 56px 64px; }
@@ -283,6 +283,7 @@ html[lang="ar"] .italic {
 @media (max-width: 767px) {
   .master-container { padding-inline: 20px; }
   .master-hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 40px 56px; }
+  .master-hero h1 { font-size: 48px; line-height: 1; }
   .master-portrait { justify-self: start; max-width: 320px; }
   .master-section { padding-block: 64px; }
 }
