@@ -1,17 +1,43 @@
 import { useState, type ReactNode } from "react";
-import { ArrowDown, ArrowUpRight, Cable, CircleCheck, Menu, X } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Cable, CircleCheck, Menu, X, Plug, PanelsTopLeft, Building2, Star, List, Wrench, ShieldCheck, Hammer } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { MasterContact } from "./master-contact";
 import masterPhoto from "@/assets/mikhail-master.webp.asset.json";
 
 const navigation = [["about", "О мастере"], ["prices", "Прайс-лист"], ["steps", "Этапы"], ["nuances", "Нюансы"], ["process-photos", "Работы"], ["reviews", "Отзывы"]];
-const services = [
-  ["⛏️", "Штробление без пыли", "Штробление под электрику, сантехнику, вырезка розеток в стене БЕЗ ПЫЛИ 💯%."],
-  ["🕳️", "Алмазное бурение", "Алмазное бурение под ваши нужды."],
-  ["🛠️", "Помощь по дому", "Частный мастер, помощь и консультация, сборка мебели, мелкий ремонт."],
-  ["👷", "Электрика", "Электрик 5 категорий, диагностика и устранение неисправностей."],
-  ["🧑‍🔧", "Сантехника", "Сантехника, замена и установка."],
-  ["⛏️", "Обслуживание помещений", "Техническое обслуживание коммерческих помещений."],
+const facts = [
+  { title: "12 лет в строительстве", text: "Добрый день👋, меня зовут Миша🙂. Занимаюсь электрикой, сантехникой и помогаю с ремонтом квартир и коммерческих помещений.", icon: Hammer },
+  { title: "Электрик 5 категории", text: "Диагностика и устранение неисправностей, замена проводки и сборка электрощитов. Техническое обслуживание коммерческих помещений.", icon: ShieldCheck },
+  { title: "Подготовка без пыли", text: "Штробление под электрику и сантехнику, вырезка розеток в стене БЕЗ ПЫЛИ 💯%. Алмазное бурение под ваши нужды.", icon: Cable },
+  { title: "Помощь и консультация", text: "Частный мастер: сборка мебели, мелкий ремонт, сантехника — замена и установка. ✨Пишите, звоните, буду рад Вам ответить. ✨", icon: Wrench },
+];
+const priceServices = [
+  { title: "Замена розеток и выключателей", description: "Замена и перенос точек в кухне и комнатах", icon: Plug },
+  { title: "Сборка электрощитов", description: "Сборка, монтаж и подготовка квартирного электрощитка", icon: PanelsTopLeft },
+  { title: "Электромонтажные работы в новостройках", description: "Новая проводка, розетки, освещение и подключение техники", icon: Building2 },
+];
+const fullServices = [
+  "Перенос розеток и выключателей в кухне и комнатах",
+  "Перенос и углубление электрощитка в квартирах",
+  "Подготовка под электромонтаж (штробление стен и высверливание подрозетников)",
+  "Электромонтажные работы в новостройках",
+  "Замена электропроводки",
+  "Электромонтаж в кафе и других производственных помещениях",
+  "Сборка электрощитов",
+  "Монтаж и замена любого электрооборудования",
+  "Монтаж и ремонт люстр, светильников, бра",
+  "Подключение варочных поверхностей, духовок, стиральных машин и т.д.",
+  "Монтаж слаботочных систем (ТВ, Интернет)",
+  "Высверливание подрозетников под блоки розеток",
+];
+const reviews = [
+  { name: "Анастасия", date: "10 сентября", text: "Обратились за консультацией с проблемой после того, как неумелые электрики ЖЭКа испортили и стены и провода.\nМихаил грамотный специалист, объяснил как нужно делать, дал советы\nДоговорились быстро, приехал в этот же день ! Рекомендую данного мастера !" },
+  { name: "Дмитрий К.", date: "3 сентября", text: "Все сделано в срок. Цена как при договоре. Удобно. все под ключ. Материалы все свои. но могут и ваши использовать." },
+  { name: "Дмитрий", date: "15 сентября", text: "Ребята работают очень аккуратно, внимательны к деталям. Предвосхитили все ожидания. В каких то моментах предложили решения лучше чем я хотел без увеличения стоимости. В целом я очень доволен что выбрал их услуги. Все оборудование hilti, штробят с пылесосом. После себя не оставляют мусор. Очень позитивные, приятно вести диалог и обсуждать детали работы." },
+  { name: "Алекс", date: "23 августа", text: "Наилучшие рекомендации Михаилу и Вячеславу!\nБыстро договорились и по цене и по дате. Оборудование профессиональное!, Видно, что мастера готовы к работе и любым сложностям которые могут возникнуть в процессе, что говорит о высоком уровне профессионализма и подготовки. Работа была выполнена качественно и в срок. Цена соответствовала раннее озвученой. Благодарю Вас ребята! Всех Вам Благ!\nС уважением, Александр." },
+  { name: "Анна П.", date: "7 августа", text: "Перестали работать 2 розетки, написала Михаилу, приехал в этот же день, быстро все починил и объяснил почему это могло произойти. Однозначно рекомендую" },
+  { name: "Надежда", date: "5 августа", text: "Михаил очень приятный молодой человек, с умелыми руками и нужными компетенциями. Установил электрощиток на 24 модуля, с разводкой по квартире. Все очень красиво, аккуратно. При штраблении не было пыли, у него отличное оборудование, все пылесосил, работал в чистоте. Более того скорректировал ремонтные работы и по другим направлениям, подсказал, где можно сэкономить и найти исполнителей. Считаю, что нам очень повезло, выполнено с большой буквы профессионализма и адекватности стоимости. Его работу также оценили другие мастера, по сантехнике и плитке, отметив, что очень уровневое исполнение. Очень рекомендую." },
 ];
 const steps = [
   ["Обсуждаем задачу", "Расскажите, что нужно сделать, и пришлите фотографии в Telegram."],
@@ -48,19 +74,17 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
         <figure className="master-portrait"><img src={masterPhoto.url} width={432} height={768} fetchPriority="high" alt="Михаил рядом с установленными сантехническими коммуникациями" /><figcaption className="mt-4 text-sm sm:text-base">Михаил • Электрик 5 категории</figcaption></figure>
       </section>
       <section id="about" className="master-section master-container border-t border-border">
-        <Heading number="01" label="О мастере">Добрый день👋,<br /><span className="italic">меня зовут Миша🙂.</span></Heading>
-        <p className="mb-12 text-xl">✨ 12 лет в Строительстве ✨.</p>
-        <p className="mb-7 text-lg text-muted-foreground">Работаю по таким направлениям:</p>
-        <div className="grid gap-x-12 md:grid-cols-2">{services.map(([emoji, title, description]) => <article key={title} className="flex gap-5 border-t border-border py-7"><span className="text-2xl" aria-hidden>{emoji}</span><div><h3 className="text-xl">{title}</h3><p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">{description}</p></div></article>)}</div>
-        <p className="mt-8 text-lg">✨Пишите, звоните, буду рад Вам ответить. ✨.</p>
-        <div className="mt-16 grid grid-cols-1 gap-8 border-t border-border pt-10 sm:grid-cols-3">
-          {[['12', 'лет в строительстве'], ['5', 'категория электрика'], ['6', 'направлений работы']].map(([value, label]) => <div key={label}><p className="font-display text-7xl">{value}</p><p className="mt-3 text-muted-foreground">{label}</p></div>)}
+        <div className="mb-12 text-center"><Heading number="01" label="О мастере">Немного <span className="italic">про себя</span></Heading><p className="-mt-4 text-lg text-muted-foreground">Для понимания, с кем будете работать</p></div>
+        <div className="master-facts-layout">
+          <figure className="master-facts-photo"><img src={masterPhoto.url} width={432} height={768} loading="lazy" alt="Частный мастер Михаил на объекте" className="h-full w-full rounded-lg object-cover" /><figcaption className="sr-only">Михаил • Электрик 5 категории</figcaption></figure>
+          {facts.map(({ title, text, icon: Icon }, index) => <article key={title} className={`master-fact master-fact-${index + 1} flex flex-col rounded-lg border border-border bg-card p-6`}><p className="text-xs text-muted-foreground">Факт #{index + 1}</p><h3 className="mt-5 text-xl font-medium">{title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p><Icon className="mt-auto h-7 w-7 pt-0" aria-hidden /></article>)}
         </div>
       </section>
       <section id="prices" className="master-section border-y border-border bg-card"><div className="master-container">
         <Heading number="02" label="Стоимость">Прайс<span className="italic">-лист</span></Heading>
-        <div className="flex flex-col gap-4 border-b border-border pb-7 md:flex-row md:justify-between"><p className="max-w-xl leading-relaxed text-muted-foreground">Стоимость зависит от объёма работ, материала стен и сложности монтажа. Обсудим вашу задачу и рассчитаем цену.</p><MasterContact kind="telegram" variant="outline" className="h-12 rounded-full px-6" >Узнать стоимость</MasterContact></div>
-        <dl>{services.map(([, title]) => <div key={title} className="flex flex-wrap justify-between gap-3 border-b border-border py-6"><dt className="text-lg">{title}</dt><dd className="text-muted-foreground">По согласованию</dd></div>)}</dl>
+        <p className="mb-12 max-w-xl leading-relaxed text-muted-foreground">Стоимость зависит от объёма работ, материала стен и сложности монтажа. Обсудим вашу задачу и рассчитаем цену.</p>
+        <div className="space-y-6">{priceServices.map(({ title, description, icon: Icon }) => <article key={title} className="master-price-row rounded-lg border border-border bg-background p-7 sm:p-9"><div className="flex items-center justify-center"><Icon className="h-24 w-24 sm:h-32 sm:w-32" strokeWidth={1} aria-hidden /></div><div><p className="mb-4 text-sm text-muted-foreground">{description}</p><h3 className="text-2xl leading-snug sm:text-3xl">{title}</h3></div><div className="master-price-action flex flex-col items-start gap-4"><p className="text-xl sm:text-2xl">По согласованию</p><p className="text-sm text-muted-foreground">Зависит от объёма работ</p><MasterContact kind="telegram" className="mt-auto h-12 rounded-full px-6">Заказать</MasterContact></div></article>)}</div>
+        <div className="mt-9 flex justify-center"><Dialog><DialogTrigger asChild><Button variant="outline" className="h-14 rounded-full px-6 text-base"><List aria-hidden />Полный перечень услуг</Button></DialogTrigger><DialogContent className="max-h-[85svh] w-[calc(100%-2rem)] max-w-2xl overflow-y-auto rounded-lg p-6 sm:p-8"><DialogTitle className="pr-6 text-2xl">Полный перечень услуг</DialogTitle><DialogDescription>Электрика в квартирах и коммерческих помещениях</DialogDescription><ul className="mt-2 space-y-4">{fullServices.map(service => <li key={service} className="flex items-start gap-3 text-sm leading-relaxed sm:text-base"><CircleCheck className="mt-1 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden /><span>{service}</span></li>)}</ul></DialogContent></Dialog></div>
       </div></section>
       <section id="steps" className="master-section master-container"><Heading number="03" label="Процесс">Как проходит <span className="italic">работа</span></Heading>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">{steps.map(([title, detail], index) => <article className="border-t border-border pt-6" key={title}><p className="font-display text-5xl text-muted-foreground">0{index + 1}</p><h3 className="mt-6 text-xl">{title}</h3><p className="mt-4 leading-relaxed text-muted-foreground">{detail}</p></article>)}</div>
@@ -70,7 +94,8 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
       </section>
       {children}
       <section id="reviews" className="master-section master-container border-t border-border"><Heading number="06" label="Обратная связь">Отзывы <span className="italic">клиентов</span></Heading>
-        <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-center"><p className="max-w-xl text-lg leading-relaxed text-muted-foreground">Выполнял для вас работу? Буду рад вашему отзыву — напишите мне в Telegram.</p><MasterContact kind="telegram" variant="outline" className="h-14 rounded-full px-6">Оставить отзыв</MasterContact></div>
+        <div className="grid items-start gap-6 md:grid-cols-2">{reviews.map(({ name, date, text }) => <article key={name} className="rounded-lg border border-border bg-card p-6 sm:p-8"><div className="flex flex-wrap items-start justify-between gap-3"><h3 className="text-xl font-medium">{name}</h3><p className="text-sm text-muted-foreground">{date}</p></div><div className="my-5 flex gap-1 text-review-star" role="img" aria-label="5 из 5 звёзд">{Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-4 w-4 fill-current" aria-hidden />)}</div><p className="whitespace-pre-line text-sm leading-relaxed text-muted-foreground sm:text-base">{text}</p></article>)}</div>
+        <div className="mt-10 flex justify-center"><MasterContact kind="telegram" variant="outline" className="h-14 rounded-full px-6">Оставить отзыв</MasterContact></div>
       </section>
       <section id="contact" className="master-section border-t border-border bg-card"><div className="master-container"><Heading number="07" label="Контакты">Обсудим <span className="italic">вашу задачу?</span></Heading>
         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">Расскажите, что нужно сделать. Пишите, звоните — буду рад Вам ответить.</p>
