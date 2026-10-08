@@ -4,6 +4,7 @@ import { SmoothScroll } from '@/components/site/smooth-scroll';
 import { Cursor } from '@/components/site/cursor';
 
 export const Route = createFileRoute('/cookies')({
+  head: () => ({ meta: [{"title": "Политика cookies — Ремонт Решения"}, {"name": "description", "content": "Информация об использовании файлов cookies на сайте Ремонт Решения."}, {"property": "og:title", "content": "Политика cookies — Ремонт Решения"}, {"property": "og:description", "content": "Информация об использовании файлов cookies на сайте Ремонт Решения."}, {"property": "og:type", "content": "website"}, {"name": "twitter:card", "content": "summary_large_image"}] }),
   component: CookiesPage,
 });
 

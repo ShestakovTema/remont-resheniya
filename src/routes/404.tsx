@@ -3,6 +3,7 @@ import { Nav } from '@/components/site/nav';
 import { ChevronLeft } from 'lucide-react';
 
 export const Route = createFileRoute('/404')({
+  head: () => ({ meta: [{"title": "Страница не найдена — Ремонт Решения"}, {"name": "description", "content": "Запрашиваемая страница не найдена. Вернитесь на главную страницу сайта."}, {"property": "og:title", "content": "Страница не найдена — Ремонт Решения"}, {"property": "og:description", "content": "Запрашиваемая страница не найдена. Вернитесь на главную страницу сайта."}, {"property": "og:type", "content": "website"}, {"name": "twitter:card", "content": "summary_large_image"}] }),
   component: NotFoundPage,
 });
 

@@ -4,6 +4,7 @@ import { SmoothScroll } from '@/components/site/smooth-scroll';
 import { Cursor } from '@/components/site/cursor';
 
 export const Route = createFileRoute('/privacy')({
+  head: () => ({ meta: [{"title": "Политика персональных данных — Ремонт Решения"}, {"name": "description", "content": "Порядок обработки и защиты персональных данных посетителей сайта Ремонт Решения."}, {"property": "og:title", "content": "Политика персональных данных — Ремонт Решения"}, {"property": "og:description", "content": "Порядок обработки и защиты персональных данных посетителей сайта Ремонт Решения."}, {"property": "og:type", "content": "website"}, {"name": "twitter:card", "content": "summary_large_image"}] }),
   component: PrivacyPage,
 });
 

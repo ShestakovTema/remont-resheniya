@@ -14,6 +14,8 @@ export const Route = createFileRoute("/secondary/")({
   head: () => ({
     title: "Вторичное жилье — Ремонт Решения",
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "description", content: "Капитальный ремонт вторичного жилья. Замена коммуникаций, демонтаж, перепланировка и отделка в старом фонде Москвы." },
       { name: "keywords", content: "ремонт вторички, капитальный ремонт квартиры, ремонт сталинка, ремонт брежневка" },
       { property: "og:title", content: "Вторичное жилье — Ремонт Решения" },

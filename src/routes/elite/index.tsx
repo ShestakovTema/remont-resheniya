@@ -14,6 +14,8 @@ export const Route = createFileRoute("/elite/")({
   head: () => ({
     title: "Премиум объекты — Ремонт Решения",
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "description", content: "Элитный ремонт квартир в Москве. Профессиональный электромонтаж, сантехника и премиальная отделка под покраску для премиум объектов." },
       { name: "keywords", content: "элитный ремонт, премиум ремонт квартир, ремонт хамовники, дизайнерский ремонт" },
       { property: "og:title", content: "Премиум объекты — Ремонт Решения" },
