@@ -86,15 +86,15 @@ import { LangProvider, useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    title: "Замена проводки от Частного Мастера — Михаил, Москва",
+    title: "Электрика от Частного Мастера — Михаил, Москва",
     meta: [
-      { title: "Замена проводки от Частного Мастера — Михаил, Москва" },
+      { title: "Электрика от Частного Мастера — Михаил, Москва" },
       { name: "description", content: "Частный мастер Михаил: замена проводки, диагностика электрики, штробление без пыли и сантехника в Москве. 12 лет в строительстве." },
-      { property: "og:title", content: "Замена проводки от Частного Мастера — Михаил, Москва" },
-      { property: "og:description", content: "Электрика, сантехника и помощь по дому в Москве. Михаил — электрик 5 категории, 12 лет в строительстве." },
+      { property: "og:title", content: "Электрика от Частного Мастера — Михаил, Москва" },
+      { property: "og:description", content: "Электрика, сантехника и помощь по дому в Москве. Михаил — профессиональный электрик 5 категории, 12 лет в строительстве." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Замена проводки от Частного Мастера — Михаил" },
+      { name: "twitter:title", content: "Электрика от Частного Мастера — Михаил" },
       { name: "twitter:description", content: "Замена проводки и помощь по дому в Москве. Частный мастер Михаил." },
       { name: "robots", content: "index, follow" },
     ],
