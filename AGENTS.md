@@ -13,3 +13,5 @@
 - Render the private-master experience only for the index route, composing the unchanged shared ProcessPhotos through children; other landing pages retain HomePage to isolate homepage changes.
 - Homepage contact actions use a shared slide-confirmation dialog before fixed contact destinations; this is a client-side accidental/automated-click barrier, not an authorization or CAPTCHA mechanism.
 - Keep homepage facts, service rows, and reviews data-driven within the isolated private-master presentation, using the shared Dialog for the complete service list; this preserves other landing pages and consistent contact confirmation.
+- Handle private-master hash links with native smooth scrolling and a sticky-header offset; service order links target Contacts while outbound contact links retain slide confirmation.
+- Use CSS scroll snapping for mobile homepage reviews and CSS-only background glows to avoid a continuous JavaScript animation loop.
