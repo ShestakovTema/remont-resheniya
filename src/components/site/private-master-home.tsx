@@ -1,5 +1,5 @@
 import { useRef, useState, type ReactNode, type MouseEvent } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, Cable, CircleCheck, Menu, X, Plug, PanelsTopLeft, Building2, Star, List, Wrench, ShieldCheck, Hammer, Check, MessageCircle, ScanLine, ClipboardCheck, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Cable, CircleCheck, Menu, X, Plug, PanelsTopLeft, Building2, Star, List, Wrench, ShieldCheck, Hammer, Check, MessageCircle, ScanLine, ClipboardCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { MasterContact } from "./master-contact";
@@ -81,8 +81,8 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
   return <div className="master-home bg-background text-foreground" onClick={navigateAnchor}>
     <div className="master-glows" aria-hidden>{Array.from({ length: 12 }, (_, index) => <span key={index} className={`master-glow master-glow-${index % 4}`} />)}</div>
     <header className="master-header border-b border-border">
-      <div className="master-container flex min-h-20 items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-3 font-medium"><Cable className="h-7 w-7" aria-hidden /><span>Мастер<br /><span className="text-xs text-muted-foreground">Михаил · Москва</span></span></a>
+      <div className="master-container grid min-h-20 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 sm:flex sm:justify-between">
+        <a href="#top" className="flex min-w-0 items-center gap-3 font-medium"><Cable className="h-7 w-7 shrink-0" aria-hidden /><span className="min-w-0"><span className="block truncate">Михаил Ларионов</span><span className="block text-xs text-muted-foreground">Мастер по Электрике · Москва</span></span></a>
         <nav aria-label="Разделы главной" className="hidden items-center gap-6 xl:flex">{navigation.map(([id, label]) => <a className="text-sm text-muted-foreground transition-colors hover:text-foreground" key={id} href={`#${id}`}>{label}</a>)}</nav>
         <div className="flex gap-2"><MasterContact kind="phone" variant="outline" className="hidden rounded-full sm:inline-flex" />
           <Button aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} aria-expanded={menuOpen} variant="ghost" size="icon" className="xl:hidden" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button></div>
@@ -116,11 +116,11 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
       <section id="steps" className="master-section master-container"><Heading number="03" label="Процесс">Как проходит <span className="italic">работа</span></Heading>
         <ol className="master-steps">{steps.map(([title, detail], index) => {
           const Icon = stepIcons[index];
-          return <li className="master-step" key={title}><div className="master-step-top"><span className="master-step-icon">{Icon && <Icon className="h-7 w-7" aria-hidden />}</span><span className="text-sm text-muted-foreground">0{index + 1}</span></div><h3 className="mt-7 text-xl">{title}</h3><p className="mt-4 leading-relaxed text-muted-foreground">{detail}</p>{index < steps.length - 1 && <ArrowRight className="master-step-arrow" aria-hidden />}</li>;
+          return <li className="master-step" key={title}><div className="master-step-top"><span className="master-step-icon">{Icon && <Icon className="h-7 w-7" aria-hidden />}</span><span className="text-sm text-muted-foreground">0{index + 1}</span></div><h3 className="mt-7 text-xl">{title}</h3><p className="mt-4 leading-relaxed text-muted-foreground">{detail}</p>{index < steps.length - 1 && <span className="master-step-arrow" aria-hidden />}</li>;
         })}</ol>
       </section>
       <section id="nuances" className="master-section master-container border-t border-border"><Heading number="04" label="Нюансы">Важные <span className="italic">детали</span></Heading>
-        <div className="grid gap-10 md:grid-cols-2">{[["Работаю в Москве", "Выезд по городу. По Московской области не работаю."], ["Каждая задача индивидуальна", "Для оценки нужны объём работ, состояние коммуникаций и фотографии объекта."], ["Сначала согласование", "Материалы, доступ к помещению и дополнительные работы обсуждаем заранее."], ["Не прячусь за фирмой - работаю лично", "Я работаю и отвечаю за результат - лично. При этом есть проверенные спецы по плиткам, потолкам, мебели и пр."]].map(([title, text]) => <div key={title}><span className="mb-5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-contact-action text-contact-action-foreground"><Check className="h-5 w-5" strokeWidth={3} aria-hidden /></span><h3 className="text-xl">{title}</h3><p className="mt-4 leading-relaxed text-muted-foreground">{text}</p></div>)}</div>
+        <div className="grid gap-10 md:grid-cols-2">{[["Работаю в Москве", "Выезд по городу. По Московской области не работаю."], ["Каждая задача индивидуальна", "Для оценки нужны объём работ, состояние коммуникаций и фотографии объекта."], ["Сначала согласование", "Материалы, доступ к помещению и дополнительные работы обсуждаем заранее."], ["Не прячусь за фирмой - работаю лично", "Я работаю и отвечаю за результат - лично. При этом есть проверенные спецы по плиткам, потолкам, мебели и пр."]].map(([title, text]) => <div key={title}><div className="master-detail-heading"><span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-contact-action text-contact-action-foreground"><Check className="h-5 w-5" strokeWidth={3} aria-hidden /></span><h3 className="min-w-0 text-xl">{title}</h3></div><p className="mt-4 leading-relaxed text-muted-foreground">{text}</p></div>)}</div>
       </section>
       {children}
       <section id="reviews" className="master-section master-container border-t border-border"><Heading number="06" label="Обратная связь">Отзывы <span className="italic">клиентов</span></Heading>
@@ -132,11 +132,11 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
         <div className="mt-6 flex items-center justify-between md:hidden"><Button variant="outline" size="icon" aria-label="Предыдущий отзыв" disabled={reviewIndex === 0} onClick={() => moveReview(-1)}><ChevronLeft /></Button><span className="text-sm text-muted-foreground" aria-live="polite">{reviewIndex + 1} / {orderedReviews.length}</span><Button variant="outline" size="icon" aria-label="Следующий отзыв" disabled={reviewIndex === orderedReviews.length - 1} onClick={() => moveReview(1)}><ChevronRight /></Button></div>
         <div className="mt-10 flex justify-center"><MasterContact kind="telegram" variant="outline" className="h-14 rounded-full px-6">Оставить отзыв</MasterContact></div>
       </section>
-      <section id="contact" className="master-section border-t border-border bg-card"><div className="master-container"><Heading number="07" label="Контакты">Обсудим <span className="italic">вашу задачу?</span></Heading>
+      <section id="contact" className="master-section border-t border-border bg-card"><div className="master-container master-contact-layout"><figure className="master-contact-photo"><img src={masterPhoto.url} width={432} height={768} loading="lazy" alt="Михаил Ларионов — мастер по электрике в Москве" /></figure><div className="master-contact-copy"><Heading number="07" label="Контакты">Обсудим <span className="italic">вашу задачу?</span></Heading>
         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">Расскажите, что нужно сделать. Пишите, звоните — буду рад Вам ответить.</p>
         <div className="mt-9 flex flex-wrap gap-4"><MasterContact kind="phone" className="h-14 rounded-full px-7 text-base">+7 916 799-12-16</MasterContact><MasterContact kind="telegram" variant="outline" className="h-14 rounded-full px-7 text-base" /></div>
         <p className="mt-7 text-sm text-muted-foreground">Михаил · Мастер по Электрике · Москва</p>
-      </div></section>
+      </div></div></section>
     </main>
     <footer className="master-container flex flex-wrap items-center justify-between gap-6 py-9 text-sm text-muted-foreground"><p>© 2026 Михаил · Электрика от Частного Мастера</p><a href="#top" className="inline-flex items-center gap-2">Наверх<ArrowUpRight className="h-4 w-4" aria-hidden /></a></footer>
   </div>;
