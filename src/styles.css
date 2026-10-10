@@ -314,8 +314,7 @@ html[lang="ar"] .italic {
 .master-step-icon { display: flex; width: 64px; height: 64px; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; color: var(--foreground); background: var(--card); }
 .master-step-arrow { position: absolute; width: 120px; height: 1px; top: 56px; right: -140px; background: var(--foreground); }
 .master-step-arrow::after { content: ""; position: absolute; right: 0; top: -4px; width: 9px; height: 9px; border-top: 1px solid var(--foreground); border-right: 1px solid var(--foreground); transform: rotate(45deg); }
-.master-step:nth-child(2) .master-step-arrow { top: auto; bottom: -72px; right: 32px; width: 1px; height: 48px; }
-.master-step:nth-child(2) .master-step-arrow::after { top: auto; bottom: 0; right: -4px; transform: rotate(135deg); }
+.master-step:nth-child(2) .master-step-arrow { display: none; }
 .master-detail-heading { display: grid; gap: 20px; justify-items: start; }
 .master-contact-layout { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); align-items: center; gap: 64px; }
 .master-contact-photo { width: 100%; max-width: 380px; justify-self: center; }
@@ -347,8 +346,7 @@ html[lang="ar"] .italic {
   .master-price-row { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .master-price-action { border-left: 0; border-top: 1px solid var(--border); padding-left: 0; padding-top: 24px; }
   .master-steps { grid-template-columns: minmax(0, 1fr); gap: 96px; }
-  .master-step-arrow, .master-step:nth-child(2) .master-step-arrow { top: auto; bottom: -72px; right: auto; left: 32px; width: 1px; height: 48px; }
-  .master-step-arrow::after { top: auto; bottom: 0; right: -4px; transform: rotate(135deg); }
+  .master-step-arrow, .master-step:nth-child(2) .master-step-arrow { display: none; }
   .master-detail-heading { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 12px; }
   .master-detail-heading > span { width: 24px; height: 24px; }
   .master-detail-heading svg { width: 16px; height: 16px; }

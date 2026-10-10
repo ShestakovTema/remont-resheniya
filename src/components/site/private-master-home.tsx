@@ -9,8 +9,8 @@ const navigation = [["about", "О мастере"], ["prices", "Прайс-ли�
 const facts = [
   { title: "12 лет в строительстве", text: "Добрый день👋, меня зовут Миша🙂. Занимаюсь электрикой, сантехникой и помогаю с ремонтом квартир и коммерческих помещений.", icon: Hammer },
   { title: "Профессиональный электрик 5 категории", text: "Работаю по ГОСТу и СНиПу. Диагностика и устранение неисправностей, замена проводки и сборка электрощитов. Техническое обслуживание коммерческих помещений.", icon: ShieldCheck },
-  { title: "Подготовка без пыли", text: "Штробление под электрику и сантехнику, вырезка розеток в стене БЕЗ ПЫЛИ 💯%. Алмазное бурение под ваши нужды.", icon: Cable },
-  { title: "Помощь и консультация", text: "Частный мастер: сборка мебели, мелкий ремонт, сантехника — замена и установка. ✨Пишите, звоните, буду рад Вам ответить. ✨", icon: Wrench },
+  { title: "Работаю чисто и профессионально", text: "Работаю в чистоте, штроблю с промышленным пылесосом, накрываю мебель, убираю после себя, вывожу мусор.\n\nИспользую в работе только Дорогие Профессиональные инструменты.", icon: Cable },
+  { title: "Помощь и консультация", text: "Помогу и проконсультирую всё простым и понятным языком!\n\nРаботаю по договору. Лично отвечаю за качество работы!\n\nЗа всё время работы не было ни одного недоделанного заказа!", icon: Wrench },
 ];
 const priceServices = [
   { title: "Замена розеток и выключателей", description: "Замена и перенос точек в кухне и комнатах", icon: Plug },
@@ -104,7 +104,7 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
         <div className="mb-12 text-center"><Heading number="01" label="О мастере">Немного <span className="italic">про себя</span></Heading><p className="-mt-4 text-lg text-muted-foreground">Для понимания, с кем будете работать</p></div>
         <div className="master-facts-layout">
           <figure className="master-facts-photo"><img src={masterPhoto.url} width={432} height={768} loading="lazy" alt="Частный мастер Михаил на объекте" className="h-full w-full rounded-lg object-cover" /><figcaption className="sr-only">Михаил • Профессиональный электрик 5 категории</figcaption></figure>
-          {facts.map(({ title, text, icon: Icon }, index) => <article key={title} className={`master-fact master-fact-${index + 1} flex flex-col rounded-lg border border-border bg-card p-6`}><p className="text-xs text-muted-foreground">Факт #{index + 1}</p><h3 className="mt-5 text-xl font-medium">{title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{text}</p><Icon className="mt-auto h-7 w-7 pt-0" aria-hidden /></article>)}
+          {facts.map(({ title, text, icon: Icon }, index) => <article key={title} className={`master-fact master-fact-${index + 1} flex flex-col rounded-lg border border-border bg-card p-6`}><p className="text-xs text-muted-foreground">Факт #{index + 1}</p><h3 className="mt-5 text-xl font-medium">{title}</h3><p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">{text}</p><Icon className="mt-auto h-7 w-7 pt-0" aria-hidden /></article>)}
         </div>
       </section>
       <section id="prices" className="master-section border-y border-border bg-card"><div className="master-container">
@@ -135,7 +135,7 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
       <section id="contact" className="master-section border-t border-border bg-card"><div className="master-container master-contact-layout"><figure className="master-contact-photo"><img src={masterPhoto.url} width={432} height={768} loading="lazy" alt="Михаил Ларионов — мастер по электрике в Москве" /></figure><div className="master-contact-copy"><Heading number="07" label="Контакты">Обсудим <span className="italic">вашу задачу?</span></Heading>
         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">Расскажите, что нужно сделать. Пишите, звоните — буду рад Вам ответить.</p>
         <div className="mt-9 flex flex-wrap gap-4"><MasterContact kind="phone" className="h-14 rounded-full px-7 text-base">+7 916 799-12-16</MasterContact><MasterContact kind="telegram" variant="outline" className="h-14 rounded-full px-7 text-base" /></div>
-        <p className="mt-7 text-sm text-muted-foreground">Михаил · Мастер по Электрике · Москва</p>
+        <div className="mt-7"><p className="text-base font-medium">Михаил</p><p className="mt-1 text-sm text-muted-foreground">Ваш Профессионал по Электрике</p></div>
       </div></div></section>
     </main>
     <footer className="master-container flex flex-wrap items-center justify-between gap-6 py-9 text-sm text-muted-foreground"><p>© 2026 Михаил · Электрика от Частного Мастера</p><a href="#top" className="inline-flex items-center gap-2">Наверх<ArrowUpRight className="h-4 w-4" aria-hidden /></a></footer>
