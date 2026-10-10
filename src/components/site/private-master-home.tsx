@@ -49,8 +49,8 @@ const steps = [
 const orderedReviews = [...reviews.slice(-1), ...reviews.slice(0, -1)];
 const stepIcons = [MessageCircle, ScanLine, ClipboardCheck, ShieldCheck];
 
-function SectionGlows({ count = 6 }: { count?: number }) {
-  return <div className="master-section-glows" aria-hidden>{Array.from({ length: count }, (_, index) => <span key={index} className={`master-glow-sm master-glow-${index % 4} master-glow-sm-${index + 1}`} />)}</div>;
+function SectionGlows({ count = 6, className = "" }: { count?: number; className?: string }) {
+  return <div className={`master-section-glows${className ? ` ${className}` : ""}`} aria-hidden>{Array.from({ length: count }, (_, index) => <span key={index} className={`master-glow-sm master-glow-${index % 4} master-glow-sm-${index + 1}`} />)}</div>;
 }
 
 function Heading({ number, label, children }: { number: string; label: string; children: ReactNode }) {
