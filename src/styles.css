@@ -288,7 +288,18 @@ html[lang="ar"] .italic {
 .master-glow-2 { --glow-color: var(--master-glow-green); }
 .master-glow-3 { --glow-color: var(--master-glow-gold); }
 @keyframes master-glow-drift { to { transform: translateY(50px) translateX(20px); } }
-@media (prefers-reduced-motion: reduce) { .master-glow { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .master-glow, .master-glow-sm { animation: none; } }
+.master-section { position: relative; }
+.master-section-glows { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.master-section > *:not(.master-section-glows) { position: relative; z-index: 1; }
+.master-glow-sm { position: absolute; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, var(--glow-color), transparent 70%); opacity: 0.85; animation: master-glow-drift 18s ease-in-out infinite alternate; }
+.master-glow-sm:nth-child(even) { width: 300px; height: 300px; animation-delay: -9s; }
+.master-glow-sm-1 { top: 3%; left: 5%; }
+.master-glow-sm-2 { top: 10%; right: 9%; }
+.master-glow-sm-3 { top: 46%; left: 32%; }
+.master-glow-sm-4 { top: 56%; right: 3%; }
+.master-glow-sm-5 { bottom: 5%; left: 11%; }
+.master-glow-sm-6 { bottom: 1%; right: 30%; }
 .master-home .font-display { letter-spacing: 0; font-family: var(--font-display), "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"; }
 .master-container { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: 40px; }
 .master-header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; background: var(--background); }
@@ -329,8 +340,9 @@ html[lang="ar"] .italic {
   .master-contact-copy h2 { font-size: 48px; }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
-  .master-facts-layout { gap: 16px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); }
-  .master-fact { padding: 20px; }
+  .master-facts-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; gap: 16px; }
+  .master-facts-photo { grid-column: 1; grid-row: 1; min-height: 0; aspect-ratio: 3 / 4; }
+  .master-fact { grid-column: 1; grid-row: auto; min-height: 250px; padding: 20px; }
   .master-price-row { grid-template-columns: 100px minmax(0, 1fr); }
   .master-price-action { grid-column: 2; border-left: 0; padding-left: 0; }
 }

@@ -49,6 +49,10 @@ const steps = [
 const orderedReviews = [...reviews.slice(-1), ...reviews.slice(0, -1)];
 const stepIcons = [MessageCircle, ScanLine, ClipboardCheck, ShieldCheck];
 
+function SectionGlows() {
+  return <div className="master-section-glows" aria-hidden>{Array.from({ length: 6 }, (_, index) => <span key={index} className={`master-glow-sm master-glow-${index % 4} master-glow-sm-${index + 1}`} />)}</div>;
+}
+
 function Heading({ number, label, children }: { number: string; label: string; children: ReactNode }) {
   return <div className="mb-10"><p className="master-eyebrow">({number}) {label}</p><h2 className="font-display mt-4 text-5xl sm:text-7xl">{children}</h2></div>;
 }
@@ -107,7 +111,7 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
           {facts.map(({ title, text, icon: Icon }, index) => <article key={title} className={`master-fact master-fact-${index + 1} flex flex-col rounded-lg border border-border bg-card p-6`}><p className="text-xs text-muted-foreground">Факт #{index + 1}</p><h3 className="mt-5 text-xl font-medium">{title}</h3><p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">{text}</p><Icon className="mt-auto h-7 w-7 pt-0" aria-hidden /></article>)}
         </div>
       </section>
-      <section id="prices" className="master-section border-y border-border bg-card"><div className="master-container">
+      <section id="prices" className="master-section border-y border-border bg-card"><SectionGlows /><div className="master-container">
         <Heading number="02" label="Стоимость">Прайс<span className="italic">-лист</span></Heading>
         <p className="mb-12 max-w-xl leading-relaxed text-muted-foreground">Стоимость зависит от объёма работ, материала стен и сложности монтажа. Обсудим вашу задачу и рассчитаем цену.</p>
         <div className="space-y-6">{priceServices.map(({ title, description, icon: Icon }) => <article key={title} className="master-price-row rounded-lg border border-border bg-background p-7 sm:p-9"><div className="flex items-center justify-center"><Icon className="h-24 w-24 sm:h-32 sm:w-32" strokeWidth={1} aria-hidden /></div><div><p className="mb-4 text-sm text-muted-foreground">{description}</p><h3 className="text-2xl leading-snug sm:text-3xl">{title}</h3></div><div className="master-price-action flex flex-col items-start gap-4"><p className="text-xl sm:text-2xl">По согласованию</p><p className="text-sm text-muted-foreground">Зависит от объёма работ</p><Button asChild className="mt-auto h-12 rounded-full px-6"><a href="#contact">Заказать<ArrowUpRight aria-hidden /></a></Button></div></article>)}</div>
@@ -119,7 +123,7 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
           return <li className="master-step" key={title}><div className="master-step-top"><span className="master-step-icon">{Icon && <Icon className="h-7 w-7" aria-hidden />}</span><span className="text-sm text-muted-foreground">0{index + 1}</span></div><h3 className="mt-7 text-xl">{title}</h3><p className="mt-4 leading-relaxed text-muted-foreground">{detail}</p>{index < steps.length - 1 && <span className="master-step-arrow" aria-hidden />}</li>;
         })}</ol>
       </section>
-      <section id="nuances" className="master-section master-container border-t border-border"><Heading number="04" label="Нюансы">Важные <span className="italic">детали</span></Heading>
+      <section id="nuances" className="master-section master-container border-t border-border"><SectionGlows /><Heading number="04" label="Нюансы">Важные <span className="italic">детали</span></Heading>
         <div className="grid gap-10 md:grid-cols-2">{[["Работаю в Москве", "Выезд по городу. По Московской области не работаю."], ["Каждая задача индивидуальна", "Для оценки нужны объём работ, состояние коммуникаций и фотографии объекта."], ["Сначала согласование", "Материалы, доступ к помещению и дополнительные работы обсуждаем заранее."], ["Не прячусь за фирмой - работаю лично", "Я работаю и отвечаю за результат - лично. При этом есть проверенные спецы по плиткам, потолкам, мебели и пр."]].map(([title, text]) => <div key={title}><div className="master-detail-heading"><span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-contact-action text-contact-action-foreground"><Check className="h-5 w-5" strokeWidth={3} aria-hidden /></span><h3 className="min-w-0 text-xl">{title}</h3></div><p className="mt-4 leading-relaxed text-muted-foreground">{text}</p></div>)}</div>
       </section>
       {children}
