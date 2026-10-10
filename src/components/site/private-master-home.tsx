@@ -49,6 +49,10 @@ const steps = [
 const orderedReviews = [...reviews.slice(-1), ...reviews.slice(0, -1)];
 const stepIcons = [MessageCircle, ScanLine, ClipboardCheck, ShieldCheck];
 
+function SectionGlows() {
+  return <div className="master-section-glows" aria-hidden>{Array.from({ length: 6 }, (_, index) => <span key={index} className={`master-glow-sm master-glow-${index % 4} master-glow-sm-${index + 1}`} />)}</div>;
+}
+
 function Heading({ number, label, children }: { number: string; label: string; children: ReactNode }) {
   return <div className="mb-10"><p className="master-eyebrow">({number}) {label}</p><h2 className="font-display mt-4 text-5xl sm:text-7xl">{children}</h2></div>;
 }
