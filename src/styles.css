@@ -300,6 +300,7 @@ html[lang="ar"] .italic {
 .master-glow-sm-4 { top: 56%; right: 3%; }
 .master-glow-sm-5 { bottom: 5%; left: 11%; }
 .master-glow-sm-6 { bottom: 1%; right: 30%; }
+@media (max-width: 767px) { .master-glows-few .master-glow-sm-3 { display: none; } }
 .master-home .font-display { letter-spacing: 0; font-family: var(--font-display), "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji"; }
 .master-container { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: 40px; }
 .master-header { position: fixed; top: 0; left: 0; right: 0; z-index: 30; background: var(--background); }

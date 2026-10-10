@@ -49,8 +49,8 @@ const steps = [
 const orderedReviews = [...reviews.slice(-1), ...reviews.slice(0, -1)];
 const stepIcons = [MessageCircle, ScanLine, ClipboardCheck, ShieldCheck];
 
-function SectionGlows() {
-  return <div className="master-section-glows" aria-hidden>{Array.from({ length: 6 }, (_, index) => <span key={index} className={`master-glow-sm master-glow-${index % 4} master-glow-sm-${index + 1}`} />)}</div>;
+function SectionGlows({ count = 6, className = "" }: { count?: number; className?: string }) {
+  return <div className={`master-section-glows${className ? ` ${className}` : ""}`} aria-hidden>{Array.from({ length: count }, (_, index) => <span key={index} className={`master-glow-sm master-glow-${index % 4} master-glow-sm-${index + 1}`} />)}</div>;
 }
 
 function Heading({ number, label, children }: { number: string; label: string; children: ReactNode }) {
@@ -123,7 +123,7 @@ export function PrivateMasterHome({ children }: { children: ReactNode }) {
           return <li className="master-step" key={title}><div className="master-step-top"><span className="master-step-icon">{Icon && <Icon className="h-7 w-7" aria-hidden />}</span><span className="text-sm text-muted-foreground">0{index + 1}</span></div><h3 className="mt-7 text-xl">{title}</h3><p className="mt-4 leading-relaxed text-muted-foreground">{detail}</p>{index < steps.length - 1 && <span className="master-step-arrow" aria-hidden />}</li>;
         })}</ol>
       </section>
-      <section id="nuances" className="master-section master-container border-t border-border"><SectionGlows /><Heading number="04" label="Нюансы">Важные <span className="italic">детали</span></Heading>
+      <section id="nuances" className="master-section master-container border-t border-border"><SectionGlows count={3} className="master-glows-few" /><Heading number="04" label="Нюансы">Важные <span className="italic">детали</span></Heading>
         <div className="grid gap-10 md:grid-cols-2">{[["Работаю в Москве", "Выезд по городу. По Московской области не работаю."], ["Каждая задача индивидуальна", "Для оценки нужны объём работ, состояние коммуникаций и фотографии объекта."], ["Сначала согласование", "Материалы, доступ к помещению и дополнительные работы обсуждаем заранее."], ["Не прячусь за фирмой - работаю лично", "Я работаю и отвечаю за результат - лично. При этом есть проверенные спецы по плиткам, потолкам, мебели и пр."]].map(([title, text]) => <div key={title}><div className="master-detail-heading"><span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-contact-action text-contact-action-foreground"><Check className="h-5 w-5" strokeWidth={3} aria-hidden /></span><h3 className="min-w-0 text-xl">{title}</h3></div><p className="mt-4 leading-relaxed text-muted-foreground">{text}</p></div>)}</div>
       </section>
       {children}
